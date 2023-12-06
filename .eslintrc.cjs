@@ -7,6 +7,7 @@ module.exports = {
     'plugin:vue/vue3-recommended',
   ],
   rules: {
-    'vue/no-unused-vars': 'error'
+    'vue/no-unused-vars': 'error',
+    'object-curly-spacing': ['error', 'always'],
   }
 }

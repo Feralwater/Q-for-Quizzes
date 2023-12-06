@@ -1,0 +1,51 @@
+.countdown {
+  width: 130px;
+  height: 130px;
+  position: relative;
+
+  &__svg {
+    transform: scaleX(-1);
+  }
+
+  &__circle {
+    fill: none;
+    stroke: none;
+  }
+
+  &__path-elapsed {
+    stroke-width: 7px;
+    stroke: var(--field-color);
+  }
+
+  &__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+    color: var(--primary);
+  }
+
+  &__path-remaining {
+    &--red {
+      color: var(--danger);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 2rem;
+    display: inline-block;
+    color: var(--primary);
+
+    &--red {
+      color: var(--danger);
+    }
+  }
+}
