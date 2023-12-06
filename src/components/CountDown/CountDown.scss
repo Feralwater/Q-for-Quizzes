@@ -1,0 +1,17 @@
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  width: 130px;
+  height: 130px;
+  border: 10px solid var(--primary);
+  border-radius: 50%;
+
+  &__time {
+    font-weight: bold;
+    font-size: 2rem;
+    display: inline-block;
+  }
+}
