@@ -1,17 +1,22 @@
 <script setup lang="ts">
 
-defineProps({
+import { useCountDown } from "@/components/CountDown/useCountDown";
+
+const props = defineProps({
   time: {
     type: Number,
-    default: 0,
+    default: 60,
   }
 })
+
+const { countdown } = useCountDown(props.time);
+
 </script>
 
 <template>
   <div class="countdown">
     <span class="countdown__time">
-      {{ time }}
+      {{ countdown }}
     </span>
     <span>
       sec

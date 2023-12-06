@@ -4,7 +4,7 @@ import CountDown from "@/components/CountDown/CountDown.vue";
 </script>
 
 <template>
-  <CountDown />
+  <CountDown :time="10" />
 
   <RouterView />
 </template>
