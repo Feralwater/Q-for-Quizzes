@@ -1,3 +1,5 @@
 :root {
   --primary: #0a85ff;
+  --field-color: rgb(204, 204, 204);
+  --danger: #ff4d4f;
 }

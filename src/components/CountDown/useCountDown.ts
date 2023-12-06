@@ -14,6 +14,7 @@ export const useCountDown = (time: number) => {
   const stopCountDown = () => {
     if (intervalId) {
       clearInterval(intervalId);
+      intervalId = null;
     }
   }
 
