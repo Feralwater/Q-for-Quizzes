@@ -1,5 +1,8 @@
 :root {
   --primary: #0a85ff;
+  --primary-light: #97c5f1;
   --field-color: rgb(204, 204, 204);
-  --danger: #ff4d4f;
+  --text-color: #111111;
+  --background: #ffffff;
+  --danger: #e01955;
 }
