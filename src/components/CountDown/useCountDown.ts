@@ -1,4 +1,4 @@
-import {onMounted, ref, watch} from "vue";
+import {onMounted, onUnmounted, ref, watch} from "vue";
 
 export const useCountDown = (time: number) => {
   const countdown = ref(time);
@@ -26,10 +26,10 @@ export const useCountDown = (time: number) => {
         stopCountDown();
       }
     });
+  });
 
-    return () => {
-      stopCountDown();
-    }
+  onUnmounted(() => {
+    stopCountDown();
   });
 
   return {
