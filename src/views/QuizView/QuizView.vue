@@ -2,26 +2,9 @@
 import thinkingMan from "@/assets/images/thinkingMan.png"
 import CountDown from "@/components/CountDown/CountDown.vue";
 
-// interface Question {
-//   id: number;
-//   question: string;
-//   answer: string;
-//   options: string[];
-//   timeToAnswer: number;
-// }
-
-// const props = defineProps({
-//   questions: {
-//     type: Array<Question>,
-//     required: true,
-//     default: () => [],
-//   },
-// });
-
 import { basicQuestions } from "@/assets/Data/basicQuestions";
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
-// const questions = ref<Question[]>(basicQuestions);
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
 const progress = computed(() => ((currentQuestionIndex.value + 1) / basicQuestions.length) * 100);
@@ -31,6 +14,20 @@ const onNextQuestion = () => currentQuestionIndex.value++;
 
 const handleCountdownFinished = (time: number) => {
   if (time === -1) {
+    onNextQuestion();
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('visibilitychange', handleVisibilityChange);
+});
+
+const handleVisibilityChange = () => {
+  if (document.visibilityState === 'visible') {
     onNextQuestion();
   }
 };
