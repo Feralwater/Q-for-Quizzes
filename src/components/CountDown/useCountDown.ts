@@ -1,12 +1,14 @@
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
-export const useCountDown = () => {
-  const countdown = ref(0);
+export const useCountDown = (initialTime: number) => {
+  const countdown = ref(initialTime);
   let intervalId: number | null = null;
 
   const startCountDown = (time: number) => {
-    countdown.value = time;
     stopCountDown();
+    countdown.value = time;
+
+
     intervalId = setInterval(() => {
       countdown.value--;
       if (countdown.value === 0) {
@@ -22,9 +24,18 @@ export const useCountDown = () => {
     }
   };
 
+  const watchTime = (newTime: number) => {
+    startCountDown(newTime);
+  };
+
+  onMounted(() => {
+    startCountDown(initialTime);
+  });
+
+  onUnmounted(stopCountDown);
+
   return {
     countdown,
-    startCountDown,
-    stopCountDown,
+    watchTime,
   };
 };

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCountDown } from "@/components/CountDown/useCountDown";
-import { computed, onMounted, onUnmounted, watch } from "vue";
+import { computed, watch } from "vue";
 
 const props = defineProps({
   time: {
@@ -9,19 +9,9 @@ const props = defineProps({
   }
 });
 
-const { countdown, stopCountDown, startCountDown } = useCountDown();
+const { countdown, watchTime } = useCountDown(props.time);
 
-watch(() => props.time, (newTime) => {
-  startCountDown(newTime);
-});
-
-onMounted(() => {
-  startCountDown(props.time);
-});
-
-onUnmounted(() => {
-  stopCountDown();
-});
+watch(() => props.time, watchTime);
 
 const calculateDashOffset = computed(() => {
   const radius = 45;
