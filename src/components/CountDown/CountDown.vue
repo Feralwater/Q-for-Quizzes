@@ -13,9 +13,10 @@ const { countdown, watchTime } = useCountDown(props.time);
 
 watch(() => props.time, watchTime);
 
+const radius = 45;
+const circumference = 2 * Math.PI * radius;
+
 const calculateDashOffset = computed(() => {
-  const radius = 45;
-  const circumference = 2 * Math.PI * radius;
   return circumference - (countdown.value / props.time) * circumference;
 });
 
@@ -36,7 +37,7 @@ const calculateDashOffset = computed(() => {
           r="45"
         />
         <path
-          stroke-dasharray="283"
+          :stroke-dasharray="circumference"
           :class="`countdown__path-remaining ${countdown < 5 ? 'countdown__path-remaining--red' : ''}`"
           :style="`stroke-dashoffset: ${calculateDashOffset}px`"
           d="
