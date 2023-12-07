@@ -9,7 +9,7 @@ export const basicQuestions = [
       "Chennai",
       "Kolkata"
     ],
-    timeToAnswer: 60,
+    timeToAnswer: 5,
   },
   {
     id: 2,

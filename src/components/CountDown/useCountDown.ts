@@ -11,7 +11,7 @@ export const useCountDown = (initialTime: number) => {
 
     intervalId = setInterval(() => {
       countdown.value--;
-      if (countdown.value === 0) {
+      if (countdown.value === -1) {
         stopCountDown();
       }
     }, 1000);

@@ -9,9 +9,14 @@ const props = defineProps({
   }
 });
 
+const emit = defineEmits(["timeUp"]);
+
 const { countdown, watchTime } = useCountDown(props.time);
 
 watch(() => props.time, watchTime);
+watch(countdown, (countdown) => {
+    emit("timeUp", countdown);
+});
 
 const radius = 45;
 const circumference = 2 * Math.PI * radius;

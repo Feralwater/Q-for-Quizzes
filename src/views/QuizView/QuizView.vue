@@ -29,13 +29,22 @@ const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
 
 const onNextQuestion = () => currentQuestionIndex.value++;
 
+const handleCountdownFinished = (time: number) => {
+  if (time === -1) {
+    onNextQuestion();
+  }
+};
+
 </script>
 
 <template>
   <div class="quiz">
     Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
     <div class="quiz__countdown">
-      <CountDown :time="currentQuestion.timeToAnswer" />
+      <CountDown
+        :time="currentQuestion.timeToAnswer"
+        @time-up="handleCountdownFinished"
+      />
     </div>
     <v-progress-linear
       color="primary"
