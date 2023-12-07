@@ -1,4 +1,4 @@
-import {onMounted, onUnmounted, ref, watch} from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 export const useCountDown = (time: number) => {
   const countdown = ref(time);
@@ -8,6 +8,9 @@ export const useCountDown = (time: number) => {
   const startCountDown = () => {
     intervalId = setInterval(() => {
       countdown.value--;
+      if (countdown.value === 0) {
+        stopCountDown();
+      }
     }, 1000);
   }
 
@@ -18,19 +21,8 @@ export const useCountDown = (time: number) => {
     }
   }
 
-  onMounted(() => {
-    startCountDown();
-
-    watch(countdown, (newVal) => {
-      if (newVal === 0) {
-        stopCountDown();
-      }
-    });
-  });
-
-  onUnmounted(() => {
-    stopCountDown();
-  });
+  onMounted(startCountDown);
+  onUnmounted(stopCountDown);
 
   return {
     countdown,
