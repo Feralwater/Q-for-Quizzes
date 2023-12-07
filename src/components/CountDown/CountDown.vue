@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {useCountDown} from "@/components/CountDown/useCountDown";
-import {computed} from "vue";
+import { useCountDown } from "@/components/CountDown/useCountDown";
+import { computed } from "vue";
 
 const props = defineProps({
   time: {
