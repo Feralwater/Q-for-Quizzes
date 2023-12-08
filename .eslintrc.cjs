@@ -13,9 +13,6 @@ module.exports = {
     'vue/no-unused-vars': 'error',
     'object-curly-spacing': ['error', 'always'],
     'semi': ['error', 'always'],
-    'trailing-comma': ['error', {
-      'multiline': 'always',
-      'singleline': 'never',
-    }],
+    'comma-dangle': ['error', 'always-multiline'],
   }
 }

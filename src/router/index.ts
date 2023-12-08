@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import QuizView from "@/views/QuizView/QuizView.vue";
-import { Routers } from '@/router/Routers'
-import { useQuizScore } from '@/stores/score'
+import { Routers } from '@/router/Routers';
+import { useQuizScore } from '@/stores/score';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,14 +24,14 @@ const router = createRouter({
         } else {
           next({ name: '404' });
         }
-      }
+      },
     },
     {
       path: "/:pathMatch(.*)*",
       name: '404',
       component: () => import('@/views/404View/404View.vue'),
-    }
-  ]
-})
+    },
+  ],
+});
 
-export default router
+export default router;
