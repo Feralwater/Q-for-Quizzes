@@ -32,6 +32,12 @@ const handleVisibilityChange = () => {
   }
 };
 
+const onSubmitTest = () => {
+  console.log('submit test');
+};
+
+const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
+
 </script>
 
 <template>
@@ -76,10 +82,18 @@ const handleVisibilityChange = () => {
       </div>
     </section>
     <v-btn
+      v-if="shouldShowNextButton"
       color="primary"
       @click="onNextQuestion"
     >
       Next
+    </v-btn>
+    <v-btn
+      v-if="!shouldShowNextButton"
+      color="primary"
+      @click="onSubmitTest"
+    >
+      Submit Test
     </v-btn>
   </div>
 </template>
