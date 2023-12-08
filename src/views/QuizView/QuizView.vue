@@ -2,8 +2,11 @@
 import thinkingMan from "@/assets/images/thinkingMan.png"
 import CountDown from "@/components/CountDown/CountDown.vue";
 
-import { basicQuestions } from "@/assets/Data/basicQuestions";
+import { basicQuestions } from "@/assets/data/basicQuestions";
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { useQuizScore } from '@/stores/score'
+import router from '@/router'
+import { Routers } from '@/router/Routers'
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
@@ -13,6 +16,9 @@ const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
 const onNextQuestion = () => currentQuestionIndex.value++;
 
 const handleCountdownFinished = (time: number) => {
+  if(!shouldShowNextButton.value && time === -1) {
+    onSubmitTest();
+  }
   if (time === -1) {
     onNextQuestion();
   }
@@ -33,10 +39,18 @@ const handleVisibilityChange = () => {
 };
 
 const onSubmitTest = () => {
-  console.log('submit test');
+  router.push(Routers.Result);
 };
 
+const { incrementScore }=useQuizScore();
+
 const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
+
+const handleAnswerSelected = (selectedAnswer: string, correctAnswer: string, score: number) => {
+  if (selectedAnswer === correctAnswer) {
+    incrementScore(score);
+  }
+};
 
 </script>
 
@@ -68,6 +82,7 @@ const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== curren
               id="optionIndex"
               type="radio"
               :name="'question-' + currentQuestionIndex"
+              @change="handleAnswerSelected(option, currentQuestion.answer, currentQuestion.score)"
             >
             <label for="optionIndex">{{ option }}</label>
           </div>
