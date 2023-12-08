@@ -2,13 +2,10 @@
 import { useQuizScore } from '@/stores/score'
 import { type NavigationGuardNext, onBeforeRouteLeave, type RouteLocationNormalized } from 'vue-router'
 
-const { score }=useQuizScore();
-
+const { score, isQuizCompleted } = useQuizScore();
 const beforeRouteLeave = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-  if (score !== null) {
+  if (isQuizCompleted) {
     next(false);
-  } else {
-    next();
   }
 };
 

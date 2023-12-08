@@ -2,22 +2,26 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useQuizScore = defineStore('score', () => {
-  const score = ref<number | null>(null)
+  const score = ref<number>(0)
+  const isQuizCompleted = ref<boolean>(false)
 
   const incrementScore = (itemWeight: number  ) => {
-    if (!score.value) {
-      score.value = 0
-    }
      score.value += itemWeight
   }
 
   const resetScore = () => {
-    score.value = null
+    score.value = 0
   }
+
+ const setQuizCompleted = () => {
+    isQuizCompleted.value = true
+ }
 
   return {
     score,
     incrementScore,
-    resetScore
+    resetScore,
+    isQuizCompleted,
+    setQuizCompleted,
   }
 })

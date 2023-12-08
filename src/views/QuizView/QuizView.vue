@@ -39,10 +39,11 @@ const handleVisibilityChange = () => {
 };
 
 const onSubmitTest = () => {
+  setQuizCompleted();
   router.push(Routers.Result);
 };
 
-const { incrementScore }=useQuizScore();
+const { incrementScore, setQuizCompleted } = useQuizScore();
 
 const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
 

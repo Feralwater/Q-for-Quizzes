@@ -1,4 +1,4 @@
 export enum Routers {
-  Home = "/",
+  Quiz = "/",
   Result = "/result",
 }
