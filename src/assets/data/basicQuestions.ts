@@ -22,7 +22,7 @@ export const basicQuestions = [
       "Canberra",
       "Perth"
     ],
-    timeToAnswer: 10,
+    timeToAnswer: 5,
     score: 20,
   },
 ]

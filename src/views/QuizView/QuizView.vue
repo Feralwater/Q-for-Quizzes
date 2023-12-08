@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import thinkingMan from "@/assets/images/thinkingMan.png"
-import CountDown from "@/components/CountDown/CountDown.vue";
+import thinkingMan from '@/assets/images/thinkingMan.png';
+import CountDown from '@/components/CountDown/CountDown.vue';
 
-import { basicQuestions } from "@/assets/data/basicQuestions";
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
-import { useQuizScore } from '@/stores/score'
-import router from '@/router'
-import { Routers } from '@/router/Routers'
+import { basicQuestions } from '@/assets/data/basicQuestions';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useQuizScore } from '@/stores/score';
+import router from '@/router';
+import { Routers } from '@/router/Routers';
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
@@ -80,12 +80,15 @@ const handleAnswerSelected = (selectedAnswer: string, correctAnswer: string, sco
             class="quiz__answer"
           >
             <input
-              id="optionIndex"
+              :id="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`"
+              v-model="currentQuestion.answer"
               type="radio"
-              :name="'question-' + currentQuestionIndex"
+              :name="`question-${currentQuestionIndex}`"
               @change="handleAnswerSelected(option, currentQuestion.answer, currentQuestion.score)"
             >
-            <label for="optionIndex">{{ option }}</label>
+            <label :for="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`">
+              {{ option }}
+            </label>
           </div>
         </fieldset>
         <div class="quiz__image">
