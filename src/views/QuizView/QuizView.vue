@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import thinkingMan from '@/assets/images/thinkingMan.png';
 import CountDown from '@/components/CountDown/CountDown.vue';
 
 import { basicQuestions } from '@/assets/data/basicQuestions';
