@@ -1,0 +1,37 @@
+.sidebar {
+  min-height: 100dvh;
+  width: 100%;
+  background-color: var(--primary-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  font-family: 'Jost', sans-serif;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--light-text-color);
+    font-size: 37px;
+    font-weight: bold;
+  }
+
+  &__progress {
+    background-color: var(--light-text-color);
+    border-radius: 25px;
+  }
+
+  &__footer {
+    width: 100%;
+    color: var(--light-text-color);
+    font-size: 23px;
+    text-transform: capitalize;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

@@ -1,8 +1,10 @@
 :root {
-  --primary: #0a85ff;
-  --primary-light: #97c5f1;
+  --primary: #f99678;
+  --primary-light: #faa389;
+  --primary-dark: #f98967;
   --field-color: rgb(204, 204, 204);
-  --text-color: #111111;
+  --text-color: #190c09;
+  --light-text-color: #fef2ee;
   --background: #ffffff;
   --danger: #e01955;
 }

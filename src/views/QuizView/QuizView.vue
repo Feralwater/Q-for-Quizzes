@@ -7,6 +7,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
+import SideBar from '@/components/SideBar/SideBar.vue'
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
@@ -64,6 +65,7 @@ const calculateScore = () => {
 
 <template>
   <div class="quiz">
+    <side-bar :progress="progress" />
     Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
     <div class="quiz__countdown">
       <CountDown
@@ -72,10 +74,6 @@ const calculateScore = () => {
         @time-up="handleCountdownFinished"
       />
     </div>
-    <v-progress-linear
-      color="primary"
-      :model-value="progress"
-    />
     <section class="quiz__inner">
       <div class="quiz__question">
         {{ currentQuestion.question }}
