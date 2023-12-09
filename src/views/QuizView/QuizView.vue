@@ -81,16 +81,20 @@ const calculateScore = () => {
         <div class="quiz__question">
           {{ currentQuestion.question }}
         </div>
-        <v-divider color="grey" />
+        <v-divider
+          color="grey"
+          class="quiz__answers"
+        />
         <v-radio-group
           v-for="(option, optionIndex) in currentQuestion.options"
           :key="optionIndex"
           v-model="answerSelected"
-          class="quiz__answers"
         >
           <v-radio
             :value="option"
             :label="option"
+            class="quiz__answer"
+            color="primary"
           />
         </v-radio-group>
       </div>
