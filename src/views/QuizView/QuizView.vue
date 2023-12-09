@@ -7,7 +7,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
-import SideBar from '@/components/SideBar/SideBar.vue'
+import SideBar from '@/components/SideBar/SideBar.vue';
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
@@ -66,61 +66,63 @@ const calculateScore = () => {
 <template>
   <div class="quiz">
     <side-bar :progress="progress" />
-    Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
-    <div class="quiz__countdown">
-      <CountDown
-        :key="currentQuestionIndex"
-        :time="currentQuestion.timeToAnswer"
-        @time-up="handleCountdownFinished"
-      />
-    </div>
-    <section class="quiz__inner">
-      <div class="quiz__question">
-        {{ currentQuestion.question }}
+    <div>
+      Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
+      <div class="quiz__countdown">
+        <CountDown
+          :key="currentQuestionIndex"
+          :time="currentQuestion.timeToAnswer"
+          @time-up="handleCountdownFinished"
+        />
       </div>
-      <div class="quiz__answersContainer">
-        <fieldset class="quiz__answers">
-          <div
-            v-for="(option, optionIndex) in currentQuestion.options"
-            :key="optionIndex"
-            class="quiz__answer"
-          >
-            <v-text-field
-              :id="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`"
-              v-model="answerSelected"
-              :value="option"
-              variant="plain"
-              type="radio"
-              :name="`question-${currentQuestionIndex}`"
-            />
-            <label :for="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`">
-              {{ option }}
-            </label>
-          </div>
-        </fieldset>
-        <div class="quiz__image">
-          <v-img
-            :src="thinkingMan"
-            width="300px"
-            height="300px"
-          />
+      <section class="quiz__inner">
+        <div class="quiz__question">
+          {{ currentQuestion.question }}
         </div>
-      </div>
-    </section>
-    <v-btn
-      v-if="shouldShowNextButton"
-      color="primary"
-      @click="onNextQuestion"
-    >
-      Next
-    </v-btn>
-    <v-btn
-      v-if="!shouldShowNextButton"
-      color="primary"
-      @click="onSubmitTest"
-    >
-      Submit Test
-    </v-btn>
+        <div class="quiz__answersContainer">
+          <fieldset class="quiz__answers">
+            <div
+              v-for="(option, optionIndex) in currentQuestion.options"
+              :key="optionIndex"
+              class="quiz__answer"
+            >
+              <v-text-field
+                :id="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`"
+                v-model="answerSelected"
+                :value="option"
+                variant="plain"
+                type="radio"
+                :name="`question-${currentQuestionIndex}`"
+              />
+              <label :for="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`">
+                {{ option }}
+              </label>
+            </div>
+          </fieldset>
+          <div class="quiz__image">
+            <v-img
+              :src="thinkingMan"
+              width="300px"
+              height="300px"
+            />
+          </div>
+        </div>
+      </section>
+      <v-btn
+        v-if="shouldShowNextButton"
+        color="primary"
+        @click="onNextQuestion"
+      >
+        Next
+      </v-btn>
+      <v-btn
+        v-if="!shouldShowNextButton"
+        color="primary"
+        @click="onSubmitTest"
+      >
+        Submit Test
+      </v-btn>
+    </div>
   </div>
 </template>
 
