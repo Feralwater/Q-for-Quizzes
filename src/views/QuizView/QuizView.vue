@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import thinkingMan from "@/assets/images/thinkingMan.png"
-import CountDown from "@/components/CountDown/CountDown.vue";
+import thinkingMan from '@/assets/images/thinkingMan.png';
+import CountDown from '@/components/CountDown/CountDown.vue';
 
-import { basicQuestions } from "@/assets/Data/basicQuestions";
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { basicQuestions } from '@/assets/data/basicQuestions';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useQuizScore } from '@/stores/score';
+import router from '@/router';
+import { Routers } from '@/router/Routers';
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
@@ -13,6 +16,9 @@ const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
 const onNextQuestion = () => currentQuestionIndex.value++;
 
 const handleCountdownFinished = (time: number) => {
+  if(!shouldShowNextButton.value && time === -1) {
+    onSubmitTest();
+  }
   if (time === -1) {
     onNextQuestion();
   }
@@ -32,6 +38,21 @@ const handleVisibilityChange = () => {
   }
 };
 
+const onSubmitTest = () => {
+  setQuizCompleted();
+  router.push(Routers.Result);
+};
+
+const { incrementScore, setQuizCompleted } = useQuizScore();
+
+const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
+
+const handleAnswerSelected = (selectedAnswer: string, correctAnswer: string, score: number) => {
+  if (selectedAnswer === correctAnswer) {
+    incrementScore(score);
+  }
+};
+
 </script>
 
 <template>
@@ -39,6 +60,7 @@ const handleVisibilityChange = () => {
     Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
     <div class="quiz__countdown">
       <CountDown
+        :key="currentQuestionIndex"
         :time="currentQuestion.timeToAnswer"
         @time-up="handleCountdownFinished"
       />
@@ -59,11 +81,15 @@ const handleVisibilityChange = () => {
             class="quiz__answer"
           >
             <input
-              id="optionIndex"
+              :id="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`"
+              v-model="currentQuestion.answer"
               type="radio"
-              :name="'question-' + currentQuestionIndex"
+              :name="`question-${currentQuestionIndex}`"
+              @change="handleAnswerSelected(option, currentQuestion.answer, currentQuestion.score)"
             >
-            <label for="optionIndex">{{ option }}</label>
+            <label :for="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`">
+              {{ option }}
+            </label>
           </div>
         </fieldset>
         <div class="quiz__image">
@@ -76,10 +102,18 @@ const handleVisibilityChange = () => {
       </div>
     </section>
     <v-btn
+      v-if="shouldShowNextButton"
       color="primary"
       @click="onNextQuestion"
     >
       Next
+    </v-btn>
+    <v-btn
+      v-if="!shouldShowNextButton"
+      color="primary"
+      @click="onSubmitTest"
+    >
+      Submit Test
     </v-btn>
   </div>
 </template>

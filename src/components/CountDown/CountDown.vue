@@ -6,7 +6,7 @@ const props = defineProps({
   time: {
     type: Number,
     default: 60,
-  }
+  },
 });
 
 const emit = defineEmits(["timeUp"]);

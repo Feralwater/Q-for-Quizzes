@@ -12,5 +12,7 @@ module.exports = {
   rules: {
     'vue/no-unused-vars': 'error',
     'object-curly-spacing': ['error', 'always'],
+    'semi': ['error', 'always'],
+    'comma-dangle': ['error', 'always-multiline'],
   }
 }
