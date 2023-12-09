@@ -66,8 +66,7 @@ const calculateScore = () => {
 <template>
   <div class="quiz">
     <side-bar :progress="progress" />
-    <div>
-      Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
+    <div class="quiz__content">
       <div class="quiz__countdown">
         <CountDown
           :key="currentQuestionIndex"
@@ -75,52 +74,36 @@ const calculateScore = () => {
           @time-up="handleCountdownFinished"
         />
       </div>
-      <section class="quiz__inner">
+      <div>
+        <div class="quiz__question-number">
+          Question {{ currentQuestionNumber }}/{{ basicQuestions.length }}
+        </div>
         <div class="quiz__question">
           {{ currentQuestion.question }}
         </div>
-        <div class="quiz__answersContainer">
-          <fieldset class="quiz__answers">
-            <div
-              v-for="(option, optionIndex) in currentQuestion.options"
-              :key="optionIndex"
-              class="quiz__answer"
-            >
-              <v-text-field
-                :id="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`"
-                v-model="answerSelected"
-                :value="option"
-                variant="plain"
-                type="radio"
-                :name="`question-${currentQuestionIndex}`"
-              />
-              <label :for="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`">
-                {{ option }}
-              </label>
-            </div>
-          </fieldset>
-          <div class="quiz__image">
-            <v-img
-              :src="thinkingMan"
-              width="300px"
-              height="300px"
-            />
-          </div>
-        </div>
-      </section>
+        <v-divider color="grey" />
+        <v-radio-group
+          v-for="(option, optionIndex) in currentQuestion.options"
+          :key="optionIndex"
+          v-model="answerSelected"
+          class="quiz__answers"
+        >
+          <v-radio
+            :value="option"
+            :label="option"
+          />
+        </v-radio-group>
+      </div>
+      <v-divider color="grey" />
       <v-btn
-        v-if="shouldShowNextButton"
         color="primary"
-        @click="onNextQuestion"
+        class="quiz__btn"
+        height="50px"
+        @click="shouldShowNextButton ? onNextQuestion() : onSubmitTest()"
       >
-        Next
-      </v-btn>
-      <v-btn
-        v-if="!shouldShowNextButton"
-        color="primary"
-        @click="onSubmitTest"
-      >
-        Submit Test
+        <span class="quiz__btn-text">
+          {{ shouldShowNextButton ? 'Next Question' : 'Submit Test' }}
+        </span>
       </v-btn>
     </div>
   </div>

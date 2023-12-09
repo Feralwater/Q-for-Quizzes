@@ -2,9 +2,10 @@
   --primary: #f99678;
   --primary-light: #faa389;
   --primary-dark: #f98967;
-  --field-color: rgb(204, 204, 204);
+  --field-color: #fee5dd;
   --text-color: #190c09;
   --light-text-color: #fef2ee;
   --background: #ffffff;
-  --danger: #e01955;
+  --danger: #fe1911;
+  --grey: #808080;
 }

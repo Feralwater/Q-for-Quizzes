@@ -12,6 +12,7 @@ const vuetify = createVuetify({
         colors: {
           primary: "#f99678",
           primaryDark: "#f98967",
+          grey: "#808080",
         },
       },
     },
