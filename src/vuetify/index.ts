@@ -10,11 +10,13 @@ const vuetify = createVuetify({
     themes: {
       light: {
         colors: {
-          primary: "#27ff2b",
-        }
-      }
-    }
-  }
+          primary: "#f99678",
+          primaryDark: "#f98967",
+          grey: "#808080",
+        },
+      },
+    },
+  },
 });
 
 export default vuetify;

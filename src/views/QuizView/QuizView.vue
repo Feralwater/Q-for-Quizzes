@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import thinkingMan from '@/assets/images/thinkingMan.png';
 import CountDown from '@/components/CountDown/CountDown.vue';
 
 import { basicQuestions } from '@/assets/data/basicQuestions';
@@ -7,6 +6,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
+import SideBar from '@/components/SideBar/SideBar.vue';
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
@@ -64,65 +64,51 @@ const calculateScore = () => {
 
 <template>
   <div class="quiz">
-    Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
-    <div class="quiz__countdown">
-      <CountDown
-        :key="currentQuestionIndex"
-        :time="currentQuestion.timeToAnswer"
-        @time-up="handleCountdownFinished"
-      />
-    </div>
-    <v-progress-linear
-      color="primary"
-      :model-value="progress"
-    />
-    <section class="quiz__inner">
-      <div class="quiz__question">
-        {{ currentQuestion.question }}
+    <side-bar :progress="progress" />
+    <div class="quiz__content">
+      <div class="quiz__countdown">
+        <CountDown
+          :key="currentQuestionIndex"
+          :time="currentQuestion.timeToAnswer"
+          @time-up="handleCountdownFinished"
+        />
       </div>
-      <div class="quiz__answersContainer">
-        <fieldset class="quiz__answers">
-          <div
-            v-for="(option, optionIndex) in currentQuestion.options"
-            :key="optionIndex"
-            class="quiz__answer"
-          >
-            <v-text-field
-              :id="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`"
-              v-model="answerSelected"
-              :value="option"
-              variant="plain"
-              type="radio"
-              :name="`question-${currentQuestionIndex}`"
-            />
-            <label :for="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`">
-              {{ option }}
-            </label>
-          </div>
-        </fieldset>
-        <div class="quiz__image">
-          <v-img
-            :src="thinkingMan"
-            width="300px"
-            height="300px"
-          />
+      <div>
+        <div class="quiz__question-number">
+          Question {{ currentQuestionNumber }}/{{ basicQuestions.length }}
         </div>
+        <div class="quiz__question">
+          {{ currentQuestion.question }}
+        </div>
+        <v-divider
+          color="grey"
+          class="quiz__answers"
+        />
+        <v-radio-group
+          v-for="(option, optionIndex) in currentQuestion.options"
+          :key="optionIndex"
+          v-model="answerSelected"
+        >
+          <v-radio
+            :value="option"
+            :label="option"
+            class="quiz__answer"
+            color="primary"
+          />
+        </v-radio-group>
       </div>
-    </section>
-    <v-btn
-      v-if="shouldShowNextButton"
-      color="primary"
-      @click="onNextQuestion"
-    >
-      Next
-    </v-btn>
-    <v-btn
-      v-if="!shouldShowNextButton"
-      color="primary"
-      @click="onSubmitTest"
-    >
-      Submit Test
-    </v-btn>
+      <v-divider color="grey" />
+      <v-btn
+        color="primary"
+        class="quiz__btn"
+        height="50px"
+        @click="shouldShowNextButton ? onNextQuestion() : onSubmitTest()"
+      >
+        <span class="quiz__btn-text">
+          {{ shouldShowNextButton ? 'Next Question' : 'Submit Test' }}
+        </span>
+      </v-btn>
+    </div>
   </div>
 </template>
 
