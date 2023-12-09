@@ -9,7 +9,7 @@ export const basicQuestions = [
       "Chennai",
       "Kolkata",
     ],
-    timeToAnswer: 5,
+    timeToAnswer: 15,
     score: 10,
   },
   {
@@ -22,7 +22,7 @@ export const basicQuestions = [
       "Canberra",
       "Perth",
     ],
-    timeToAnswer: 5,
+    timeToAnswer: 15,
     score: 20,
   },
 ];

@@ -60,6 +60,7 @@ const handleAnswerSelected = (selectedAnswer: string, correctAnswer: string, sco
     Question {{ currentQuestionNumber }} of {{ basicQuestions.length }}
     <div class="quiz__countdown">
       <CountDown
+        :key="currentQuestionIndex"
         :time="currentQuestion.timeToAnswer"
         @time-up="handleCountdownFinished"
       />
