@@ -13,10 +13,13 @@ const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value
 const progress = computed(() => ((currentQuestionIndex.value + 1) / basicQuestions.length) * 100);
 const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
 
-const onNextQuestion = () => currentQuestionIndex.value++;
+const onNextQuestion = () => {
+  calculateScore();
+  currentQuestionIndex.value++;
+};
 
 const handleCountdownFinished = (time: number) => {
-  if(!shouldShowNextButton.value && time === -1) {
+  if (!shouldShowNextButton.value && time === -1) {
     onSubmitTest();
   }
   if (time === -1) {
@@ -40,6 +43,7 @@ const handleVisibilityChange = () => {
 
 const onSubmitTest = () => {
   setQuizCompleted();
+  calculateScore();
   router.push(Routers.Result);
 };
 
@@ -47,10 +51,13 @@ const { incrementScore, setQuizCompleted } = useQuizScore();
 
 const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
 
-const handleAnswerSelected = (selectedAnswer: string, correctAnswer: string, score: number) => {
-  if (selectedAnswer === correctAnswer) {
-    incrementScore(score);
+const answerSelected = ref('');
+
+const calculateScore = () => {
+  if (currentQuestion.value.answer === answerSelected.value) {
+    incrementScore(currentQuestion.value.score);
   }
+  answerSelected.value = '';
 };
 
 </script>
@@ -80,13 +87,14 @@ const handleAnswerSelected = (selectedAnswer: string, correctAnswer: string, sco
             :key="optionIndex"
             class="quiz__answer"
           >
-            <input
+            <v-text-field
               :id="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`"
-              v-model="currentQuestion.answer"
+              v-model="answerSelected"
+              :value="option"
+              variant="plain"
               type="radio"
               :name="`question-${currentQuestionIndex}`"
-              @change="handleAnswerSelected(option, currentQuestion.answer, currentQuestion.score)"
-            >
+            />
             <label :for="`optionIndex-${optionIndex} - question-${currentQuestionIndex}`">
               {{ option }}
             </label>
