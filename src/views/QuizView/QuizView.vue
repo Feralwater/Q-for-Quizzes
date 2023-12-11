@@ -8,7 +8,6 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
-import NewComponent from '@/views/QuizView/NewComponent.vue';
 import QuizQuestion from '@/views/QuizView/Components/Question/QuizQuestion.vue';
 
 const TIME_UP_VALUE = -1;
