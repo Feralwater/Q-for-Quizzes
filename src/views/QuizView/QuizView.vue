@@ -47,8 +47,8 @@ const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== curren
 const answerSelected = ref('');
 
 const calculateScore = () => {
-  if (currentQuestion.value.answer === answerSelected.value) {
-    incrementScore(currentQuestion.value.score);
+  if (currentQuestion.value.answer[0] === answerSelected.value) {
+    incrementScore(currentQuestion.value.points);
   }
 };
 
@@ -101,6 +101,7 @@ const calculateScore = () => {
         />
 
         <radio-answers
+          v-if="currentQuestion.answer.length === 1"
           :options="currentQuestion.options"
           :selected-answer="answerSelected"
           aria-label="Quiz answers option"

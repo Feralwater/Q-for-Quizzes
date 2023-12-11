@@ -2,7 +2,7 @@ export const basicQuestions = [
   {
     id: 1,
     question: "What is the capital of India?",
-    answer: "New Delhi",
+    answer: ["New Delhi"],
     options: [
       "Mumbai",
       "New Delhi",
