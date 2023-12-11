@@ -10,12 +10,12 @@ export const basicQuestions = [
       "Kolkata",
     ],
     timeToAnswer: 1005,
-    score: 10,
+    points: 10,
   },
   {
     id: 2,
     question: "What is the capital of Australia?",
-    answer: "Canberra",
+    answer: ["Canberra", "Sydney"],
     options: [
       "Sydney",
       "Melbourne",
@@ -23,6 +23,6 @@ export const basicQuestions = [
       "Perth",
     ],
     timeToAnswer: 1005,
-    score: 20,
+    points: 20,
   },
 ];
