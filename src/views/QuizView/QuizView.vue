@@ -8,13 +8,13 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
-import RadioAnswers from '@/views/QuizView/Components/RadioAnswers/RadioAnswers.vue';
+import QuizQuestion from '@/views/QuizView/Components/Question/QuizQuestion.vue';
 
 const TIME_UP_VALUE = -1;
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
-const calculateProgress = (current: number, total: number) => ((current + 1) / total) * 100;
+const calculateProgress = (current: number, total: number) => (current / total) * 100;
 const progress = computed(() => calculateProgress(currentQuestionIndex.value, basicQuestions.length));
 const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
 
@@ -45,13 +45,31 @@ const { incrementScore, setQuizCompleted } = useQuizScore();
 const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
 
 const answerSelected = ref('');
+const answersSelected = ref<string[]>([]);
 
 const calculateScore = () => {
-  if (currentQuestion.value.answer === answerSelected.value) {
-    incrementScore(currentQuestion.value.score);
+  if (currentQuestion.value.answer.length > 1) {
+    if (currentQuestion.value.answer.every((answer) => answersSelected.value.includes(answer))) {
+      incrementScore(currentQuestion.value.points);
+    }
+    return;
+  }
+  if (currentQuestion.value.answer[0] === answerSelected.value) {
+    incrementScore(currentQuestion.value.points);
   }
 };
 
+const updateSelectedAnswer = (option: string) => {
+  answerSelected.value = option;
+};
+
+const updateSelectedAnswers = (option: string) => {
+  if (answersSelected.value.includes(option)) {
+    answersSelected.value = answersSelected.value.filter((answer) => answer !== option);
+    return;
+  }
+  answersSelected.value = [...answersSelected.value, option];
+};
 </script>
 
 <template>
@@ -78,39 +96,14 @@ const calculateScore = () => {
         />
       </div>
 
-      <div>
-        <div
-          class="quiz__question-number"
-          role="status"
-          aria-live="polite"
-        >
-          Question {{ currentQuestionNumber }}/{{ basicQuestions.length }}
-        </div>
-        <div
-          class="quiz__question"
-          role="heading"
-          aria-level="2"
-          aria-live="polite"
-        >
-          {{ currentQuestion.question }}
-        </div>
-
-        <v-divider
-          role="separator"
-          color="grey"
-        />
-
-        <radio-answers
-          :options="currentQuestion.options"
-          :selected-answer="answerSelected"
-          aria-label="Quiz answers option"
-          @update:selected-answer="answerSelected = $event"
-        />
-      </div>
-
-      <v-divider
-        role="separator"
-        color="grey"
+      <quiz-question 
+        :current-question-number="currentQuestionNumber"
+        :current-question="currentQuestion"
+        :total-questions="basicQuestions.length"
+        :answer-selected="answerSelected"
+        :answers-selected="answersSelected"
+        :update-selected-answer="updateSelectedAnswer"
+        :update-selected-answers="updateSelectedAnswers"
       />
 
       <v-btn

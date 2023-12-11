@@ -2,7 +2,7 @@ export const basicQuestions = [
   {
     id: 1,
     question: "What is the capital of India?",
-    answer: "New Delhi",
+    answer: ["New Delhi"],
     options: [
       "Mumbai",
       "New Delhi",
@@ -10,12 +10,12 @@ export const basicQuestions = [
       "Kolkata",
     ],
     timeToAnswer: 1005,
-    score: 10,
+    points: 10,
   },
   {
     id: 2,
     question: "What is the capital of Australia?",
-    answer: "Canberra",
+    answer: ["Canberra", "Sydney"],
     options: [
       "Sydney",
       "Melbourne",
@@ -23,6 +23,19 @@ export const basicQuestions = [
       "Perth",
     ],
     timeToAnswer: 1005,
-    score: 20,
+    points: 20,
+  },
+  {
+    id: 3,
+    question: "What is the capital of China?",
+    answer: ["Beijing", 'Hong Kong'],
+    options: [
+      "Shanghai",
+      "Beijing",
+      "Hong Kong",
+      "Macau",
+    ],
+    timeToAnswer: 1005,
+    points: 30,
   },
 ];

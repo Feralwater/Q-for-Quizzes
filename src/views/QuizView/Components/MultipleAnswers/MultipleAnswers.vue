@@ -7,24 +7,23 @@ defineProps({
     required: true,
     default: () => [],
   },
-  selectedAnswer: {
-    type: String,
+  selectedAnswers: {
+    type: Array as PropType<string[]>,
     required: true,
-    default: '',
+    default: () => [],
   },
 });
 
-const emit = defineEmits(['update:selectedAnswer']);
+const emit = defineEmits(['update:selectedAnswers']);
 
 const handleAnswerChange = (option: string) => {
-  emit('update:selectedAnswer', option);
+  emit('update:selectedAnswers', option);
 };
 </script>
 
 <template>
   <div
     class="answers"
-    role="radiogroup"
     aria-labelledby="answersLabel"
   >
     <div
@@ -35,10 +34,10 @@ const handleAnswerChange = (option: string) => {
       <input
         :id="option"
         class="answers__option-input"
-        type="radio"
+        type="checkbox"
         name="answerOption"
         :value="option"
-        :checked="option === selectedAnswer"
+        :checked="selectedAnswers.includes(option)"
         required
         role="radio"
         aria-labelledby="answersLabel"
@@ -55,5 +54,5 @@ const handleAnswerChange = (option: string) => {
 </template>
 
 <style scoped>
-@import './RadioAnswers.scss';
+@import '@/views/QuizView/Components/SingleAnswer/SingleAnswer.scss';
 </style>

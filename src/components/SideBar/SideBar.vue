@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.svg';
+import { computed } from 'vue';
 
 const props = defineProps({
   progress: {
@@ -8,6 +9,8 @@ const props = defineProps({
     default: 0,
   },
 });
+
+const roundProgress = computed(() => Math.round(props.progress));
 </script>
 
 <template>
@@ -21,7 +24,7 @@ const props = defineProps({
       Vuejs Quiz
     </h1>
     <div class="sidebar__footer">
-      {{ props.progress }}% completed
+      {{ roundProgress }}% completed
       <v-progress-linear
         color="primaryDark"
         :model-value="props.progress"
