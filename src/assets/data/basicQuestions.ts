@@ -25,4 +25,17 @@ export const basicQuestions = [
     timeToAnswer: 1005,
     points: 20,
   },
+  {
+    id: 3,
+    question: "What is the capital of China?",
+    answer: ["Beijing", 'Hong Kong'],
+    options: [
+      "Shanghai",
+      "Beijing",
+      "Hong Kong",
+      "Macau",
+    ],
+    timeToAnswer: 1005,
+    points: 30,
+  },
 ];

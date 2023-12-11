@@ -8,7 +8,8 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
-import RadioAnswers from '@/views/QuizView/Components/RadioAnswers/RadioAnswers.vue';
+import RadioAnswers from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
+import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
 
 const TIME_UP_VALUE = -1;
 
@@ -45,8 +46,15 @@ const { incrementScore, setQuizCompleted } = useQuizScore();
 const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
 
 const answerSelected = ref('');
+const answersSelected = ref<string[]>([]);
 
 const calculateScore = () => {
+  if (currentQuestion.value.answer.length > 1) {
+    if (currentQuestion.value.answer.every((answer) => answersSelected.value.includes(answer))) {
+      incrementScore(currentQuestion.value.points);
+    }
+    return;
+  }
   if (currentQuestion.value.answer[0] === answerSelected.value) {
     incrementScore(currentQuestion.value.points);
   }
@@ -104,8 +112,15 @@ const calculateScore = () => {
           v-if="currentQuestion.answer.length === 1"
           :options="currentQuestion.options"
           :selected-answer="answerSelected"
-          aria-label="Quiz answers option"
+          aria-label="Quiz answers options"
           @update:selected-answer="answerSelected = $event"
+        />
+        <multiple-answers
+          v-else
+          :options="currentQuestion.options"
+          :selected-answers="answersSelected"
+          aria-label="Quiz answers options"
+          @update:selected-answers="answersSelected.push($event)"
         />
       </div>
 
