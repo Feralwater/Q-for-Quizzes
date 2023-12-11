@@ -54,5 +54,5 @@ const handleAnswerChange = (options: string[]) => {
 </template>
 
 <style scoped>
-
+@import '@/views/QuizView/Components/SingleAnswer/SingleAnswer.scss';
 </style>
