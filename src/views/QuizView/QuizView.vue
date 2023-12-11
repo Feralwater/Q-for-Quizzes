@@ -7,7 +7,7 @@ import { useQuizScore } from '@/stores/score';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
-import { useVisibilityChange } from '@/views/QuizView/useVisibilityChange';
+import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
 import RadioAnswers from '@/views/QuizView/Components/RadioAnswers/RadioAnswers.vue';
 
 const TIME_UP_VALUE = -1;
