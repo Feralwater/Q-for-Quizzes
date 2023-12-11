@@ -28,12 +28,12 @@ const handleAnswerChange = (option: string) => {
     aria-labelledby="answersLabel"
   >
     <div
-      v-for="option in options"
-      :key="option"
+      v-for="(option, index) in options"
+      :key="index"
       class="answers__option"
     >
       <input
-        :id="option"
+        :id="`answerOption_${index}`"
         class="answers__option-input"
         type="radio"
         name="answerOption"
@@ -41,11 +41,12 @@ const handleAnswerChange = (option: string) => {
         :checked="option === selectedAnswer"
         required
         role="radio"
+        :aria-checked="option === selectedAnswer ? 'true' : 'false'"
         aria-labelledby="answersLabel"
         @change="handleAnswerChange(option)"
       >
       <label
-        :for="option"
+        :for="`answerOption_${index}`"
         class="answers__option-label"
       >
         {{ option }}
@@ -53,6 +54,7 @@ const handleAnswerChange = (option: string) => {
     </div>
   </div>
 </template>
+
 
 <style scoped>
 @import 'SingleAnswer.scss';
