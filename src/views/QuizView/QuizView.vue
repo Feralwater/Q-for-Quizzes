@@ -12,7 +12,8 @@ const TIME_UP_VALUE = -1;
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
-const progress = computed(() => ((currentQuestionIndex.value + 1) / basicQuestions.length) * 100);
+const calculateProgress = (current: number, total: number) => ((current + 1) / total) * 100;
+const progress = computed(() => calculateProgress(currentQuestionIndex.value, basicQuestions.length));
 const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
 
 const onNextQuestion = () => {
