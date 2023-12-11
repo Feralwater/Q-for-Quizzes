@@ -2,11 +2,12 @@
 import CountDown from '@/components/CountDown/CountDown.vue';
 
 import { basicQuestions } from '@/assets/data/basicQuestions';
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
+import { useVisibilityChange } from '@/views/QuizView/useVisibilityChange';
 
 const TIME_UP_VALUE = -1;
 
@@ -30,19 +31,7 @@ const handleCountdownFinished = (time: number) => {
   }
 };
 
-onMounted(() => {
-  document.addEventListener('visibilitychange', handleVisibilityChange);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener('visibilitychange', handleVisibilityChange);
-});
-
-const handleVisibilityChange = () => {
-  if (document.visibilityState === 'visible') {
-    onNextQuestion();
-  }
-};
+useVisibilityChange(onNextQuestion);
 
 const onSubmitTest = () => {
   setQuizCompleted();
