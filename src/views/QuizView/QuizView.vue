@@ -2,15 +2,20 @@
 import CountDown from '@/components/CountDown/CountDown.vue';
 
 import { basicQuestions } from '@/assets/data/basicQuestions';
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
+import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
+import RadioAnswers from '@/views/QuizView/Components/RadioAnswers/RadioAnswers.vue';
+
+const TIME_UP_VALUE = -1;
 
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
-const progress = computed(() => ((currentQuestionIndex.value + 1) / basicQuestions.length) * 100);
+const calculateProgress = (current: number, total: number) => ((current + 1) / total) * 100;
+const progress = computed(() => calculateProgress(currentQuestionIndex.value, basicQuestions.length));
 const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
 
 const onNextQuestion = () => {
@@ -19,27 +24,15 @@ const onNextQuestion = () => {
 };
 
 const handleCountdownFinished = (time: number) => {
-  if (!shouldShowNextButton.value && time === -1) {
+  if (!shouldShowNextButton.value && time === TIME_UP_VALUE) {
     onSubmitTest();
   }
-  if (time === -1) {
+  if (time === TIME_UP_VALUE) {
     onNextQuestion();
   }
 };
 
-onMounted(() => {
-  document.addEventListener('visibilitychange', handleVisibilityChange);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener('visibilitychange', handleVisibilityChange);
-});
-
-const handleVisibilityChange = () => {
-  if (document.visibilityState === 'visible') {
-    onNextQuestion();
-  }
-};
+useVisibilityChange(onNextQuestion);
 
 const onSubmitTest = () => {
   setQuizCompleted();
@@ -57,51 +50,75 @@ const calculateScore = () => {
   if (currentQuestion.value.answer === answerSelected.value) {
     incrementScore(currentQuestion.value.score);
   }
-  answerSelected.value = '';
 };
 
 </script>
 
 <template>
-  <div class="quiz">
-    <side-bar :progress="progress" />
+  <div
+    role="region"
+    aria-label="Quiz Section"
+    class="quiz"
+  >
+    <side-bar
+      :progress="progress"
+      aria-label="Progress Sidebar"
+    />
     <div class="quiz__content">
-      <div class="quiz__countdown">
+      <div
+        class="quiz__countdown"
+        role="timer"
+        aria-live="assertive"
+      >
         <CountDown
           :key="currentQuestionIndex"
           :time="currentQuestion.timeToAnswer"
+          aria-label="Countdown Timer"
           @time-up="handleCountdownFinished"
         />
       </div>
+
       <div>
-        <div class="quiz__question-number">
+        <div
+          class="quiz__question-number"
+          role="status"
+          aria-live="polite"
+        >
           Question {{ currentQuestionNumber }}/{{ basicQuestions.length }}
         </div>
-        <div class="quiz__question">
+        <div
+          class="quiz__question"
+          role="heading"
+          aria-level="2"
+          aria-live="polite"
+        >
           {{ currentQuestion.question }}
         </div>
+
         <v-divider
+          role="separator"
           color="grey"
-          class="quiz__answers"
         />
-        <v-radio-group
-          v-for="(option, optionIndex) in currentQuestion.options"
-          :key="optionIndex"
-          v-model="answerSelected"
-        >
-          <v-radio
-            :value="option"
-            :label="option"
-            class="quiz__answer"
-            color="primary"
-          />
-        </v-radio-group>
+
+        <radio-answers
+          :options="currentQuestion.options"
+          :selected-answer="answerSelected"
+          aria-label="Quiz answers option"
+          @update:selected-answer="answerSelected = $event"
+        />
       </div>
-      <v-divider color="grey" />
+
+      <v-divider
+        role="separator"
+        color="grey"
+      />
+
       <v-btn
         color="primary"
         class="quiz__btn"
         height="50px"
+        role="button"
+        aria-label="{{ shouldShowNextButton ? 'Next Question' : 'Submit Test' }}"
         @click="shouldShowNextButton ? onNextQuestion() : onSubmitTest()"
       >
         <span class="quiz__btn-text">
