@@ -43,10 +43,16 @@ $darkcolor: #444;
   }
 
   &__option-input {
-    display: none;
     position: absolute;
     width: 100%;
-    appearance: none;
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 
     &:checked + label {
       background: var(--primary-light);

@@ -55,38 +55,70 @@ const calculateScore = () => {
 </script>
 
 <template>
-  <div class="quiz">
-    <side-bar :progress="progress" />
+  <div
+    role="region"
+    aria-label="Quiz Section"
+    class="quiz"
+  >
+    <side-bar
+      :progress="progress"
+      aria-label="Progress Sidebar"
+    />
     <div class="quiz__content">
-      <div class="quiz__countdown">
+      <div
+        class="quiz__countdown"
+        role="timer"
+        aria-live="assertive"
+      >
         <CountDown
           :key="currentQuestionIndex"
           :time="currentQuestion.timeToAnswer"
+          aria-label="Countdown Timer"
           @time-up="handleCountdownFinished"
         />
       </div>
+
       <div>
-        <div class="quiz__question-number">
+        <div
+          class="quiz__question-number"
+          role="status"
+          aria-live="polite"
+        >
           Question {{ currentQuestionNumber }}/{{ basicQuestions.length }}
         </div>
-        <div class="quiz__question">
+        <div
+          class="quiz__question"
+          role="heading"
+          aria-level="2"
+          aria-live="polite"
+        >
           {{ currentQuestion.question }}
         </div>
+
         <v-divider
+          role="separator"
           color="grey"
-          class="quiz__answers"
         />
+
         <radio-answers
           :options="currentQuestion.options"
           :selected-answer="answerSelected"
+          aria-label="Quiz answers option"
           @update:selected-answer="answerSelected = $event"
         />
       </div>
-      <v-divider color="grey" />
+
+      <v-divider
+        role="separator"
+        color="grey"
+      />
+
       <v-btn
         color="primary"
         class="quiz__btn"
         height="50px"
+        role="button"
+        aria-label="{{ shouldShowNextButton ? 'Next Question' : 'Submit Test' }}"
         @click="shouldShowNextButton ? onNextQuestion() : onSubmitTest()"
       >
         <span class="quiz__btn-text">

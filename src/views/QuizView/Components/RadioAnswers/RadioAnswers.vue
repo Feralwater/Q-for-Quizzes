@@ -22,7 +22,11 @@ const handleAnswerChange = (option: string) => {
 </script>
 
 <template>
-  <form class="answers">
+  <form
+    class="answers"
+    role="radiogroup"
+    aria-labelledby="answersLabel"
+  >
     <div
       v-for="option in options"
       :key="option"
@@ -32,9 +36,12 @@ const handleAnswerChange = (option: string) => {
         :id="option"
         class="answers__option-input"
         type="radio"
-        :name="option"
+        name="answerOption"
         :value="option"
         :checked="option === selectedAnswer"
+        required
+        role="radio"
+        aria-labelledby="answersLabel"
         @change="handleAnswerChange(option)"
       >
       <label
