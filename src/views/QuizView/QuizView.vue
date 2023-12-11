@@ -8,6 +8,7 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useVisibilityChange } from '@/views/QuizView/useVisibilityChange';
+import RadioAnswers from '@/views/QuizView/Components/RadioAnswers/RadioAnswers.vue';
 
 const TIME_UP_VALUE = -1;
 
@@ -49,7 +50,6 @@ const calculateScore = () => {
   if (currentQuestion.value.answer === answerSelected.value) {
     incrementScore(currentQuestion.value.score);
   }
-  answerSelected.value = '';
 };
 
 </script>
@@ -76,18 +76,11 @@ const calculateScore = () => {
           color="grey"
           class="quiz__answers"
         />
-        <v-radio-group
-          v-for="(option, optionIndex) in currentQuestion.options"
-          :key="optionIndex"
-          v-model="answerSelected"
-        >
-          <v-radio
-            :value="option"
-            :label="option"
-            class="quiz__answer"
-            color="primary"
-          />
-        </v-radio-group>
+        <radio-answers
+          :options="currentQuestion.options"
+          :selected-answer="answerSelected"
+          @update:selected-answer="answerSelected = $event"
+        />
       </div>
       <v-divider color="grey" />
       <v-btn
