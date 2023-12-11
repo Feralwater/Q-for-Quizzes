@@ -22,7 +22,7 @@ const handleAnswerChange = (option: string) => {
 </script>
 
 <template>
-  <form
+  <div
     class="answers"
     role="radiogroup"
     aria-labelledby="answersLabel"
@@ -51,7 +51,7 @@ const handleAnswerChange = (option: string) => {
         {{ option }}
       </label>
     </div>
-  </form>
+  </div>
 </template>
 
 <style scoped>
