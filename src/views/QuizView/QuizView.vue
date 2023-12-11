@@ -8,8 +8,8 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
-import RadioAnswers from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
-import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
+import NewComponent from '@/views/QuizView/NewComponent.vue';
+import QuizQuestion from '@/views/QuizView/Components/Question/QuizQuestion.vue';
 
 const TIME_UP_VALUE = -1;
 
@@ -60,6 +60,17 @@ const calculateScore = () => {
   }
 };
 
+const updateSelectedAnswer = (option: string) => {
+  answerSelected.value = option;
+};
+
+const updateSelectedAnswers = (option: string) => {
+  if (answersSelected.value.includes(option)) {
+    answersSelected.value = answersSelected.value.filter((answer) => answer !== option);
+    return;
+  }
+  answersSelected.value = [...answersSelected.value, option];
+};
 </script>
 
 <template>
@@ -86,47 +97,14 @@ const calculateScore = () => {
         />
       </div>
 
-      <div>
-        <div
-          class="quiz__question-number"
-          role="status"
-          aria-live="polite"
-        >
-          Question {{ currentQuestionNumber }}/{{ basicQuestions.length }}
-        </div>
-        <div
-          class="quiz__question"
-          role="heading"
-          aria-level="2"
-          aria-live="polite"
-        >
-          {{ currentQuestion.question }}
-        </div>
-
-        <v-divider
-          role="separator"
-          color="grey"
-        />
-
-        <radio-answers
-          v-if="currentQuestion.answer.length === 1"
-          :options="currentQuestion.options"
-          :selected-answer="answerSelected"
-          aria-label="Quiz answers options"
-          @update:selected-answer="answerSelected = $event"
-        />
-        <multiple-answers
-          v-else
-          :options="currentQuestion.options"
-          :selected-answers="answersSelected"
-          aria-label="Quiz answers options"
-          @update:selected-answers="answersSelected.push($event)"
-        />
-      </div>
-
-      <v-divider
-        role="separator"
-        color="grey"
+      <quiz-question 
+        :current-question-number="currentQuestionNumber"
+        :current-question="currentQuestion"
+        :total-questions="basicQuestions.length"
+        :answer-selected="answerSelected"
+        :answers-selected="answersSelected"
+        :update-selected-answer="updateSelectedAnswer"
+        :update-selected-answers="updateSelectedAnswers"
       />
 
       <v-btn
