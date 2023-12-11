@@ -8,6 +8,8 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
 
+const TIME_UP_VALUE = -1;
+
 const currentQuestionIndex = ref(0);
 const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
 const progress = computed(() => ((currentQuestionIndex.value + 1) / basicQuestions.length) * 100);
@@ -19,10 +21,10 @@ const onNextQuestion = () => {
 };
 
 const handleCountdownFinished = (time: number) => {
-  if (!shouldShowNextButton.value && time === -1) {
+  if (!shouldShowNextButton.value && time === TIME_UP_VALUE) {
     onSubmitTest();
   }
-  if (time === -1) {
+  if (time === TIME_UP_VALUE) {
     onNextQuestion();
   }
 };
