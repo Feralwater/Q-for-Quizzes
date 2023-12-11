@@ -2,62 +2,57 @@ $accentcolor: #fcae2c;
 $lightcolor: #fff;
 $darkcolor: #444;
 
-form {
-  max-width: 250px;
-  position: relative;
-  margin: 50px auto 0;
-  font-size: 15px;
-}
-.radiobtn {
-  position: relative;
-  display: block;
-  label {
+.answers {
+  width: 100%;
+  margin: 30px 0;
+  font-family: 'Jost', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__option {
+    position: relative;
     display: block;
-    background: lighten($accentcolor, 30%);
-    color: $darkcolor;
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: 2px solid lighten($accentcolor, 20%);
-    margin-bottom: 5px;
+  }
+
+  &__option-label {
+    display: block;
+    background-color: var(--field-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    padding: 15px;
+    border: solid 2px transparent;
+    box-shadow: 0 3px 32px 0 rgba(159, 159, 159, 0.1);
     cursor: pointer;
-    &:after,
+
     &:before {
       content: "";
       position: absolute;
-      right: 11px;
-      top: 11px;
-      width: 20px;
-      height: 20px;
-      border-radius: 3px;
-      background: lighten($accentcolor, 15%);
+      right: 15px;
+      top: 19px;
     }
+
     &:before {
-      background: transparent;
-      transition: 0.1s width cubic-bezier(0.075, 0.82, 0.165, 1) 0s,
-      0.3s height cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
+      transition: width 0.1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s, height 0.3s cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
       z-index: 2;
       overflow: hidden;
-      background-repeat: no-repeat;
-      background-size: 13px;
-      background-position: center;
       width: 0;
       height: 0;
-      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNS4zIDEzLjIiPiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0LjcuOGwtLjQtLjRhMS43IDEuNyAwIDAgMC0yLjMuMUw1LjIgOC4yIDMgNi40YTEuNyAxLjcgMCAwIDAtMi4zLjFMLjQgN2ExLjcgMS43IDAgMCAwIC4xIDIuM2wzLjggMy41YTEuNyAxLjcgMCAwIDAgMi40LS4xTDE1IDMuMWExLjcgMS43IDAgMCAwLS4yLTIuM3oiIGRhdGEtbmFtZT0iUGZhZCA0Ii8+PC9zdmc+);
+      background: transparent url('@/assets/images/checkmark.svg') no-repeat center;
     }
   }
-  input[type="radio"] {
+
+  &__option-input {
     display: none;
     position: absolute;
     width: 100%;
     appearance: none;
+
     &:checked + label {
-      background: lighten($accentcolor, 15%);
-      animation-name: blink;
-      animation-duration: 1s;
-      border-color: $accentcolor;
-      &:after {
-        background: $accentcolor;
-      }
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--light-text-color);
+
       &:before {
         width: 20px;
         height: 20px;
@@ -66,32 +61,3 @@ form {
   }
 }
 
-@keyframes blink {
-  0% {
-    background-color: lighten($accentcolor, 15%);
-  }
-  10% {
-    background-color: lighten($accentcolor, 15%);
-  }
-  11% {
-    background-color: lighten($accentcolor, 20%);
-  }
-  29% {
-    background-color: lighten($accentcolor, 20%);
-  }
-  30% {
-    background-color: lighten($accentcolor, 15%);
-  }
-  50% {
-    background-color: lighten($accentcolor, 20%);
-  }
-  45% {
-    background-color: lighten($accentcolor, 15%);
-  }
-  50% {
-    background-color: lighten($accentcolor, 20%);
-  }
-  100% {
-    background-color: lighten($accentcolor, 15%);
-  }
-}

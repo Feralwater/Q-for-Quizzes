@@ -22,21 +22,27 @@ const handleAnswerChange = (option: string) => {
 </script>
 
 <template>
-  <form>
+  <form class="answers">
     <div
       v-for="option in options"
       :key="option"
-      class="radiobtn"
+      class="answers__option"
     >
       <input
         :id="option"
+        class="answers__option-input"
         type="radio"
         :name="option"
         :value="option"
         :checked="option === selectedAnswer"
         @change="handleAnswerChange(option)"
       >
-      <label :for="option">{{ option }}</label>
+      <label
+        :for="option"
+        class="answers__option-label"
+      >
+        {{ option }}
+      </label>
     </div>
   </form>
 </template>
