@@ -1,73 +1,23 @@
 <script setup lang="ts">
 import CountDown from '@/components/CountDown/CountDown.vue';
-
 import { basicQuestions } from '@/assets/data/basicQuestions';
-import { computed, ref } from 'vue';
-import { useQuizScore } from '@/stores/score';
-import router from '@/router';
-import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
-import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
 import QuizQuestion from '@/views/QuizView/Components/QuizQuestion/QuizQuestion.vue';
+import { useQuizQuestion } from '@/views/QuizView/hooks/useQuizQuestion';
 
-const TIME_UP_VALUE = -1;
-
-const currentQuestionIndex = ref(0);
-const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
-const calculateProgress = (current: number, total: number) => (current / total) * 100;
-const progress = computed(() => calculateProgress(currentQuestionIndex.value, basicQuestions.length));
-const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
-
-const onNextQuestion = () => {
-  calculateScore();
-  currentQuestionIndex.value++;
-};
-
-const handleCountdownFinished = (time: number) => {
-  if (!shouldShowNextButton.value && time === TIME_UP_VALUE) {
-    onSubmitTest();
-  }
-  if (time === TIME_UP_VALUE) {
-    onNextQuestion();
-  }
-};
-
-useVisibilityChange(onNextQuestion);
-
-const onSubmitTest = () => {
-  setQuizCompleted();
-  calculateScore();
-  router.push(Routers.Result);
-};
-
-const { incrementScore, setQuizCompleted } = useQuizScore();
-
-const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
-
-const answerSelected = ref('');
-const answersSelected = ref<string[]>([]);
-
-const calculateScore = () => {
-  const answerIsMultiselect = currentQuestion.value.answer.length > 1;
-  const allAnswersSelected = currentQuestion.value.answer.every(answer => answersSelected.value.includes(answer));
-  const answerIsCorrect = currentQuestion.value.answer[0] === answerSelected.value;
-
-  if (answerIsMultiselect && allAnswersSelected || !answerIsMultiselect && answerIsCorrect) {
-    incrementScore(currentQuestion.value.points);
-  }
-};
-
-const updateSelectedAnswer = (option: string) => {
-  answerSelected.value = option;
-};
-
-const updateSelectedAnswers = (option: string) => {
-  if (answersSelected.value.includes(option)) {
-    answersSelected.value = answersSelected.value.filter((answer) => answer !== option);
-    return;
-  }
-  answersSelected.value = [...answersSelected.value, option];
-};
+const {
+  onNextQuestion,
+  currentQuestionIndex,
+  currentQuestion,
+  currentQuestionNumber,
+  shouldShowNextButton,
+  answerSelected,
+  answersSelected,
+  updateSelectedAnswer,
+  updateSelectedAnswers,
+  progress,
+  handleCountdownFinished,
+} = useQuizQuestion();
 </script>
 
 <template>
@@ -94,7 +44,7 @@ const updateSelectedAnswers = (option: string) => {
         />
       </div>
 
-      <quiz-question 
+      <quiz-question
         :current-question-number="currentQuestionNumber"
         :current-question="currentQuestion"
         :total-questions="basicQuestions.length"
@@ -110,7 +60,7 @@ const updateSelectedAnswers = (option: string) => {
         height="50px"
         role="button"
         aria-label="{{ shouldShowNextButton ? 'Next QuizQuestion' : 'Submit Test' }}"
-        @click="shouldShowNextButton ? onNextQuestion() : onSubmitTest()"
+        @click="onNextQuestion"
       >
         <span class="quiz__btn-text">
           {{ shouldShowNextButton ? 'Next QuizQuestion' : 'Submit Test' }}
