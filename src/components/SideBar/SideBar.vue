@@ -20,12 +20,14 @@ const roundProgress = computed(() => Math.round(props.progress));
         :src="logo"
         width="50px"
         height="50px"
+        alt="Vuejs Logo"
       />
       Vuejs Quiz
     </h1>
     <div class="sidebar__footer">
       {{ roundProgress }}% completed
       <v-progress-linear
+        aria-label="Progress Bar"
         color="primaryDark"
         :model-value="props.progress"
         class="sidebar__progress"
