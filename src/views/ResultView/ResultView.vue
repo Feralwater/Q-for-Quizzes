@@ -29,7 +29,7 @@ onBeforeRouteLeave(beforeRouteLeave);
         in recognition of achieving a
       </p>
       <p class="grade">
-        {{ score }}
+        {{ score * 10 }}%
       </p>
       <div class="certificate-info">
         <span>Class: A</span>
