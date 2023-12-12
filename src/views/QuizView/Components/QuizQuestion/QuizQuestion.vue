@@ -55,14 +55,14 @@ defineProps({
 <template>
   <div>
     <div
-      class="quiz__question-number"
+      class="question__number"
       role="status"
       aria-live="polite"
     >
       Question {{ currentQuestionNumber }}/{{ totalQuestions }}
     </div>
     <div
-      class="quiz__question"
+      class="question"
       role="heading"
       aria-level="2"
       aria-live="polite"
@@ -98,5 +98,5 @@ defineProps({
 </template>
 
 <style scoped>
-
+@import "QuizQuestion.scss";
 </style>
