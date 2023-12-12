@@ -2,6 +2,11 @@
   display: grid;
   grid-template-columns: 330px 1fr;
 
+  &__mobile {
+    display: grid;
+    grid-auto-columns: 1fr;
+  }
+
   &__countdown {
     align-self: end;
   }

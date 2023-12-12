@@ -4,6 +4,8 @@ import { basicQuestions } from '@/assets/data/basicQuestions';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import QuizQuestion from '@/views/QuizView/Components/QuizQuestion/QuizQuestion.vue';
 import { useQuizQuestion } from '@/views/QuizView/hooks/useQuizQuestion';
+import { useDisplay } from 'vuetify';
+import { ref } from 'vue'
 
 const {
   onNextQuestion,
@@ -18,13 +20,19 @@ const {
   progress,
   handleCountdownFinished,
 } = useQuizQuestion();
+
+const { mdAndDown } = useDisplay();
+
 </script>
 
 <template>
   <div
     role="region"
     aria-label="Quiz Section"
-    class="quiz"
+    :class="{
+      quiz: !mdAndDown,
+      quiz__mobile: mdAndDown,
+    }"
   >
     <side-bar
       :progress="progress"
