@@ -8,7 +8,7 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
-import QuizQuestion from '@/views/QuizView/Components/Question/QuizQuestion.vue';
+import QuizQuestion from '@/views/QuizView/Components/QuizQuestion/QuizQuestion.vue';
 
 const TIME_UP_VALUE = -1;
 
@@ -48,13 +48,11 @@ const answerSelected = ref('');
 const answersSelected = ref<string[]>([]);
 
 const calculateScore = () => {
-  if (currentQuestion.value.answer.length > 1) {
-    if (currentQuestion.value.answer.every((answer) => answersSelected.value.includes(answer))) {
-      incrementScore(currentQuestion.value.points);
-    }
-    return;
-  }
-  if (currentQuestion.value.answer[0] === answerSelected.value) {
+  const answerIsMultiselect = currentQuestion.value.answer.length > 1;
+  const allAnswersSelected = currentQuestion.value.answer.every(answer => answersSelected.value.includes(answer));
+  const answerIsCorrect = currentQuestion.value.answer[0] === answerSelected.value;
+
+  if (answerIsMultiselect && allAnswersSelected || !answerIsMultiselect && answerIsCorrect) {
     incrementScore(currentQuestion.value.points);
   }
 };
@@ -111,11 +109,11 @@ const updateSelectedAnswers = (option: string) => {
         class="quiz__btn"
         height="50px"
         role="button"
-        aria-label="{{ shouldShowNextButton ? 'Next Question' : 'Submit Test' }}"
+        aria-label="{{ shouldShowNextButton ? 'Next QuizQuestion' : 'Submit Test' }}"
         @click="shouldShowNextButton ? onNextQuestion() : onSubmitTest()"
       >
         <span class="quiz__btn-text">
-          {{ shouldShowNextButton ? 'Next Question' : 'Submit Test' }}
+          {{ shouldShowNextButton ? 'Next QuizQuestion' : 'Submit Test' }}
         </span>
       </v-btn>
     </div>
