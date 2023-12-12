@@ -1,6 +1,42 @@
 <script setup lang="ts">
 import router from '@/router';
 import icon from '@/assets/logo.svg';
+import { computed } from 'vue';
+
+const props = defineProps({
+  quizIcon: {
+    type: String,
+    required: true,
+    default: icon,
+  },
+  quizTitle: {
+    type: String,
+    required: true,
+    default: '',
+  },
+  quizDescription: {
+    type: String,
+    required: true,
+    default: '',
+  },
+  quizTime: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  quizQuestionsAmount: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+});
+
+const timeInHours = computed(() => {
+  const hours = Math.floor(props.quizTime / 60);
+  const minutes = props.quizTime % 60;
+
+  return `${hours}h ${minutes}m`;
+});
 
 const startQuiz = () => {
   router.push({
@@ -11,23 +47,27 @@ const startQuiz = () => {
 
 <template>
   <v-card
+    role="region"
+    aria-label="Quiz Card"
+    aria-labelledby="quiz-title"
     style="overflow: initial; z-index: initial"
     class="mx-auto my-12 card"
     max-width="374"
   >
     <v-img
-      :src="icon"
+      :src="quizIcon"
       class="card__img"
+      alt="Quiz Icon"
     />
 
     <v-card-item>
-      <v-card-title class="card__text">
-        Vuejs basic
+      <v-card-title class="card__text" id="quiz-title">
+        {{ quizTitle }}
       </v-card-title>
 
       <v-card-subtitle class="card__text">
         <span class="me-1">
-          Test your vuejs knowledge
+          {{ quizDescription }}
         </span>
 
         <v-icon
@@ -53,7 +93,7 @@ const startQuiz = () => {
             size="small"
           />
           <span class="card__chip__text card__text">
-            20 minutes
+            {{ timeInHours }}
           </span>
         </v-chip>
 
@@ -64,7 +104,7 @@ const startQuiz = () => {
             size="small"
           />
           <span class="card__chip__text card__text">
-            10 questions
+            {{ quizQuestionsAmount }} Questions
           </span>
         </v-chip>
       </v-chip-group>
@@ -72,6 +112,7 @@ const startQuiz = () => {
 
     <v-card-actions>
       <v-btn
+        role="button"
         color="primary"
         variant="outlined"
         @click="startQuiz"
