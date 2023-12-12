@@ -1,65 +1,24 @@
 <script setup lang="ts">
-
+import vueIcon from '@/assets/logo.svg';
 import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
+import QuizeRules from '@/views/DashboardView/Components/QuizeRules/QuizeRules.vue';
 </script>
 
 <template>
-  <div class="my-4 text-subtitle-1">
-    Quiz rules
-    <v-icon
-      color="error"
-      icon="mdi-book-open-page-variant"
-      size="small"
-    />
-  </div>
-
-  <div>
-    <v-icon
-      color="error"
-      icon="mdi-check-circle"
-      size="small"
-    />
-    <span>
-      Time Limit:
-    </span>
-    <span>
-      Each question has a designated time limit within which you must provide an answer. You can submit your answer before the time runs out to move on to the next question.
-    </span>
-  </div>
-  <div>
-    <v-icon
-      color="error"
-      icon="mdi-check-circle"
-      size="small"
-    />
-    <span>
-      No Backtracking:
-    </span>
-    <span>
-      Once you submit an answer, you cannot go back to change it. Be sure of your choice before moving forward.
-    </span>
-  </div>
-  <div>
-    <v-icon
-      color="error"
-      icon="mdi-check-circle"
-      size="small"
-    />
-    <span>
-      Automatic Progression:
-    </span>
-    <span>
-      If the time runs out or you leave the quiz page, you'll be automatically moved to the next question. Any selected choices will be saved, so make every second count!
-    </span>
-  </div>
-
   <v-container>
+    <quize-rules />
     <v-row>
       <v-col
         cols="12"
         md="6"
       >
-        <quiz-card />
+        <quiz-card
+          :quiz-icon="vueIcon"
+          quiz-title="Vue.js basics"
+          quiz-description="Test your knowledge of Vue.js fundamentals"
+          quiz-time="30"
+          quiz-questions-amount="10"
+        />
       </v-col>
     </v-row>
   </v-container>
