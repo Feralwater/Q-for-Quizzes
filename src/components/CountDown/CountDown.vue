@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCountDown } from "@/components/CountDown/useCountDown";
 import { computed, watch } from "vue";
+import { useDisplay } from 'vuetify';
 
 const props = defineProps({
   time: {
@@ -25,10 +26,17 @@ const calculateDashOffset = computed(() => {
   return circumference - (countdown.value / props.time) * circumference;
 });
 
+const { smAndDown, xs } = useDisplay();
 </script>
 
 <template>
-  <div class="countdown">
+  <div
+    :class="{
+      countdown: true,
+      countdown__tablet: smAndDown,
+      countdown__mobile: xs,
+    }"
+  >
     <svg
       class="countdown__svg"
       viewBox="0 0 100 100"
@@ -54,7 +62,14 @@ const calculateDashOffset = computed(() => {
         />
       </g>
     </svg>
-    <span :class="`countdown__label ${countdown < 5 ? 'countdown__label--red' : ''}`">
+    <span
+      :class="{
+        countdown__label: true,
+        countdown__label__tablet: smAndDown,
+        countdown__label__mobile: xs,
+        countdown__label_red: countdown < 5,
+      }"
+    >
       {{ countdown }}
     </span>
   </div>
