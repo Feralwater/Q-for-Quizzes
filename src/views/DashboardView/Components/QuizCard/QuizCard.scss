@@ -1,0 +1,27 @@
+.card {
+  background-color: var(--background);
+  box-shadow: 0 0 10px var(--grey);
+
+  &__img {
+    position: relative;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 6mm 4mm var(--grey));
+    width: 150px;
+    height: 150px;
+  }
+
+  &__text {
+    color: var(--text-color);
+    font-family: 'Jost', sans-serif;
+  }
+
+  &__chip {
+    background-color: var(--field-color);
+
+    &__text {
+      margin-left: 10px;
+    }
+  }
+}
