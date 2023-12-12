@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.svg';
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
+import { useDisplay } from 'vuetify';
 
 const props = defineProps({
   progress: {
@@ -11,30 +12,51 @@ const props = defineProps({
 });
 
 const roundProgress = computed(() => Math.round(props.progress));
+
+const { mdAndDown } = useDisplay();
+const drawer = ref(!mdAndDown.value);
+
+watch(mdAndDown, (newVal) => {
+  drawer.value = !newVal;
+});
+
 </script>
 
 <template>
-  <div class="sidebar">
-    <h1 class="sidebar__header">
-      <v-img
-        :src="logo"
-        width="50px"
-        height="50px"
-        alt="Vuejs Logo"
-      />
-      Vuejs Quiz
-    </h1>
-    <div class="sidebar__footer">
-      {{ roundProgress }}% completed
-      <v-progress-linear
-        aria-label="Progress Bar"
-        color="primaryDark"
-        :model-value="props.progress"
-        class="sidebar__progress"
-        height="20"
-      />
-    </div>
-  </div>
+  <v-layout>
+    <v-app-bar-nav-icon
+      v-if="mdAndDown"
+      class="sidebar__burger"
+      @click="drawer = !drawer"
+    />
+    <v-navigation-drawer
+      v-model="drawer"
+      :temporary="mdAndDown"
+      :permanent="!mdAndDown"
+    >
+      <div class="sidebar">
+        <h1 class="sidebar__header">
+          <v-img
+            :src="logo"
+            width="40px"
+            height="40px"
+            alt="Vuejs Logo"
+          />
+          Vuejs Quiz
+        </h1>
+        <div class="sidebar__footer">
+          {{ roundProgress }}% completed
+          <v-progress-linear
+            aria-label="Progress Bar"
+            color="primaryDark"
+            :model-value="props.progress"
+            class="sidebar__progress"
+            height="20"
+          />
+        </div>
+      </div>
+    </v-navigation-drawer>
+  </v-layout>
 </template>
 
 <style scoped>

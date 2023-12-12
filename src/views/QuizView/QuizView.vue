@@ -4,6 +4,7 @@ import { basicQuestions } from '@/assets/data/basicQuestions';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import QuizQuestion from '@/views/QuizView/Components/QuizQuestion/QuizQuestion.vue';
 import { useQuizQuestion } from '@/views/QuizView/hooks/useQuizQuestion';
+import { useDisplay } from 'vuetify';
 
 const {
   onNextQuestion,
@@ -18,13 +19,19 @@ const {
   progress,
   handleCountdownFinished,
 } = useQuizQuestion();
+
+const { mdAndDown } = useDisplay();
+
 </script>
 
 <template>
   <div
     role="region"
     aria-label="Quiz Section"
-    class="quiz"
+    :class="{
+      quiz: !mdAndDown,
+      quiz__mobile: mdAndDown,
+    }"
   >
     <side-bar
       :progress="progress"
@@ -56,14 +63,22 @@ const {
 
       <v-btn
         color="primary"
-        class="quiz__btn"
-        height="50px"
+        :class="{
+          quiz__btn: true,
+          quiz__btn_mobile: mdAndDown,
+        }"
+        :height="mdAndDown ? '30px' : '50px'"
         role="button"
         aria-label="{{ shouldShowNextButton ? 'Next QuizQuestion' : 'Submit Test' }}"
         @click="onNextQuestion"
       >
-        <span class="quiz__btn-text">
-          {{ shouldShowNextButton ? 'Next QuizQuestion' : 'Submit Test' }}
+        <span
+          :class="{
+            quiz__btn__text: true,
+            quiz__btn__text_mobile: mdAndDown,
+          }"
+        >
+          {{ shouldShowNextButton ? 'Next Quiz Question' : 'Submit Test' }}
         </span>
       </v-btn>
     </div>

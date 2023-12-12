@@ -2,6 +2,7 @@
 import RadioAnswers from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
 import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
 import { type PropType } from 'vue';
+import { useDisplay } from 'vuetify';
 
 interface Question {
   id: number;
@@ -50,19 +51,29 @@ defineProps({
   },
 });
 
+const { smAndDown, xs } = useDisplay();
+
 </script>
 
 <template>
   <div>
     <div
-      class="question__number"
+      :class="{
+        question__number: true,
+        question__number_tablet: smAndDown,
+        question__number_mobile: xs,
+      }"
       role="status"
       aria-live="polite"
     >
       Question {{ currentQuestionNumber }}/{{ totalQuestions }}
     </div>
     <div
-      class="question"
+      :class="{
+        question: true,
+        question_tablet: smAndDown,
+        question_mobile: xs,
+      }"
       role="heading"
       aria-level="2"
       aria-live="polite"
