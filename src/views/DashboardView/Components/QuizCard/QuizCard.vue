@@ -61,7 +61,10 @@ const startQuiz = () => {
     />
 
     <v-card-item>
-      <v-card-title class="card__text" id="quiz-title">
+      <v-card-title
+        id="quiz-title"
+        class="card__text"
+      >
         {{ quizTitle }}
       </v-card-title>
 
