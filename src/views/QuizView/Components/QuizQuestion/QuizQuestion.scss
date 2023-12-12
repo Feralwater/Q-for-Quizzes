@@ -6,6 +6,18 @@
   color: var(--dark-text-color);
   margin-bottom: 20px;
 
+  &_tablet {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+
+  &_mobile {
+    font-size: 20px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
   &__number {
     background-color: var(--primary);
     border-radius: 50px;
@@ -16,5 +28,17 @@
     line-height: 41px;
     margin-bottom: 15px;
     padding: 0 25px;
+
+    &_tablet {
+      font-size: 12px;
+      line-height: 33px;
+      padding: 0 20px;
+    }
+
+    &_mobile {
+      font-size: 10px;
+      line-height: 27px;
+      padding: 0 15px;
+    }
   }
 }
