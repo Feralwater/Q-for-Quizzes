@@ -16,8 +16,8 @@ import QuizeRules from '@/views/DashboardView/Components/QuizeRules/QuizeRules.v
           :quiz-icon="vueIcon"
           quiz-title="Vue.js basics"
           quiz-description="Test your knowledge of Vue.js fundamentals"
-          quiz-time="30"
-          quiz-questions-amount="10"
+          :quiz-time="30"
+          :quiz-questions-amount="10"
         />
       </v-col>
     </v-row>
