@@ -24,11 +24,19 @@
     align-self: end;
     border-radius: 4px;
 
-    &-text {
+    &__text {
       font-size: 20px;
       color: var(--light-text-color);
       font-weight: bold;
       font-family: 'Jost', sans-serif;
+
+      &_mobile {
+        font-size: 14px;
+      }
+    }
+
+    &_mobile {
+      margin-top: 20px;
     }
   }
 }
