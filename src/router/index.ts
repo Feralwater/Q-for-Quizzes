@@ -2,10 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router';
 import QuizView from "@/views/QuizView/QuizView.vue";
 import { Routers } from '@/router/Routers';
 import { useQuizScore } from '@/stores/score';
+import DashboardView from '@/views/DashboardView/DashboardView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: Routers.Dashboard,
+      name: 'dashboard',
+      component: DashboardView,
+    },
     {
       path: Routers.Quiz,
       name: 'quiz',

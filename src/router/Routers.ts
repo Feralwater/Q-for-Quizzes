@@ -1,4 +1,5 @@
 export enum Routers {
-  Quiz = "/",
+  Dashboard = "/",
+  Quiz = "/quiz",
   Result = "/result",
 }
