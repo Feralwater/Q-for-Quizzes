@@ -18,6 +18,10 @@
     font-weight: bold;
   }
 
+  &__item{
+    color: var(--light-text-color);
+  }
+
   &__progress {
     background-color: var(--light-text-color);
     border-radius: 25px;

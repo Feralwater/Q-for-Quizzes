@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import router from '@/router';
-import icon from '@/assets/logo.svg';
+import icon from '@/assets/images/logo.svg';
 import { computed } from 'vue';
 
 const props = defineProps({
