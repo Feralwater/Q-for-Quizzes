@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import scarecrow from '@/assets/images/scarecrow.png';
 import { Routers } from '@/router/Routers';
+import { useDisplay } from 'vuetify';
+
+const { mdAndDown } = useDisplay();
 </script>
 
 <template>
@@ -8,7 +11,12 @@ import { Routers } from '@/router/Routers';
     <p class="error__404">
       404 Not Found
     </p>
-    <main class="error__main">
+    <main
+      :class="{
+        error__main: true,
+        error__main__mobile: mdAndDown,
+      }"
+    >
       <div class="error__image">
         <v-img
           :src="scarecrow"
@@ -16,15 +24,28 @@ import { Routers } from '@/router/Routers';
         />
       </div>
       <div class="error__text">
-        <h1 class="error__header">
+        <h1
+          :class="{
+            error__header: true,
+            error__header__mobile: mdAndDown,
+          }"
+        >
           I have bad news for you
         </h1>
-        <p class="error__description">
+        <p
+          :class="{
+            error__description: true,
+            error__description__mobile: mdAndDown,
+          }"
+        >
           The page you are looking for might be removed or is temporarily unavailable.
         </p>
         <router-link
           :to="Routers.Dashboard"
-          class="error__link"
+          :class="{
+            error__link: true,
+            error__link__mobile: mdAndDown,
+          }"
         >
           Back to homepage
         </router-link>
