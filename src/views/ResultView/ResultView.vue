@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useQuizScore } from '@/stores/score';
 import { type NavigationGuardNext, onBeforeRouteLeave, type RouteLocationNormalized } from 'vue-router';
+import { Routers } from '@/router/Routers';
+import { useDisplay } from 'vuetify';
+import confetti from '@/assets/images/confetti.svg';
 
 const { score, isQuizCompleted } = useQuizScore();
 const beforeRouteLeave = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
@@ -10,89 +13,75 @@ const beforeRouteLeave = (to: RouteLocationNormalized, from: RouteLocationNormal
 };
 
 onBeforeRouteLeave(beforeRouteLeave);
-
+const { xs } = useDisplay();
 </script>
 
 <template>
-  <div class="certificate-container">
-    <div class="certificate-header">
-      CERTIFICATE OF COMPLETION
-    </div>
-    <div class="certificate-body">
-      <p class="intro-text">
-        THIS IS AWARDED TO
-      </p>
-      <p class="recipient-name">
-        John Doe
-      </p>
-      <p class="achievement-text">
-        in recognition of achieving a
-      </p>
-      <p class="grade">
-        {{ score * 10 }}%
-      </p>
-      <div class="certificate-info">
-        <span>Class: A</span>
-        <span>Date: {{ new Date().toDateString() }}</span>
-      </div>
-      <p class="congratulations-text">
-        Well done
-      </p>
-    </div>
-    <div class="certificate-footer">
-      BRIGHTWELL ACADEMY
-    </div>
+  <div class="result">
+    <v-container>
+      <v-row>
+        <v-col
+          cols="12"
+          md="6"
+          offset-md="3"
+        >
+          <v-card class="result__card">
+            <v-img
+              cover
+              width="100%"
+              height="200px"
+              :src="confetti"
+              alt="Result"
+            />
+            <v-card-title class="text-center">
+              <h1
+                :class="{
+                  result__title: true,
+                  result__title__mobile: xs
+                }"
+              >
+                Your total score is
+              </h1>
+              <h1 class="result__title_primary">
+                {{ score }}
+              </h1>
+            </v-card-title>
+            <v-card-subtitle class="text-center">
+              <h2
+                :class="{
+                  result__description: true,
+                  result__description__mobile: xs
+                }"
+              >
+                {{}} correct answers out of {{}} questions
+              </h2>
+            </v-card-subtitle>
+            <v-card-text class="text-center">
+              You can download your certificate in your profile
+            </v-card-text>
+            <v-card-actions class="justify-center">
+              <v-btn
+                color="primary"
+                @click="$router.push(Routers.Dashboard)"
+              >
+                Try again
+              </v-btn>
+              <v-btn
+                color="primary"
+                disabled
+              >
+                My profile
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 
 <style scoped>
-.certificate-container {
-  width: 600px;
-  height: 464px;
-  border: 2px solid #000;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #fff;
-  font-family: 'Arial', sans-serif;
-}
+@import 'ResultView.scss';
 
-.certificate-header {
-  text-align: center;
-  font-weight: bold;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.certificate-body {
-  text-align: center;
-}
-
-.intro-text, .achievement-text, .congratulations-text {
-  font-size: 18px;
-  margin: 5px 0;
-}
-
-.recipient-name {
-  font-size: 30px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.grade {
-  font-size: 24px;
-  margin: 10px 0;
-}
-
-.certificate-info {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-}
-
-.certificate-footer {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 30px;
-}
 </style>
