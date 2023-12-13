@@ -22,15 +22,15 @@ const router = createRouter({
       name: 'result',
       component: () => import('@/views/ResultView/ResultView.vue'),
 
-      // beforeEnter: (to, from, next) => {
-      //   const { isQuizCompleted } = useQuizScore();
-      //
-      //   if (isQuizCompleted) {
-      //     next();
-      //   } else {
-      //     next({ name: '404' });
-      //   }
-      // },
+      beforeEnter: (to, from, next) => {
+        const { isQuizCompleted } = useQuizScore();
+
+        if (isQuizCompleted) {
+          next();
+        } else {
+          next({ name: '404' });
+        }
+      },
     },
     {
       path: "/:pathMatch(.*)*",

@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { useQuizScore } from '@/stores/score';
-import { type NavigationGuardNext, onBeforeRouteLeave, type RouteLocationNormalized } from 'vue-router';
-import { Routers } from '@/router/Routers';
 import { useDisplay } from 'vuetify';
 import confetti from '@/assets/images/confetti.svg';
+import router from '@/router';
 
-const { score, isQuizCompleted } = useQuizScore();
-const beforeRouteLeave = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-  if (isQuizCompleted) {
-    next(false);
-  }
-};
+const { score, questionsAmount, correctAnswers } = useQuizScore();
 
-onBeforeRouteLeave(beforeRouteLeave);
 const { xs } = useDisplay();
+
+const onTryAgain = () => {
+  router.push({
+    name:'dashboard',
+  });
+};
 </script>
 
 <template>
@@ -43,7 +42,7 @@ const { xs } = useDisplay();
                 Your total score is
               </h1>
               <h1 class="result__title_primary">
-                {{ score }}
+                {{ score * 10 }}%
               </h1>
             </v-card-title>
             <v-card-subtitle class="text-center">
@@ -53,7 +52,7 @@ const { xs } = useDisplay();
                   result__description__mobile: xs
                 }"
               >
-                {{}} correct answers out of {{}} questions
+                {{ correctAnswers }} correct answers out of {{ questionsAmount }} questions
               </h2>
             </v-card-subtitle>
             <v-card-text class="text-center">
@@ -62,7 +61,7 @@ const { xs } = useDisplay();
             <v-card-actions class="justify-center">
               <v-btn
                 color="primary"
-                @click="$router.push(Routers.Dashboard)"
+                @click="onTryAgain"
               >
                 Try again
               </v-btn>
