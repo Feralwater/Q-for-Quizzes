@@ -2,6 +2,7 @@
 import logo from '@/assets/logo.svg';
 import { computed, ref, watch } from 'vue';
 import { useDisplay } from 'vuetify';
+import { Routers } from '@/router/Routers';
 
 const props = defineProps({
   progress: {
@@ -44,6 +45,15 @@ watch(mdAndDown, (newVal) => {
           />
           Vuejs Quiz
         </h1>
+        <v-list nav>
+          <v-list-item
+            class="sidebar__item"
+            link
+            prepend-icon="mdi-home"
+            :href="Routers.Dashboard"
+            title="Back to Dashboard"
+          />
+        </v-list>
         <div class="sidebar__footer">
           {{ roundProgress }}% completed
           <v-progress-linear
