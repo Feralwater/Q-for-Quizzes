@@ -54,12 +54,12 @@ const startQuiz = () => {
     class="mx-auto my-12 card"
     max-width="374"
   >
-    <v-img
-      :src="quizIcon"
-      class="card__img"
-      alt="Quiz Icon"
-    />
-
+    <div class="card__img">
+      <v-img
+        :src="quizIcon"
+        alt="Quiz Icon"
+      />
+    </div>
     <v-card-item>
       <v-card-title
         id="quiz-title"
