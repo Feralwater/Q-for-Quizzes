@@ -121,7 +121,7 @@ export const basicQuestions = [
     question: "Can multiple values be passed to a directive in Vue?",
     answer: ["Yes, using an array or an object to pass multiple values."],
     options: [
-      "Yae, separating values with commas within the directive.",
+      "Yes, separating values with commas within the directive.",
       "Yes, using an array or an object to pass multiple values.",
       "Yes, repeating the directive for each value.",
       "No, directives only accept a single value.",
