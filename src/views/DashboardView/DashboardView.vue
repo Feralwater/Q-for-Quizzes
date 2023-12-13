@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import vueIcon from '@/assets/images/logo.svg';
 import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
-import QuizeRules from '@/views/DashboardView/Components/QuizeRules/QuizeRules.vue';
+import RulesButton from '@/components/RulesButton/RulesButton.vue';
 </script>
 
 <template>
   <v-container>
-    <quize-rules />
     <v-row>
       <v-col
         cols="12"
@@ -22,6 +21,7 @@ import QuizeRules from '@/views/DashboardView/Components/QuizeRules/QuizeRules.v
       </v-col>
     </v-row>
   </v-container>
+  <rules-button />
 </template>
 
 <style scoped>
