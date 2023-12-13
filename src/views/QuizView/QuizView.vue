@@ -67,7 +67,7 @@ const { mdAndDown } = useDisplay();
           quiz__btn: true,
           quiz__btn_mobile: mdAndDown,
         }"
-        :height="mdAndDown ? '30px' : '50px'"
+        :height="mdAndDown ? '40px' : '50px'"
         role="button"
         aria-label="{{ shouldShowNextButton ? 'Next QuizQuestion' : 'Submit Test' }}"
         @click="onNextQuestion"
