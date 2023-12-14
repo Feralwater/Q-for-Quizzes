@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { useDisplay } from 'vuetify'
+import { useDisplay } from 'vuetify';
 
 defineProps({
   dialogTitle: {
@@ -32,10 +32,12 @@ const { xs } = useDisplay();
     </template>
 
     <template #default="{ isActive }">
-      <v-card :class="{
-        dialog: true,
-        dialog__mobile: xs,
-      }">
+      <v-card
+        :class="{
+          dialog: true,
+          dialog__mobile: xs,
+        }"
+      >
         <v-card-title class="dialog__title">
           {{ dialogTitle }}
         </v-card-title>
