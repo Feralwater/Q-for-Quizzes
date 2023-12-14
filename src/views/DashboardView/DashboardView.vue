@@ -21,7 +21,28 @@ import RulesButton from '@/components/RulesButton/RulesButton.vue';
       </v-col>
     </v-row>
   </v-container>
-  <rules-button />
+  <v-dialog width="500">
+    <template #activator="{ props }">
+      <rules-button v-bind="props" />
+    </template>
+
+    <template #default="{ isActive }">
+      <v-card title="Dialog">
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer />
+
+          <v-btn
+            text="Close Dialog"
+            @click="isActive.value = false"
+          />
+        </v-card-actions>
+      </v-card>
+    </template>
+  </v-dialog>
 </template>
 
 <style scoped>
