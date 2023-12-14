@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import { useDisplay } from 'vuetify'
+
 defineProps({
   dialogTitle: {
     type: String,
@@ -15,6 +17,7 @@ defineProps({
   },
 });
 
+const { xs } = useDisplay();
 </script>
 
 <template>
@@ -29,7 +32,10 @@ defineProps({
     </template>
 
     <template #default="{ isActive }">
-      <v-card class="dialog">
+      <v-card :class="{
+        dialog: true,
+        dialog__mobile: xs,
+      }">
         <v-card-title class="dialog__title">
           {{ dialogTitle }}
         </v-card-title>

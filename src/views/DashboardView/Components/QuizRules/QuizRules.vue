@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify';
+
 const rules = [
   {
     title: 'Time Limit',
@@ -13,6 +15,8 @@ const rules = [
     description: 'If the time runs out or you leave the quiz page, you\'ll be automatically moved to the next question. Any selected choices will be saved, so make every second count!',
   },
 ];
+
+const { xs } = useDisplay();
 </script>
 
 <template>
@@ -20,6 +24,10 @@ const rules = [
     <li
       v-for="(rule, index) in rules"
       :key="index"
+      :class="{
+        rules__item: true,
+        rules__item__mobile: xs,
+      }"
     >
       <div class="rules__title">
         {{ rule.title }}
