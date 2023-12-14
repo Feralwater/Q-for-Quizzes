@@ -16,29 +16,19 @@ const rules = [
 </script>
 
 <template>
-  <div>
-    <h1>Quiz Rules</h1>
-    <v-list>
-      <v-list-item
-        v-for="(rule, index) in rules"
-        :key="index"
-      >
-        <v-icon
-          color="error"
-          icon="mdi-check-circle"
-          size="small"
-        />
-        <div>
-          {{ rule.title }}
-          <span>
-            {{ rule.description }}
-          </span>
-        </div>
-      </v-list-item>
-    </v-list>
-  </div>
+  <ol class="rules">
+    <li
+      v-for="(rule, index) in rules"
+      :key="index"
+    >
+      <div class="rules__title">
+        {{ rule.title }}
+      </div>
+      {{ rule.description }}
+    </li>
+  </ol>
 </template>
 
 <style scoped>
-
+@import "QuizRules.scss";
 </style>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import vueIcon from '@/assets/images/logo.svg';
 import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
-import RulesButton from '@/components/RulesButton/RulesButton.vue';
+import RulesButton from '@/views/DashboardView/Components/RulesButton/RulesButton.vue';
 import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
-import QuizeRules from '@/views/DashboardView/Components/QuizeRules/QuizeRules.vue';
+import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
 </script>
 
 <template>
@@ -26,7 +26,7 @@ import QuizeRules from '@/views/DashboardView/Components/QuizeRules/QuizeRules.v
   <dialog-window
     dialog-title="Quiz Rules"
     :activator="RulesButton"
-    :dialog-content="QuizeRules"
+    :dialog-content="QuizRules"
   />
 </template>
 
