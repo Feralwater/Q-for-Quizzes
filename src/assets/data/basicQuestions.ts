@@ -1,136 +1,3 @@
-// export const basicQuestions = [
-//   {
-//     id: 1,
-//     question: "Define components in VueJS.",
-//     answer: ["Modular Vue instances designed for reusability."],
-//     options: [
-//       "Modular Vue instances designed for reusability.",
-//       "JavaScript functions that structure HTML elements.",
-//       "CSS styles applied exclusively to Vue templates.",
-//       "Database queries embedded in Vue applications.",
-//     ],
-//     timeToAnswer: 15,
-//     points: 1,
-//   },
-//   {
-//     id: 2,
-//     question: "How can components be created in Vue?",
-//     answer: ["The Vue component is placed in a single dedicated file using the `.vue` extension.", "The Vue component can be defined as a plain JavaScript object containing Vue-specific options."],
-//     options: [
-//       "Utilizing the newComponent() method.",
-//       "Declaring a Vue instance with Vue.createComponent().",
-//       "The Vue component is placed in a single dedicated file using the `.vue` extension.",
-//       "The Vue component can be defined as a plain JavaScript object containing Vue-specific options.",
-//     ],
-//     timeToAnswer: 20,
-//     points: 1,
-//   },
-//   {
-//     id: 3,
-//     question: "What purpose do Props serve in Vue?",
-//     answer: ["Custom attributes transferred from parent to child components."],
-//     options: [
-//       "HTML tags within Vue templates.",
-//       "Variables confined to the created lifecycle hook.",
-//       "Custom attributes transferred from parent to child components.",
-//       "Internal state management variables in Vue instances.",
-//     ],
-//     timeToAnswer: 15,
-//     points: 1,
-//   },
-//   {
-//     id: 4,
-//     question: "Explain the data flow between Vue components.",
-//     answer: ["Unidirectional data flow from parent to child through props and child to parent via events."],
-//     options: [
-//       "Bidirectional data flow solely from child to parent components.",
-//       "Unidirectional data flow from parent to child through props and child to parent via events.",
-//       "Limited data flow confined to components within the same hierarchy.",
-//       "Data flow occurs arbitrarily based on component rendering order.",
-//     ],
-//     timeToAnswer: 25,
-//     points: 1,
-//   },
-//   {
-//     id: 5,
-//     question: "What are slots in the context of Vue?",
-//     answer: ["Reserved areas in templates designated for dynamic content."],
-//     options: [
-//       "Reserved areas in templates designated for dynamic content.",
-//       "Special Vue components exclusively for rendering images.",
-//       "Keywords reserved for conditional rendering.",
-//       "External libraries specifically for Vue animations.",
-//     ],
-//     timeToAnswer: 15,
-//     points: 1,
-//   },
-//   {
-//     id: 6,
-//     question: "How can fallback content be added for slots in Vue?",
-//     answer: ["Providing default content within the slot tags."],
-//     options: [
-//       "Using the slot-fallback attribute.",
-//       "Providing default content within the slot tags.",
-//       "Employing the v-fallback directive.",
-//       "Fallback content is not supported for slots in Vue.",
-//     ],
-//     timeToAnswer: 20,
-//     points: 1,
-//   },
-//   {
-//     id: 7,
-//     question: "What do attribute bindings refer to in Vue?",
-//     answer: ["Dynamically updating HTML attributes based on Vue data."],
-//     options: [
-//       "Linking external CSS files to Vue components.",
-//       "Dynamically updating HTML attributes based on Vue data.",
-//       "Assigning static values to HTML attributes.",
-//       "Creating custom attributes for Vue templates.",
-//     ],
-//     timeToAnswer: 15,
-//     points: 1,
-//   },
-//   {
-//     id: 8,
-//     question: "How is a two-way binding achieved in Vue?",
-//     answer: ["By using the v-model directive.", "Manually implement by emitting and listening to the input event."],
-//     options: [
-//       "Employing the v-two-way directive.",
-//       "By using the v-model directive.",
-//       "Manually implement by emitting and listening to the input event.",
-//       "By using the v-bind directive.",
-//     ],
-//     timeToAnswer: 20,
-//     points: 1,
-//   },
-//   {
-//     id: 9,
-//     question: "Define directives in the context of Vue.",
-//     answer: ["Special tokens in HTML attributes triggering reactive behavior."],
-//     options: [
-//       "External scripts imported into Vue components.",
-//       "Special tags used for conditional rendering.",
-//       "Custom methods for data manipulation in Vue instances.",
-//       "Special tokens in HTML attributes triggering reactive behavior.",
-//     ],
-//     timeToAnswer: 15,
-//     points: 1,
-//   },
-//   {
-//     id: 10,
-//     question: "Can multiple values be passed to a directive in Vue?",
-//     answer: ["Yes, using an array or an object to pass multiple values."],
-//     options: [
-//       "Yes, separating values with commas within the directive.",
-//       "Yes, using an array or an object to pass multiple values.",
-//       "Yes, repeating the directive for each value.",
-//       "No, directives only accept a single value.",
-//     ],
-//     timeToAnswer: 20,
-//     points: 1,
-//   },
-// ];
-
 interface Question {
   id: number;
   question: string;
@@ -142,7 +9,7 @@ interface Question {
 
 const style = 'style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"';
 
-export const basicQuestions:Question[] = [
+export const basicQuestions: Question[] = [
   {
     id: 1,
     question: 'Which lifecycle hook in Vue 3 is called after the component has been mounted to the DOM?',
@@ -217,7 +84,7 @@ export const basicQuestions:Question[] = [
     question: `Evaluate this Vue 3 code snippet: <pre ${style}>
        <code>
         &lt;script&gt;
-           import logo from "assets";
+           import logo from "assets/logo.png";
         &lt;/script&gt;
         &lt;template&gt;
            &lt;img src="logo" alt="logo" /&gt;
@@ -230,8 +97,7 @@ export const basicQuestions:Question[] = [
       'No, <img :src="logo" alt="logo" />',
       'No, <img src={ logo } alt="logo" />',
       'No, <img src={{ logo }} alt="logo" />',
-      'Yes, but the import statement should be import logo from "./assets/logo.png";',
-      'No, the image tag should not have a closing tag like <img src="logo" alt="logo">',
+      'No, <img ::src="logo" alt="logo" />',
     ],
     timeToAnswer: 60,
     points: 3,
@@ -243,6 +109,8 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, it\'s correct',
       'No, use v-on:click="() => count + 1"',
+      'No, use v-plus:click="count + 1"',
+      'No, use v-fn:click="count + 1"',
     ],
     timeToAnswer: 60,
     points: 2,
@@ -258,6 +126,8 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, it\'s correct',
       'No, it should be a method, not computed',
+      'No, computed properties are not supported in Vue 3',
+      'No, use a different syntax for computed properties',
     ],
     timeToAnswer: 120,
     points: 3,
@@ -269,6 +139,8 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, it\'s correct',
       'No, use v-show="show"',
+      'No, use :v-if="show === true"',
+      'No, use :v-if="show == true"',
     ],
     timeToAnswer: 15,
     points: 2,
@@ -283,6 +155,8 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, it\'s correct',
       'No, count should be a reactive object',
+      'No, return count.value instead of count',
+      'No, use reactive instead of ref',
     ],
     timeToAnswer: 20,
     points: 3,
@@ -319,7 +193,9 @@ export const basicQuestions:Question[] = [
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
-      'No, use v-bind:style',
+      'No, use v-bind::style',
+      'No, use v-style instead of :style',
+      'No, use style="color: {{ isActive ? \'red\' : \'blue\' }}"',
     ],
     timeToAnswer: 15,
     points: 2,
@@ -331,9 +207,11 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, it\'s correct',
       'No, additional imports are needed',
+      'No, the script tag is not necessary',
+      'No, the setup function is missing',
     ],
     timeToAnswer: 20,
-    points: 3,
+    points: 2,
   },
   {
     id: 15,
@@ -346,7 +224,7 @@ export const basicQuestions:Question[] = [
       'To reference a parent component.',
     ],
     timeToAnswer: 15,
-    points: 2,
+    points: 3,
   },
   {
     id: 16,
@@ -391,6 +269,7 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, it\'s correct',
       'No, use slot-scope instead of v-slot',
+      'No, use v-slot::header="{ item.title }"',
     ],
     timeToAnswer: 20,
     points: 2,
@@ -442,6 +321,7 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes\', \'Correct way to declare a reactive object',
       'No, use createRefObj instead of reactive',
+      'No, use reactiveObj instead of reactive',
     ],
     timeToAnswer: 20,
     points: 2,
@@ -452,7 +332,11 @@ export const basicQuestions:Question[] = [
     answer: ['Yes', 'v-for is used for list rendering'],
     options: [
       'Yes, v-for is used for list rendering',
-      'No, v-for is not used in Vue 3',
+      'No, v-model is used for list rendering',
+      'No, v-for is deprecated in Vue 3',
+      'No, v-for is only for rendering a single item',
+      'No, v-for is only for rendering a range of numbers',
+      'No, v-map is used for list rendering',
     ],
     timeToAnswer: 15,
     points: 2,
@@ -464,20 +348,24 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes\', \'Correct named slot usage with scope',
       'No, use v-slot instead of #',
+      'No, use slot-scope instead of #',
+      'No, use slot instead of template',
     ],
     timeToAnswer: 20,
-    points: 2,
+    points: 4,
   },
   {
     id: 26,
-    question: 'Does Vue 3\'s Composition API allow for better code organization and reusability compared to the Options API?',
-    answer: ['Yes', 'Enhances code organization and reusability'],
+    question: 'Define components in VueJS.',
+    answer: ['Modular Vue instances designed for reusability.'],
     options: [
-      'Yes, it enhances code organization and reusability',
-      'No, it offers no improvements over the Options API',
+      'Modular Vue instances designed for reusability.',
+      'JavaScript functions that structure HTML elements.',
+      'CSS styles applied exclusively to Vue templates.',
+      'Database queries embedded in Vue applications.',
     ],
     timeToAnswer: 15,
-    points: 3,
+    points: 1,
   },
   {
     id: 27,
@@ -486,9 +374,10 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes\', \'Correct usage of template ref',
       'No, use v-ref instead of ref',
+      'No, use ::ref instead of ref',
     ],
     timeToAnswer: 20,
-    points: 2,
+    points: 1,
   },
   {
     id: 28,
@@ -503,14 +392,16 @@ export const basicQuestions:Question[] = [
   },
   {
     id: 29,
-    question: `Assess the correctness of this Vue 3 event handling: <pre ${style}><code>&lt;button @click="handleClick()"&gt;Click me&lt;/button&gt;</code></pre> where 'handleClick' is a method.`,
-    answer: ['Yes', 'Correct syntax for event handling'],
+    question: 'How can components be created in Vue?',
+    answer: ['The Vue component is placed in a single dedicated file using the `.vue` extension.', 'The Vue component can be defined as a plain JavaScript object containing Vue-specific options.'],
     options: [
-      'Yes\', \'Correct syntax for event handling',
-      'No, use v-on:click instead of @click',
+      'Utilizing the newComponent() method.',
+      'Declaring a Vue instance with Vue.createComponent().',
+      'The Vue component is placed in a single dedicated file using the `.vue` extension.',
+      'The Vue component can be defined as a plain JavaScript object containing Vue-specific options.',
     ],
     timeToAnswer: 20,
-    points: 1,
+    points: 2,
   },
   {
     id: 30,
@@ -530,17 +421,20 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes\', \'Correct way to define a prop in script setup',
       'No, props should be defined in the data option',
+      'No, props should be defined in the props option',
     ],
     timeToAnswer: 20,
     points: 1,
   },
   {
     id: 32,
-    question: 'Does Vue 3 support server-side rendering (SSR) for creating SEO-friendly content?',
-    answer: ['Yes', 'Vue 3 supports SSR for SEO-friendly content'],
+    question: 'What purpose do Props serve in Vue?',
+    answer: ['Custom attributes transferred from parent to child components.'],
     options: [
-      'Yes, Vue 3 supports SSR for SEO-friendly content',
-      'No, Vue 3 does not support SSR',
+      'HTML tags within Vue templates.',
+      'Variables confined to the created lifecycle hook.',
+      'Custom attributes transferred from parent to child components.',
+      'Internal state management variables in Vue instances.',
     ],
     timeToAnswer: 15,
     points: 1,
@@ -551,7 +445,9 @@ export const basicQuestions:Question[] = [
     answer: ['Yes', 'Correct use of teleport to move content'],
     options: [
       'Yes\', \'Correct use of teleport to move content',
-      'No, teleport requires a different syntax',
+      'No, use v-teleport instead of teleport',
+      'No, <teleport goTo="#endOfBody">...</teleport>',
+      'No, teleport is not supported in Vue 3',
     ],
     timeToAnswer: 20,
     points: 1,
@@ -563,30 +459,36 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, Vue 3 allows creating custom directives',
       'No, custom directives are not supported in Vue 3',
+      'Yes, but only with the help of external libraries',
+      'Yes, but only with the help of plugins',
     ],
     timeToAnswer: 15,
     points: 1,
   },
   {
     id: 35,
-    question: 'Check if this Vue 3 syntax is correct for a reactive array: `const items = reactive([]);`.',
-    answer: ['Yes', 'Correct syntax for a reactive array'],
+    question: 'Explain the data flow between Vue components.',
+    answer: ['Unidirectional data flow from parent to child through props and child to parent via events.'],
     options: [
-      'Yes\', \'Correct syntax for a reactive array',
-      'No, use useRef([]) instead of reactive([])',
+      'Bidirectional data flow solely from child to parent components.',
+      'Unidirectional data flow from parent to child through props and child to parent via events.',
+      'Limited data flow confined to components within the same hierarchy.',
+      'Data flow occurs arbitrarily based on component rendering order.',
     ],
-    timeToAnswer: 20,
+    timeToAnswer: 25,
     points: 1,
   },
   {
     id: 36,
-    question: 'Can Vue 3\'s reactive system track changes made to an array\'s length?',
-    answer: ['Yes', 'Vue 3\'s reactive system can track array length changes'],
+    question: "Can multiple values be passed to a directive in Vue?",
+    answer: ["Yes, using an array or an object to pass multiple values."],
     options: [
-      'Yes, Vue 3\'s reactive system can track array length changes',
-      'No, Vue 3 cannot track changes to an array\'s length',
+      "Yes, separating values with commas within the directive.",
+      "Yes, using an array or an object to pass multiple values.",
+      "Yes, repeating the directive for each value.",
+      "No, directives only accept a single value.",
     ],
-    timeToAnswer: 15,
+    timeToAnswer: 20,
     points: 1,
   },
   {
@@ -596,17 +498,21 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes\', \'Correct usage of v-for with a computed property',
       'No, use a method instead of a computed property',
+      'No, use v-for="item in filteredList()"',
+      'No, use v-for="item in filteredList.value"',
     ],
     timeToAnswer: 20,
     points: 1,
   },
   {
     id: 38,
-    question: 'Is the `beforeUnmount` lifecycle hook in Vue 3 used for cleanup activities like removing event listeners?',
-    answer: ['Yes', 'beforeUnmount is used for cleanup activities'],
+    question: "Define directives in the context of Vue.",
+    answer: ["Special tokens in HTML attributes triggering reactive behavior."],
     options: [
-      'Yes, beforeUnmount is used for cleanup activities',
-      'No, beforeUnmount is not for cleanup',
+      "External scripts imported into Vue components.",
+      "Special tags used for conditional rendering.",
+      "Custom methods for data manipulation in Vue instances.",
+      "Special tokens in HTML attributes triggering reactive behavior.",
     ],
     timeToAnswer: 15,
     points: 1,
@@ -617,7 +523,9 @@ export const basicQuestions:Question[] = [
     answer: ['Yes', 'Correct syntax for lazy-loading a component'],
     options: [
       'Yes\', \'Correct syntax for lazy-loading a component',
-      'No, use a different method for lazy-loading',
+      'No, use v-lazy instead of defineAsyncComponent',
+      'No, use v-lazy instead of import',
+      'No, lazy-loading is not supported in Vue 3',
     ],
     timeToAnswer: 20,
     points: 1,
@@ -629,28 +537,34 @@ export const basicQuestions:Question[] = [
     options: [
       'Yes, v-on can listen to custom events from child components',
       'No, v-on is only for native DOM events',
+      'No, use v-listen instead of v-on',
+      'No, v-on is deprecated in Vue 3',
     ],
     timeToAnswer: 15,
     points: 1,
   },
   {
     id: 41,
-    question: `Verify if this is a valid way to create a dynamic class binding in Vue 3: <pre ${style}><code>&lt;div :class="{ active: isActive }"&gt;&lt;/div&gt;</code></pre> where 'isActive' is a reactive property.`,
-    answer: ['Yes', 'Correct syntax for dynamic class binding'],
+    question: "What do attribute bindings refer to in Vue?",
+    answer: ["Dynamically updating HTML attributes based on Vue data."],
     options: [
-      'Correct syntax for dynamic class binding',
-      'No, use a different syntax for class binding',
+      "Linking external CSS files to Vue components.",
+      "Dynamically updating HTML attributes based on Vue data.",
+      "Assigning static values to HTML attributes.",
+      "Creating custom attributes for Vue templates.",
     ],
-    timeToAnswer: 20,
+    timeToAnswer: 15,
     points: 1,
   },
   {
     id: 42,
-    question: 'Does Vue 3\'s `v-show` directive conditionally toggle the display of an element without unmounting it?',
-    answer: ['Yes', 'v-show toggles visibility without unmounting'],
+    question: 'What is the difference between the `v-show` and `v-if` directives in Vue 3?',
+    answer: ['v-show toggles visibility without unmounting'],
     options: [
-      'Yes, v-show toggles visibility without unmounting',
-      'No, v-show unmounts the element',
+      'v-show toggles visibility without unmounting',
+      'v-if toggles visibility without unmounting',
+      'v-show is deprecated in Vue 3 as it\'s replaced by v-if',
+      'v-show is only for native HTML elements, v-if is for components',
     ],
     timeToAnswer: 15,
     points: 1,
@@ -684,16 +598,15 @@ export const basicQuestions:Question[] = [
   },
   {
     id: 45,
-    question: 'Which feature is primarily used in Vue 3 for handling side effects?',
-    answer: ['watchEffect'],
+    question: "How can fallback content be added for slots in Vue?",
+    answer: ["Providing default content within the slot tags."],
     options: [
-      'computed',
-      'methods',
-      'watch',
-      'watchEffect',
-      'onMounted',
+      "Using the slot-fallback attribute.",
+      "Providing default content within the slot tags.",
+      "Employing the v-fallback directive.",
+      "Fallback content is not supported for slots in Vue.",
     ],
-    timeToAnswer: 15,
+    timeToAnswer: 20,
     points: 1,
   },
   {
@@ -727,26 +640,26 @@ export const basicQuestions:Question[] = [
   },
   {
     id: 48,
-    question: 'Determine if this is valid Vue 3 syntax for a reactive ref with an initial array value: `const myList = ref([\'item1\', \'item2\']);`.',
-    answer: ['Yes', 'Correct syntax for a reactive ref with an array'],
+    question: "What are slots in the context of Vue?",
+    answer: ["Reserved areas in templates designated for dynamic content."],
     options: [
-      'Yes\', \'Correct syntax for a reactive ref with an array',
-      'No, use reactive instead of ref for arrays',
-      'No, arrays cannot be reactive in Vue 3',
-      'No, the syntax for defining a ref is different',
+      "Reserved areas in templates designated for dynamic content.",
+      "Special Vue components exclusively for rendering images.",
+      "Keywords reserved for conditional rendering.",
+      "External libraries specifically for Vue animations.",
     ],
-    timeToAnswer: 20,
+    timeToAnswer: 15,
     points: 1,
   },
   {
     id: 49,
-    question: 'Can Vue 3 components be developed using class-style syntax with the help of the Vue Class Component library?',
-    answer: ['Yes', 'Class-style components can be created using Vue Class Component'],
+    question: 'What is the purpose of the `v-once` directive in Vue 3?',
+    answer: ['To render a component only once and cache the result'],
     options: [
-      'Yes\', \'Class-style components can be created using Vue Class Component',
-      'No, class-style syntax is not supported',
-      'Only in TypeScript, not in JavaScript',
-      'Yes, but it\'s deprecated in Vue 3',
+      'To render a component only once and unmount it',
+      'To render a component only once and cache the result',
+      'To render a component only once and cache the result, then re-render if the data changes',
+      'To render a component only once and cache the result, then re-render if the data changes, but only once',
     ],
     timeToAnswer: 15,
     points: 1,
