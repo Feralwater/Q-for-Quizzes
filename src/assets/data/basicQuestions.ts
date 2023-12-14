@@ -220,18 +220,18 @@ export const basicQuestions:Question[] = [
            import logo from "assets";
         &lt;/script&gt;
         &lt;template&gt;
-           &lt;img src="logo" /&gt;
+           &lt;img src="logo" alt="logo" /&gt;
         &lt;/template&gt;
        </code>
       </pre> Will this code work? If not, what is the correct way to fix it?`,
-    answer: ['No', '<img :src="logo" />'],
+    answer: ['No', '<img :src="logo" alt="logo" />'],
     options: [
       'Yes, it will work',
-      'No, <img :src="logo" />',
-      'No, <img src={ logo } />',
-      'No, <img $src="logo" />',
+      'No, <img :src="logo" alt="logo" />',
+      'No, <img src={ logo } alt="logo" />',
+      'No, <img src={{ logo }} alt="logo" />',
       'Yes, but the import statement should be import logo from "./assets/logo.png";',
-      'No, the image tag should have a closing tag like <img src="logo"></img>',
+      'No, the image tag should not have a closing tag like <img src="logo" alt="logo">',
     ],
     timeToAnswer: 60,
     points: 3,
@@ -613,7 +613,7 @@ export const basicQuestions:Question[] = [
   },
   {
     id: 39,
-    question: `Is this the correct syntax for lazy-loading a component in Vue 3: <pre ${style}><code>const LazyComponent = defineAsyncComponent(() => import(\'./components/LazyComponent.vue\'));</code></pre>?`,
+    question: `Is this the correct syntax for lazy-loading a component in Vue 3: <pre ${style}><code>const LazyComponent = defineAsyncComponent(() => import('./components/LazyComponent.vue'));</code></pre>?`,
     answer: ['Yes', 'Correct syntax for lazy-loading a component'],
     options: [
       'Yes\', \'Correct syntax for lazy-loading a component',
