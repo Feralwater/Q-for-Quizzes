@@ -2,6 +2,8 @@
 import vueIcon from '@/assets/images/logo.svg';
 import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
 import RulesButton from '@/components/RulesButton/RulesButton.vue';
+import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
+import QuizeRules from '@/views/DashboardView/Components/QuizeRules/QuizeRules.vue';
 </script>
 
 <template>
@@ -21,28 +23,11 @@ import RulesButton from '@/components/RulesButton/RulesButton.vue';
       </v-col>
     </v-row>
   </v-container>
-  <v-dialog width="500">
-    <template #activator="{ props }">
-      <rules-button v-bind="props" />
-    </template>
-
-    <template #default="{ isActive }">
-      <v-card title="Dialog">
-        <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer />
-
-          <v-btn
-            text="Close Dialog"
-            @click="isActive.value = false"
-          />
-        </v-card-actions>
-      </v-card>
-    </template>
-  </v-dialog>
+  <dialog-window
+    dialog-title="Quiz Rules"
+    :activator="RulesButton"
+    :dialog-content="QuizeRules"
+  />
 </template>
 
 <style scoped>
