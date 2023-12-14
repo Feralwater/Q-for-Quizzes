@@ -42,7 +42,7 @@ const onTryAgain = () => {
                 Your total score is
               </h1>
               <h1 class="result__title_primary">
-                {{ score * 10 }}%
+                {{ score }}%
               </h1>
             </v-card-title>
             <v-card-subtitle class="text-center">

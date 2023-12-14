@@ -28,14 +28,14 @@ const router = createRouter({
         if (isQuizCompleted) {
           next();
         } else {
-          next({ name: '404' });
+          next({ name: 'NotFound' });
         }
       },
     },
     {
       path: "/:pathMatch(.*)*",
-      name: '404',
-      component: () => import('@/views/404View/404View.vue'),
+      name: 'NotFound',
+      component: () => import('@/views/NotFoundView/NotFoundView.vue'),
     },
   ],
 });

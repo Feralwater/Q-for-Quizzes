@@ -55,5 +55,5 @@ const { mdAndDown } = useDisplay();
 </template>
 
 <style scoped>
-@import '404View.scss';
+@import 'NotFoundView.scss';
 </style>

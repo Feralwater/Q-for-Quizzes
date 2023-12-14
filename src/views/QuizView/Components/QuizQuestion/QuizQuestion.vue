@@ -77,9 +77,8 @@ const { smAndDown, xs } = useDisplay();
       role="heading"
       aria-level="2"
       aria-live="polite"
-    >
-      {{ currentQuestion.question }}
-    </div>
+      v-html="currentQuestion.question"
+    />
 
     <v-divider
       role="separator"
