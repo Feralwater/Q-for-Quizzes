@@ -115,6 +115,7 @@ const startQuiz = () => {
 
     <v-card-actions>
       <v-btn
+        block
         role="button"
         color="primary"
         variant="outlined"
