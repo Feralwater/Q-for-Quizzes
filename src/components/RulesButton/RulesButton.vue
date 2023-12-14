@@ -1,5 +1,10 @@
 <script setup lang="ts">
-
+defineProps({
+  onClick: {
+    type: Function,
+    required: true,
+  },
+});
 </script>
 
 <template>
@@ -7,6 +12,7 @@
     color="primary"
     class="infoButton"
     icon
+    @click="onClick"
   >
     <v-icon
       color="lightTextColour"
