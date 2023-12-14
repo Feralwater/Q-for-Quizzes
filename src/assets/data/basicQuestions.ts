@@ -131,7 +131,18 @@
 //   },
 // ];
 
-export const basicQuestions = [
+interface Question {
+  id: number;
+  question: string;
+  answer: string[];
+  options: string[];
+  timeToAnswer: number;
+  points: number;
+}
+
+const style = 'style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"';
+
+export const basicQuestions:Question[] = [
   {
     id: 1,
     question: 'Which lifecycle hook in Vue 3 is called after the component has been mounted to the DOM?',
@@ -203,16 +214,16 @@ export const basicQuestions = [
   },
   {
     id: 6,
-    question: 'Evaluate this Vue 3 code snippet: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px">\n' +
-      '  <code>\n' +
-      '    &lt;script&gt;\n' +
-      '      import logo from "assets";\n' +
-      '    &lt;/script&gt;\n' +
-      '    &lt;template&gt;\n' +
-      '      &lt;img src="logo" /&gt;\n' +
-      '    &lt;/template&gt;\n' +
-      '  </code>\n' +
-      '</pre> Will this code work? If not, what is the correct way to fix it?',
+    question: `Evaluate this Vue 3 code snippet: <pre ${style}>
+       <code>
+        &lt;script&gt;
+           import logo from "assets";
+        &lt;/script&gt;
+        &lt;template&gt;
+           &lt;img src="logo" /&gt;
+        &lt;/template&gt;
+       </code>
+      </pre> Will this code work? If not, what is the correct way to fix it?`,
     answer: ['No', '<img :src="logo" />'],
     options: [
       'Yes, it will work',
@@ -222,34 +233,38 @@ export const basicQuestions = [
       'Yes, but the import statement should be import logo from "./assets/logo.png";',
       'No, the image tag should have a closing tag like <img src="logo"></img>',
     ],
-    timeToAnswer: 2220,
+    timeToAnswer: 60,
     points: 3,
   },
   {
     id: 7,
-    question: 'Review this code: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;button @click="count++"&gt;Increment&lt;/button&gt;</code></pre>. Assume `count` is a data property. Is this correct for incrementing a counter in Vue 3?',
+    question: `Review this code: <pre ${style}><code>&lt;button @click="count++"&gt;Increment&lt;/button&gt;</code></pre> Assume 'count' is a data property. Is this correct for incrementing a counter in Vue 3?`,
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
       'No, use v-on:click="() => count + 1"',
     ],
-    timeToAnswer: 15,
+    timeToAnswer: 60,
     points: 2,
   },
   {
     id: 8,
-    question: 'Is the following code correct for a computed property in Vue 3? <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>computed: { reversedText() { return this.text.split(\'\').reverse().join(\'\'); } }</code></pre>, assuming `text` is a reactive data property.',
+    question: `Is the following code correct for a computed property in Vue 3? <pre ${style}><code>computed: { 
+      reversedText() { 
+          return this.text.split('').reverse().join('');
+        }
+     }</code></pre> assuming 'text' is a reactive data property.`,
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
       'No, it should be a method, not computed',
     ],
-    timeToAnswer: 20,
+    timeToAnswer: 120,
     points: 3,
   },
   {
     id: 9,
-    question: 'Check this Vue 3 template syntax: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;div v-if="show"&gt;Welcome&lt;/div&gt;</code></pre>. If `show` is a reactive data property, is this syntax correct for conditional rendering?',
+    question: `Check this Vue 3 template syntax: <pre ${style}><code>&lt;div v-if="show"&gt;Welcome&lt;/div&gt;</code></pre> If 'show' is a reactive data property, is this syntax correct for conditional rendering?`,
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
@@ -260,7 +275,10 @@ export const basicQuestions = [
   },
   {
     id: 10,
-    question: 'Assess this code for a Vue 3 setup function: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>setup() { const count = ref(0); return { count }; }</code></pre>. Is this a correct implementation of the Composition API?',
+    question: `Assess this code for a Vue 3 setup function: <pre ${style}><code>setup() {
+    const count = ref(0);
+    return { count }; 
+    }</code></pre> Is this a correct implementation of the Composition API?`,
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
@@ -297,7 +315,7 @@ export const basicQuestions = [
   },
   {
     id: 13,
-    question: 'Assess this code for dynamic styling in Vue 3: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;div :style="{ color: isActive ? \'red\' : \'blue\' }"&gt;</code></pre>. Is this syntax correct?',
+    question: `Assess this code for dynamic styling in Vue 3: <pre ${style}><code>&lt;div :style="{ color: isActive ? 'red' : 'blue' }"&gt;</code></pre> Is this syntax correct?`,
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
@@ -308,7 +326,7 @@ export const basicQuestions = [
   },
   {
     id: 14,
-    question: 'Evaluate the Vue 3 script setup syntax: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;script setup&gt;</code></pre>. Does it correctly enable the Composition API in a component?',
+    question: `Evaluate the Vue 3 script setup syntax: <pre ${style}><code>&lt;script setup&gt;</code></pre> Does it correctly enable the Composition API in a component?`,
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
@@ -343,7 +361,7 @@ export const basicQuestions = [
   },
   {
     id: 17,
-    question: 'Correct this Vue 3 code for a watchEffect: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>watchEffect(() => { console.log(props.title); });</code></pre>. Assume `props` is not defined.',
+    question: `Correct this Vue 3 code for a watchEffect: <pre ${style}><code>watchEffect(() => { console.log(props.title); });</code></pre> Assume 'props' is not defined.`,
     answer: ['No', 'Use a reactive source or ref instead of props'],
     options: [
       'watchEffect(() => { console.log(props?.title); });',
@@ -368,7 +386,7 @@ export const basicQuestions = [
   },
   {
     id: 19,
-    question: 'Evaluate if this Vue 3 template syntax is correct for v-slot: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;template v-slot:header="{ item }"&gt;{{ item.title }}&lt;/template&gt;</code></pre>.',
+    question: `Evaluate if this Vue 3 template syntax is correct for v-slot: <pre ${style}><code>&lt;template v-slot:header="{ item }"&gt;{{ item.title }}&lt;/template&gt;</code></pre>`,
     answer: ['Yes, it\'s correct'],
     options: [
       'Yes, it\'s correct',
@@ -390,7 +408,11 @@ export const basicQuestions = [
   },
   {
     id: 21,
-    question: 'Identify the error in this Vue 3 method: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>methods: { increment() { this.counter += 1 } }</code></pre>, assuming `counter` is not defined in `data`.',
+    question: `Identify the error in this Vue 3 method: <pre ${style}><code>methods: { 
+      increment() {
+         this.counter += 1
+          } 
+    }</code></pre> assuming 'counter' is not defined in 'data'.`,
     answer: ['data() { return { counter: 0 } }, methods: { increment() { this.counter += 1 } }'],
     options: [
       'data() { counter: 0 }, methods: { increment() { this.counter += 1 } }',
@@ -415,7 +437,7 @@ export const basicQuestions = [
   },
   {
     id: 23,
-    question: 'Check if this is the correct way to declare a reactive object in Vue 3: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>const state = reactive({ count: 0 });</code></pre>.',
+    question: `Check if this is the correct way to declare a reactive object in Vue 3: <pre ${style}><code>const state = reactive({ count: 0 });</code></pre>`,
     answer: ['Yes', 'Correct way to declare a reactive object'],
     options: [
       'Yes\', \'Correct way to declare a reactive object',
@@ -437,7 +459,7 @@ export const basicQuestions = [
   },
   {
     id: 25,
-    question: 'Determine if this Vue 3 slot usage is correct: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;template #default="{ item }"&gt;{{ item.name }}&lt;/template&gt;</code></pre> in a child component.',
+    question: `Determine if this Vue 3 slot usage is correct: <pre ${style}><code>&lt;template #default="{ item }"&gt;{{ item.name }}&lt;/template&gt;</code></pre> in a child component.`,
     answer: ['Yes', 'Correct named slot usage with scope'],
     options: [
       'Yes\', \'Correct named slot usage with scope',
@@ -459,7 +481,7 @@ export const basicQuestions = [
   },
   {
     id: 27,
-    question: 'Verify if this syntax is correct for a Vue 3 template ref: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;div ref="myDiv"&gt;&lt;/div&gt;</code></pre> in the template section.',
+    question: `Verify if this syntax is correct for a Vue 3 template ref: <pre ${style}><code>&lt;div ref="myDiv"&gt;&lt;/div&gt;</code></pre> in the template section.`,
     answer: ['Yes', 'Correct usage of template ref'],
     options: [
       'Yes\', \'Correct usage of template ref',
@@ -481,7 +503,7 @@ export const basicQuestions = [
   },
   {
     id: 29,
-    question: 'Assess the correctness of this Vue 3 event handling: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;button @click="handleClick()"&gt;Click me&lt;/button&gt;</code></pre>, where `handleClick` is a method.',
+    question: `Assess the correctness of this Vue 3 event handling: <pre ${style}><code>&lt;button @click="handleClick()"&gt;Click me&lt;/button&gt;</code></pre> where 'handleClick' is a method.`,
     answer: ['Yes', 'Correct syntax for event handling'],
     options: [
       'Yes\', \'Correct syntax for event handling',
@@ -503,7 +525,7 @@ export const basicQuestions = [
   },
   {
     id: 31,
-    question: 'Is this the correct way to define a prop in Vue 3: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;script setup&gt; defineProps({ message: String }); &lt;/script&gt;</code></pre>?',
+    question: `Is this the correct way to define a prop in Vue 3: <pre ${style}><code>&lt;script setup&gt; defineProps({ message: String }); &lt;/script&gt;</code></pre>?`,
     answer: ['Yes', 'Correct way to define a prop in script setup'],
     options: [
       'Yes\', \'Correct way to define a prop in script setup',
@@ -525,7 +547,7 @@ export const basicQuestions = [
   },
   {
     id: 33,
-    question: 'Determine if this code correctly uses Vue 3\'s teleport feature: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;teleport to="#endOfBody"&gt;...&lt;/teleport&gt;</code></pre>.',
+    question: `Determine if this code correctly uses Vue 3's teleport feature: <pre ${style}><code>&lt;teleport to="#endOfBody"&gt;...&lt;/teleport&gt;</code></pre>`,
     answer: ['Yes', 'Correct use of teleport to move content'],
     options: [
       'Yes\', \'Correct use of teleport to move content',
@@ -569,7 +591,7 @@ export const basicQuestions = [
   },
   {
     id: 37,
-    question: 'Evaluate this Vue 3 code for filtering a list: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;li v-for="item in filteredList" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;</code></pre>, where `filteredList` is a computed property.',
+    question: `Evaluate this Vue 3 code for filtering a list: <pre ${style}><code>&lt;li v-for="item in filteredList" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;</code></pre> where 'filteredList' is a computed property.`,
     answer: ['Yes', 'Correct usage of v-for with a computed property'],
     options: [
       'Yes\', \'Correct usage of v-for with a computed property',
@@ -591,7 +613,7 @@ export const basicQuestions = [
   },
   {
     id: 39,
-    question: 'Is this the correct syntax for lazy-loading a component in Vue 3: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>const LazyComponent = defineAsyncComponent(() => import(\'./components/LazyComponent.vue\'));</code></pre>?',
+    question: `Is this the correct syntax for lazy-loading a component in Vue 3: <pre ${style}><code>const LazyComponent = defineAsyncComponent(() => import(\'./components/LazyComponent.vue\'));</code></pre>?`,
     answer: ['Yes', 'Correct syntax for lazy-loading a component'],
     options: [
       'Yes\', \'Correct syntax for lazy-loading a component',
@@ -613,7 +635,7 @@ export const basicQuestions = [
   },
   {
     id: 41,
-    question: 'Verify if this is a valid way to create a dynamic class binding in Vue 3: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;div :class="{ active: isActive }"&gt;&lt;/div&gt;</code></pre>, where `isActive` is a reactive property.',
+    question: `Verify if this is a valid way to create a dynamic class binding in Vue 3: <pre ${style}><code>&lt;div :class="{ active: isActive }"&gt;&lt;/div&gt;</code></pre> where 'isActive' is a reactive property.`,
     answer: ['Yes', 'Correct syntax for dynamic class binding'],
     options: [
       'Correct syntax for dynamic class binding',
@@ -676,7 +698,10 @@ export const basicQuestions = [
   },
   {
     id: 46,
-    question: 'Evaluate this Vue 3 setup: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>&lt;script setup&gt; import { ref } from \'vue\'; const isOpen = ref(false); &lt;/script&gt;</code></pre>. Is this correct for defining a reactive boolean?',
+    question: `Evaluate this Vue 3 setup: <pre ${style}><code>&lt;script setup&gt; 
+    import { ref } from 'vue'; 
+    const isOpen = ref(false);
+    &lt;/script&gt;</code></pre> Is this correct for defining a reactive boolean?`,
     answer: ['Yes', 'Correct use of ref to define a reactive boolean'],
     options: [
       'Yes\', \'Correct use of ref to define a reactive boolean',
@@ -728,7 +753,11 @@ export const basicQuestions = [
   },
   {
     id: 50,
-    question: 'Is this code correct for a Vue 3 custom directive to change text color: <pre style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"><code>app.directive(\'color\', { mounted(el, binding) { el.style.color = binding.value; }});</code></pre>?',
+    question: `Is this code correct for a Vue 3 custom directive to change text color: <pre ${style}><code>app.directive('color', {
+      mounted(el, binding) {
+         el.style.color = binding.value;
+           }
+        });</code></pre>?`,
     answer: ['Yes', 'Correct implementation of a custom directive for text color'],
     options: [
       'Yes\', \'Correct implementation of a custom directive for text color',
