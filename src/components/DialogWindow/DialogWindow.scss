@@ -1,0 +1,11 @@
+.dialog {
+  padding: .8rem 2.4rem 0 2.4rem;
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.6rem;
+    font-family: 'Jost', sans-serif;
+    color: var(--primary);
+    text-align: center;
+  }
+}

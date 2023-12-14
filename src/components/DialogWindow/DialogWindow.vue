@@ -18,25 +18,28 @@ defineProps({
 </script>
 
 <template>
-  <v-dialog width="500">
+  <v-dialog
+    width="500"
+  >
     <template #activator="{ props }">
       <component
         v-bind="props"
         :is="activator"
-        v-on="on"
       />
     </template>
 
     <template #default="{ isActive }">
-      <v-card :title="dialogTitle">
-        <v-card-text>
-          <component :is="dialogContent" />
-        </v-card-text>
+      <v-card class="dialog">
+        <v-card-title class="dialog__title">
+          {{ dialogTitle }}
+        </v-card-title>
+        <component :is="dialogContent" />
 
         <v-card-actions>
           <v-spacer />
 
           <v-btn
+            color="primary"
             text="Close Dialog"
             @click="isActive.value = false"
           />
