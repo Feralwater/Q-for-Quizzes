@@ -4,7 +4,7 @@ import { useDisplay } from 'vuetify';
 import confetti from '@/assets/images/confetti.svg';
 import router from '@/router';
 
-const { score, questionsAmount, correctAnswers } = useQuizScore();
+const { score, correctAnswers } = useQuizScore();
 
 const { xs } = useDisplay();
 
@@ -52,7 +52,7 @@ const onTryAgain = () => {
                   result__description__mobile: xs
                 }"
               >
-                {{ correctAnswers }} correct answers out of {{ questionsAmount }} questions
+                {{ correctAnswers }} correct answers
               </h2>
             </v-card-subtitle>
             <v-card-text class="text-center">
