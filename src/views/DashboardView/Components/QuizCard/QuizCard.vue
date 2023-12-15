@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import router from '@/router';
-import icon from '@/assets/images/logo.svg';
+import icon from '@/assets/images/logos/vueLogo.svg';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -29,6 +29,11 @@ const props = defineProps({
     required: true,
     default: 0,
   },
+  quizId: {
+    type: String,
+    required: true,
+    default: '',
+  },
 });
 
 const timeInHours = computed(() => {
@@ -41,6 +46,9 @@ const timeInHours = computed(() => {
 const startQuiz = () => {
   router.push({
     name: 'quiz',
+    params: {
+      quizId: props.quizId,
+    },
   });
 };
 </script>

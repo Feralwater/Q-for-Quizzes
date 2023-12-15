@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import logo from '@/assets/images/logo.svg';
+import logo from '@/assets/images/logos/vueLogo.svg';
 import { computed, ref, watch } from 'vue';
 import { useDisplay } from 'vuetify';
 import { Routers } from '@/router/Routers';

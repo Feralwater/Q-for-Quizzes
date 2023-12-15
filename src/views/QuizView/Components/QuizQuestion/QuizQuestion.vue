@@ -3,15 +3,7 @@ import RadioAnswers from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.
 import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
 import { type PropType } from 'vue';
 import { useDisplay } from 'vuetify';
-
-interface Question {
-  id: number;
-  question: string;
-  options: string[];
-  answer: string[];
-  points: number;
-  timeToAnswer: number;
-}
+import type { QuestionType } from '@/views/QuizView/hooks/useQuizQuestion';
 
 defineProps({
   currentQuestionNumber: {
@@ -20,7 +12,7 @@ defineProps({
     default: 0,
   },
   currentQuestion: {
-    type: Object as PropType<Question>,
+    type: Object as PropType<QuestionType>,
     required: true,
     default: () => ({}),
   },

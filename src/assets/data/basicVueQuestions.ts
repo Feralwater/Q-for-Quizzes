@@ -1,15 +1,6 @@
-interface Question {
-  id: number;
-  question: string;
-  answer: string[];
-  options: string[];
-  timeToAnswer: number;
-  points: number;
-}
-
 const style = 'style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"';
 
-export const basicQuestions: Question[] = [
+export const basicVueQuestions = [
   {
     id: 1,
     question: 'Which lifecycle hook in Vue 3 is called after the component has been mounted to the DOM?',

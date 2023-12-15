@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import CountDown from '@/components/CountDown/CountDown.vue';
-import { basicQuestions } from '@/assets/data/basicQuestions';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import QuizQuestion from '@/views/QuizView/Components/QuizQuestion/QuizQuestion.vue';
 import { useQuizQuestion } from '@/views/QuizView/hooks/useQuizQuestion';
@@ -18,6 +17,7 @@ const {
   updateSelectedAnswers,
   progress,
   handleCountdownFinished,
+  questionsAmount,
 } = useQuizQuestion();
 
 const { mdAndDown } = useDisplay();
@@ -54,7 +54,7 @@ const { mdAndDown } = useDisplay();
       <quiz-question
         :current-question-number="currentQuestionNumber"
         :current-question="currentQuestion"
-        :total-questions="basicQuestions.length"
+        :total-questions="questionsAmount"
         :answer-selected="answerSelected"
         :answers-selected="answersSelected"
         :update-selected-answer="updateSelectedAnswer"
