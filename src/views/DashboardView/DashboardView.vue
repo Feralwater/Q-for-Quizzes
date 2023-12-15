@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import vueIcon from '@/assets/images/logo.svg';
+import vueIcon from '@/assets/images/logos/vueLogo.svg';
 import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
 import RulesButton from '@/views/DashboardView/Components/RulesButton/RulesButton.vue';
 import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';

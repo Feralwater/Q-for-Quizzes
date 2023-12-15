@@ -1,4 +1,4 @@
-import { basicQuestions } from '@/assets/data/basicQuestions';
+import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { computed, onMounted, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import router from '@/router';
@@ -9,12 +9,12 @@ export const useQuizQuestion = () => {
   const TIME_UP_VALUE = -1;
 
   const currentQuestionIndex = ref(0);
-  const currentQuestion = computed(() => basicQuestions[currentQuestionIndex.value]);
+  const currentQuestion = computed(() => basicVueQuestions[currentQuestionIndex.value]);
   const calculateProgress = (current: number, total: number) => (current / total) * 100;
-  const progress = computed(() => calculateProgress(currentQuestionIndex.value, basicQuestions.length));
+  const progress = computed(() => calculateProgress(currentQuestionIndex.value, basicVueQuestions.length));
   const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
   const { incrementScore, setQuizCompleted, setQuestionsAmount } = useQuizScore();
-  const shouldShowNextButton = computed(() => basicQuestions.length - 1 !== currentQuestionIndex.value);
+  const shouldShowNextButton = computed(() => basicVueQuestions.length - 1 !== currentQuestionIndex.value);
   const answerSelected = ref('');
   const answersSelected = ref<string[]>([]);
 
@@ -63,7 +63,7 @@ export const useQuizQuestion = () => {
   };
   
   onMounted(() => {
-    setQuestionsAmount(basicQuestions.length);
+    setQuestionsAmount(basicVueQuestions.length);
   });
 
   return {
