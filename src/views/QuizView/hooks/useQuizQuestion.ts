@@ -8,11 +8,13 @@ import { useRoute } from 'vue-router';
 import router from '@/router';
 
 type QuizKeys = 'vue-basics' | 'pinia';
-interface QuestionType {
+export interface QuestionType {
+  id: number;
   question: string;
   options: string[];
   answer: string[];
   points: number;
+  timeToAnswer: number;
 }
 
 const questions: Record<QuizKeys, QuestionType[]> = {
