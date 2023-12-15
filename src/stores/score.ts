@@ -3,7 +3,6 @@ import { defineStore } from 'pinia';
 
 export const useQuizScore = defineStore('score', () => {
   const score = ref<number>(0);
-  const questionsAmount = ref<number>(0);
   const correctAnswers = ref<number>(0);
   const isQuizCompleted = ref<boolean>(false);
 
@@ -18,10 +17,6 @@ export const useQuizScore = defineStore('score', () => {
  const setQuizCompleted = () => {
     isQuizCompleted.value = true;
  };
-
- const setQuestionsAmount = (amount: number) => {
-    questionsAmount.value = amount;
- };
  
  watch(score, () => {
     correctAnswers.value += 1;
@@ -33,8 +28,6 @@ export const useQuizScore = defineStore('score', () => {
     resetScore,
     isQuizCompleted,
     setQuizCompleted,
-    questionsAmount,
     correctAnswers,
-    setQuestionsAmount,
   };
 });

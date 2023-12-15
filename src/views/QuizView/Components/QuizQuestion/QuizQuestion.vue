@@ -3,6 +3,7 @@ import RadioAnswers from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.
 import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
 import { type PropType } from 'vue';
 import { useDisplay } from 'vuetify';
+import { useQuizScore } from '@/stores/score'
 
 interface Question {
   id: number;
