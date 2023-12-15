@@ -1,38 +1,27 @@
 <script setup lang="ts">
-import vueIcon from '@/assets/images/logos/vueLogo.svg';
 import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
 import RulesButton from '@/views/DashboardView/Components/RulesButton/RulesButton.vue';
 import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
 import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
+import { quizzes } from '@/assets/data/quizzes';
 </script>
 
 <template>
   <v-container>
     <v-row>
       <v-col
+        v-for="quiz in quizzes"
+        :key="quiz.id"
         cols="12"
         md="3"
       >
         <quiz-card
-          :quiz-icon="vueIcon"
-          quiz-title="Vue.js basics"
-          quiz-description="Test your knowledge of Vue.js fundamentals"
-          :quiz-time="190"
-          :quiz-questions-amount="10"
-          quiz-id="vue-basics"
-        />
-      </v-col>
-      <v-col
-        cols="12"
-        md="3"
-      >
-        <quiz-card
-          :quiz-icon="vueIcon"
-          quiz-title="Vue.js basics"
-          quiz-description="Test your knowledge of Vue.js fundamentals"
-          :quiz-time="190"
-          :quiz-questions-amount="10"
-          quiz-id="pinia"
+          :quiz-icon="quiz.image"
+          :quiz-title="quiz.name"
+          :quiz-description="quiz.description"
+          :quiz-time="quiz.timeToComplete"
+          :quiz-questions-amount="quiz.questionsAmount"
+          :quiz-id="quiz.id"
         />
       </v-col>
     </v-row>
