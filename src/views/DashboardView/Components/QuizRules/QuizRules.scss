@@ -1,9 +1,12 @@
 .rules {
   list-style: none;
+  font-family: 'Jost', sans-serif;
 
   &__title {
     color: var(--text-color);
-    font: 900 1.2em 'Jost';
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Jost', sans-serif;
     margin-bottom: .5rem;
   }
 
@@ -33,7 +36,7 @@
       align-items: flex-end;
       box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
       content: counter(gradient-counter);
-      color: var(--text-color);
+      color: var(--light-text-color);
       display: flex;
       font: 900 1.5em 'Jost';
       justify-content: flex-end;
