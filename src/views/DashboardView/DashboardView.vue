@@ -7,25 +7,27 @@ import { quizzes } from '@/assets/data/quizzes';
 </script>
 
 <template>
-  <v-container>
-    <v-row>
-      <v-col
-        v-for="quiz in quizzes"
-        :key="quiz.id"
-        cols="12"
-        md="3"
-      >
-        <quiz-card
-          :quiz-icon="quiz.image"
-          :quiz-title="quiz.name"
-          :quiz-description="quiz.description"
-          :quiz-time="quiz.timeToComplete"
-          :quiz-questions-amount="quiz.questionsAmount"
-          :quiz-id="quiz.id"
-        />
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="dashboard">
+    <v-container>
+      <v-row>
+        <v-col
+          v-for="quiz in quizzes"
+          :key="quiz.id"
+          cols="12"
+          md="3"
+        >
+          <quiz-card
+            :quiz-icon="quiz.image"
+            :quiz-title="quiz.name"
+            :quiz-description="quiz.description"
+            :quiz-time="quiz.timeToComplete"
+            :quiz-questions-amount="quiz.questionsAmount"
+            :quiz-id="quiz.id"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
   <dialog-window
     dialog-title="Quiz Rules"
     :activator="RulesButton"

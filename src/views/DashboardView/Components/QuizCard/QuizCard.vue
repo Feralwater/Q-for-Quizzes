@@ -91,45 +91,47 @@ const startQuiz = () => {
 
     <v-divider class="mx-4 mb-1" />
 
-    <v-card-title class="card__text">
-      You will have:
-    </v-card-title>
+    <div class="pa-2">
+      <v-row>
+        <v-col cols="6">
+          <v-card-subtitle class="card__text">
+            <v-icon
+              color="primary"
+              icon="mdi-clock-outline"
+              size="small"
+            />
+            <span class="ms-1">
+              {{ timeInHours }}
+            </span>
+          </v-card-subtitle>
+        </v-col>
 
-    <div class="px-4">
-      <v-chip-group>
-        <v-chip class="card__chip">
-          <v-icon
-            color="primary"
-            icon="mdi-clock-outline"
-            size="small"
-          />
-          <span class="card__chip__text card__text">
-            {{ timeInHours }}
-          </span>
-        </v-chip>
-
-        <v-chip class="card__chip">
-          <v-icon
-            color="primary"
-            icon="mdi-help-circle-outline"
-            size="small"
-          />
-          <span class="card__chip__text card__text">
-            {{ quizQuestionsAmount }} Questions
-          </span>
-        </v-chip>
-      </v-chip-group>
+        <v-col cols="6">
+          <v-card-subtitle class="card__text">
+            <v-icon
+              color="primary"
+              icon="mdi-file-question-outline"
+              size="small"
+            />
+            <span class="ms-1">
+              {{ quizQuestionsAmount }} questions
+            </span>
+          </v-card-subtitle>
+        </v-col>
+      </v-row>
     </div>
 
-    <v-card-actions>
+    <v-card-actions class="ma-2">
       <v-btn
         block
         role="button"
         color="primary"
-        variant="outlined"
+        variant="flat"
         @click="startQuiz"
       >
-        Start Quiz
+        <span class="card__text_light">
+          Start Quiz
+        </span>
       </v-btn>
     </v-card-actions>
   </v-card>
