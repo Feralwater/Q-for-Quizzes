@@ -1,52 +1,22 @@
-# .
+# Q for Quizzes
 
-This template should help get you started developing with Vue 3 in Vite.
+"Q for Quizzes" is a quiz application for developers looking to test their knowledge on various development topics. "Q for Quizzes" is built with Vue 3, and provides an interactive and timer-based quiz functionality for a unique and fun learning experience.
 
-## Recommended IDE Setup
+## Live Demo
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+You can access the live demo of the application [here](https://vuejs-quiz-khaki.vercel.app/).
 
-## Type Support for `.vue` Imports in TS
+## Features
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- Multiple quizzes on various development topics.
+- Timer-based quizzes to challenge the user's speed and accuracy.
+- Immediate feedback with scores.
+- Downloadable certificates for successfully completing quizzes.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Usage
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Choose a quiz from the available options, solve the quiz questions within the specified time limit, and get immediate feedback on your performance. You have the option to download a certificate upon successful completion of the quiz.
 
-## Customize configuration
+## Contributing
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Contributions are appreciated. For bugs, feature requests, etc. please open an issue or directly create a pull request.
