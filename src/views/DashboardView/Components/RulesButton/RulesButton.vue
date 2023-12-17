@@ -1,13 +1,14 @@
 <template>
   <v-btn
     color="primary"
+    variant="outlined"
     class="infoButton"
     icon
   >
     <v-icon
       color="lightTextColour"
       icon="mdi-book-open-page-variant"
-      size="small"
+      size="50"
     />
   </v-btn>
 </template>
