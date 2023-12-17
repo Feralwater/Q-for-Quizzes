@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue'
-import RulesButton from '@/views/DashboardView/Components/RulesButton/RulesButton.vue'
-import DialogWindow from '@/components/DialogWindow/DialogWindow.vue'
-import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue'
-import { quizzes } from '@/assets/data/quizzes'
+import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
+import RulesButton from '@/views/DashboardView/Components/RulesButton/RulesButton.vue';
+import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
+import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
+import { quizzes } from '@/assets/data/quizzes';
 </script>
 
 <template>
