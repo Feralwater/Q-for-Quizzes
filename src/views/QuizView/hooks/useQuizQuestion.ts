@@ -6,24 +6,19 @@ import { Routers } from '@/router/Routers';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
 import { useRoute } from 'vue-router';
 import router from '@/router';
+import type { QuizKeys } from '@/types/quizKeys';
+import type { QuizQuestion } from '@/types/QuizQuestion';
+import { decryptAnswer } from '@/utils/crypt';
 
-type QuizKeys = 'vue-basics' | 'pinia';
-export interface QuestionType {
-  id: number;
-  question: string;
-  options: string[];
-  answer: number[];
-  points: number;
-  timeToAnswer: number;
-}
 
-const questions: Record<QuizKeys, QuestionType[]> = {
+const questions: Record<QuizKeys, QuizQuestion[]> = {
   'vue-basics': basicVueQuestions,
   'pinia': piniaQuestions,
 };
 
+const TIME_UP_VALUE = -1;
+
 export const useQuizQuestion = () => {
-  const TIME_UP_VALUE = -1;
   const route = useRoute();
   const currentQuiz = route.params.quizId as QuizKeys;
   const currentQuestions = questions[currentQuiz];
@@ -62,10 +57,11 @@ export const useQuizQuestion = () => {
 
   const calculateScore = () => {
     const isMultiselect = currentQuestion.value.answer.length > 1;
+    const decryptedAnswer = decryptAnswer(currentQuestion.value.answer);
 
     const isCorrect = isMultiselect
-      ? currentQuestion.value.answer.every(answer => answersSelected.value.includes(answer))
-      : currentQuestion.value.answer[0] === answerSelected.value;
+      ? decryptedAnswer.every(answer => answersSelected.value.includes(answer))
+      : decryptedAnswer[0] === answerSelected.value;
 
     if (isCorrect) {
       incrementScore(currentQuestion.value.points);

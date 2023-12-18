@@ -2,9 +2,9 @@ import vueLogo from '@/assets/images/logos/vueLogo.svg';
 import piniaLogo from '@/assets/images/logos/piniaLogo.svg';
 import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
-import type { QuestionType } from '@/views/QuizView/hooks/useQuizQuestion';
+import type { QuizQuestion } from '@/types/QuizQuestion';
 
-const calculateQuizTime = (questions: QuestionType[]) => questions.reduce((acc, curr) => acc + curr.timeToAnswer, 0);
+const calculateQuizTime = (questions: QuizQuestion[]) => questions.reduce((acc, curr) => acc + curr.timeToAnswer, 0);
 
 export const quizzes = [
   {

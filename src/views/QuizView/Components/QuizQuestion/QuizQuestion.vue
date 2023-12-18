@@ -2,8 +2,8 @@
 import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
 import { type PropType } from 'vue';
 import { useDisplay } from 'vuetify';
-import type { QuestionType } from '@/views/QuizView/hooks/useQuizQuestion';
 import SingleAnswer from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
+import type { QuizQuestion } from '@/types/QuizQuestion';
 
 defineProps({
   currentQuestionNumber: {
@@ -12,7 +12,7 @@ defineProps({
     default: 0,
   },
   currentQuestion: {
-    type: Object as PropType<QuestionType>,
+    type: Object as PropType<QuizQuestion>,
     required: true,
     default: () => ({}),
   },
