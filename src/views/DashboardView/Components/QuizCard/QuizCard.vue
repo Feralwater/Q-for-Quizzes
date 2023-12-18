@@ -2,6 +2,7 @@
 import router from '@/router';
 import icon from '@/assets/images/logos/vueLogo.svg';
 import { computed } from 'vue';
+import { useDisplay } from 'vuetify'
 
 const props = defineProps({
   quizIcon: {
@@ -51,6 +52,8 @@ const startQuiz = () => {
     },
   });
 };
+
+const { xs } = useDisplay();
 </script>
 
 <template>
@@ -59,8 +62,8 @@ const startQuiz = () => {
     aria-label="Quiz Card"
     aria-labelledby="quiz-title"
     style="overflow: initial; z-index: initial"
-    class="mx-auto my-12 card"
-    max-width="374"
+    class="card"
+    :width="xs ? '300' : '400'"
   >
     <div class="card__img">
       <v-img
