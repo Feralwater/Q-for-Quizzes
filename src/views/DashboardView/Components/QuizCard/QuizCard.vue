@@ -59,7 +59,7 @@ const startQuiz = () => {
     aria-label="Quiz Card"
     aria-labelledby="quiz-title"
     style="overflow: initial; z-index: initial"
-    class="mx-auto my-12 card"
+    class="card"
     max-width="374"
   >
     <div class="card__img">

@@ -4,19 +4,32 @@ import RulesButton from '@/views/DashboardView/Components/RulesButton/RulesButto
 import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
 import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
 import { quizzes } from '@/assets/data/quizzes';
+import { useDisplay } from 'vuetify';
+
+const { mdAndDown } = useDisplay();
 </script>
 
 <template>
   <div class="dashboard__container">
-    <header class="header">
+    <header
+      :class="{
+        header: true,
+        header__mobile: mdAndDown,
+      }"
+    >
       <b>Q</b>
       <span>for</span>
       <span><b>Q</b>uizzes</span>
     </header>
 
-    <div class="dashboard">
+    <div
+      :class="{
+        dashboard: true,
+        dashboard__mobile: mdAndDown,
+      }"
+    >
       <v-container>
-        <v-row>
+        <v-row justify="center">
           <v-col
             v-for="quiz in quizzes"
             :key="quiz.id"
