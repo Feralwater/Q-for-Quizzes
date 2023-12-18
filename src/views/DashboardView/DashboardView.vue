@@ -33,8 +33,7 @@ const { mdAndDown } = useDisplay();
           <v-col
             v-for="quiz in quizzes"
             :key="quiz.id"
-            cols="12"
-            md="3"
+            class="d-flex justify-center ma-6"
           >
             <quiz-card
               :quiz-icon="quiz.image"
