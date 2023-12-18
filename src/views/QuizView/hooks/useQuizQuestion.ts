@@ -78,6 +78,11 @@ export const useQuizQuestion = () => {
 
   const updateSelectedAnswers = (option: number | null) => {
 
+    if (option === null) {
+      answersSelected.value = [];
+      return;
+    }
+
     if (answersSelected.value.includes(option)) {
       answersSelected.value = answersSelected.value.filter((answer) => answer !== option);
       return;

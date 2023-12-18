@@ -89,7 +89,7 @@ const { smAndDown, xs } = useDisplay();
       :options="currentQuestion.options"
       :selected-answers="answersSelected"
       aria-label="Quiz answers options"
-      @update:selected-answers="updateSelectedAnswers($event)"
+      @update:selected-answers="updateSelectedAnswers(currentQuestion.options.indexOf($event))"
     />
   </div>
 
