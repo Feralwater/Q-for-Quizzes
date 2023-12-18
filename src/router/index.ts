@@ -33,7 +33,12 @@ const router = createRouter({
       },
     },
     {
-      path: "/:pathMatch(.*)*",
+      path: Routers.Profile,
+      name: 'profile',
+      component: () => import('@/views/ProfileView/ProfileView.vue'),
+    },
+    {
+      path: Routers.PageNotFound,
       name: 'NotFound',
       component: () => import('@/views/NotFoundView/NotFoundView.vue'),
     },

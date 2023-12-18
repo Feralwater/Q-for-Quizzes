@@ -13,6 +13,12 @@ const onTryAgain = () => {
     name:'dashboard',
   });
 };
+
+const onGoToProfile = () => {
+  router.push({
+    name:'profile',
+  });
+};
 </script>
 
 <template>
@@ -67,7 +73,7 @@ const onTryAgain = () => {
               </v-btn>
               <v-btn
                 color="primary"
-                disabled
+                @click="onGoToProfile"
               >
                 My profile
               </v-btn>

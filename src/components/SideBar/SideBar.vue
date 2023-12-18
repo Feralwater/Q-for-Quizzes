@@ -53,6 +53,13 @@ watch(mdAndDown, (newVal) => {
             :href="Routers.Dashboard"
             title="Back to Dashboard"
           />
+          <v-list-item
+            class="sidebar__item"
+            link
+            prepend-icon="mdi-account"
+            :href="Routers.Profile"
+            title="Go to My Profile"
+          />
         </v-list>
         <div class="sidebar__footer">
           {{ roundProgress }}% completed
