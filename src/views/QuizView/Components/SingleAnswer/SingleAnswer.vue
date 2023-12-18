@@ -8,9 +8,9 @@ defineProps({
     default: () => [],
   },
   selectedAnswer: {
-    type: String,
+    type: Number || null,
     required: true,
-    default: '',
+    default: null,
   },
 });
 
@@ -38,10 +38,10 @@ const handleAnswerChange = (option: string) => {
         type="radio"
         name="answerOption"
         :value="option"
-        :checked="option === selectedAnswer"
+        :checked="index === selectedAnswer"
         required
         role="radio"
-        :aria-checked="option === selectedAnswer ? 'true' : 'false'"
+        :aria-checked="index === selectedAnswer ? 'true' : 'false'"
         aria-labelledby="answersLabel"
         @change="handleAnswerChange(option)"
       >

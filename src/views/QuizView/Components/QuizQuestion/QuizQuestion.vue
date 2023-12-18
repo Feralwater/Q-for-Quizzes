@@ -22,22 +22,22 @@ defineProps({
     default: 0,
   },
   answerSelected: {
-    type: String,
+    type: Number || null,
     required: true,
-    default: '',
+    default: null,
   },
   answersSelected: {
-    type: Array as PropType<string[]>,
+    type: Array as PropType<number[]>,
     required: true,
     default: () => [],
   },
   updateSelectedAnswer: {
-    type: Function as PropType<(option: string) => void>,
+    type: Function as PropType<(option: number | null) => void>,
     required: true,
     default: () => {},
   },
   updateSelectedAnswers: {
-    type: Function as PropType<(option: string) => void>,
+    type: Function as PropType<(option: number | null) => void>,
     required: true,
     default: () => {},
   },
@@ -82,7 +82,7 @@ const { smAndDown, xs } = useDisplay();
       :options="currentQuestion.options"
       :selected-answer="answerSelected"
       aria-label="Quiz answers options"
-      @update:selected-answer="updateSelectedAnswer($event)"
+      @update:selected-answer="updateSelectedAnswer(currentQuestion.options.indexOf($event))"
     />
     <multiple-answers
       v-else

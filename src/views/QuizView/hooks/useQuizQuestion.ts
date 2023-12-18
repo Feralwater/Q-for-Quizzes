@@ -12,7 +12,7 @@ export interface QuestionType {
   id: number;
   question: string;
   options: string[];
-  answer: string[];
+  answer: number[];
   points: number;
   timeToAnswer: number;
 }
@@ -35,14 +35,14 @@ export const useQuizQuestion = () => {
   const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
   const { incrementScore, setQuizCompleted } = useQuizScore();
   const shouldShowNextButton = computed(() => currentQuestions.length - 1 !== currentQuestionIndex.value);
-  const answerSelected = ref('');
-  const answersSelected = ref<string[]>([]);
+  const answerSelected = ref<number | null>(null);
+  const answersSelected = ref<number[]>([]);
 
   const onNextQuestion = () => {
     calculateScore();
 
     if (shouldShowNextButton.value) {
-      answerSelected.value = '';
+      answerSelected.value = null;
       answersSelected.value = [];
       currentQuestionIndex.value++;
       return;
@@ -61,20 +61,23 @@ export const useQuizQuestion = () => {
   useVisibilityChange(onNextQuestion);
 
   const calculateScore = () => {
-    const answerIsMultiselect = currentQuestion.value.answer.length > 1;
-    const allAnswersSelected = currentQuestion.value.answer.every(answer => answersSelected.value.includes(answer));
-    const answerIsCorrect = currentQuestion.value.answer[0] === answerSelected.value;
+    const isMultiselect = currentQuestion.value.answer.length > 1;
 
-    if (answerIsMultiselect && allAnswersSelected || !answerIsMultiselect && answerIsCorrect) {
+    const isCorrect = isMultiselect
+      ? currentQuestion.value.answer.every(answer => answersSelected.value.includes(answer))
+      : currentQuestion.value.answer[0] === answerSelected.value;
+
+    if (isCorrect) {
       incrementScore(currentQuestion.value.points);
     }
   };
 
-  const updateSelectedAnswer = (option: string) => {
+  const updateSelectedAnswer = (option: number | null) => {
     answerSelected.value = option;
   };
 
-  const updateSelectedAnswers = (option: string) => {
+  const updateSelectedAnswers = (option: number | null) => {
+
     if (answersSelected.value.includes(option)) {
       answersSelected.value = answersSelected.value.filter((answer) => answer !== option);
       return;
