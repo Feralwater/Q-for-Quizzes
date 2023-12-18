@@ -8,8 +8,8 @@ defineProps({
     default: () => [],
   },
   selectedAnswer: {
-    type: Number || null,
-    required: true,
+    type: Number as PropType<number | null>,
+    required: false,
     default: null,
   },
 });

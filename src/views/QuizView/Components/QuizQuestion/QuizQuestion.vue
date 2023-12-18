@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RadioAnswers from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
 import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
 import { type PropType } from 'vue';
 import { useDisplay } from 'vuetify';
 import type { QuestionType } from '@/views/QuizView/hooks/useQuizQuestion';
+import SingleAnswer from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
 
 defineProps({
   currentQuestionNumber: {
@@ -22,8 +22,8 @@ defineProps({
     default: 0,
   },
   answerSelected: {
-    type: Number || null,
-    required: true,
+    type: Number as PropType<number | null>,
+    required: false,
     default: null,
   },
   answersSelected: {
@@ -77,7 +77,7 @@ const { smAndDown, xs } = useDisplay();
       color="grey"
     />
 
-    <radio-answers
+    <single-answer
       v-if="currentQuestion.answer.length === 1"
       :options="currentQuestion.options"
       :selected-answer="answerSelected"
