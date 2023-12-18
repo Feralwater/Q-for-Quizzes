@@ -6,7 +6,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 1,
     question: 'Which lifecycle hook in Vue 3 is called after the component has been mounted to the DOM?',
-    answer: [1],
+    answer: [14],
     options: [
       'created',
       'mounted',
@@ -19,7 +19,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 2,
     question: 'Which options are used for creating reactive computed properties in Vue 3?',
-    answer: [1],
+    answer: [14],
     options: [
       'methods',
       'computed',
@@ -32,7 +32,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 3,
     question: 'In Vue 3, which directives are used for conditional rendering?',
-    answer: [0, 3, 4],
+    answer: [5, 9, 1],
     options: [
       'v-if',
       'v-for',
@@ -46,7 +46,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 4,
     question: 'What are the essential features of the Composition API in Vue 3?',
-    answer: [1, 2, 3],
+    answer: [14, 16, 9],
     options: [
       'data object',
       'setup function',
@@ -60,7 +60,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 5,
     question: 'Which features are new or updated in Vue 3 compared to Vue 2?',
-    answer: [0, 3, 4, 5],
+    answer: [5, 9, 1, 0],
     options: [
       'Composition API',
       'Vue Router',
@@ -84,7 +84,7 @@ export const basicVueQuestions:QuizQuestion[] = [
         &lt;/template&gt;
        </code>
       </pre> Will this code work? If not, what is the correct way to fix it?`,
-    answer: [1],
+    answer: [14],
     options: [
       'Yes, it will work',
       'No, <img :src="logo" alt="logo" />',
@@ -98,7 +98,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 7,
     question: `Review this code: <pre ${style}><code>&lt;button @click="count++"&gt;Increment&lt;/button&gt;</code></pre> Assume 'count' is a data property. Is this correct for incrementing a counter in Vue 3?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, it\'s correct',
       'No, use v-on:click="() => count + 1"',
@@ -115,7 +115,7 @@ export const basicVueQuestions:QuizQuestion[] = [
           return this.text.split('').reverse().join('');
         }
      }</code></pre> assuming 'text' is a reactive data property.`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, it\'s correct',
       'No, it should be a method, not computed',
@@ -128,7 +128,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 9,
     question: `Check this Vue 3 template syntax: <pre ${style}><code>&lt;div v-if="show"&gt;Welcome&lt;/div&gt;</code></pre> If 'show' is a reactive data property, is this syntax correct for conditional rendering?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, it\'s correct',
       'No, use v-show="show"',
@@ -144,7 +144,7 @@ export const basicVueQuestions:QuizQuestion[] = [
     const count = ref(0);
     return { count };
     }</code></pre> Is this a correct implementation of the Composition API?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, it\'s correct',
       'No, count should be a reactive object',
@@ -157,7 +157,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 11,
     question: 'What does the `v-model` directive do in Vue 3?',
-    answer: [1],
+    answer: [14],
     options: [
       'Updates the content of an HTML element.',
       'Creates a two-way binding on an input or a form element.',
@@ -170,7 +170,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 12,
     question: 'In Vue 3, how can you watch for changes in a reactive property?',
-    answer: [1],
+    answer: [14],
     options: [
       'Using the onUpdated lifecycle hook.',
       'Using the watch or watchEffect function.',
@@ -183,7 +183,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 13,
     question: `Assess this code for dynamic styling in Vue 3: <pre ${style}><code>&lt;div :style="{ color: isActive ? 'red' : 'blue' }"&gt;</code></pre> Is this syntax correct?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, it\'s correct',
       'No, use v-bind::style',
@@ -196,7 +196,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 14,
     question: `Evaluate the Vue 3 script setup syntax: <pre ${style}><code>&lt;script setup&gt;</code></pre> Does it correctly enable the Composition API in a component?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, it\'s correct',
       'No, additional imports are needed',
@@ -209,7 +209,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 15,
     question: 'In Vue 3, what is the purpose of the `ref` function from the Composition API?',
-    answer: [1],
+    answer: [14],
     options: [
       'To reference a DOM element.',
       'To create a reactive reference.',
@@ -222,7 +222,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 16,
     question: 'Is the Vue 3 Composition API a replacement for the Options API?',
-    answer: [1],
+    answer: [14],
     options: [
       'Yes, it replaces the Options API',
       'No, it\'s an alternative, not a replacement',
@@ -233,7 +233,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 17,
     question: `Correct this Vue 3 code for a watchEffect: <pre ${style}><code>watchEffect(() => { console.log(props.title); });</code></pre> Assume 'props' is not defined.`,
-    answer: [1],
+    answer: [14],
     options: [
       'watchEffect(() => { console.log(props?.title); });',
       'const props = ref({ title: \'YourTitle\' }); watchEffect(() => { console.log(props.value.title); });',
@@ -247,7 +247,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 18,
     question: 'Can the Vue Router be used for dynamic route matching in Vue 3?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, Vue Router supports dynamic route matching',
       'No, Vue Router does not support dynamic routes',
@@ -258,7 +258,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 19,
     question: `Evaluate if this Vue 3 template syntax is correct for v-slot: <pre ${style}><code>&lt;template v-slot:header="{ item }"&gt;{{ item.title }}&lt;/template&gt;</code></pre>`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, it\'s correct',
       'No, use slot-scope instead of v-slot',
@@ -270,7 +270,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 20,
     question: 'Does Vue 3 support TypeScript out of the box?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, Vue 3 has built-in TypeScript support',
       'No, TypeScript support must be added separately',
@@ -285,7 +285,7 @@ export const basicVueQuestions:QuizQuestion[] = [
          this.counter += 1
           }
     }</code></pre> assuming 'counter' is not defined in 'data'.`,
-    answer: [3],
+    answer: [9],
     options: [
       'data() { counter: 0 }, methods: { increment() { this.counter += 1 } }',
       'data: { counter: 0 }, methods: { increment() { this.counter += 1 } }',
@@ -299,7 +299,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 22,
     question: 'Can the `provide` and `inject` functions be used for dependency injection in Vue 3?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, provide and inject are used for dependency injection',
       'No, provide and inject are not part of Vue 3',
@@ -310,7 +310,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 23,
     question: `Check if this is the correct way to declare a reactive object in Vue 3: <pre ${style}><code>const state = reactive({ count: 0 });</code></pre>`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct way to declare a reactive object',
       'No, use createRefObj instead of reactive',
@@ -322,7 +322,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 24,
     question: 'Is the `v-for` directive used in Vue 3 for rendering a list of items?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, v-for is used for list rendering',
       'No, v-model is used for list rendering',
@@ -337,7 +337,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 25,
     question: `Determine if this Vue 3 slot usage is correct: <pre ${style}><code>&lt;template #default="{ item }"&gt;{{ item.name }}&lt;/template&gt;</code></pre> in a child component.`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct named slot usage with scope',
       'No, use v-slot instead of #',
@@ -350,7 +350,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 26,
     question: 'Define components in VueJS.',
-    answer: [0],
+    answer: [5],
     options: [
       'Modular Vue instances designed for reusability.',
       'JavaScript functions that structure HTML elements.',
@@ -363,7 +363,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 27,
     question: `Verify if this syntax is correct for a Vue 3 template ref: <pre ${style}><code>&lt;div ref="myDiv"&gt;&lt;/div&gt;</code></pre> in the template section.`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct usage of template ref',
       'No, use v-ref instead of ref',
@@ -375,7 +375,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 28,
     question: 'Can you use the `v-model` directive on custom components in Vue 3?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, v-model can be used on custom components',
       'No, v-model is only for native HTML elements',
@@ -386,7 +386,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 29,
     question: 'How can components be created in Vue?',
-    answer: [2, 3],
+    answer: [16, 9],
     options: [
       'Utilizing the newComponent() method.',
       'Declaring a Vue instance with Vue.createComponent().',
@@ -399,7 +399,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 30,
     question: 'Is the `setup` function in Vue 3\'s Composition API called before or after the component\'s data properties are reactive?',
-    answer: [0],
+    answer: [5],
     options: [
       'Before, setup function is called before data properties become reactive',
       'After, setup function is called after data properties become reactive',
@@ -410,7 +410,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 31,
     question: `Is this the correct way to define a prop in Vue 3: <pre ${style}><code>&lt;script setup&gt; defineProps({ message: String }); &lt;/script&gt;</code></pre>?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct way to define a prop in script setup',
       'No, props should be defined in the data option',
@@ -422,7 +422,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 32,
     question: 'What purpose do Props serve in Vue?',
-    answer: [2],
+    answer: [16],
     options: [
       'HTML tags within Vue templates.',
       'Variables confined to the created lifecycle hook.',
@@ -435,7 +435,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 33,
     question: `Determine if this code correctly uses Vue 3's teleport feature: <pre ${style}><code>&lt;teleport to="#endOfBody"&gt;...&lt;/teleport&gt;</code></pre>`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct use of teleport to move content',
       'No, use v-teleport instead of teleport',
@@ -448,7 +448,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 34,
     question: 'In Vue 3, is it possible to create a custom directive for DOM manipulations?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, Vue 3 allows creating custom directives',
       'No, custom directives are not supported in Vue 3',
@@ -461,7 +461,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 35,
     question: 'Explain the data flow between Vue components.',
-    answer: [1],
+    answer: [14],
     options: [
       'Bidirectional data flow solely from child to parent components.',
       'Unidirectional data flow from parent to child through props and child to parent via events.',
@@ -474,7 +474,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 36,
     question: "Can multiple values be passed to a directive in Vue?",
-    answer: [1],
+    answer: [14],
     options: [
       "Yes, separating values with commas within the directive.",
       "Yes, using an array or an object to pass multiple values.",
@@ -487,7 +487,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 37,
     question: `Evaluate this Vue 3 code for filtering a list: <pre ${style}><code>&lt;li v-for="item in filteredList" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;</code></pre> where 'filteredList' is a computed property.`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct usage of v-for with a computed property',
       'No, use a method instead of a computed property',
@@ -500,7 +500,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 38,
     question: "Define directives in the context of Vue.",
-    answer: [3],
+    answer: [9],
     options: [
       "External scripts imported into Vue components.",
       "Special tags used for conditional rendering.",
@@ -513,7 +513,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 39,
     question: `Is this the correct syntax for lazy-loading a component in Vue 3: <pre ${style}><code>const LazyComponent = defineAsyncComponent(() => import('./components/LazyComponent.vue'));</code></pre>?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct syntax for lazy-loading a component',
       'No, use v-lazy instead of defineAsyncComponent',
@@ -526,7 +526,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 40,
     question: 'Can you use the `v-on` directive to listen to custom events emitted from a child component in Vue 3?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, v-on can listen to custom events from child components',
       'No, v-on is only for native DOM events',
@@ -539,7 +539,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 41,
     question: "What do attribute bindings refer to in Vue?",
-    answer: [1],
+    answer: [14],
     options: [
       "Linking external CSS files to Vue components.",
       "Dynamically updating HTML attributes based on Vue data.",
@@ -552,7 +552,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 42,
     question: 'What is the difference between the `v-show` and `v-if` directives in Vue 3?',
-    answer: [0],
+    answer: [5],
     options: [
       'v-show toggles visibility without unmounting',
       'v-if toggles visibility without unmounting',
@@ -565,7 +565,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 43,
     question: 'In Vue 3, which method should be used to programmatically navigate using the Vue Router?',
-    answer: [1],
+    answer: [14],
     options: [
       'router.go',
       'router.push',
@@ -579,7 +579,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 44,
     question: 'Check if this syntax is correct for a global mixin in Vue 3: `Vue.mixin({ ... })`.',
-    answer: [1],
+    answer: [14],
     options: [
       'Yes, it\'s correct',
       'No, use createApp().mixin() instead of Vue.mixin()',
@@ -592,7 +592,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 45,
     question: "How can fallback content be added for slots in Vue?",
-    answer: [1],
+    answer: [14],
     options: [
       "Using the slot-fallback attribute.",
       "Providing default content within the slot tags.",
@@ -608,7 +608,7 @@ export const basicVueQuestions:QuizQuestion[] = [
     import { ref } from 'vue';
     const isOpen = ref(false);
     &lt;/script&gt;</code></pre> Is this correct for defining a reactive boolean?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct use of ref to define a reactive boolean',
       'No, use reactive instead of ref',
@@ -621,7 +621,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 47,
     question: 'Is the `v-model` directive in Vue 3 compatible with custom events for two-way data binding?',
-    answer: [0],
+    answer: [5],
     options: [
       'Yes, v-model can work with custom events for two-way binding',
       'No, v-model does not support custom events',
@@ -634,7 +634,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 48,
     question: "What are slots in the context of Vue?",
-    answer: [0],
+    answer: [5],
     options: [
       "Reserved areas in templates designated for dynamic content.",
       "Special Vue components exclusively for rendering images.",
@@ -647,7 +647,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 49,
     question: 'What is the purpose of the `v-once` directive in Vue 3?',
-    answer: [1],
+    answer: [14],
     options: [
       'To render a component only once and unmount it',
       'To render a component only once and cache the result',
@@ -664,7 +664,7 @@ export const basicVueQuestions:QuizQuestion[] = [
          el.style.color = binding.value;
            }
         });</code></pre>?`,
-    answer: [0],
+    answer: [5],
     options: [
       'Yes\', \'Correct implementation of a custom directive for text color',
       'No, use created hook instead of mounted',

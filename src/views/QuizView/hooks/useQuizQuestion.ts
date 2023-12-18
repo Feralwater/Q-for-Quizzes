@@ -8,6 +8,7 @@ import { useRoute } from 'vue-router';
 import router from '@/router';
 import type { QuizKeys } from '@/types/quizKeys';
 import type { QuizQuestion } from '@/types/QuizQuestion';
+import { decryptAnswer } from '@/utils/crypt';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
@@ -15,8 +16,9 @@ const questions: Record<QuizKeys, QuizQuestion[]> = {
   'pinia': piniaQuestions,
 };
 
+const TIME_UP_VALUE = -1;
+
 export const useQuizQuestion = () => {
-  const TIME_UP_VALUE = -1;
   const route = useRoute();
   const currentQuiz = route.params.quizId as QuizKeys;
   const currentQuestions = questions[currentQuiz];
@@ -55,10 +57,11 @@ export const useQuizQuestion = () => {
 
   const calculateScore = () => {
     const isMultiselect = currentQuestion.value.answer.length > 1;
+    const decryptedAnswer = decryptAnswer(currentQuestion.value.answer);
 
     const isCorrect = isMultiselect
-      ? currentQuestion.value.answer.every(answer => answersSelected.value.includes(answer))
-      : currentQuestion.value.answer[0] === answerSelected.value;
+      ? decryptedAnswer.every(answer => answersSelected.value.includes(answer))
+      : decryptedAnswer[0] === answerSelected.value;
 
     if (isCorrect) {
       incrementScore(currentQuestion.value.points);

@@ -4,7 +4,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 1,
     question: 'What is pinia?',
-    answer: [0],
+    answer: [5],
     options: [
       'Pinia is a Vue Store',
       'Pinia is a Vue plugin',
@@ -17,7 +17,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 2,
     question: "Does Pinia require to use Composition API?",
-    answer: [1],
+    answer: [14],
     options: [
       "Yes",
       "No",
@@ -28,7 +28,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 3,
     question: "How is state managed in Vue Pinia?",
-    answer: [0],
+    answer: [5],
     options: [
       "Vue Pinia uses a centralized store pattern where the state is stored in a central store, and components can access and modify the state through getters and actions.",
       "Vue Pinia uses a distributed store pattern where each component has its own state, and components can access and modify the state through getters and actions.",
@@ -41,7 +41,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 4,
     question: "What is a store in Vue Pinia?",
-    answer: [2],
+    answer: [16],
     options: [
       "A store is a multi-dimensional array.",
       "A store is a single-dimensional array.",
@@ -56,7 +56,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 5,
     question: "How do you create a store in Vue Pinia?",
-    answer: [1],
+    answer: [14],
     options: [
       "Use the makeStore function.",
       "Use the defineStore function.",
@@ -73,7 +73,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 6,
     question: "What is the purpose of getters in Vue Pinia?",
-    answer: [3],
+    answer: [19],
     options: [
       "Getters modify the state.",
       "Getters retrieve values from the state.",
@@ -89,7 +89,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 7,
     question: "How can you access the store in a Vue component?",
-    answer: [0],
+    answer: [5],
     options: [
       "Use the useStore function.",
       "Use the getFromStore function.",
@@ -103,7 +103,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 8,
     question: "What are actions in Vue Pinia?",
-    answer: [2],
+    answer: [16],
     options: [
       "actions retrieve values from the state.",
       "actions are functions defined within a store that compute values from the state.",
@@ -117,7 +117,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 9,
     question: "Can you have multiple stores in a Vue Pinia application?",
-    answer: [0],
+    answer: [5],
     options: [
       "Yes, Vue Pinia supports multiple stores.",
       "No, Vue Pinia only supports a single store.",
@@ -130,7 +130,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 10,
     question: "How does Vue Pinia handle asynchronous operations?",
-    answer: [4],
+    answer: [1],
     options: [
       "Vue Pinia uses mutations for asynchronous operations.",
       "Vue Pinia uses getters for asynchronous operations.",
@@ -145,7 +145,7 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 11,
     question: "What is the difference between Vue Pinia and Vuex?",
-    answer: [0],
+    answer: [5],
     options: [
       "Vue Pinia is more modular and type-safe, and supports multiple stores by design.",
       "Vue Pinia is more modular and type-safe, but does not support multiple stores.",
