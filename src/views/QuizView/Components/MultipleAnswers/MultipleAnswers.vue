@@ -16,7 +16,7 @@ defineProps({
 
 const emit = defineEmits(['update:selectedAnswers']);
 
-const handleAnswerChange = (option: string) => {
+const handleAnswerChange = (option: number) => {
   emit('update:selectedAnswers', option);
 };
 </script>

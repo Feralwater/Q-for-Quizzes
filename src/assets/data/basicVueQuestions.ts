@@ -58,7 +58,7 @@ export const basicVueQuestions = [
   {
     id: 5,
     question: 'Which features are new or updated in Vue 3 compared to Vue 2?',
-    answer: ['0', '3', '4', '5'],
+    answer: [0, 3, 4, 5],
     options: [
       'Composition API',
       'Vue Router',
