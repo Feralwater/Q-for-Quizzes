@@ -8,7 +8,7 @@ defineProps({
     default: () => [],
   },
   selectedAnswers: {
-    type: Array as PropType<string[]>,
+    type: Array as PropType<number[]>,
     required: true,
     default: () => [],
   },
@@ -16,7 +16,7 @@ defineProps({
 
 const emit = defineEmits(['update:selectedAnswers']);
 
-const handleAnswerChange = (option: string) => {
+const handleAnswerChange = (option: number) => {
   emit('update:selectedAnswers', option);
 };
 </script>
@@ -27,7 +27,7 @@ const handleAnswerChange = (option: string) => {
     aria-labelledby="answersLabel"
   >
     <div
-      v-for="option in options"
+      v-for="(option, index) in options"
       :key="option"
       class="answers__option"
     >
@@ -37,11 +37,11 @@ const handleAnswerChange = (option: string) => {
         type="checkbox"
         name="answerOption"
         :value="option"
-        :checked="selectedAnswers.includes(option)"
+        :checked="selectedAnswers.includes(index)"
         required
         role="radio"
         aria-labelledby="answersLabel"
-        @change="handleAnswerChange(option)"
+        @change="handleAnswerChange(index)"
       >
       <label
         :for="option"

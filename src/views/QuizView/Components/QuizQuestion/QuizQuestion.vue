@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RadioAnswers from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
 import MultipleAnswers from '@/views/QuizView/Components/MultipleAnswers/MultipleAnswers.vue';
 import { type PropType } from 'vue';
 import { useDisplay } from 'vuetify';
 import type { QuestionType } from '@/views/QuizView/hooks/useQuizQuestion';
+import SingleAnswer from '@/views/QuizView/Components/SingleAnswer/SingleAnswer.vue';
 
 defineProps({
   currentQuestionNumber: {
@@ -22,22 +22,22 @@ defineProps({
     default: 0,
   },
   answerSelected: {
-    type: String,
-    required: true,
-    default: '',
+    type: Number as PropType<number | null>,
+    required: false,
+    default: null,
   },
   answersSelected: {
-    type: Array as PropType<string[]>,
+    type: Array as PropType<number[]>,
     required: true,
     default: () => [],
   },
   updateSelectedAnswer: {
-    type: Function as PropType<(option: string) => void>,
+    type: Function as PropType<(option: number | null) => void>,
     required: true,
     default: () => {},
   },
   updateSelectedAnswers: {
-    type: Function as PropType<(option: string) => void>,
+    type: Function as PropType<(option: number | null) => void>,
     required: true,
     default: () => {},
   },
@@ -77,19 +77,19 @@ const { smAndDown, xs } = useDisplay();
       color="grey"
     />
 
-    <radio-answers
+    <single-answer
       v-if="currentQuestion.answer.length === 1"
       :options="currentQuestion.options"
       :selected-answer="answerSelected"
       aria-label="Quiz answers options"
-      @update:selected-answer="updateSelectedAnswer($event)"
+      @update:selected-answer="updateSelectedAnswer(currentQuestion.options.indexOf($event))"
     />
     <multiple-answers
       v-else
       :options="currentQuestion.options"
       :selected-answers="answersSelected"
       aria-label="Quiz answers options"
-      @update:selected-answers="updateSelectedAnswers($event)"
+      @update:selected-answers="updateSelectedAnswers(currentQuestion.options.indexOf($event))"
     />
   </div>
 
