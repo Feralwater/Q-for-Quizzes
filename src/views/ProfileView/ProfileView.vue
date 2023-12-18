@@ -1,0 +1,13 @@
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <h1>
+    ProfileView
+  </h1>
+</template>
+
+<style scoped>
+@import "ProfileView.scss";
+</style>
