@@ -1,0 +1,1 @@
+export type QuizKeys = 'vue-basics' | 'pinia';

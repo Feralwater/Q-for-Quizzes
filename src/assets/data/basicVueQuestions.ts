@@ -1,6 +1,8 @@
+import type { QuizQuestion } from '@/types/QuizQuestion';
+
 const style = 'style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"';
 
-export const basicVueQuestions = [
+export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 1,
     question: 'Which lifecycle hook in Vue 3 is called after the component has been mounted to the DOM?',

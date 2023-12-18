@@ -1,4 +1,6 @@
-export const piniaQuestions = [
+import type { QuizQuestion } from '@/types/QuizQuestion';
+
+export const piniaQuestions:QuizQuestion[] = [
   {
     id: 1,
     question: 'What is pinia?',

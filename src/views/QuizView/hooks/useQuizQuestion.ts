@@ -6,18 +6,11 @@ import { Routers } from '@/router/Routers';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
 import { useRoute } from 'vue-router';
 import router from '@/router';
+import type { QuizKeys } from '@/types/quizKeys';
+import type { QuizQuestion } from '@/types/QuizQuestion';
 
-type QuizKeys = 'vue-basics' | 'pinia';
-export interface QuestionType {
-  id: number;
-  question: string;
-  options: string[];
-  answer: number[];
-  points: number;
-  timeToAnswer: number;
-}
 
-const questions: Record<QuizKeys, QuestionType[]> = {
+const questions: Record<QuizKeys, QuizQuestion[]> = {
   'vue-basics': basicVueQuestions,
   'pinia': piniaQuestions,
 };
