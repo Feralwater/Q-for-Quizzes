@@ -17,7 +17,7 @@
     <tbody>
       <tr
         v-for="item in 7"
-        :key="item.name"
+        :key="item"
       >
         <td>{{ item }}</td>
         <td>{{ item }}</td>
