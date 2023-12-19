@@ -9,7 +9,7 @@ import router from '@/router';
 import type { QuizKeys } from '@/types/quizKeys';
 import type { QuizQuestion } from '@/types/QuizQuestion';
 import { decryptAnswer } from '@/utils/crypt';
-import { quizzes } from '@/assets/data/quizzes'
+import { quizzes } from '@/assets/data/quizzes';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {

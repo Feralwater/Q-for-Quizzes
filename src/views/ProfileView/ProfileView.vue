@@ -2,6 +2,7 @@
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useDisplay } from 'vuetify';
 import owl from '@/assets/images/owl.svg';
+import QuizTable from '@/views/ProfileView/QuizTable/QuizTable.vue';
 
 
 const { mdAndDown } = useDisplay();
@@ -20,7 +21,9 @@ const { mdAndDown } = useDisplay();
       :header-icon="owl"
       header-name="My Profile"
     />
-    profile
+    <v-container>
+      <quiz-table />
+    </v-container>
   </div>
 </template>
 
