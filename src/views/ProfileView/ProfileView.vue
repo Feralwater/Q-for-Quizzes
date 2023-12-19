@@ -3,8 +3,6 @@ import SideBar from '@/components/SideBar/SideBar.vue';
 import { useDisplay } from 'vuetify';
 import owl from '@/assets/images/owl.svg';
 import QuizTable from '@/views/ProfileView/QuizTable/QuizTable.vue';
-import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue'
-
 
 const { mdAndDown } = useDisplay();
 </script>
@@ -23,8 +21,7 @@ const { mdAndDown } = useDisplay();
       header-name="My Profile"
     />
     <v-container>
-
-      <quiz-certificate />
+      <quiz-table />
     </v-container>
   </div>
 </template>
