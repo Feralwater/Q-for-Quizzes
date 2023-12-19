@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Roboto:ital,wght@0,400;1,700&display=swap');
+
+.certificate {
+  width: 1240px;
+  border: 16px solid var(--primary);
+
+  &__content {
+    border: 6px solid var(--background);
+    padding: 20px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  &__header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--primary);
+    letter-spacing: 2px;
+  }
+
+  &__body {
+    text-align: center;
+  }
+
+  &__intro {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  &__recipientName {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  &__achievingText {
+    font-size: 18px;
+    margin: 10px 0 30px;
+  }
+
+  &__score {
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: var(--primary);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  &__congratulations {
+    font-size: 50px;
+    color: var(--text-color);
+    font-family: 'Arizonia', cursive;
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  &__stamp {
+    width: 100px;
+    margin: 0 0 0 auto;
+  }
+
+  &__number {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+}
