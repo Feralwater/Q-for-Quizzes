@@ -9,7 +9,7 @@ const calculateQuizTime = (questions: QuizQuestion[]) => questions.reduce((acc, 
 export const quizzes = [
   {
     id: 'vue-basics',
-    name: 'Vue.js basics',
+    name: 'Vue basics',
     description: 'Test your knowledge of Vue.js fundamentals',
     image: vueLogo,
     questionsAmount: basicVueQuestions.length,

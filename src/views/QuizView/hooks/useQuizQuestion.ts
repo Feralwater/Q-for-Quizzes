@@ -9,6 +9,7 @@ import router from '@/router';
 import type { QuizKeys } from '@/types/quizKeys';
 import type { QuizQuestion } from '@/types/QuizQuestion';
 import { decryptAnswer } from '@/utils/crypt';
+import { quizzes } from '@/assets/data/quizzes';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
@@ -20,8 +21,8 @@ const TIME_UP_VALUE = -1;
 
 export const useQuizQuestion = () => {
   const route = useRoute();
-  const currentQuiz = route.params.quizId as QuizKeys;
-  const currentQuestions = questions[currentQuiz];
+  const currentQuizId = route.params.quizId as QuizKeys;
+  const currentQuestions = questions[currentQuizId];
 
   const currentQuestionIndex = ref(0);
   const currentQuestion = computed(() => currentQuestions[currentQuestionIndex.value]);
@@ -88,6 +89,8 @@ export const useQuizQuestion = () => {
 
   const questionsAmount = computed(() => currentQuestions.length);
 
+  const selectedQuiz = computed(() => quizzes.find((quiz) => quiz.id === currentQuizId));
+
   return {
     onNextQuestion,
     currentQuestionIndex,
@@ -101,5 +104,6 @@ export const useQuizQuestion = () => {
     progress,
     handleCountdownFinished,
     questionsAmount: questionsAmount.value,
+    selectedQuiz: selectedQuiz.value,
   };
 };
