@@ -1,6 +1,6 @@
 import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import { Routers } from '@/router/Routers';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
@@ -10,6 +10,8 @@ import type { QuizKeys } from '@/types/quizKeys';
 import type { QuizQuestion } from '@/types/QuizQuestion';
 import { decryptAnswer } from '@/utils/crypt';
 import { quizzes } from '@/assets/data/quizzes';
+import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
+import { storeToRefs } from 'pinia';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
@@ -30,12 +32,26 @@ export const useQuizQuestion = () => {
   const progress = computed(() => calculateProgress(currentQuestionIndex.value, currentQuestions.length));
   const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
   const { incrementScore, setQuizCompleted } = useQuizScore();
+  const scoreStore = storeToRefs(useQuizScore());
+  const { score } = scoreStore;
   const shouldShowNextButton = computed(() => currentQuestions.length - 1 !== currentQuestionIndex.value);
   const answerSelected = ref<number | null>(null);
   const answersSelected = ref<number[]>([]);
 
+  const completedQuiz = {
+    quizId: currentQuizId,
+    score: 0,
+    certificateId: new Date().getTime(),
+  };
+
+ watch(score, (newScore) => {
+    completedQuiz.score = newScore;
+  });
+
+  const { setLocalStorage } = useLocalStorage('completedQuiz', {});
+
   const onNextQuestion = () => {
-    calculateScore();
+    const newScore = calculateScore();
 
     if (shouldShowNextButton.value) {
       answerSelected.value = null;
@@ -45,6 +61,8 @@ export const useQuizQuestion = () => {
     }
 
     setQuizCompleted();
+    completedQuiz.score = newScore;
+    setLocalStorage(completedQuiz);
     router.push(Routers.Result);
   };
 
@@ -66,7 +84,10 @@ export const useQuizQuestion = () => {
 
     if (isCorrect) {
       incrementScore(currentQuestion.value.points);
+      return currentQuestion.value.points;
     }
+
+    return 0;
   };
 
   const updateSelectedAnswer = (option: number | null) => {
