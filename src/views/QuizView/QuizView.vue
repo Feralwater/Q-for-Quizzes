@@ -18,6 +18,7 @@ const {
   progress,
   handleCountdownFinished,
   questionsAmount,
+  selectedQuiz,
 } = useQuizQuestion();
 
 const { mdAndDown } = useDisplay();
@@ -35,7 +36,8 @@ const { mdAndDown } = useDisplay();
   >
     <side-bar
       :progress="progress"
-      aria-label="Progress Sidebar"
+      :header-icon="selectedQuiz?.image"
+      :header-name="selectedQuiz?.name"
     />
     <div class="quiz__content">
       <div

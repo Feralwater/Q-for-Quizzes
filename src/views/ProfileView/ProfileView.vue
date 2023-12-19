@@ -1,11 +1,27 @@
 <script setup lang="ts">
+import SideBar from '@/components/SideBar/SideBar.vue';
+import { useDisplay } from 'vuetify';
+import owl from '@/assets/images/owl.svg';
 
+
+const { mdAndDown } = useDisplay();
 </script>
 
 <template>
-  <h1>
-    ProfileView
-  </h1>
+  <div
+    role="main"
+    aria-label="My Profile"
+    :class="{
+      profile: true,
+      profile__mobile: mdAndDown,
+    }"
+  >
+    <side-bar
+      :header-icon="owl"
+      header-name="My Profile"
+    />
+    profile
+  </div>
 </template>
 
 <style scoped>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import logo from '@/assets/images/logos/vueLogo.svg';
 import { computed, ref, watch } from 'vue';
 import { useDisplay } from 'vuetify';
 import { Routers } from '@/router/Routers';
@@ -7,12 +6,25 @@ import { Routers } from '@/router/Routers';
 const props = defineProps({
   progress: {
     type: Number,
+    required: false,
+    default: undefined,
+  },
+  headerName: {
+    type: String,
     required: true,
-    default: 0,
+    default: '',
+  },
+  headerIcon: {
+    type: String,
+    required: true,
+    default: '',
   },
 });
 
-const roundProgress = computed(() => Math.round(props.progress));
+const roundProgress = computed(() => {
+  if (props.progress === undefined) return;
+  return Math.round(props.progress);
+});
 
 const { mdAndDown } = useDisplay();
 const drawer = ref(!mdAndDown.value);
@@ -24,7 +36,9 @@ watch(mdAndDown, (newVal) => {
 </script>
 
 <template>
-  <v-layout>
+  <v-layout 
+    aria-label="Sidebar"
+  >
     <v-app-bar-nav-icon
       v-if="mdAndDown"
       class="sidebar__burger"
@@ -43,12 +57,12 @@ watch(mdAndDown, (newVal) => {
       >
         <h1 class="sidebar__header">
           <v-img
-            :src="logo"
-            width="40px"
-            height="40px"
-            alt="Vuejs Logo"
+            :src="headerIcon"
+            width="60"
+            height="60"
+            :alt="`${headerName} icon`"
           />
-          Vuejs Quiz
+          {{ headerName }}
         </h1>
         <v-list
           nav
@@ -74,7 +88,10 @@ watch(mdAndDown, (newVal) => {
             aria-label="Go to Profile"
           />
         </v-list>
-        <div class="sidebar__footer">
+        <div
+          v-if="progress !== undefined"
+          class="sidebar__footer"
+        >
           {{ roundProgress }}% completed
           <v-progress-linear
             aria-label="Quiz progress"
@@ -82,7 +99,7 @@ watch(mdAndDown, (newVal) => {
             aria-valuemin="0"
             aria-valuemax="100"
             color="primaryDark"
-            :model-value="props.progress"
+            :model-value="progress"
             class="sidebar__progress"
             height="20"
           />
