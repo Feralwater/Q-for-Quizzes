@@ -30,25 +30,31 @@ const headers = [
   },
 ];
 
-const { getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
+const { getLocalStorage, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
-const completedQuiz = getLocalStorage();
+const completedQuiz = ref(getLocalStorage());
 const quizCertificateRef = ref();
 const onPrint = () => {
   const printContent = quizCertificateRef.value.$el.innerHTML;
   const windowPrint = window.open('', '_blank');
-  
+
   const styles = [...document.styleSheets]
     .map(styleSheet => {
+      try {
         return [...styleSheet.cssRules]
           .map(rule => rule.cssText)
           .join('');
+      } catch (e) {
+        console.warn('Cannot access stylesheet:', styleSheet);
+        return '';
+      }
     })
     .join('\n');
 
   windowPrint?.document.write(`
-    <html>
+    <html lang="en">
       <head>
+        <title>Print</title>
         <style>${styles}</style>
       </head>
       <body>
@@ -63,6 +69,15 @@ const onPrint = () => {
   windowPrint?.close();
 };
 
+const onDownload = () => {
+  console.log('hello');
+};
+
+const onDelete = (id: number) => {
+  const newCompletedQuiz = completedQuiz.value.filter(quiz => quiz.certificateId !== id);
+  setLocalStorage(newCompletedQuiz);
+  completedQuiz.value = newCompletedQuiz;
+};
 
 </script>
 
@@ -90,7 +105,7 @@ const onPrint = () => {
         </template>
       </tr>
     </template>
-    <template #item.actions>
+    <template #item.actions="{ item }">
       <v-icon
         class="mr-6"
         color="primary"
@@ -101,13 +116,13 @@ const onPrint = () => {
       <v-icon
         class="mr-6"
         color="primary"
-        @click="()=>{console.log('hello')}"
+        @click="onDownload"
       >
         mdi-download
       </v-icon>
       <v-icon
         color="danger"
-        @click="()=>{console.log('hello')}"
+        @click="onDelete(item.certificateId)"
       >
         mdi-delete
       </v-icon>
