@@ -14,6 +14,7 @@ const vuetify = createVuetify({
           primaryDark: "#f98967",
           lightTextColour: "#fef2ee",
           grey: "#808080",
+          danger: "#fe1911",
         },
       },
     },

@@ -1,0 +1,12 @@
+.table {
+  &__header {
+    background-color: var(--primary);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--light-text-color);
+  }
+
+  &__title {
+    cursor: pointer;
+  }
+}

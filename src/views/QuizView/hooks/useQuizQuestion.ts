@@ -1,6 +1,6 @@
 import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import { Routers } from '@/router/Routers';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
@@ -12,6 +12,7 @@ import { decryptAnswer } from '@/utils/crypt';
 import { quizzes } from '@/assets/data/quizzes';
 import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
+import type { CompletedQuiz } from '@/types/completedQuiz';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
@@ -38,20 +39,17 @@ export const useQuizQuestion = () => {
   const answerSelected = ref<number | null>(null);
   const answersSelected = ref<number[]>([]);
 
-  const completedQuiz = {
-    quizId: currentQuizId,
-    score: 0,
+  const completedQuiz: CompletedQuiz = {
+    quizName: quizzes.find((quiz) => quiz.id === currentQuizId)?.name || '',
+    score: score.value,
     certificateId: new Date().getTime(),
+    date: new Date().toLocaleDateString(),
   };
 
- watch(score, (newScore) => {
-    completedQuiz.score = newScore;
-  });
-
-  const { setLocalStorage } = useLocalStorage('completedQuiz', {});
+  const { setLocalStorage, getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
   const onNextQuestion = () => {
-    const newScore = calculateScore();
+    calculateScore();
 
     if (shouldShowNextButton.value) {
       answerSelected.value = null;
@@ -61,8 +59,9 @@ export const useQuizQuestion = () => {
     }
 
     setQuizCompleted();
-    completedQuiz.score = newScore;
-    setLocalStorage(completedQuiz);
+    completedQuiz.score = score.value;
+    const completedQuizList = getLocalStorage();
+    setLocalStorage([...completedQuizList, completedQuiz]);
     router.push(Routers.Result);
   };
 
@@ -84,10 +83,7 @@ export const useQuizQuestion = () => {
 
     if (isCorrect) {
       incrementScore(currentQuestion.value.points);
-      return currentQuestion.value.points;
     }
-
-    return 0;
   };
 
   const updateSelectedAnswer = (option: number | null) => {
