@@ -14,5 +14,6 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'semi': ['error', 'always'],
     'comma-dangle': ['error', 'always-multiline'],
+    'vue/valid-v-slot': 'off',
   }
 }

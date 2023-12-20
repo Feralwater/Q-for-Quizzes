@@ -12,6 +12,7 @@ import { decryptAnswer } from '@/utils/crypt';
 import { quizzes } from '@/assets/data/quizzes';
 import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
+import type { CompletedQuiz } from '@/types/completedQuiz';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
@@ -38,17 +39,18 @@ export const useQuizQuestion = () => {
   const answerSelected = ref<number | null>(null);
   const answersSelected = ref<number[]>([]);
 
-  const completedQuiz = {
-    quizId: currentQuizId,
+  const completedQuiz: CompletedQuiz = {
+    quizName: quizzes.find((quiz) => quiz.id === currentQuizId)?.name || '',
     score: 0,
     certificateId: new Date().getTime(),
+    date: new Date().toLocaleDateString(),
   };
 
  watch(score, (newScore) => {
     completedQuiz.score = newScore;
   });
 
-  const { setLocalStorage } = useLocalStorage('completedQuiz', {});
+  const { setLocalStorage, getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
   const onNextQuestion = () => {
     const newScore = calculateScore();
@@ -62,7 +64,8 @@ export const useQuizQuestion = () => {
 
     setQuizCompleted();
     completedQuiz.score = newScore;
-    setLocalStorage(completedQuiz);
+    const completedQuizList = getLocalStorage();
+    setLocalStorage([...completedQuizList, completedQuiz]);
     router.push(Routers.Result);
   };
 

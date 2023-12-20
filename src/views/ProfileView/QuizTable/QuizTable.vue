@@ -1,29 +1,61 @@
 <script setup lang="ts">
+import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
+import type { CompletedQuiz } from '@/types/completedQuiz';
+
+const headers = [
+  {
+    title: 'Quiz Name',
+    key: 'quizName',
+  },
+  {
+    title: 'Score',
+    key: 'score',
+  },
+  {
+    title: 'Date',
+    key: 'date',
+  },
+  {
+    title: 'Quiz Taker',
+  },
+  {
+    title: 'Certificate Number',
+    key: 'certificateId',
+  },
+  {
+    title: 'Actions',
+    key: 'actions',
+  },
+];
+
+const { getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
+
+const completedQuiz = getLocalStorage();
 
 </script>
 
 <template>
-  <v-table>
-    <thead>
-      <tr>
-        <th class="text-left">
-          Name
-        </th>
-        <th class="text-left">
-          Calories
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        v-for="item in 7"
-        :key="item"
+  <v-data-table
+    :headers="headers"
+    :items="completedQuiz"
+    :sort-by="[{key: 'date', order: 'asc'}]"
+  >
+    <template #item.actions>
+      <v-icon
+        class="mr-6"
+        color="primary"
+        @click="()=>{console.log('hello')}"
       >
-        <td>{{ item }}</td>
-        <td>{{ item }}</td>
-      </tr>
-    </tbody>
-  </v-table>
+        mdi-printer
+      </v-icon>
+      <v-icon
+        color="primary"
+        @click="()=>{console.log('hello')}"
+      >
+        mdi-download
+      </v-icon>
+    </template>
+  </v-data-table>
 </template>
 
 <style scoped>
