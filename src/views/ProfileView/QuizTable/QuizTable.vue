@@ -67,10 +67,17 @@ const completedQuiz = getLocalStorage();
         mdi-printer
       </v-icon>
       <v-icon
+        class="mr-6"
         color="primary"
         @click="()=>{console.log('hello')}"
       >
         mdi-download
+      </v-icon>
+      <v-icon
+        color="primary"
+        @click="()=>{console.log('hello')}"
+      >
+        mdi-delete
       </v-icon>
     </template>
   </v-data-table>

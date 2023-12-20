@@ -47,6 +47,7 @@ export const useQuizQuestion = () => {
   };
 
  watch(score, (newScore) => {
+   console.log('newScore', newScore)
     completedQuiz.score = newScore;
   });
 
