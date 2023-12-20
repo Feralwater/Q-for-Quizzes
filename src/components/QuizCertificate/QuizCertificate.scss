@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Roboto:ital,wght@0,400;1,700&display=swap');
 
 .certificate {
-  width: 1240px;
+  width: 1050px;
   border: 16px solid var(--primary);
 
   &__content {
@@ -70,8 +70,7 @@
   }
 
   &__stamp {
-    width: 100px;
-    margin: 0 0 0 auto;
+    margin: 0 25px 0 auto;
   }
 
   &__number {

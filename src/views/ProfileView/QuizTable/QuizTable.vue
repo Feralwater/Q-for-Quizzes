@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
 import type { CompletedQuiz } from '@/types/completedQuiz';
+import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
+import { ref } from 'vue';
+import html2pdf from "html2pdf.js";
 
 const headers = [
   {
@@ -28,9 +31,67 @@ const headers = [
   },
 ];
 
-const { getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
+const { getLocalStorage, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
-const completedQuiz = getLocalStorage();
+const completedQuiz = ref(getLocalStorage());
+const quizCertificateRef = ref();
+const onPrint = () => {
+  const printContent = quizCertificateRef.value.$el.innerHTML;
+  const windowPrint = window.open('', '_blank');
+
+  const styles = [...document.styleSheets]
+    .map(styleSheet => {
+      try {
+        return [...styleSheet.cssRules]
+          .map(rule => rule.cssText)
+          .join('');
+      } catch (e) {
+        console.warn('Cannot access stylesheet:', styleSheet);
+        return '';
+      }
+    })
+    .join('\n');
+
+  windowPrint?.document.write(`
+    <html lang="en">
+      <head>
+        <title>Print</title>
+        <style>${styles}</style>
+      </head>
+      <body>
+        ${printContent}
+      </body>
+    </html>
+  `);
+
+  windowPrint?.document.close();
+  windowPrint?.focus();
+  windowPrint?.print();
+  windowPrint?.close();
+};
+
+const selectedQuiz = ref<CompletedQuiz>();
+
+const downloadPDF = (quizName: string, date: string, id: number) => {
+  selectedQuiz.value = completedQuiz.value.find(quiz => quiz.certificateId === id);
+  const element = quizCertificateRef.value.$el;
+
+  const options = {
+    margin: 10,
+    filename: `${quizName} - ${date}.pdf`,
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
+  };
+
+  html2pdf(element, options);
+};
+
+const onDelete = (id: number) => {
+  const newCompletedQuiz = completedQuiz.value.filter(quiz => quiz.certificateId !== id);
+  setLocalStorage(newCompletedQuiz);
+  completedQuiz.value = newCompletedQuiz;
+};
 
 </script>
 
@@ -58,29 +119,39 @@ const completedQuiz = getLocalStorage();
         </template>
       </tr>
     </template>
-    <template #item.actions>
+    <template #item.actions="{ item }">
       <v-icon
         class="mr-6"
         color="primary"
-        @click="()=>{console.log('hello')}"
+        @click="onPrint"
       >
         mdi-printer
       </v-icon>
       <v-icon
         class="mr-6"
         color="primary"
-        @click="()=>{console.log('hello')}"
+        @click="downloadPDF(item.quizName, item.date, item.certificateId)"
       >
         mdi-download
       </v-icon>
       <v-icon
         color="danger"
-        @click="()=>{console.log('hello')}"
+        @click="onDelete(item.certificateId)"
       >
         mdi-delete
       </v-icon>
     </template>
   </v-data-table>
+  <div class="d-none">
+    <quiz-certificate
+      ref="quizCertificateRef"
+      :certificate-number="selectedQuiz?.certificateId"
+      quiz-taker="John Doe"
+      :score="selectedQuiz?.score"
+      :quiz-name="selectedQuiz?.quizName"
+      :date="selectedQuiz?.date"
+    />
+  </div>
 </template>
 
 <style scoped>
