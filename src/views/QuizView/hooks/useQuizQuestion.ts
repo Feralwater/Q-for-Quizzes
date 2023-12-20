@@ -1,6 +1,6 @@
 import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
-import { computed, reactive, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import { Routers } from '@/router/Routers';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
