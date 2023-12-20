@@ -43,7 +43,11 @@ export const useQuizQuestion = () => {
     quizName: quizzes.find((quiz) => quiz.id === currentQuizId)?.name || '',
     score: score.value,
     certificateId: new Date().getTime(),
-    date: new Date().toLocaleDateString(),
+    date: new Date().toLocaleDateString('en-Us', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }),
   };
 
   const { setLocalStorage, getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);

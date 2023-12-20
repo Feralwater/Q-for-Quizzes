@@ -1,16 +1,35 @@
 <script setup lang="ts">
-import stamp from '@/assets/images/stamp.svg';
 
-const recipientName = 'John Doe';
-const score = 58;
-
-const date = new Date().toLocaleDateString('en-Us', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
+defineProps({
+  stamp: {
+    type: String,
+  },
+  quizName: {
+    type: String,
+    required: true,
+    default: '',
+  },
+  certificateNumber: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  date: {
+    type: String,
+    required: true,
+    default: '',
+  },
+  score: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  quizTaker: {
+    type: String,
+    required: true,
+    default: '',
+  },
 });
-const quizName = 'Vue Basics';
-const certificateNumber = '1234567890';
 </script>
 
 <template>
@@ -24,7 +43,7 @@ const certificateNumber = '1234567890';
           THIS IS AWARDED TO
         </p>
         <p class="certificate__recipientName">
-          {{ recipientName }}
+          {{ quizTaker }}
         </p>
         <p class="certificate__achievingText">
           in recognition of achieving a
@@ -44,6 +63,8 @@ const certificateNumber = '1234567890';
         Q for Quizzes app
       </div>
       <v-img
+        width="100"
+        height="100"
         class="certificate__stamp"
         :src="stamp"
         alt="stamp"

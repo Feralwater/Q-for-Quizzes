@@ -4,6 +4,7 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
 import html2pdf from "html2pdf.js";
+import stamp from '@/assets/images/stamp.svg';
 
 const headers = [
   {
@@ -70,7 +71,10 @@ const onPrint = () => {
   windowPrint?.close();
 };
 
+const selectedQuiz = ref<CompletedQuiz>();
+
 const downloadPDF = (quizName: string, date: string) => {
+  selectedQuiz.value = completedQuiz.value.find(quiz => quiz.quizName === quizName && quiz.date === date);
   const element = quizCertificateRef.value.$el;
 
   const options = {
@@ -140,7 +144,15 @@ const onDelete = (id: number) => {
     </template>
   </v-data-table>
   <div class="d-none">
-    <quiz-certificate ref="quizCertificateRef" />
+    <quiz-certificate
+      ref="quizCertificateRef"
+      :stamp="stamp"
+      :certificate-number="selectedQuiz?.certificateId"
+      quiz-taker="John Doe"
+      :score="selectedQuiz?.score"
+      :quiz-name="selectedQuiz?.quizName"
+      :date="selectedQuiz?.date"
+    />
   </div>
 </template>
 
