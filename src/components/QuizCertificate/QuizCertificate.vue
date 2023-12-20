@@ -1,9 +1,7 @@
 <script setup lang="ts">
+import stamp from '@/assets/images/stamp.svg';
 
 defineProps({
-  stamp: {
-    type: String,
-  },
   quizName: {
     type: String,
     required: true,

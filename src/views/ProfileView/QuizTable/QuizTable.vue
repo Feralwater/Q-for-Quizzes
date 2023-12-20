@@ -4,7 +4,6 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
 import html2pdf from "html2pdf.js";
-import stamp from '@/assets/images/stamp.svg';
 
 const headers = [
   {
@@ -73,8 +72,8 @@ const onPrint = () => {
 
 const selectedQuiz = ref<CompletedQuiz>();
 
-const downloadPDF = (quizName: string, date: string) => {
-  selectedQuiz.value = completedQuiz.value.find(quiz => quiz.quizName === quizName && quiz.date === date);
+const downloadPDF = (quizName: string, date: string, id: number) => {
+  selectedQuiz.value = completedQuiz.value.find(quiz => quiz.certificateId === id);
   const element = quizCertificateRef.value.$el;
 
   const options = {
@@ -131,7 +130,7 @@ const onDelete = (id: number) => {
       <v-icon
         class="mr-6"
         color="primary"
-        @click="downloadPDF(item.quizName, item.date)"
+        @click="downloadPDF(item.quizName, item.date, item.certificateId)"
       >
         mdi-download
       </v-icon>
@@ -146,7 +145,6 @@ const onDelete = (id: number) => {
   <div class="d-none">
     <quiz-certificate
       ref="quizCertificateRef"
-      :stamp="stamp"
       :certificate-number="selectedQuiz?.certificateId"
       quiz-taker="John Doe"
       :score="selectedQuiz?.score"
