@@ -3,6 +3,7 @@ import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
+import html2pdf from "html2pdf.js";
 
 const headers = [
   {
@@ -69,8 +70,18 @@ const onPrint = () => {
   windowPrint?.close();
 };
 
-const onDownload = () => {
-  console.log('hello');
+const downloadPDF = (quizName: string, date: string) => {
+  const element = quizCertificateRef.value.$el;
+
+  const options = {
+    margin: 10,
+    filename: `${quizName} - ${date}.pdf`,
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
+  };
+
+  html2pdf(element, options);
 };
 
 const onDelete = (id: number) => {
@@ -116,7 +127,7 @@ const onDelete = (id: number) => {
       <v-icon
         class="mr-6"
         color="primary"
-        @click="onDownload"
+        @click="downloadPDF(item.quizName, item.date)"
       >
         mdi-download
       </v-icon>
