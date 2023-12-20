@@ -74,7 +74,7 @@ const completedQuiz = getLocalStorage();
         mdi-download
       </v-icon>
       <v-icon
-        color="primary"
+        color="danger"
         @click="()=>{console.log('hello')}"
       >
         mdi-delete

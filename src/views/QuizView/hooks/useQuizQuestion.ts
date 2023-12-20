@@ -1,6 +1,6 @@
 import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
-import { computed, ref, watch } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import { Routers } from '@/router/Routers';
 import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
@@ -41,20 +41,15 @@ export const useQuizQuestion = () => {
 
   const completedQuiz: CompletedQuiz = {
     quizName: quizzes.find((quiz) => quiz.id === currentQuizId)?.name || '',
-    score: 0,
+    score: score.value,
     certificateId: new Date().getTime(),
     date: new Date().toLocaleDateString(),
   };
 
- watch(score, (newScore) => {
-   console.log('newScore', newScore)
-    completedQuiz.score = newScore;
-  });
-
   const { setLocalStorage, getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
   const onNextQuestion = () => {
-    const newScore = calculateScore();
+    calculateScore();
 
     if (shouldShowNextButton.value) {
       answerSelected.value = null;
@@ -64,7 +59,7 @@ export const useQuizQuestion = () => {
     }
 
     setQuizCompleted();
-    completedQuiz.score = newScore;
+    completedQuiz.score = score.value;
     const completedQuizList = getLocalStorage();
     setLocalStorage([...completedQuizList, completedQuiz]);
     router.push(Routers.Result);
@@ -88,10 +83,7 @@ export const useQuizQuestion = () => {
 
     if (isCorrect) {
       incrementScore(currentQuestion.value.points);
-      return currentQuestion.value.points;
     }
-
-    return 0;
   };
 
   const updateSelectedAnswer = (option: number | null) => {
