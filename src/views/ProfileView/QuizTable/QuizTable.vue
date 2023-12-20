@@ -40,6 +40,24 @@ const completedQuiz = getLocalStorage();
     :items="completedQuiz"
     :sort-by="[{key: 'date', order: 'asc'}]"
   >
+    <template #headers="{ columns, isSorted, getSortIcon, toggleSort }">
+      <tr class="table__header">
+        <template
+          v-for="column in columns"
+          :key="column.key"
+        >
+          <td>
+            <span
+              class="mr-2 table__title"
+              @click="() => toggleSort(column)"
+            >{{ column.title }}</span>
+            <template v-if="isSorted(column)">
+              <v-icon :icon="getSortIcon(column)" />
+            </template>
+          </td>
+        </template>
+      </tr>
+    </template>
     <template #item.actions>
       <v-icon
         class="mr-6"
@@ -59,5 +77,5 @@ const completedQuiz = getLocalStorage();
 </template>
 
 <style scoped>
-
+@import "QuizTable.scss";
 </style>
