@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import wave from '@/assets/images/wave.png';
 import avatar from '@/assets/images/avatar.svg';
 import owl from '@/assets/images/owlNotebook.svg';
@@ -11,6 +11,7 @@ const { setLocalStorage } = useLocalStorage<User>('user', { firstName: '', secon
 
 const firstName = ref('');
 const secondName = ref('');
+const isFormValid = computed(() => !!firstName.value && !!secondName.value);
 
 const login = () => {
   setLocalStorage({ firstName: firstName.value, secondName: secondName.value });
@@ -21,70 +22,76 @@ const login = () => {
 
 
 <template>
-  <v-container fluid>
+  <v-container>
     <v-row>
       <v-col
         cols="12"
         sm="6"
-        class="d-flex align-end"
+        class="image"
       >
         <v-img
           :src="owl"
           alt="owl looking at notebook"
-          class="owl"
+          class="image__owl"
         />
         <v-img
           :src="wave"
           alt="wave"
-          class="wave"
+          class="image__wave"
         />
       </v-col>
       <v-col
         cols="12"
         sm="6"
       >
-        <div class="login-content">
-          <v-form @submit.prevent="login">
-            <div class="text-center">
-              <v-img
-                width="100"
-                height="100"
-                :src="avatar"
-                alt="user avatar"
-                class="avatar"
-              />
-              <h2 class="title">
-                Welcome
-              </h2>
-            </div>
+        <v-form @submit.prevent="login">
+          <div class="login">
+            <v-img
+              width="100"
+              height="100"
+              :src="avatar"
+              alt="user avatar"
+              class="login__avatar"
+            />
+            <h2 class="login__title">
+              Welcome
+            </h2>
 
             <v-text-field
               v-model="firstName"
-              prepend-icon="mdi-account-circle"
+              prepend-icon="mdi-account"
               label="First Name"
               type="text"
+              variant="underlined"
+              color="primary"
+              clearable
             />
 
             <v-text-field
               v-model="secondName"
-              prepend-icon="mdi-lock"
+              prepend-icon="mdi-account"
               label="Second Name"
               type="text"
+              variant="underlined"
+              color="primary"
+              clearable
             />
 
-            <p>
+            <p class="login__info">
               Please make sure you have entered your name correctly. It will be used on your certificates.
             </p>
-
-            <v-btn
-              block
-              color="primary"
-              type="submit"
-            >
+          </div>
+          <v-btn
+            block
+            :disabled="!isFormValid"
+            color="primary"
+            type="submit"
+          >
+            <span class="login__button">
               Login
-            </v-btn>
-          </v-form>
-        </div>
+            </span>
+          </v-btn>
+        </v-form>
       </v-col>
     </v-row>
   </v-container>
@@ -92,5 +99,5 @@ const login = () => {
 
 
 <style scoped>
-
+@import 'LoginView.scss';
 </style>
