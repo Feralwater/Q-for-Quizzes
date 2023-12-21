@@ -13,7 +13,7 @@ import { quizzes } from '@/assets/data/quizzes';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
-import type { User } from '@/types/user'
+import type { User } from '@/types/user';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
