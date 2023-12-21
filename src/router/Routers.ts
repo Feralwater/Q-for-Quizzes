@@ -3,5 +3,6 @@ export enum Routers {
   Quiz = "/quiz/:quizId",
   Result = "/result",
   Profile = "/profile",
+  Login = "/login",
   PageNotFound = "/:pathMatch(.*)*",
 }
