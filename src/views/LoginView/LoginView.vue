@@ -3,9 +3,18 @@ import { ref } from 'vue';
 import wave from '@/assets/images/wave.png';
 import avatar from '@/assets/images/avatar.svg';
 import owl from '@/assets/images/owlNotebook.svg';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
+import router from '@/router';
 
-const username = ref('');
-const password = ref('');
+const { setLocalStorage } = useLocalStorage('user', { firstName: '', secondName: '' });
+
+const firstName = ref('');
+const secondName = ref('');
+
+const login = () => {
+  setLocalStorage({ firstName: firstName.value, secondName: secondName.value });
+  router.push({ name: 'Dashboard' });
+};
 
 </script>
 
@@ -34,7 +43,7 @@ const password = ref('');
         sm="6"
       >
         <div class="login-content">
-          <v-form>
+          <v-form @submit.prevent="login">
             <div class="text-center">
               <v-img
                 width="100"
@@ -49,24 +58,22 @@ const password = ref('');
             </div>
 
             <v-text-field
+              v-model="firstName"
               prepend-icon="mdi-account-circle"
-              label="Username"
+              label="First Name"
               type="text"
             />
 
             <v-text-field
+              v-model="secondName"
               prepend-icon="mdi-lock"
-              label="Password"
-              type="password"
+              label="Second Name"
+              type="text"
             />
 
-            <v-btn
-              text
-              color="primary"
-              class="mb-4"
-            >
-              Forgot Password?
-            </v-btn>
+            <p>
+              Please make sure you have entered your name correctly. It will be used on your certificates.
+            </p>
 
             <v-btn
               block
