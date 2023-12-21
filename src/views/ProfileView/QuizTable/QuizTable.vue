@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
