@@ -6,6 +6,7 @@ import owl from '@/assets/images/owlNotebook.svg';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import router from '@/router';
 import type { User } from '@/types/user';
+import { Routers } from '@/router/Routers';
 
 const { setLocalStorage } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
 
@@ -15,11 +16,10 @@ const isFormValid = computed(() => !!firstName.value && !!secondName.value);
 
 const login = () => {
   setLocalStorage({ firstName: firstName.value, secondName: secondName.value });
-  router.push({ name: 'dashboard' });
+  router.push(Routers.Dashboard);
 };
 
 </script>
-
 
 <template>
   <v-container>
