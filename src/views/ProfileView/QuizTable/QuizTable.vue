@@ -4,40 +4,44 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
 import html2pdf from "html2pdf.js";
-import type { User } from '@/types/user';
 
 const headers = [
   {
     title: 'Quiz Name',
     key: 'quizName',
+    sortable: true,
   },
   {
     title: 'Score',
     key: 'score',
+    sortable: true,
   },
   {
     title: 'Date',
     key: 'date',
+    sortable: true,
   },
   {
     title: 'Quiz Taker',
+    key: 'quizTaker',
+    sortable: false,
   },
   {
     title: 'Certificate Number',
     key: 'certificateId',
+    sortable: true,
   },
   {
     title: 'Actions',
     key: 'actions',
+    sortable: false,
   },
 ];
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
-const { getLocalStorage: getUser } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
 
 const completedQuiz = ref(getCompletedQuiz());
 const quizCertificateRef = ref();
-const user = getUser();
 
 const onPrint = () => {
   const printContent = quizCertificateRef.value.$el.innerHTML;
@@ -113,9 +117,14 @@ const onDelete = (id: number) => {
         >
           <td>
             <span
-              class="mr-2 table__title"
-              @click="() => toggleSort(column)"
-            >{{ column.title }}</span>
+              :class="{
+                'mr-2': true,
+                table__pointer: column.sortable,
+              }"
+              @click="column.sortable ? toggleSort(column) : null"
+            >
+              {{ column.title }}
+            </span>
             <template v-if="isSorted(column)">
               <v-icon :icon="getSortIcon(column)" />
             </template>
@@ -150,7 +159,7 @@ const onDelete = (id: number) => {
     <quiz-certificate
       ref="quizCertificateRef"
       :certificate-number="selectedQuiz?.certificateId"
-      :quiz-taker="`${user.firstName} ${user.secondName}`"
+      :quiz-taker="selectedQuiz?.quizTaker"
       :score="selectedQuiz?.score"
       :quiz-name="selectedQuiz?.quizName"
       :date="selectedQuiz?.date"

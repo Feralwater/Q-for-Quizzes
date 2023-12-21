@@ -13,6 +13,7 @@ import { quizzes } from '@/assets/data/quizzes';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
+import type { User } from '@/types/user';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
@@ -39,11 +40,14 @@ export const useQuizQuestion = () => {
   const shouldShowNextButton = computed(() => currentQuestions.length - 1 !== currentQuestionIndex.value);
   const answerSelected = ref<number | null>(null);
   const answersSelected = ref<number[]>([]);
+  const { getLocalStorage: getUser } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
+  const user = getUser();
 
   const completedQuiz: CompletedQuiz = {
     quizName: quizzes.find((quiz) => quiz.id === currentQuizId)?.name || '',
     score: score.value,
     certificateId: new Date().getTime(),
+    quizTaker: `${user.firstName} ${user.secondName}`,
     date: new Date().toLocaleDateString('en-Us', {
       day: 'numeric',
       month: 'long',
