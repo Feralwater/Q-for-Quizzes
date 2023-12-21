@@ -3,19 +3,18 @@ import { computed, ref } from 'vue';
 import wave from '@/assets/images/wave.png';
 import avatar from '@/assets/images/avatar.svg';
 import owl from '@/assets/images/owlNotebook.svg';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
 import router from '@/router';
-import type { User } from '@/types/user';
 import { Routers } from '@/router/Routers';
+import { useAuthStore } from '@/stores/auth';
 
-const { setLocalStorage } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
+const { login } = useAuthStore();
 
 const firstName = ref('');
 const secondName = ref('');
 const isFormValid = computed(() => !!firstName.value && !!secondName.value);
 
-const login = () => {
-  setLocalStorage({ firstName: firstName.value, secondName: secondName.value });
+const handleLogin = () => {
+  login({ firstName: firstName.value, secondName: secondName.value });
   router.push(Routers.Dashboard);
 };
 
@@ -44,7 +43,7 @@ const login = () => {
         cols="12"
         sm="6"
       >
-        <v-form @submit.prevent="login">
+        <v-form @submit.prevent="handleLogin">
           <div class="login">
             <v-img
               width="100"
