@@ -3,7 +3,7 @@ import { useQuizScore } from '@/stores/score';
 import { useDisplay } from 'vuetify';
 import confetti from '@/assets/images/confetti.svg';
 import router from '@/router';
-import { storeToRefs } from 'pinia'
+import { storeToRefs } from 'pinia';
 
 const { score, correctAnswers } = useQuizScore();
 
