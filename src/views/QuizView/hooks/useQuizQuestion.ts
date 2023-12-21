@@ -34,7 +34,8 @@ export const useQuizQuestion = () => {
   const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
   const { incrementScore, setQuizCompleted } = useQuizScore();
   const scoreStore = storeToRefs(useQuizScore());
-  const { score } = scoreStore;
+  const { score, totalQuestions } = scoreStore;
+  totalQuestions.value = currentQuestions.length;
   const shouldShowNextButton = computed(() => currentQuestions.length - 1 !== currentQuestionIndex.value);
   const answerSelected = ref<number | null>(null);
   const answersSelected = ref<number[]>([]);

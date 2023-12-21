@@ -4,6 +4,7 @@ import { defineStore } from 'pinia';
 export const useQuizScore = defineStore('score', () => {
   const score = ref<number>(0);
   const correctAnswers = ref<number>(0);
+  const totalQuestions = ref<number>(0);
   const isQuizCompleted = ref<boolean>(false);
 
   const incrementScore = (itemWeight: number  ) => {
@@ -29,5 +30,6 @@ export const useQuizScore = defineStore('score', () => {
     isQuizCompleted,
     setQuizCompleted,
     correctAnswers,
+    totalQuestions,
   };
 });
