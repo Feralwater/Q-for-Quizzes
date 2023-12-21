@@ -6,6 +6,7 @@ import owl from '@/assets/images/owlNotebook.svg';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
 import { useAuthStore } from '@/stores/auth';
+import { useDisplay } from 'vuetify';
 
 const { login } = useAuthStore();
 
@@ -18,10 +19,14 @@ const handleLogin = () => {
   router.push(Routers.Dashboard);
 };
 
+const { xs } = useDisplay();
 </script>
 
 <template>
-  <v-container>
+  <v-container
+    fluid
+    fill-height
+  >
     <v-row>
       <v-col
         cols="12"
@@ -43,16 +48,25 @@ const handleLogin = () => {
         cols="12"
         sm="6"
       >
-        <v-form @submit.prevent="handleLogin">
+        <v-form
+          class="login__form"
+          @submit.prevent="handleLogin"
+        >
           <div class="login">
             <v-img
-              width="100"
-              height="100"
               :src="avatar"
               alt="user avatar"
-              class="login__avatar"
+              :class="{
+                login__avatar: true,
+                login__avatar__mobile: xs,
+              }"
             />
-            <h2 class="login__title">
+            <h2
+              :class="{
+                login__title: true,
+                login__title__mobile: xs,
+              }"
+            >
               Welcome
             </h2>
 
