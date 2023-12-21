@@ -3,6 +3,7 @@ import { useQuizScore } from '@/stores/score';
 import { useDisplay } from 'vuetify';
 import confetti from '@/assets/images/confetti.svg';
 import router from '@/router';
+import { storeToRefs } from 'pinia';
 
 const { score, correctAnswers } = useQuizScore();
 
@@ -19,6 +20,9 @@ const onGoToProfile = () => {
     name:'profile',
   });
 };
+
+const scoreStore = storeToRefs(useQuizScore());
+const { totalQuestions } = scoreStore;
 </script>
 
 <template>
@@ -58,7 +62,7 @@ const onGoToProfile = () => {
                   result__description__mobile: xs
                 }"
               >
-                {{ correctAnswers }} correct answers
+                {{ correctAnswers }} correct answers out of {{ totalQuestions }}
               </h2>
             </v-card-subtitle>
             <v-card-text class="text-center">

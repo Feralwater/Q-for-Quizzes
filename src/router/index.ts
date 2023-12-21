@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { Routers } from '@/router/Routers';
-// import { useQuizScore } from '@/stores/score';
+import { useQuizScore } from '@/stores/score';
 import DashboardView from '@/views/DashboardView/DashboardView.vue';
 import { useAuthStore } from '@/stores/auth';
 import { storeToRefs } from 'pinia';
@@ -32,15 +32,15 @@ const router = createRouter({
         requiresAuth: true,
       },
 
-      // beforeEnter: (to, from, next) => {
-      //   const { isQuizCompleted } = useQuizScore();
-      //
-      //   if (isQuizCompleted) {
-      //     next();
-      //   } else {
-      //     next({ name: 'NotFound' });
-      //   }
-      // },
+      beforeEnter: (to, from, next) => {
+        const { isQuizCompleted } = useQuizScore();
+
+        if (isQuizCompleted) {
+          next();
+        } else {
+          next({ name: 'NotFound' });
+        }
+      },
     },
     {
       path: Routers.Profile,
