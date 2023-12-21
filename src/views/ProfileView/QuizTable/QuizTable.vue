@@ -21,6 +21,7 @@ const headers = [
   },
   {
     title: 'Quiz Taker',
+    key: 'quizTaker',
   },
   {
     title: 'Certificate Number',
@@ -33,11 +34,9 @@ const headers = [
 ];
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
-const { getLocalStorage: getUser } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
 
 const completedQuiz = ref(getCompletedQuiz());
 const quizCertificateRef = ref();
-const user = getUser();
 
 const onPrint = () => {
   const printContent = quizCertificateRef.value.$el.innerHTML;
@@ -150,7 +149,7 @@ const onDelete = (id: number) => {
     <quiz-certificate
       ref="quizCertificateRef"
       :certificate-number="selectedQuiz?.certificateId"
-      :quiz-taker="`${user.firstName} ${user.secondName}`"
+      :quiz-taker="selectedQuiz?.quizTaker"
       :score="selectedQuiz?.score"
       :quiz-name="selectedQuiz?.quizName"
       :date="selectedQuiz?.date"
