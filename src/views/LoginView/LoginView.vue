@@ -5,8 +5,9 @@ import avatar from '@/assets/images/avatar.svg';
 import owl from '@/assets/images/owlNotebook.svg';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import router from '@/router';
+import type { User } from '@/types/user';
 
-const { setLocalStorage } = useLocalStorage('user', { firstName: '', secondName: '' });
+const { setLocalStorage } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
 
 const firstName = ref('');
 const secondName = ref('');

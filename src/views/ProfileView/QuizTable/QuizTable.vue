@@ -4,6 +4,7 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
 import html2pdf from "html2pdf.js";
+import type { User } from '@/types/user';
 
 const headers = [
   {
@@ -32,7 +33,7 @@ const headers = [
 ];
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
-const { getLocalStorage: getUser } = useLocalStorage('user', { firstName: '', secondName: '' });
+const { getLocalStorage: getUser } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
 
 const completedQuiz = ref(getCompletedQuiz());
 const quizCertificateRef = ref();
