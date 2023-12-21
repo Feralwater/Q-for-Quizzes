@@ -10,7 +10,7 @@ import type { QuizKeys } from '@/types/quizKeys';
 import type { QuizQuestion } from '@/types/QuizQuestion';
 import { decryptAnswer } from '@/utils/crypt';
 import { quizzes } from '@/assets/data/quizzes';
-import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 

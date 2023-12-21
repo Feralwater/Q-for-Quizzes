@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useLocalStorage } from '@/views/QuizView/hooks/useLocalStorage';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
 import html2pdf from "html2pdf.js";
+import type { User } from '@/types/user';
 
 const headers = [
   {
@@ -31,10 +32,13 @@ const headers = [
   },
 ];
 
-const { getLocalStorage, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
+const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
+const { getLocalStorage: getUser } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
 
-const completedQuiz = ref(getLocalStorage());
+const completedQuiz = ref(getCompletedQuiz());
 const quizCertificateRef = ref();
+const user = getUser();
+
 const onPrint = () => {
   const printContent = quizCertificateRef.value.$el.innerHTML;
   const windowPrint = window.open('', '_blank');
@@ -146,7 +150,7 @@ const onDelete = (id: number) => {
     <quiz-certificate
       ref="quizCertificateRef"
       :certificate-number="selectedQuiz?.certificateId"
-      quiz-taker="John Doe"
+      :quiz-taker="`${user.firstName} ${user.secondName}`"
       :score="selectedQuiz?.score"
       :quiz-name="selectedQuiz?.quizName"
       :date="selectedQuiz?.date"
