@@ -13,7 +13,7 @@ const secondName = ref('');
 
 const login = () => {
   setLocalStorage({ firstName: firstName.value, secondName: secondName.value });
-  router.push({ name: 'Dashboard' });
+  router.push({ name: 'dashboard' });
 };
 
 </script>
