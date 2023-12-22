@@ -2,7 +2,7 @@
 import router from '@/router';
 import icon from '@/assets/images/logos/vueLogo.svg';
 import { computed } from 'vue';
-import { useDisplay } from 'vuetify'
+import { useDisplay } from 'vuetify';
 
 const props = defineProps({
   quizIcon: {
@@ -60,7 +60,6 @@ const { xs } = useDisplay();
   <v-card
     role="region"
     aria-label="Quiz Card"
-    aria-labelledby="quiz-title"
     style="overflow: initial; z-index: initial"
     class="card"
     :width="xs ? '300' : '400'"
