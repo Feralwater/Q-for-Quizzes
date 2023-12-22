@@ -137,20 +137,29 @@ const { mdAndDown } = useDisplay();
     </template>
     <template #item.actions="{ item }">
       <v-icon
-        class="mr-6"
+        :class="{
+          'mr-6': true,
+          'mb-2 mt-2': mdAndDown,
+        }"
         color="primary"
         @click="onPrint"
       >
         mdi-printer
       </v-icon>
       <v-icon
-        class="mr-6"
+        :class="{
+          'mr-6': true,
+          'mb-2': mdAndDown,
+        }"
         color="primary"
         @click="downloadPDF(item.quizName, item.date, item.certificateId)"
       >
         mdi-download
       </v-icon>
       <v-icon
+        :class="{
+          'mb-2': mdAndDown,
+        }"
         color="danger"
         @click="onDelete(item.certificateId)"
       >
