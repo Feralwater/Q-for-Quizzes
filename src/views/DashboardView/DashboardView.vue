@@ -5,6 +5,7 @@ import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
 import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
 import { quizzes } from '@/assets/data/quizzes';
 import { useDisplay } from 'vuetify';
+import { Routers } from '@/router/Routers';
 
 const { mdAndDown } = useDisplay();
 </script>
@@ -17,6 +18,23 @@ const { mdAndDown } = useDisplay();
         header__mobile: mdAndDown,
       }"
     >
+      <v-btn
+        color="primary"
+        variant="outlined"
+        :class="{
+          header__profile: true,
+          header__profile__mobile: mdAndDown,
+        }"
+        icon
+        aria-label="Open profile"
+        @click="$router.push(Routers.Profile)"
+      >
+        <v-icon
+          color="lightTextColour"
+          icon="mdi-account-circle"
+          :size="mdAndDown ? '24' : '50'"
+        />
+      </v-btn>
       <b>Q</b>
       <span>for</span>
       <span><b>Q</b>uizzes</span>
