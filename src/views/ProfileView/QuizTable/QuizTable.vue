@@ -4,6 +4,7 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
 import { ref } from 'vue';
 import html2pdf from "html2pdf.js";
+import { useDisplay } from 'vuetify';
 
 const headers = [
   {
@@ -101,6 +102,7 @@ const onDelete = (id: number) => {
   completedQuiz.value = newCompletedQuiz;
 };
 
+const { mdAndDown } = useDisplay();
 </script>
 
 <template>
@@ -120,6 +122,7 @@ const onDelete = (id: number) => {
               :class="{
                 'mr-2': true,
                 table__pointer: column.sortable,
+                table__mobile: mdAndDown,
               }"
               @click="column.sortable ? toggleSort(column) : null"
             >
@@ -134,20 +137,29 @@ const onDelete = (id: number) => {
     </template>
     <template #item.actions="{ item }">
       <v-icon
-        class="mr-6"
+        :class="{
+          'mr-6': true,
+          'mb-2 mt-2': mdAndDown,
+        }"
         color="primary"
         @click="onPrint"
       >
         mdi-printer
       </v-icon>
       <v-icon
-        class="mr-6"
+        :class="{
+          'mr-6': true,
+          'mb-2': mdAndDown,
+        }"
         color="primary"
         @click="downloadPDF(item.quizName, item.date, item.certificateId)"
       >
         mdi-download
       </v-icon>
       <v-icon
+        :class="{
+          'mb-2': mdAndDown,
+        }"
         color="danger"
         @click="onDelete(item.certificateId)"
       >

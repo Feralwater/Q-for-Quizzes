@@ -19,7 +19,6 @@ const { mdAndDown } = useDisplay();
       color="lightTextColour"
       icon="mdi-book-open-page-variant"
       :size="mdAndDown ? '24' : '50'"
-      aria-hidden="true"
     />
   </v-btn>
 </template>
