@@ -47,6 +47,7 @@ const { xs } = useDisplay();
       <v-col
         cols="12"
         sm="6"
+        class="image"
       >
         <v-form
           class="login__form"
