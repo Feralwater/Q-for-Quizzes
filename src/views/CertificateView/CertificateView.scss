@@ -17,6 +17,10 @@
     padding: 12px;
     font-size: 10px;
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 .certificate {

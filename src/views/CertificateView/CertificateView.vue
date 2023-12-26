@@ -25,41 +25,11 @@ const {
 
 const quizRef = ref<HTMLDivElement | null>(null);
 
-const onPrint = () => {
-  const printContent = quizRef.value?.innerHTML;
-  const windowPrint = window.open('', '_blank');
-
-  const styles = [...document.styleSheets]
-    .map(styleSheet => {
-      try {
-        return [...styleSheet.cssRules]
-          .map(rule => rule.cssText)
-          .join('');
-      } catch (e) {
-        console.warn('Cannot access stylesheet:', styleSheet);
-        return '';
-      }
-    })
-    .join('\n');
-
-  windowPrint?.document.write(`
-    <html lang="en">
-      <head>
-        <title>Print</title>
-        <style>${styles}</style>
-      </head>
-      <body>
-        ${printContent}
-      </body>
-    </html>
-  `);
-
-  windowPrint?.focus();
-  windowPrint?.print();
-  windowPrint?.close();
-};
+const onPrint = () => window.print();
 
 const downloadPDF = (quizName: string, date: string) => {
+  const clone = quizRef.value?.cloneNode(true) as HTMLDivElement;
+  clone.style.margin = '0';
 
   const options = {
     margin: 10,
@@ -69,7 +39,7 @@ const downloadPDF = (quizName: string, date: string) => {
     jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
   };
 
-  html2pdf(quizRef.value, options);
+  html2pdf(clone, options);
 };
 
 const { mdAndDown } = useDisplay();
