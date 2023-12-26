@@ -12,7 +12,7 @@ const completedQuiz = getLocalStorage();
 
 const certificateId = Number(router.currentRoute.value.params.certificateId);
 
-const certificate = completedQuiz.find((quiz: CompletedQuiz) => quiz.certificateId === certificateId);
+const certificate = completedQuiz.find((quiz: CompletedQuiz) => quiz.certificateId === certificateId) as CompletedQuiz;
 
 const {
   quizName,
