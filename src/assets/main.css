@@ -15,4 +15,6 @@
 
 html {
   overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--field-color);
 }
