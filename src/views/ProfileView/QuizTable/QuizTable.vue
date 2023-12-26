@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import type { CompletedQuiz } from '@/types/completedQuiz';
-import QuizCertificate from '@/components/QuizCertificate/QuizCertificate.vue';
+import QuizCertificate from '@/views/CertificateView/CertificateView.vue';
 import { ref } from 'vue';
 import html2pdf from "html2pdf.js";
 import { useDisplay } from 'vuetify';
+import router from '@/router'
+import { Routers } from '@/router/Routers'
 
 const headers = [
   {
@@ -103,6 +105,10 @@ const onDelete = (id: number) => {
 };
 
 const { mdAndDown } = useDisplay();
+
+const navigateToCertificate = (id: number) => {
+  router.push(Routers.CertificateId(String(id)));
+};
 </script>
 
 <template>
@@ -136,30 +142,34 @@ const { mdAndDown } = useDisplay();
       </tr>
     </template>
     <template #item.actions="{ item }">
+      <!--      <v-icon-->
+      <!--        :class="{-->
+      <!--          'mr-6': true,-->
+      <!--          'mb-2 mt-2': mdAndDown,-->
+      <!--        }"-->
+      <!--        color="primary"-->
+      <!--        @click="onPrint"-->
+      <!--      >-->
+      <!--        mdi-printer-->
+      <!--      </v-icon>-->
+      <!--      <v-icon-->
+      <!--        :class="{-->
+      <!--          'mr-6': true,-->
+      <!--          'mb-2': mdAndDown,-->
+      <!--        }"-->
+      <!--        color="primary"-->
+      <!--        @click="downloadPDF(item.quizName, item.date, item.certificateId)"-->
+      <!--      >-->
+      <!--        mdi-download-->
+      <!--      </v-icon>-->
       <v-icon
-        :class="{
-          'mr-6': true,
-          'mb-2 mt-2': mdAndDown,
-        }"
+        class="mr-3"
         color="primary"
-        @click="onPrint"
+        @click="navigateToCertificate(item.certificateId)"
       >
-        mdi-printer
+        mdi-eye
       </v-icon>
       <v-icon
-        :class="{
-          'mr-6': true,
-          'mb-2': mdAndDown,
-        }"
-        color="primary"
-        @click="downloadPDF(item.quizName, item.date, item.certificateId)"
-      >
-        mdi-download
-      </v-icon>
-      <v-icon
-        :class="{
-          'mb-2': mdAndDown,
-        }"
         color="danger"
         @click="onDelete(item.certificateId)"
       >

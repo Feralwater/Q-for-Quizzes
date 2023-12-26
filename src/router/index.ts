@@ -59,6 +59,11 @@ const router = createRouter({
       },
     },
     {
+      path: Routers.CertificateId(':certificateId'),
+      name: 'certificate',
+      component: () => import('@/views/CertificateView/CertificateView.vue'),
+    },
+    {
       path: Routers.PageNotFound,
       name: 'NotFound',
       component: () => import('@/views/NotFoundView/NotFoundView.vue'),

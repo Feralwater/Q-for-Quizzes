@@ -75,5 +75,5 @@ defineProps({
 </template>
 
 <style scoped>
-@import "QuizCertificate.scss";
+@import "CertificateView.scss";
 </style>
