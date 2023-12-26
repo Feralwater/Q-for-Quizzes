@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Roboto:ital,wght@0,400;1,700&display=swap');
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: var(--primary);
+  color: var(--light-text-color);
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  gap: 1rem;
+}
+
 .certificate {
+  margin: 15px auto 0;
   width: 1050px;
   border: 16px solid var(--primary);
 

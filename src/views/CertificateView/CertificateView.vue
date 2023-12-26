@@ -74,7 +74,7 @@ const downloadPDF = (quizName: string, date: string) => {
 </script>
 
 <template>
-  <header>
+  <header class="header">
     <span>
       Your certificate is ready!</span>
     <v-icon
@@ -82,7 +82,7 @@ const downloadPDF = (quizName: string, date: string) => {
         'mr-6': true,
      
       }"
-      color="primary"
+      color="lightTextColor"
       @click="onPrint"
     >
       mdi-printer
@@ -92,7 +92,7 @@ const downloadPDF = (quizName: string, date: string) => {
         'mr-6': true,
      
       }"
-      color="primary"
+      color="lightTextColor"
       @click="downloadPDF(quizName, date)"
     >
       mdi-download
