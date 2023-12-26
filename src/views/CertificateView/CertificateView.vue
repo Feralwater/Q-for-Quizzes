@@ -42,17 +42,10 @@ const downloadPDF = (quizName: string, date: string) => {
   html2pdf(clone, options);
 };
 
-const { mdAndDown } = useDisplay();
-
 </script>
 
 <template>
-  <header 
-    :class="{
-      header: true,
-      header__mobile: mdAndDown,
-    }"
-  >
+  <header class="header">
     <span>
       Your certificate is ready!</span>
     <v-icon
