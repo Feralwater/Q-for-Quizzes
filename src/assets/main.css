@@ -1,5 +1,4 @@
 @import './base.css';
-@import './normalize.css';
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
@@ -12,4 +11,10 @@
 
 ::-webkit-scrollbar-track {
   background-color: var(--field-color);
+}
+
+html {
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--field-color);
 }
