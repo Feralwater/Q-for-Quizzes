@@ -11,7 +11,12 @@
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  gap: 1rem;
+  gap: 1.4rem;
+
+  &__mobile {
+    padding: 12px;
+    font-size: 10px;
+  }
 }
 
 .certificate {

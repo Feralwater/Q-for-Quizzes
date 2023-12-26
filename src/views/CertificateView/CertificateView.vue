@@ -5,6 +5,7 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import router from '@/router';
 import { ref } from 'vue';
 import html2pdf from 'html2pdf.js';
+import { useDisplay } from 'vuetify';
 
 const { getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
@@ -71,27 +72,26 @@ const downloadPDF = (quizName: string, date: string) => {
   html2pdf(quizRef.value, options);
 };
 
+const { mdAndDown } = useDisplay();
+
 </script>
 
 <template>
-  <header class="header">
+  <header 
+    :class="{
+      header: true,
+      header__mobile: mdAndDown,
+    }"
+  >
     <span>
       Your certificate is ready!</span>
     <v-icon
-      :class="{
-        'mr-6': true,
-     
-      }"
       color="lightTextColor"
       @click="onPrint"
     >
       mdi-printer
     </v-icon>
     <v-icon
-      :class="{
-        'mr-6': true,
-     
-      }"
       color="lightTextColor"
       @click="downloadPDF(quizName, date)"
     >
