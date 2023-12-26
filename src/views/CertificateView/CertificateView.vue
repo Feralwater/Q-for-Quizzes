@@ -1,33 +1,24 @@
 <script setup lang="ts">
 import stamp from '@/assets/images/stamp.svg';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
+import type { CompletedQuiz } from '@/types/completedQuiz';
+import router from '@/router';
 
-defineProps({
-  quizName: {
-    type: String,
-    required: true,
-    default: '',
-  },
-  certificateNumber: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  date: {
-    type: String,
-    required: true,
-    default: '',
-  },
-  score: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  quizTaker: {
-    type: String,
-    required: true,
-    default: '',
-  },
-});
+const { getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
+
+const completedQuiz = getLocalStorage();
+
+const certificateId = Number(router.currentRoute.value.params.certificateId);
+
+const certificate = completedQuiz.find((quiz) => quiz.certificateId === certificateId);
+
+const {
+  quizName,
+  certificateNumber,
+  date,
+  score,
+  quizTaker,
+} = certificate;
 </script>
 
 <template>
