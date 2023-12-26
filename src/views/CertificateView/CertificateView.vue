@@ -61,7 +61,7 @@ const onPrint = () => {
 
 const quizRef = ref<HTMLDivElement | null>(null);
 
-const downloadPDF = (quizName: string, date: string, id: number) => {
+const downloadPDF = (quizName: string, date: string) => {
 
   const options = {
     margin: 10,
@@ -96,7 +96,7 @@ const downloadPDF = (quizName: string, date: string, id: number) => {
      
       }"
       color="primary"
-      @click="downloadPDF(quizName, date, certificateId)"
+      @click="downloadPDF(quizName, date)"
     >
       mdi-download
     </v-icon>
