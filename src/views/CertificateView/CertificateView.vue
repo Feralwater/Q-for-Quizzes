@@ -22,10 +22,10 @@ const {
   quizTaker,
 } = certificate;
 
-const quizCertificateRef = ref();
+const quizRef = ref<HTMLDivElement | null>(null);
 
 const onPrint = () => {
-  const printContent = quizCertificateRef.value.$el.innerHTML;
+  const printContent = quizRef.value?.innerHTML;
   const windowPrint = window.open('', '_blank');
 
   const styles = [...document.styleSheets]
@@ -53,13 +53,10 @@ const onPrint = () => {
     </html>
   `);
 
-  windowPrint?.document.close();
   windowPrint?.focus();
   windowPrint?.print();
   windowPrint?.close();
 };
-
-const quizRef = ref<HTMLDivElement | null>(null);
 
 const downloadPDF = (quizName: string, date: string) => {
 
