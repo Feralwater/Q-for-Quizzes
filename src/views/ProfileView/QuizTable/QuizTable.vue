@@ -1,102 +1,15 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import type { CompletedQuiz } from '@/types/completedQuiz';
-import QuizCertificate from '@/views/CertificateView/CertificateView.vue';
 import { ref } from 'vue';
-import html2pdf from "html2pdf.js";
 import { useDisplay } from 'vuetify';
-import router from '@/router'
-import { Routers } from '@/router/Routers'
-
-const headers = [
-  {
-    title: 'Quiz Name',
-    key: 'quizName',
-    sortable: true,
-  },
-  {
-    title: 'Score',
-    key: 'score',
-    sortable: true,
-  },
-  {
-    title: 'Date',
-    key: 'date',
-    sortable: true,
-  },
-  {
-    title: 'Quiz Taker',
-    key: 'quizTaker',
-    sortable: false,
-  },
-  {
-    title: 'Certificate Number',
-    key: 'certificateId',
-    sortable: true,
-  },
-  {
-    title: 'Actions',
-    key: 'actions',
-    sortable: false,
-  },
-];
+import router from '@/router';
+import { Routers } from '@/router/Routers';
+import { headers } from '@/views/ProfileView/QuizTable/headers';
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
 const completedQuiz = ref(getCompletedQuiz());
-const quizCertificateRef = ref();
-
-const onPrint = () => {
-  const printContent = quizCertificateRef.value.$el.innerHTML;
-  const windowPrint = window.open('', '_blank');
-
-  const styles = [...document.styleSheets]
-    .map(styleSheet => {
-      try {
-        return [...styleSheet.cssRules]
-          .map(rule => rule.cssText)
-          .join('');
-      } catch (e) {
-        console.warn('Cannot access stylesheet:', styleSheet);
-        return '';
-      }
-    })
-    .join('\n');
-
-  windowPrint?.document.write(`
-    <html lang="en">
-      <head>
-        <title>Print</title>
-        <style>${styles}</style>
-      </head>
-      <body>
-        ${printContent}
-      </body>
-    </html>
-  `);
-
-  windowPrint?.document.close();
-  windowPrint?.focus();
-  windowPrint?.print();
-  windowPrint?.close();
-};
-
-const selectedQuiz = ref<CompletedQuiz>();
-
-const downloadPDF = (quizName: string, date: string, id: number) => {
-  selectedQuiz.value = completedQuiz.value.find(quiz => quiz.certificateId === id);
-  const element = quizCertificateRef.value.$el;
-
-  const options = {
-    margin: 10,
-    filename: `${quizName} - ${date}.pdf`,
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
-  };
-
-  html2pdf(element, options);
-};
 
 const onDelete = (id: number) => {
   const newCompletedQuiz = completedQuiz.value.filter(quiz => quiz.certificateId !== id);
@@ -142,26 +55,6 @@ const navigateToCertificate = (id: number) => {
       </tr>
     </template>
     <template #item.actions="{ item }">
-      <!--      <v-icon-->
-      <!--        :class="{-->
-      <!--          'mr-6': true,-->
-      <!--          'mb-2 mt-2': mdAndDown,-->
-      <!--        }"-->
-      <!--        color="primary"-->
-      <!--        @click="onPrint"-->
-      <!--      >-->
-      <!--        mdi-printer-->
-      <!--      </v-icon>-->
-      <!--      <v-icon-->
-      <!--        :class="{-->
-      <!--          'mr-6': true,-->
-      <!--          'mb-2': mdAndDown,-->
-      <!--        }"-->
-      <!--        color="primary"-->
-      <!--        @click="downloadPDF(item.quizName, item.date, item.certificateId)"-->
-      <!--      >-->
-      <!--        mdi-download-->
-      <!--      </v-icon>-->
       <v-icon
         class="mr-3"
         color="primary"
@@ -177,16 +70,6 @@ const navigateToCertificate = (id: number) => {
       </v-icon>
     </template>
   </v-data-table>
-  <div class="d-none">
-    <quiz-certificate
-      ref="quizCertificateRef"
-      :certificate-number="selectedQuiz?.certificateId"
-      :quiz-taker="selectedQuiz?.quizTaker"
-      :score="selectedQuiz?.score"
-      :quiz-name="selectedQuiz?.quizName"
-      :date="selectedQuiz?.date"
-    />
-  </div>
 </template>
 
 <style scoped>
