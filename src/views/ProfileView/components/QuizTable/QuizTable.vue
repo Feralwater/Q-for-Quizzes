@@ -7,6 +7,7 @@ import router from '@/router';
 import { Routers } from '@/router/Routers';
 import { headers } from '@/views/ProfileView/components/QuizTable/headers';
 import ConformationDialog from '@/components/ConformationDialog/ConformationDialog.vue';
+import SnackBar from '@/components/SnackBar/SnackBar.vue';
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
@@ -29,7 +30,7 @@ const onConfirm = () => {
   completedQuiz.value = newCompletedQuiz;
   dialog.value = false;
   snackbar.value = true;
-  snackbarText.value = `your certificate number ${selectedQuizId.value} has been deleted`;
+  snackbarText.value = `Certificate number ${selectedQuizId.value} has been deleted`;
 };
 
 const { mdAndDown } = useDisplay();
@@ -91,25 +92,12 @@ const navigateToCertificate = (id: number) => {
     :deleted-item="deletedItem"
     @update:dialog="dialog = $event"
   />
-  <template>
-    <div class="text-center">
-      <v-snackbar
-        v-model="snackbar"
-        timeout="2000"
-        color="success"
-      >
-        {{ snackbarText }}
-        <template #actions>
-          <v-btn
-            color="lightTextColor"
-            variant="text"
-            icon="mdi-close"
-            @click="snackbar = false"
-          />
-        </template>
-      </v-snackbar>
-    </div>
-  </template>
+  <snack-bar
+    v-model:snackbar="snackbar"
+    :snackbar-text="snackbarText"
+    color="success"
+    @update:snackbar="snackbar = $event"
+  />
 </template>
 
 <style scoped>
