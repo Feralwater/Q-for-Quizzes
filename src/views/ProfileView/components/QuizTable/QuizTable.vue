@@ -90,6 +90,7 @@ const navigateToCertificate = (id: number) => {
     v-model:dialog="dialog"
     :on-confirm="onConfirm"
     :deleted-item="deletedItem"
+    title="Delete Certificate"
     @update:dialog="dialog = $event"
   />
   <snack-bar
