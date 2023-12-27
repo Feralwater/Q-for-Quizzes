@@ -45,6 +45,12 @@ const downloadPDF = (quizName: string, date: string) => {
 
 <template>
   <header class="header">
+    <v-icon
+      color="lightTextColor"
+      @click="$router.back()"
+    >
+      mdi-arrow-left
+    </v-icon>
     <span>
       Your certificate is ready!</span>
     <v-icon
