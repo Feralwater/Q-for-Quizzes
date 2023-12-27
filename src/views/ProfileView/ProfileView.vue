@@ -2,7 +2,7 @@
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { useDisplay } from 'vuetify';
 import owl from '@/assets/images/owl.svg';
-import QuizTable from '@/views/ProfileView/QuizTable/QuizTable.vue';
+import QuizTable from '@/views/ProfileView/components/QuizTable/QuizTable.vue';
 
 const { mdAndDown } = useDisplay();
 </script>
