@@ -5,7 +5,7 @@ import { ref } from 'vue';
 import { useDisplay } from 'vuetify';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
-import { headers } from '@/views/ProfileView/QuizTable/headers';
+import { headers } from '@/views/ProfileView/components/QuizTable/headers';
 import ConformationDialog from '@/components/ConformationDialog/ConformationDialog.vue';
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
@@ -14,6 +14,8 @@ const completedQuiz = ref(getCompletedQuiz());
 const dialog = ref(false);
 const selectedQuizId = ref<number | null>(null);
 const deletedItem = ref('');
+const snackbar = ref(false);
+const snackbarText = ref('');
 
 const onDelete = (id: number) => {
   dialog.value = true;
@@ -22,12 +24,12 @@ const onDelete = (id: number) => {
 };
 
 const onConfirm = () => {
-  if (selectedQuizId.value) {
-    const newCompletedQuiz = completedQuiz.value.filter(quiz => quiz.certificateId !== selectedQuizId.value);
-    setLocalStorage(newCompletedQuiz);
-    completedQuiz.value = newCompletedQuiz;
-  }
+  const newCompletedQuiz = completedQuiz.value.filter(quiz => quiz.certificateId !== selectedQuizId.value);
+  setLocalStorage(newCompletedQuiz);
+  completedQuiz.value = newCompletedQuiz;
   dialog.value = false;
+  snackbar.value = true;
+  snackbarText.value = `your certificate number ${selectedQuizId.value} has been deleted`;
 };
 
 const { mdAndDown } = useDisplay();
@@ -89,6 +91,25 @@ const navigateToCertificate = (id: number) => {
     :deleted-item="deletedItem"
     @update:dialog="dialog = $event"
   />
+  <template>
+    <div class="text-center">
+      <v-snackbar
+        v-model="snackbar"
+        timeout="2000"
+        color="success"
+      >
+        {{ snackbarText }}
+        <template #actions>
+          <v-btn
+            color="lightTextColor"
+            variant="text"
+            icon="mdi-close"
+            @click="snackbar = false"
+          />
+        </template>
+      </v-snackbar>
+    </div>
+  </template>
 </template>
 
 <style scoped>
