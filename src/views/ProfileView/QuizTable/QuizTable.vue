@@ -11,11 +11,23 @@ import ConformationDialog from '@/components/ConformationDialog/ConformationDial
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
 const completedQuiz = ref(getCompletedQuiz());
+const dialog = ref(false);
+const selectedQuizId = ref<number | null>(null);
+const deletedItem = ref('');
 
 const onDelete = (id: number) => {
-  const newCompletedQuiz = completedQuiz.value.filter(quiz => quiz.certificateId !== id);
-  setLocalStorage(newCompletedQuiz);
-  completedQuiz.value = newCompletedQuiz;
+  dialog.value = true;
+  selectedQuizId.value = id;
+  deletedItem.value = `your certificate number ${id}`;
+};
+
+const onConfirm = () => {
+  if (selectedQuizId.value) {
+    const newCompletedQuiz = completedQuiz.value.filter(quiz => quiz.certificateId !== selectedQuizId.value);
+    setLocalStorage(newCompletedQuiz);
+    completedQuiz.value = newCompletedQuiz;
+  }
+  dialog.value = false;
 };
 
 const { mdAndDown } = useDisplay();
@@ -71,7 +83,12 @@ const navigateToCertificate = (id: number) => {
       </v-icon>
     </template>
   </v-data-table>
-  <conformation-dialog />
+  <conformation-dialog
+    v-model:dialog="dialog"
+    :on-confirm="onConfirm"
+    :deleted-item="deletedItem"
+    @update:dialog="dialog = $event"
+  />
 </template>
 
 <style scoped>
