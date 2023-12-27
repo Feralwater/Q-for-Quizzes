@@ -6,6 +6,7 @@ import { useDisplay } from 'vuetify';
 import router from '@/router';
 import { Routers } from '@/router/Routers';
 import { headers } from '@/views/ProfileView/QuizTable/headers';
+import ConformationDialog from '@/components/ConformationDialog/ConformationDialog.vue';
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
@@ -70,6 +71,7 @@ const navigateToCertificate = (id: number) => {
       </v-icon>
     </template>
   </v-data-table>
+  <conformation-dialog />
 </template>
 
 <style scoped>
