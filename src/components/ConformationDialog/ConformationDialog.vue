@@ -43,7 +43,7 @@ const emit = defineEmits(['update:dialog']);
           mdi-close
         </v-icon>
       </v-card-title>
-      <v-card-text>
+      <v-card-text class="text-center">
         Are you sure you want to delete
         <span class="colored">
           {{ deletedItem }}
