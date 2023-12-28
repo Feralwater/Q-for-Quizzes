@@ -5,6 +5,12 @@ export const useCountDown = (initialTime: number) => {
   const countdown = ref(initialTime + 0.5);
   let intervalId: null | ReturnType<typeof setInterval> = null;
   const beepAudio = new Audio(beep);
+  let isSoundEnabled = ref(true);
+
+  const toggleSound = () => {
+    isSoundEnabled.value = !isSoundEnabled.value;
+  };
+
   const startCountDown = (time: number) => {
     stopCountDown();
     countdown.value = time;
@@ -15,7 +21,7 @@ export const useCountDown = (initialTime: number) => {
       if (countdown.value === 0) {
         stopCountDown();
       }
-      if (countdown.value === 4) {
+      if (countdown.value === 4 && isSoundEnabled.value) {
         beepAudio.play();
       }
     }, 1000);
@@ -41,5 +47,7 @@ export const useCountDown = (initialTime: number) => {
   return {
     countdown,
     watchTime,
+    toggleSound,
+    isSoundEnabled,
   };
 };

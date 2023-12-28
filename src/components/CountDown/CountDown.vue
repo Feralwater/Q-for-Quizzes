@@ -12,7 +12,7 @@ const props = defineProps({
 
 const emit = defineEmits(["timeUp"]);
 
-const { countdown, watchTime } = useCountDown(props.time);
+const { countdown, watchTime, isSoundEnabled, toggleSound } = useCountDown(props.time);
 
 watch(() => props.time, watchTime);
 watch(countdown, (countdown) => {
@@ -30,6 +30,17 @@ const { smAndDown, xs } = useDisplay();
 </script>
 
 <template>
+  <v-btn
+    size="small"
+    icon
+  >
+    <v-icon
+      color="grey"
+      :icon="isSoundEnabled ? 'mdi-volume-high' : 'mdi-volume-off'"
+      size="24"
+      @click="toggleSound"
+    />
+  </v-btn>
   <div
     :class="{
       countdown: true,
