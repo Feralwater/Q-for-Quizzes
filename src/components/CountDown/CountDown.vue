@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useCountDown } from "@/components/CountDown/useCountDown";
-import { computed, watch } from "vue";
+import { computed, watch } from 'vue';
 import { useDisplay } from 'vuetify';
+import { storeToRefs } from 'pinia';
+import { useSound } from '@/stores/sound';
 
 const props = defineProps({
   time: {
@@ -13,6 +15,8 @@ const props = defineProps({
 const emit = defineEmits(["timeUp"]);
 
 const { countdown, watchTime } = useCountDown(props.time);
+const { isSoundEnabled } = storeToRefs(useSound());
+const toggleSound = useSound().toggleSound;
 
 watch(() => props.time, watchTime);
 watch(countdown, (countdown) => {
@@ -30,6 +34,13 @@ const { smAndDown, xs } = useDisplay();
 </script>
 
 <template>
+  <v-icon
+    color="grey"
+    :size="xs ? '12' : '24'"
+    @click="toggleSound"
+  >
+    {{ isSoundEnabled ? 'mdi-volume-high' : 'mdi-volume-off' }}
+  </v-icon>
   <div
     :class="{
       countdown: true,

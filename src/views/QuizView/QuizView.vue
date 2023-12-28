@@ -48,7 +48,6 @@ const { mdAndDown } = useDisplay();
         <CountDown
           :key="currentQuestionIndex"
           :time="currentQuestion.timeToAnswer"
-          aria-label="Countdown Timer"
           @time-up="handleCountdownFinished"
         />
       </div>

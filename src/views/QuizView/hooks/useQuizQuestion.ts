@@ -21,7 +21,7 @@ const questions: Record<QuizKeys, QuizQuestion[]> = {
   'pinia': piniaQuestions,
 };
 
-const TIME_UP_VALUE = -1;
+const TIME_UP_VALUE = 0;
 
 export const useQuizQuestion = () => {
   const route = useRoute();
