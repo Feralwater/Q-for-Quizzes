@@ -8,7 +8,7 @@ import { useRoute } from 'vue-router';
 import router from '@/router';
 import type { QuizKeys } from '@/types/quizKeys';
 import type { QuizQuestion } from '@/types/QuizQuestion';
-import { decryptAnswer, encryptScore } from '@/utils/crypt'
+import { decryptAnswer, encryptScore } from '@/utils/crypt';
 import { quizzes } from '@/assets/data/quizzes';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
