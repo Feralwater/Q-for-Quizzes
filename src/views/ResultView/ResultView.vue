@@ -48,10 +48,11 @@ const { totalQuestions } = scoreStore;
                   result__title: true,
                   result__title__mobile: xs
                 }"
+                class="mb-4 mt-4"
               >
                 Your total score is
               </h1>
-              <h1 class="result__title_primary">
+              <h1 class="result__title_primary mb-4">
                 {{ score }}%
               </h1>
             </v-card-title>

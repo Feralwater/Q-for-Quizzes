@@ -1,6 +1,6 @@
 export interface CompletedQuiz {
   quizName: string;
-  score: number;
+  score: number | string;
   quizTaker: string;
   certificateId: number;
   date: string;

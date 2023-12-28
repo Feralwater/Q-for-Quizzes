@@ -15,8 +15,9 @@ const props = defineProps({
 const emit = defineEmits(["timeUp"]);
 
 const { countdown, watchTime } = useCountDown(props.time);
-const { isSoundEnabled } = storeToRefs(useSound());
-const toggleSound = useSound().toggleSound;
+const soundStore = useSound();
+const { isSoundEnabled } = storeToRefs(soundStore);
+const { toggleSound } = soundStore;
 
 watch(() => props.time, watchTime);
 watch(countdown, (countdown) => {
