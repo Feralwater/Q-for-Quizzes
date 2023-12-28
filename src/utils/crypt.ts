@@ -25,7 +25,8 @@ export const encryptScore = (score: number):string => {
     .join('');
 };
 
-export const decryptScore = (encryptedScore: string):number => {
+export const decryptScore = (encryptedScore: string | number):number => {
+  if (typeof encryptedScore === 'number') return encryptedScore;
   const decryptedScore = encryptedScore
     .split('')
     .map((letter) => {
