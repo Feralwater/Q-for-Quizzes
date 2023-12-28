@@ -8,10 +8,15 @@ import { Routers } from '@/router/Routers';
 import { headers } from '@/views/ProfileView/components/QuizTable/headers';
 import ConformationDialog from '@/components/ConformationDialog/ConformationDialog.vue';
 import SnackBar from '@/components/SnackBar/SnackBar.vue';
+import { decryptScore } from '@/utils/crypt';
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
-const completedQuiz = ref(getCompletedQuiz());
+const encryptedCompletedQuiz = getCompletedQuiz().map(quiz => ({
+  ...quiz,
+score: decryptScore(quiz.score),
+}));
+const completedQuiz = ref(encryptedCompletedQuiz);
 const dialog = ref(false);
 const selectedQuizId = ref<number | null>(null);
 const deletedItem = ref('');
