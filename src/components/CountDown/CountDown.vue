@@ -30,17 +30,13 @@ const { smAndDown, xs } = useDisplay();
 </script>
 
 <template>
-  <v-btn
-    size="small"
-    icon
+  <v-icon
+    color="grey"
+    :size="xs ? '12' : '24'"
+    @click="toggleSound"
   >
-    <v-icon
-      color="grey"
-      :icon="isSoundEnabled ? 'mdi-volume-high' : 'mdi-volume-off'"
-      size="24"
-      @click="toggleSound"
-    />
-  </v-btn>
+    {{ isSoundEnabled ? 'mdi-volume-high' : 'mdi-volume-off' }}
+  </v-icon>
   <div
     :class="{
       countdown: true,
