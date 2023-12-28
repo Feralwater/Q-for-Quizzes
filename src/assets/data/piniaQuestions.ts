@@ -4,11 +4,11 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 1,
     question: 'What is pinia?',
-    answer: [5],
+    answer: [16],
     options: [
-      'Pinia is a Vue Store',
       'Pinia is a Vue plugin',
       'Pinia is a Vue composition API',
+      'Pinia is a Vue Store',
       'Pinia is a Vue router',
     ],
     timeToAnswer: 20,
@@ -21,6 +21,9 @@ export const piniaQuestions:QuizQuestion[] = [
     options: [
       "Yes",
       "No",
+      "Maybe",
+      "I don't know",
+      "I don't care",
     ],
     timeToAnswer: 20,
     points: 10,
@@ -28,10 +31,10 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 3,
     question: "How is state managed in Vue Pinia?",
-    answer: [5],
+    answer: [14],
     options: [
-      "Vue Pinia uses a centralized store pattern where the state is stored in a central store, and components can access and modify the state through getters and actions.",
       "Vue Pinia uses a distributed store pattern where each component has its own state, and components can access and modify the state through getters and actions.",
+      "Vue Pinia uses a centralized store pattern where the state is stored in a central store, and components can access and modify the state through getters and actions.",
       "Vue Pinia uses a shared store pattern where the state is stored in a central store, but components can only access the state through getters.",
       "Vue Pinia uses a shared store pattern where the state is stored in a central store, but components can only modify the state through actions.",
     ],
@@ -117,12 +120,14 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 9,
     question: "Can you have multiple stores in a Vue Pinia application?",
-    answer: [5],
+    answer: [9],
     options: [
-      "Yes, Vue Pinia supports multiple stores.",
       "No, Vue Pinia only supports a single store.",
       "Yes, Vue Pinia supports multiple stores, but only one store can be active at a time.",
       "No, Vue Pinia only supports a single store, and it must be active at all times.",
+      "Yes, Vue Pinia supports multiple stores.",
+      "Maybe, Vue Pinia supports multiple stores, but it is not recommended.",
+      "No, Vue Pinia only supports a single store, but it can be deactivated.",
     ],
     timeToAnswer: 20,
     points: 10,
@@ -145,13 +150,15 @@ export const piniaQuestions:QuizQuestion[] = [
   {
     id: 11,
     question: "What is the difference between Vue Pinia and Vuex?",
-    answer: [5],
+    answer: [9],
     options: [
-      "Vue Pinia is more modular and type-safe, and supports multiple stores by design.",
       "Vue Pinia is more modular and type-safe, but does not support multiple stores.",
       "Vue Pinia is not modular and type-safe, and does not support multiple stores.",
       "Vue Pinia is not modular and type-safe, but supports multiple stores.",
       "Vue Pinia is more modular and type-safe, but it is not supported by Vue 3.",
+      "There is no difference between Vue Pinia and Vuex.",
+      "There are many differences between Vue Pinia and Vuex. It is not possible to list them all.",
+      "Vue Pinia is more modular and type-safe, and supports multiple stores by design.",
     ],
     timeToAnswer: 60,
     points: 10,
