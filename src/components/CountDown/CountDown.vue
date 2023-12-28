@@ -2,6 +2,8 @@
 import { useCountDown } from "@/components/CountDown/useCountDown";
 import { computed, ref, watch } from 'vue';
 import { useDisplay } from 'vuetify';
+import { storeToRefs } from 'pinia';
+import { useSound } from '@/stores/sound';
 
 const props = defineProps({
   time: {
@@ -12,7 +14,9 @@ const props = defineProps({
 
 const emit = defineEmits(["timeUp"]);
 
-const { countdown, watchTime, isSoundEnabled, toggleSound } = useCountDown(props.time);
+const { countdown, watchTime } = useCountDown(props.time);
+const { isSoundEnabled } = storeToRefs(useSound());
+const toggleSound = useSound().toggleSound;
 
 watch(() => props.time, watchTime);
 watch(countdown, (countdown) => {

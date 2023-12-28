@@ -1,16 +1,13 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import beep from '@/assets/sounds/beep.mp3';
+import { storeToRefs } from 'pinia';
+import { useSound } from '@/stores/sound';
 
 export const useCountDown = (initialTime: number) => {
   const countdown = ref(initialTime + 0.5);
   let intervalId: null | ReturnType<typeof setInterval> = null;
   const beepAudio = new Audio(beep);
-  let isSoundEnabled = ref(true);
-
-  const toggleSound = () => {
-    isSoundEnabled.value = !isSoundEnabled.value;
-  };
-
+  const { isSoundEnabled } = storeToRefs(useSound());
   const startCountDown = (time: number) => {
     stopCountDown();
     countdown.value = time;
@@ -47,7 +44,5 @@ export const useCountDown = (initialTime: number) => {
   return {
     countdown,
     watchTime,
-    toggleSound,
-    isSoundEnabled,
   };
 };
