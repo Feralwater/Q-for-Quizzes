@@ -1,6 +1,5 @@
 import type { QuizQuestion } from '@/types/QuizQuestion';
-
-const style = 'style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"';
+import { style } from '@/assets/data/codeStyle';
 
 export const basicVueQuestions:QuizQuestion[] = [
   {
