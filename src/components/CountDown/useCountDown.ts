@@ -1,7 +1,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export const useCountDown = (initialTime: number) => {
-  const countdown = ref(initialTime);
+  const countdown = ref(initialTime + 0.5);
   let intervalId: null | ReturnType<typeof setInterval> = null;
 
   const startCountDown = (time: number) => {
@@ -11,7 +11,7 @@ export const useCountDown = (initialTime: number) => {
 
     intervalId = setInterval(() => {
       countdown.value--;
-      if (countdown.value === -1) {
+      if (countdown.value === 0) {
         stopCountDown();
       }
     }, 1000);
