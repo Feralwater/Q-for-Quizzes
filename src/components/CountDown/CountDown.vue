@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCountDown } from "@/components/CountDown/useCountDown";
-import { computed, ref, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useDisplay } from 'vuetify';
 import { storeToRefs } from 'pinia';
 import { useSound } from '@/stores/sound';
