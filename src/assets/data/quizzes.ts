@@ -3,6 +3,7 @@ import piniaLogo from '@/assets/images/logos/piniaLogo.svg';
 import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
 import type { QuizQuestion } from '@/types/QuizQuestion';
+import { intermediateVueQuestions } from '@/assets/data/intermediateVueQuestions';
 
 const calculateQuizTime = (questions: QuizQuestion[]) => questions.reduce((acc, curr) => acc + curr.timeToAnswer, 0);
 
@@ -22,5 +23,13 @@ export const quizzes = [
     image: piniaLogo,
     questionsAmount: piniaQuestions.length,
     timeToComplete: calculateQuizTime(piniaQuestions),
+  },
+  {
+    id: 'vue-intermediate',
+    name: 'Vue intermediate',
+    description: 'Test your knowledge of Vue.js intermediate',
+    image: vueLogo,
+    questionsAmount: intermediateVueQuestions.length,
+    timeToComplete: calculateQuizTime(intermediateVueQuestions),
   },
 ];

@@ -14,11 +14,13 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import type { User } from '@/types/user';
+import { intermediateVueQuestions } from '@/assets/data/intermediateVueQuestions';
 
 
 const questions: Record<QuizKeys, QuizQuestion[]> = {
   'vue-basics': basicVueQuestions,
   'pinia': piniaQuestions,
+  'vue-intermediate': intermediateVueQuestions,
 };
 
 const TIME_UP_VALUE = 0;
