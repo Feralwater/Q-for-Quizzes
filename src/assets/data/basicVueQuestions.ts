@@ -485,7 +485,18 @@ export const basicVueQuestions:QuizQuestion[] = [
   },
   {
     id: 37,
-    question: `Evaluate this Vue 3 code for filtering a list: <pre ${style}><code>&lt;li v-for="item in filteredList" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;</code></pre> where 'filteredList' is a computed property.`,
+    question: `Evaluate this Vue 3 code for filtering a list:
+            <pre ${style}>
+              <code>
+              &lt;li
+                 v-for="item in filteredList"
+                 :key="item.id"
+              &gt;
+                 {{ item.name }}
+              &lt;/li&gt;
+              </code>
+            </pre>
+    where 'filteredList' is a computed property.`,
     answer: [5],
     options: [
       'Yes\', \'Correct usage of v-for with a computed property',
