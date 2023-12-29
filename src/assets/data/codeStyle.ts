@@ -1,1 +1,1 @@
-export const style = 'style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px"';
+export const style = 'style="background-color: #fef2ee; padding: 4px; border-radius: 4px; overflow-x: auto; font-size: 12px; max-width: 100%;"';
