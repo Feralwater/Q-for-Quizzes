@@ -1,5 +1,3 @@
-import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
-import { piniaQuestions } from '@/assets/data/piniaQuestions';
 import { computed, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import { Routers } from '@/router/Routers';
@@ -7,21 +5,13 @@ import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange'
 import { useRoute } from 'vue-router';
 import router from '@/router';
 import type { QuizKeys } from '@/types/quizKeys';
-import type { QuizQuestion } from '@/types/QuizQuestion';
 import { decryptAnswer, encryptScore } from '@/utils/crypt';
 import { quizzes } from '@/assets/data/quizzes';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import type { User } from '@/types/user';
-import { intermediateVueQuestions } from '@/assets/data/intermediateVueQuestions';
-
-
-const questions: Record<QuizKeys, QuizQuestion[]> = {
-  'vue-basics': basicVueQuestions,
-  'pinia': piniaQuestions,
-  'vue-intermediate': intermediateVueQuestions,
-};
+import { questions } from '@/views/QuizView/hooks/constant';
 
 const TIME_UP_VALUE = 0;
 

@@ -4,6 +4,7 @@ import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
 import type { QuizQuestion } from '@/types/QuizQuestion';
 import { intermediateVueQuestions } from '@/assets/data/intermediateVueQuestions';
+import { advancedVueQuestions } from '@/assets/data/advancedVueQuestions'
 
 const calculateQuizTime = (questions: QuizQuestion[]) => questions.reduce((acc, curr) => acc + curr.timeToAnswer, 0);
 
@@ -31,5 +32,13 @@ export const quizzes = [
     image: vueLogo,
     questionsAmount: intermediateVueQuestions.length,
     timeToComplete: calculateQuizTime(intermediateVueQuestions),
+  },
+  {
+    id: 'vue-advanced',
+    name: 'Vue advanced',
+    description: 'Test your knowledge of Vue.js advanced',
+    image: vueLogo,
+    questionsAmount: advancedVueQuestions.length,
+    timeToComplete: calculateQuizTime(advancedVueQuestions),
   },
 ];

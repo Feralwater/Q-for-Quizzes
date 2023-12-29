@@ -1,1 +1,1 @@
-export type QuizKeys = 'vue-basics' | 'pinia' | 'vue-intermediate';
+export type QuizKeys = 'vue-basics' | 'pinia' | 'vue-intermediate' | 'vue-advanced';
