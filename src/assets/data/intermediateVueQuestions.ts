@@ -14,7 +14,7 @@ export const intermediateVueQuestions = [
       'The $on method in Vue is used to emit custom events between components.',
     ],
     timeToAnswer: 60,
-    points: 2,
+    points: 5,
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const intermediateVueQuestions = [
       'Scoped slot allows you to pass child component data to the parent scope and use the data in the slot content.', // correct
     ],
     timeToAnswer: 120,
-    points: 2,
+    points: 11,
   },
   {
     id: 3,
@@ -46,8 +46,8 @@ export const intermediateVueQuestions = [
       '.keep-alive: This modifier is used to keep the component in the DOM instead of destroying it when it\'s removed from the parent component.',
       '.sync: This modifier is used to update a prop value with the value of a child component.',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer: 180,
+    points: 10,
   },
   {
     id: 4,
@@ -62,8 +62,8 @@ export const intermediateVueQuestions = [
       '<template v-show-else-if="condition">...</template>',
       '<div v-if="condition">...</div>',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer: 60,
+    points: 7,
   },
   {
     id: 5,
@@ -77,8 +77,8 @@ export const intermediateVueQuestions = [
       'I don\'t know and I don\'t care.',
       'I need to call my mom.',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer: 30,
+    points: 5,
   },
   {
     id: 6,
@@ -94,7 +94,7 @@ export const intermediateVueQuestions = [
       'Mixins are a way to run code before the Vue instance is destroyed.',
     ],
     timeToAnswer: 40,
-    points: 2,
+    points: 5,
   },
   {
     id: 7,
@@ -106,8 +106,8 @@ export const intermediateVueQuestions = [
       'Teleport allows you to send data between sibling components.',
       'Teleport allows you to render a component in a different location in the DOM tree.',
     ],
-    timeToAnswer: 30,
-    points: 2,
+    timeToAnswer: 60,
+    points: 6,
   },
   {
     id: 8,
@@ -121,8 +121,8 @@ export const intermediateVueQuestions = [
       'Suspense is used to handle only synchronous operations and display fallback content while waiting for the async operation to complete',
       'Suspense is useless.',
     ],
-    timeToAnswer: 30,
-    points: 2,
+    timeToAnswer: 90,
+    points: 8,
   },
   {
     id: 9,
@@ -137,8 +137,8 @@ export const intermediateVueQuestions = [
       'Empty Directives',
       'Custom Directives',
     ],
-    timeToAnswer: 30,
-    points: 2,
+    timeToAnswer: 90,
+    points: 8,
   },
   {
     id: 10,
@@ -164,11 +164,11 @@ export const intermediateVueQuestions = [
     'This is a test component and an error will be thrown',
     'I don\'t know',
   ],
-  timeToAnswer: 30,
-  points: 2,
+  timeToAnswer: 200,
+  points: 10,
 },
   {
-    id: 11,
+    id: 10,
     question: `Evaluate this code snippet: <pre ${style}>
      <code>
    const MockComponent = {
@@ -238,7 +238,7 @@ export const intermediateVueQuestions = [
       'Status update: offline',
       'Status update: Status update: offline',
     ],
-    timeToAnswer: 1230,
-    points: 2,
+    timeToAnswer: 300,
+    points: 25,
   },
 ];
