@@ -12,8 +12,8 @@ export const advancedVueQuestions = [
       'Its has no benefits. It is just a new way of writing code.',
       'Its has no benefits at all. It is just an experimental feature.',
     ],
-    timeToAnswer: 30,
-    points: 2,
+    timeToAnswer: 60,
+    points: 4,
   },
   {
     id: 2,
@@ -28,8 +28,8 @@ export const advancedVueQuestions = [
       'Vue 3\'s Composition API includes built-in support for creating augmented reality (AR) experiences directly within Vue components.',
       'Composition API is a framework within Vue 3 for implementing blockchain technology and smart contracts in your web applications.',
     ],
-    timeToAnswer: 50,
-    points: 2,
+    timeToAnswer: 40,
+    points: 4,
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export const advancedVueQuestions = [
       'Feature for automatically translating Vue component code into different programming languages, promoting cross-language compatibility.',
     ],
     timeToAnswer: 90,
-    points: 2,
+    points: 8,
   },
   {
     id: 4,
@@ -66,7 +66,7 @@ export const advancedVueQuestions = [
       'Transition effects applied by interpolating values such as a component’s style binding.',
     ],
     timeToAnswer: 120,
-    points: 2,
+    points: 7,
   },
   {
     id: 5,
@@ -79,8 +79,8 @@ export const advancedVueQuestions = [
       'Vue plugins are exclusive features that enable developers to embed virtual reality (VR) experiences directly into Vue components.',
       'Plugins in Vue serve as a dedicated framework for implementing artificial intelligence (AI) algorithms seamlessly within Vue applications.',
     ],
-    timeToAnswer: 90,
-    points: 2,
+    timeToAnswer: 30,
+    points: 4,
   },
   {
     id: 6,
@@ -95,7 +95,7 @@ export const advancedVueQuestions = [
       'Deepen Reactivity for Improved Performance: Expanding the reactivity system to include deeper levels of data structures, even for small and simple components, can significantly enhance Vue application speed and responsiveness.',
     ],
     timeToAnswer: 120,
-    points: 2,
+    points: 12,
   },
   {
     id: 7,
@@ -108,8 +108,8 @@ export const advancedVueQuestions = [
       'Dynamic Components Generate Random Content: Vue\'s dynamic components come with a feature that generates random content, offering a unique and unpredictable user experience every time the component is rendered.',
       'Dynamic Components Control Backend Logic: Vue\'s dynamic components are responsible for managing backend logic and server-side operations, seamlessly integrating frontend and backend functionalities.',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer: 60,
+    points: 8,
   },
   {
     id: 8,
@@ -122,8 +122,8 @@ export const advancedVueQuestions = [
       'Async Components Enable Time Travel: These components introduce a time-traveling feature, allowing users to navigate between past and future states of a component for a unique browsing experience.',
       'Async components in Vue are components loaded on-demand using a factory function or a Promise. They aid in optimizing performance by deferring the loading of components until they are required.',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer: 60,
+    points: 7,
   },
   {
     id: 9,
@@ -135,8 +135,8 @@ export const advancedVueQuestions = [
       'Global Registration Enables Component Teleportation: Once globally registered, Vue components gain the ability to teleport themselves to different parts of the application, providing a dynamic and interactive user experience.',
       'Global Registration Enables Component Teleportation: Once globally registered, Vue components gain the ability to teleport themselves to different parts of the application, providing a dynamic and interactive user experience.',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer:60,
+    points: 6,
   },
   {
     id: 10,
@@ -148,8 +148,8 @@ export const advancedVueQuestions = [
       'Dynamic route matching in Vue allows routes to include dynamic segments, enabling parameterized and flexible routing in Vue Router.',
       'It is not possible to pass parameters dynamically in the URL using dynamic route matching in Vue.js.',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer: 40,
+    points: 8,
   },
   {
     id: 11,
@@ -163,7 +163,7 @@ export const advancedVueQuestions = [
       'Refactor Code: Refactor components to have a hierarchical structure or introduce a higher-level parent component to manage state and actions, avoiding circular dependencies.',
     ],
     timeToAnswer: 120,
-    points: 2,
+    points: 12,
   },
   {
     id: 12,
@@ -181,8 +181,8 @@ export const advancedVueQuestions = [
       'Using props: Using props can cause memory leaks if not handled properly.',
       'Inefficient DOM Manipulation: Inefficient DOM manipulation can cause memory leaks if not handled properly.',
     ],
-    timeToAnswer: 120,
-    points: 2,
+    timeToAnswer: 180,
+    points: 12,
   },
   {
     id: 13,
@@ -202,6 +202,6 @@ export const advancedVueQuestions = [
       'No need to use create accessible Vue applications as Vue automatically handles accessibility.',
     ],
     timeToAnswer: 120,
-    points: 2,
+    points: 8,
   },
 ];
