@@ -169,11 +169,11 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 12,
     question: 'In Vue 3, how can you watch for changes in a reactive property?',
-    answer: [14],
+    answer: [16],
     options: [
       'Using the onUpdated lifecycle hook.',
-      'Using the watch or watchEffect function.',
       'With a computed property.',
+      'Using the watch or watchEffect function.',
       'Through a method in the methods option.',
     ],
     timeToAnswer: 30,
@@ -208,12 +208,12 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 15,
     question: 'In Vue 3, what is the purpose of the `ref` function from the Composition API?',
-    answer: [14],
+    answer: [9],
     options: [
       'To reference a DOM element.',
-      'To create a reactive reference.',
       'To link to another component.',
       'To reference a parent component.',
+      'To create a reactive reference.',
     ],
     timeToAnswer: 20,
     points: 3,
@@ -221,10 +221,12 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 16,
     question: 'Is the Vue 3 Composition API a replacement for the Options API?',
-    answer: [14],
+    answer: [16],
     options: [
       'Yes, it replaces the Options API',
+      'No, the Options API is deprecated in Vue 3',
       'No, it\'s an alternative, not a replacement',
+      'Maybe, it depends on the use case',
     ],
     timeToAnswer: 20,
     points: 3,
@@ -250,6 +252,8 @@ export const basicVueQuestions:QuizQuestion[] = [
     options: [
       'Yes, Vue Router supports dynamic route matching',
       'No, Vue Router does not support dynamic routes',
+      'No, use Vue Route Matcher instead of Vue Router',
+      'Maybe, it depends on the use case',
     ],
     timeToAnswer: 20,
     points: 2,
@@ -269,10 +273,10 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 20,
     question: 'Does Vue 3 support TypeScript out of the box?',
-    answer: [5],
+    answer: [14],
     options: [
-      'Yes, Vue 3 has built-in TypeScript support',
       'No, TypeScript support must be added separately',
+      'Yes, Vue 3 has built-in TypeScript support',
     ],
     timeToAnswer: 15,
     points: 2,
@@ -298,10 +302,13 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 22,
     question: 'Can the `provide` and `inject` functions be used for dependency injection in Vue 3?',
-    answer: [5],
+    answer: [9],
     options: [
-      'Yes, provide and inject are used for dependency injection',
       'No, provide and inject are not part of Vue 3',
+      'No, provide and inject are only for native HTML elements',
+      'Maybe, it depends on the use case',
+      'Yes, provide and inject are used for dependency injection',
+      'Yes, but only with the help of external libraries',
     ],
     timeToAnswer: 15,
     points: 2,
@@ -321,14 +328,15 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 24,
     question: 'Is the `v-for` directive used in Vue 3 for rendering a list of items?',
-    answer: [5],
+    answer: [0],
     options: [
-      'Yes, v-for is used for list rendering',
       'No, v-model is used for list rendering',
       'No, v-for is deprecated in Vue 3',
       'No, v-for is only for rendering a single item',
       'No, v-for is only for rendering a range of numbers',
       'No, v-map is used for list rendering',
+      'Yes, v-for is used for list rendering',
+      'Yes, but v-for is used for rendering a single item',
     ],
     timeToAnswer: 30,
     points: 2,
@@ -349,11 +357,11 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 26,
     question: 'Define components in VueJS.',
-    answer: [5],
+    answer: [16],
     options: [
-      'Modular Vue instances designed for reusability.',
       'JavaScript functions that structure HTML elements.',
       'CSS styles applied exclusively to Vue templates.',
+      'Modular Vue instances designed for reusability.',
       'Database queries embedded in Vue applications.',
     ],
     timeToAnswer: 20,
@@ -362,11 +370,12 @@ export const basicVueQuestions:QuizQuestion[] = [
   {
     id: 27,
     question: `Verify if this syntax is correct for a Vue 3 template ref: <pre ${style}><code>&lt;div ref="myDiv"&gt;&lt;/div&gt;</code></pre> in the template section.`,
-    answer: [5],
+    answer: [14],
     options: [
-      'Yes\', \'Correct usage of template ref',
       'No, use v-ref instead of ref',
+      'Yes, correct usage of template ref',
       'No, use ::ref instead of ref',
+      'No, ref is not supported in Vue 3',
     ],
     timeToAnswer: 60,
     points: 1,
@@ -485,7 +494,18 @@ export const basicVueQuestions:QuizQuestion[] = [
   },
   {
     id: 37,
-    question: `Evaluate this Vue 3 code for filtering a list: <pre ${style}><code>&lt;li v-for="item in filteredList" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;</code></pre> where 'filteredList' is a computed property.`,
+    question: `Evaluate this Vue 3 code for filtering a list:
+            <pre ${style}>
+              <code>
+              &lt;li
+                 v-for="item in filteredList"
+                 :key="item.id"
+              &gt;
+                 {{ item.name }}
+              &lt;/li&gt;
+              </code>
+            </pre>
+    where 'filteredList' is a computed property.`,
     answer: [5],
     options: [
       'Yes\', \'Correct usage of v-for with a computed property',
