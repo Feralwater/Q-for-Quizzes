@@ -21,4 +21,5 @@ html {
 
 .blur {
   filter: blur(8px);
+  min-height: 100dvh;
 }
