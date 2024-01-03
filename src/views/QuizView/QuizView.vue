@@ -4,6 +4,7 @@ import SideBar from '@/components/SideBar/SideBar.vue';
 import QuizQuestion from '@/views/QuizView/Components/QuizQuestion/QuizQuestion.vue';
 import { useQuizQuestion } from '@/views/QuizView/hooks/useQuizQuestion';
 import { useDisplay } from 'vuetify';
+import { useBlurOnMouseLeave } from '@/hooks/useBlurOnMouseLeave';
 
 const {
   onNextQuestion,
@@ -20,6 +21,8 @@ const {
   questionsAmount,
   selectedQuiz,
 } = useQuizQuestion();
+
+useBlurOnMouseLeave();
 
 const { mdAndDown } = useDisplay();
 

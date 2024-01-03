@@ -18,3 +18,7 @@ html {
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--field-color);
 }
+
+.blur {
+  filter: blur(8px);
+}
