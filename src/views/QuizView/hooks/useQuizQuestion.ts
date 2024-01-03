@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import { Routers } from '@/router/Routers';
-import { useVisibilityChange } from '@/views/QuizView/hooks/useVisibilityChange';
+import { useVisibilityChange } from '@/hooks/useVisibilityChange';
 import { useRoute } from 'vue-router';
 import router from '@/router';
 import type { QuizKeys } from '@/types/quizKeys';

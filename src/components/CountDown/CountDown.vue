@@ -38,6 +38,7 @@ const { smAndDown, xs } = useDisplay();
   <v-icon
     color="grey"
     :size="xs ? '12' : '24'"
+    :aria-label="isSoundEnabled ? 'Sound on' : 'Sound off'"
     @click="toggleSound"
   >
     {{ isSoundEnabled ? 'mdi-volume-high' : 'mdi-volume-off' }}

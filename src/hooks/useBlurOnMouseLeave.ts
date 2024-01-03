@@ -21,6 +21,7 @@ export const useBlurOnMouseLeave = () => {
   onUnmounted(() => {
     document.removeEventListener('mouseout', handleMouseLeave);
     document.removeEventListener('mouseover', handleMouseEnter);
+    handleMouseEnter(new MouseEvent(''));
   });
 };
   

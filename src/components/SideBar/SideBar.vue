@@ -71,22 +71,28 @@ watch(mdAndDown, (newVal) => {
         >
           <v-list-item
             class="sidebar__item"
-            link
             prepend-icon="mdi-home"
-            :href="Routers.Dashboard"
-            title="Back to Dashboard"
             role="option"
-            aria-label="Go to Dashboard"
-          />
+          >
+            <router-link
+              :to="Routers.Dashboard"
+              class="sidebar__Link"
+            >
+              Go to Dashboard
+            </router-link>
+          </v-list-item>
           <v-list-item
             class="sidebar__item"
-            link
             prepend-icon="mdi-account"
-            :href="Routers.Profile"
-            title="Go to My Profile"
             role="option"
-            aria-label="Go to Profile"
-          />
+          >
+            <router-link
+              :to="Routers.Profile"
+              class="sidebar__Link"
+            >
+              Go to My Profile
+            </router-link>
+          </v-list-item>
         </v-list>
         <div
           v-if="progress !== undefined"
