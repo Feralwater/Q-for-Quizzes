@@ -4,12 +4,12 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 
 describe("YourComponent.vue", () => {
   beforeEach(() => {
-    vi.useFakeTimers()
-  })
+    vi.useFakeTimers();
+  });
 
   afterEach(() => {
     vi.restoreAllMocks();
-  })
+  });
 
   it("renders correctly", async () => {
     const wrapper = mount(CountDown, {
@@ -45,7 +45,7 @@ describe("YourComponent.vue", () => {
     setTimeout(() => {
       wrapper.vm.$nextTick(() => {
         expect(wrapper.find(".countdown__label").text()).toBe("9");
-      })
+      });
     }, 1000);
   });
 });
