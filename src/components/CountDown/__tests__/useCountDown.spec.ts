@@ -15,6 +15,7 @@ describe('useCountDown', () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.useRealTimers();
   });
   
   it('should decrease countdown after every 1s', async () => {
