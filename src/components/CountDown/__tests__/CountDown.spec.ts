@@ -1,51 +1,48 @@
 import { mount } from "@vue/test-utils";
 import CountDown from "@/components/CountDown/CountDown.vue";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { createPinia } from 'pinia';
+import { createVuetify } from 'vuetify';
 
 describe("YourComponent.vue", () => {
+  const pinia = createPinia();
+  const vuetify = createVuetify();
+  
   beforeEach(() => {
-    vi.useFakeTimers()
-  })
+    vi.useFakeTimers();
+  });
 
   afterEach(() => {
     vi.restoreAllMocks();
-  })
+    vi.useRealTimers();
+  });
+
+  const wrapper = mount(CountDown, {
+    props: {
+      time: 10,
+    },
+    global: {
+      plugins: [pinia, vuetify],
+    },
+  });
 
   it("renders correctly", async () => {
-    const wrapper = mount(CountDown, {
-      props: {
-        time: 10,
-      },
-    });
-
-    // Let's assert that component is properly rendered
     expect(wrapper.find(".countdown").exists()).toBe(true);
     expect(wrapper.find(".countdown__svg").exists()).toBe(true);
     expect(wrapper.find(".countdown__label").exists()).toBe(true);
+    expect(wrapper.find(".countdown__label").text()).toBe("10");
   });
 
-  it("renders correctly with time prop", async () => {
-    const wrapper = mount(CountDown, {
-      props: {
-        time: 56,
-      },
-    });
-
-    // Let's assert that component is properly rendered
-    expect(wrapper.find(".countdown__label").text()).toBe("56");
-  });
-
-  it("renders correctly", () => {
-    const wrapper = mount(CountDown, {
-      props: {
-        time: 10,
-      },
-    });
-
+  it("renders correctly after 1 second", async () => {
     setTimeout(() => {
       wrapper.vm.$nextTick(() => {
         expect(wrapper.find(".countdown__label").text()).toBe("9");
-      })
+      });
     }, 1000);
+  });
+
+  it('emits timeUp event when countdown reaches zero', async () => {
+    await wrapper.setProps({ time: 0 });
+    expect(wrapper.emitted().timeUp).toBeTruthy();
   });
 });

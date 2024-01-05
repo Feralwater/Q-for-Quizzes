@@ -2,16 +2,22 @@ import { h, defineComponent } from 'vue';
 import { useCountDown } from '../useCountDown';
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { mount } from "@vue/test-utils";
+import { createPinia } from 'pinia';
+import { createVuetify } from 'vuetify';
 
 describe('useCountDown', () => {
+  const pinia = createPinia();
+  const vuetify = createVuetify();
+
   beforeEach(() => {
-    vi.useFakeTimers()
-  })
+    vi.useFakeTimers();
+  });
 
   afterEach(() => {
     vi.restoreAllMocks();
-  })
-
+    vi.useRealTimers();
+  });
+  
   it('should decrease countdown after every 1s', async () => {
 
     const TestComponent = defineComponent({
@@ -20,19 +26,17 @@ describe('useCountDown', () => {
         return { countdown };
       },
       render() {
-        return h('div')
-      }
-    })
+        return h('div');
+      },
+    });
 
-    const wrapper = mount(TestComponent);
+    const wrapper = mount(TestComponent, { global: { plugins: [pinia, vuetify] } });
 
     await wrapper.vm.$nextTick();  // Making sure setup and onMounted are finished
 
     expect(wrapper.vm.countdown).toBe(5);
 
     vi.advanceTimersByTime(1000);
-
-    await wrapper.vm.$nextTick();  // Wait for updates after advancing timer
 
     expect(wrapper.vm.countdown).toBe(4);
   });
@@ -45,26 +49,20 @@ describe('useCountDown', () => {
         return { countdown };
       },
       render() {
-        return h('div')
-      }
-    })
+        return h('div');
+      },
+    });
 
-    const wrapper = mount(TestComponent);
-
-    await wrapper.vm.$nextTick();  // Making sure setup and onMounted are finished
-
+    const wrapper = mount(TestComponent, { global: { plugins: [pinia, vuetify] } });
+    
     expect(wrapper.vm.countdown).toBe(1);
 
     vi.advanceTimersByTime(1000);
-
-    await wrapper.vm.$nextTick();  // Wait for updates after advancing timer
-
+    
     expect(wrapper.vm.countdown).toBe(0);
-
+    
     vi.advanceTimersByTime(1000);
-
-    await wrapper.vm.$nextTick();  // Wait for updates after advancing timer
-
-    expect(wrapper.vm.countdown).toBe(0); // Even after 1 second, the value should remain 0
+    
+    expect(wrapper.vm.countdown).toBe(0); 
   });
 });

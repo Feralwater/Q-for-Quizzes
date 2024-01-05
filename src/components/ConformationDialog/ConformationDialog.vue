@@ -21,6 +21,10 @@ defineProps({
 
 const emit = defineEmits(['update:dialog']);
 
+const closeDialog = () => {
+  emit('update:dialog', false);
+};
+
 </script>
 
 <template>
@@ -38,7 +42,7 @@ const emit = defineEmits(['update:dialog']);
           size="24"
           color="grey"
           class="close-icon"
-          @click="emit('update:dialog', false)"
+          @click="closeDialog"
         >
           mdi-close
         </v-icon>
@@ -54,7 +58,7 @@ const emit = defineEmits(['update:dialog']);
         <v-spacer />
         <v-btn
           color="primary"
-          @click="emit('update:dialog', false)"
+          @click="closeDialog"
         >
           No
         </v-btn>
