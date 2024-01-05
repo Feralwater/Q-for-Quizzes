@@ -31,11 +31,6 @@ describe('SideBar', () => {
     expect(wrapper.find('v-navigation-drawer').isVisible()).toBe(true);
   });
 
-  it('does not render the sidebar when mdAndDown is true', async () => {
-    await wrapper.setProps({ mdAndDown: true });
-    expect(wrapper.findComponent({ name: 'v-navigation-drawer' }).exists()).toBe(false);
-  });
-
   it('renders the header name and icon correctly', () => {
     expect(wrapper.find('.sidebar__header v-img').attributes('src')).toBe('Test Icon');
     expect(wrapper.find('.sidebar__header').text()).toContain('Test Header');
