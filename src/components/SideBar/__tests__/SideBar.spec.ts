@@ -2,7 +2,15 @@ import { mount } from '@vue/test-utils';
 import SideBar from '@/components/SideBar/SideBar.vue';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createVuetify } from 'vuetify';
-import { Routers } from '../../../router/Routers';
+import { Routers } from '@/router/Routers';
+import { createRouter, createWebHistory } from 'vue-router';
+
+const router = createRouter({
+  end: undefined, sensitive: undefined, strict: undefined,
+  history: createWebHistory(),
+  routes: [Routers],
+});
+
 
 describe('SideBar', () => {
   const vuetify = createVuetify();
@@ -17,7 +25,7 @@ describe('SideBar', () => {
     vi.clearAllMocks();
   });
 
-  const wrapper = mount(SideBar, { props, global: { plugins: [vuetify] } });
+  const wrapper = mount(SideBar, { props, global: { plugins: [vuetify, router] } });
 
   it('renders the sidebar when mdAndDown is false', () => {
     expect(wrapper.find('v-navigation-drawer').isVisible()).toBe(true);
@@ -43,12 +51,27 @@ describe('SideBar', () => {
   });
 
   it('navigates to Dashboard when Dashboard link is clicked', async () => {
-    await wrapper.find(`.sidebar__item router-link[to="${Routers.Dashboard}"]`).trigger('click');
+    router.push = vi.fn();
 
+    const dashboardLink  =  wrapper.find('.sidebar__item a.sidebar__Link[href="/"]')
+    expect(dashboardLink.exists()).toBe(true);
+    expect(dashboardLink.text()).toBe('Go to Dashboard');
+    expect(dashboardLink.attributes('href')).toBe('/');
+
+    await dashboardLink.trigger('click');
+    expect(router.push).toHaveBeenCalledWith('/');
   });
 
   it('navigates to Profile when Profile link is clicked', async () => {
-    await wrapper.find(`.sidebar__item router-link[to="${Routers.Profile}"]`).trigger('click');
+    router.push = vi.fn();
 
+    const profileLink  =  wrapper.find('.sidebar__item a.sidebar__Link[href="/profile"]')
+    expect(profileLink.exists()).toBe(true);
+    expect(profileLink.text()).toBe('Go to My Profile');
+    expect(profileLink.attributes('href')).toBe('/profile');
+
+    await profileLink.trigger('click');
+    await wrapper.vm.$nextTick();
+    expect(router.push).toHaveBeenCalledWith('/profile');
   });
 });
