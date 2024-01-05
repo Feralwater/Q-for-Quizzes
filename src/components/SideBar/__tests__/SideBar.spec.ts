@@ -53,7 +53,7 @@ describe('SideBar', () => {
   it('navigates to Dashboard when Dashboard link is clicked', async () => {
     router.push = vi.fn();
 
-    const dashboardLink  =  wrapper.find('.sidebar__item a.sidebar__Link[href="/"]')
+    const dashboardLink  =  wrapper.find('.sidebar__item a.sidebar__Link[href="/"]');
     expect(dashboardLink.exists()).toBe(true);
     expect(dashboardLink.text()).toBe('Go to Dashboard');
     expect(dashboardLink.attributes('href')).toBe('/');
@@ -65,7 +65,7 @@ describe('SideBar', () => {
   it('navigates to Profile when Profile link is clicked', async () => {
     router.push = vi.fn();
 
-    const profileLink  =  wrapper.find('.sidebar__item a.sidebar__Link[href="/profile"]')
+    const profileLink  =  wrapper.find('.sidebar__item a.sidebar__Link[href="/profile"]');
     expect(profileLink.exists()).toBe(true);
     expect(profileLink.text()).toBe('Go to My Profile');
     expect(profileLink.attributes('href')).toBe('/profile');
