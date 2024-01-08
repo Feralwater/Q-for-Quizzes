@@ -165,7 +165,7 @@ export const intermediateVueQuestions = [
   points: 10,
 },
   {
-    id: 10,
+    id: 11,
     question: `Evaluate this code snippet: <pre ${style}>
      <code>
    const MockComponent = {
