@@ -4,10 +4,12 @@ import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
 import { piniaQuestions } from '@/assets/data/piniaQuestions';
 import { intermediateVueQuestions } from '@/assets/data/intermediateVueQuestions';
 import { advancedVueQuestions } from '@/assets/data/advancedVueQuestions';
+import { reactHooksQuestions } from '@/assets/data/reactHooksQuestions';
 
 export const questions: Record<QuizKeys, QuizQuestion[]> = {
   'vue-basics': basicVueQuestions,
   'pinia': piniaQuestions,
   'vue-intermediate': intermediateVueQuestions,
   'vue-advanced': advancedVueQuestions,
+  'react-hooks': reactHooksQuestions,
 };
