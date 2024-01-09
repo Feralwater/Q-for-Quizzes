@@ -6,6 +6,7 @@ import { useQuizQuestion } from '@/views/QuizView/hooks/useQuizQuestion';
 import { useDisplay } from 'vuetify';
 import { useBlurOnMouseLeave } from '@/hooks/useBlurOnMouseLeave';
 import { type NavigationGuardNext, onBeforeRouteLeave, type RouteLocationNormalized } from 'vue-router';
+import { Routers } from '@/router/Routers';
 
 const {
   onNextQuestion,
@@ -26,6 +27,11 @@ const {
 useBlurOnMouseLeave();
 
 const leaveQuizConfirmation = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+  if (to.path === Routers.Result) {
+    next();
+    return;
+  }
+
   const confirm = window.confirm('Are you sure you want to leave the quiz?');
   if (confirm) {
     next();
