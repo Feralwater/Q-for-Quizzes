@@ -194,4 +194,20 @@ export const reactHooksQuestions = [
     timeToAnswer: 40,
     points: 8,
   },
+  {
+    id: 9,
+    question: 'What for do we use \'useReducer\' hook?',
+    answer: [9],
+    options: [
+      'It generates random values for use within the component.',
+      'It automatically updates the state based on external events without any explicit code.',
+      'It is used to manage global application state across all components.',
+      'It declares a state variable with the update logic inside a reducer function.',
+      'It declares a state variable that you can update directly.',
+      'It declares a state variable that you can not update directly.',
+      'It is only necessary when working with class components, not functional components.',
+    ],
+    timeToAnswer: 30,
+    points: 8,
+  },
 ];
