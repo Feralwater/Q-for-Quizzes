@@ -428,4 +428,62 @@ export const reactHooksQuestions = [
     timeToAnswer: 30,
     points: 8,
   },
+  {
+    id: 20,
+    question: 'What for do we use \'useMemo\' hook?',
+    answer: [9],
+    options: [
+      'useMemo is a React Hook that lets you use more memory in your application.',
+      'useMemo is a React Hook that lets you create global state across components.',
+      'useMemo is a React Hook that lets you leverage the browser’s cache.',
+      'useMemo is a React Hook that lets you cache the result of a calculation between re-renders.',
+    ],
+    timeToAnswer: 30,
+    points: 8,
+  },
+  {
+    id: 21,
+    question: 'What for do we use \'useCallback\' hook?',
+    answer: [14],
+    options: [
+      'useCallback is a React Hook that lets you use more memory in your application.',
+      'useCallback is a React Hook that lets you cache a function definition between re-renders.',
+      'useCallback is a React Hook that lets you leverage the browser’s cache.',
+      'useCallback is a React Hook that lets you cache the result of a calculation between re-renders.',
+    ],
+    timeToAnswer: 30,
+    points: 8,
+  },
+  {
+    id: 22,
+    question: `Will we see messege in the console after clicking on the button 'Click me' on the code below?
+<pre ${style}><code>
+     function ChatRoom({ roomId }) {
+        const [serverUrl, setServerUrl] = useState('https://localhost:1234');
+        
+        const styles = {
+            color: 'red',
+        };
+
+        useEffect(() => {
+              console.log('message');
+        }, [styles]);
+        
+        return (
+            &lt;&gt;
+                &lt;button onClick={() => setServerUrl('')}&gt;Click me&lt;/button&gt;
+            &lt;/&gt;
+        );
+    }
+</code></pre>`,
+    answer: [5],
+    options: [
+      'Yes, 1 time',
+      'Yes, 2 times',
+      'Yes, 3 times',
+      'No',
+    ],
+    timeToAnswer: 60,
+    points: 8,
+  },
 ];
