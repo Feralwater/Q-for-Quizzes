@@ -15,7 +15,7 @@ export const reactHooksQuestions = [
       'It is only necessary when working with class components, not functional components.',
     ],
     timeToAnswer: 40,
-    points: 8,
+    points: 2,
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ export const reactHooksQuestions = [
       '-1',
     ],
     timeToAnswer: 60,
-    points: 8,
+    points: 4,
   },
   {
     id: 3,
@@ -74,7 +74,7 @@ export const reactHooksQuestions = [
       '-1',
     ],
     timeToAnswer: 80,
-    points: 8,
+    points: 4,
   },
   {
     id: 4,
@@ -102,7 +102,7 @@ export const reactHooksQuestions = [
       '6',
     ],
     timeToAnswer: 100,
-    points: 8,
+    points: 4,
   },
   {
     id: 5,
@@ -132,7 +132,7 @@ export const reactHooksQuestions = [
       '42',
     ],
     timeToAnswer: 100,
-    points: 8,
+    points: 4,
   },
   {
     id: 6,
@@ -165,7 +165,7 @@ export const reactHooksQuestions = [
       '4',
     ],
     timeToAnswer: 120,
-    points: 8,
+    points: 4,
   },
   {
     id: 7,
@@ -178,7 +178,7 @@ export const reactHooksQuestions = [
       'It is a process of grouping multiple state updates into a multiple updates with a delay.',
     ],
     timeToAnswer: 100,
-    points: 8,
+    points: 4,
   },
   {
     id: 8,
@@ -192,7 +192,7 @@ export const reactHooksQuestions = [
       'No, it is impossible',
     ],
     timeToAnswer: 40,
-    points: 8,
+    points: 4,
   },
   {
     id: 9,
@@ -208,7 +208,7 @@ export const reactHooksQuestions = [
       'It is only necessary when working with class components, not functional components.',
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
     id: 10,
@@ -221,7 +221,7 @@ export const reactHooksQuestions = [
       'Context lets a component receive information from distant parents without passing it as props. useContext reads and subscribes to a context.',
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
     id: 11,
@@ -235,7 +235,7 @@ export const reactHooksQuestions = [
       'React Hook that lets you reference a value that’s not needed for rendering.',
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
     id: 12,
@@ -251,7 +251,7 @@ export const reactHooksQuestions = [
       'React Hook that lets you reference a value that’s not needed for rendering.',
     ],
     timeToAnswer: 45,
-    points: 8,
+    points: 4,
   },
   {
     id: 13,
@@ -269,7 +269,7 @@ export const reactHooksQuestions = [
       "None of the above",
     ],
     timeToAnswer: 40,
-    points: 8,
+    points: 4,
   },
   {
     id: 14,
@@ -284,7 +284,7 @@ export const reactHooksQuestions = [
       "None of the above",
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
     id: 15,
@@ -299,7 +299,7 @@ export const reactHooksQuestions = [
       "None of the above",
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
     id: 16,
@@ -334,10 +334,10 @@ export const reactHooksQuestions = [
       'it will be an infinite loop',
     ],
     timeToAnswer: 60,
-    points: 8,
+    points: 4,
   },
   {
-    id: 16,
+    id: 17,
     question: `How many re-renders will be after clicking on the button 'Increase numbers' on the code below?
 <pre ${style}><code>
       const Counter = () => {
@@ -369,10 +369,10 @@ export const reactHooksQuestions = [
       'it will be an infinite loop',
     ],
     timeToAnswer: 60,
-    points: 8,
+    points: 4,
   },
   {
-    id: 17,
+    id: 18,
     question: `What does this code do 'return () => { connection.disconnect(); };'?
 <pre ${style}><code>
      function ChatRoom({ roomId }) {
@@ -399,10 +399,10 @@ export const reactHooksQuestions = [
       'It sets the roomId state variable to the value of serverUrl.',
     ],
     timeToAnswer: 60,
-    points: 8,
+    points: 4,
   },
   {
-    id: 18,
+    id: 19,
     question: 'When it is recommended to use \'useLayoutEffect\' hook?',
     answer: [5],
     options: [
@@ -413,10 +413,10 @@ export const reactHooksQuestions = [
       'It is never recommended to use this hook.',
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
-    id: 19,
+    id: 20,
     question: 'Why it is not recommended to use \'useLayoutEffect\' hook?',
     answer: [16],
     options: [
@@ -426,10 +426,10 @@ export const reactHooksQuestions = [
       'It is always recommended to use this hook.',
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
-    id: 20,
+    id: 21,
     question: 'What for do we use \'useMemo\' hook?',
     answer: [9],
     options: [
@@ -439,10 +439,10 @@ export const reactHooksQuestions = [
       'useMemo is a React Hook that lets you cache the result of a calculation between re-renders.',
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
-    id: 21,
+    id: 22,
     question: 'What for do we use \'useCallback\' hook?',
     answer: [14],
     options: [
@@ -452,10 +452,10 @@ export const reactHooksQuestions = [
       'useCallback is a React Hook that lets you cache the result of a calculation between re-renders.',
     ],
     timeToAnswer: 30,
-    points: 8,
+    points: 4,
   },
   {
-    id: 22,
+    id: 23,
     question: `Will we see messege in the console after clicking on the button 'Click me' on the code below?
 <pre ${style}><code>
      function ChatRoom({ roomId }) {
@@ -484,6 +484,49 @@ export const reactHooksQuestions = [
       'No',
     ],
     timeToAnswer: 60,
-    points: 8,
+    points: 4,
+  },
+  {
+    id: 24,
+    question: "What for do we use 'useTransition'' hook?",
+    answer: [9],
+    options: [
+      'useTransition is a React Hook that lets you cache a function definition between re-renders.',
+      'useTransition is a React Hook that lets you leverage the browser’s cache.',
+      'useTransition is a React Hook that lets you cache the result of a calculation between re-renders.',
+      'useTransition is a React Hook that lets you update the state without blocking the UI.',
+      'useTransition is a React Hook that lets you delay rendering of a component.',
+    ],
+    timeToAnswer: 30,
+    points: 4,
+  },
+  {
+    id: 25,
+    question: 'What for do we use \'useDeferredValue\' hook?',
+    answer: [0],
+    options: [
+      'useDeferredValue is a React Hook that lets you cache a function definition between re-renders.',
+      'useDeferredValue is a React Hook that lets you leverage the browser’s cache.',
+      'useDeferredValue is a React Hook that lets you cache the result of a calculation between re-renders.',
+      'useDeferredValue is a React Hook that lets you delay rendering of a component.',
+      'useDeferredValue is a React Hook that lets you update the state without blocking the UI.',
+      'useDeferredValue is a React Hook that lets you defer updating a part of the UI.',
+    ],
+    timeToAnswer: 30,
+    points: 4,
+  },
+  {
+    id: 26,
+    question: 'Where can we use React Hooks?',
+    answer: [5, 16],
+    options: [
+      'In React function components.',
+      'In React class components.',
+      'In custom Hooks.',
+      'All of the above.',
+      'None of the above.',
+    ],
+    timeToAnswer: 30,
+    points: 2,
   },
 ];
