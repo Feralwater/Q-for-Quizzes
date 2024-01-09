@@ -301,4 +301,131 @@ export const reactHooksQuestions = [
     timeToAnswer: 30,
     points: 8,
   },
+  {
+    id: 16,
+    question: `How many re-renders will be after clicking on the button 'Increase numbers' on the code below?
+<pre ${style}><code>
+      const Counter = () => {
+          const [count, setCount] = useState(0);
+          const [number, setNumber] = useState(0);
+          const [items, setItems] = useState([]);
+      
+        useEffect(() => {
+            console.log('useEffect');
+            
+            setCount(prevCount => prevCount + 5);
+            setItems(prevItems => [...prevItems, 'item']);
+            
+            });
+
+      return (
+        &lt;&gt;
+            &lt;button onClick={() => setNumber(1)}&gt;Increase numbers&lt;/button&gt;
+        &lt;/&gt;
+      )}
+</code></pre>`,
+    answer: [16],
+    options: [
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+      'it will be an infinite loop',
+    ],
+    timeToAnswer: 60,
+    points: 8,
+  },
+  {
+    id: 16,
+    question: `How many re-renders will be after clicking on the button 'Increase numbers' on the code below?
+<pre ${style}><code>
+      const Counter = () => {
+          const [count, setCount] = useState(0);
+          const [number, setNumber] = useState(0);
+          const [items, setItems] = useState([]);
+      
+        useEffect(() => {
+            console.log('useEffect');
+            
+            setCount(prevCount => prevCount + 5);
+            setItems(prevItems => [...prevItems, 'item']);
+            
+            }, []);
+
+      return (
+        &lt;&gt;
+            &lt;button onClick={() => setNumber(1)}&gt;Increase numbers&lt;/button&gt;
+        &lt;/&gt;
+      )}
+</code></pre>`,
+    answer: [14],
+    options: [
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+      'it will be an infinite loop',
+    ],
+    timeToAnswer: 60,
+    points: 8,
+  },
+  {
+    id: 17,
+    question: `What does this code do 'return () => { connection.disconnect(); };'?
+<pre ${style}><code>
+     function ChatRoom({ roomId }) {
+        const [serverUrl, setServerUrl] = useState('https://localhost:1234');
+
+        useEffect(() => {
+          const connection = createConnection(serverUrl, roomId);
+          connection.connect();
+          
+          return () => {
+            connection.disconnect();
+          };
+        }, [serverUrl, roomId]);
+        // ...
+    }
+</code></pre>`,
+    answer: [14, 16],
+    options: [
+      'Nothing, it is a wrong code',
+      'It is a cleanup function that runs when the component unmounts.',
+      'It is a cleanup function that runs after every re-render with changed dependencies',
+      'It is a cleanup function that runs when the component mounts.',
+      'It sets the serverUrl state variable to the value of roomId.',
+      'It sets the roomId state variable to the value of serverUrl.',
+    ],
+    timeToAnswer: 60,
+    points: 8,
+  },
+  {
+    id: 18,
+    question: 'When it is recommended to use \'useLayoutEffect\' hook?',
+    answer: [5],
+    options: [
+      'When you need to perform DOM measurements before the browser paints.',
+      'When you need to perform DOM mutations after the browser paints.',
+      'When you need to perform DOM mutations after the browser paints with a delay.',
+      'When you need to perform DOM mutations before the browser paints with a delay.',
+      'It is never recommended to use this hook.',
+    ],
+    timeToAnswer: 30,
+    points: 8,
+  },
+  {
+    id: 19,
+    question: 'Why it is not recommended to use \'useLayoutEffect\' hook?',
+    answer: [16],
+    options: [
+      'Because useLayoutEffect can improve performance. Prefer useEffect when possible.',
+      'Because useLayoutEffect can hurt user experience. Prefer useEffect when possible.',
+      'Because useLayoutEffect can hurt performance. Prefer useEffect when possible.',
+      'It is always recommended to use this hook.',
+    ],
+    timeToAnswer: 30,
+    points: 8,
+  },
 ];
