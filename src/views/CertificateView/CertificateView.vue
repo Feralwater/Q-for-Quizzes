@@ -5,7 +5,7 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import router from '@/router';
 import { ref } from 'vue';
 import html2pdf from 'html2pdf.js';
-import { decryptScore } from '@/utils/crypt'
+import { decryptScore } from '@/utils/crypt';
 
 const { getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 

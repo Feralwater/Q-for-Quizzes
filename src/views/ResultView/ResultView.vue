@@ -4,25 +4,29 @@ import { useDisplay } from 'vuetify';
 import confetti from '@/assets/images/confetti.svg';
 import router from '@/router';
 import { storeToRefs } from 'pinia';
-
-const { score, correctAnswers } = useQuizScore();
+import { onBeforeUnmount } from 'vue';
 
 const { xs } = useDisplay();
 
-const onTryAgain = () => {
+const onAnotherQuiz = () => {
   router.push({
-    name:'dashboard',
+    name: 'dashboard',
   });
 };
 
 const onGoToProfile = () => {
   router.push({
-    name:'profile',
+    name: 'profile',
   });
 };
 
+const { resetQuiz } = useQuizScore();
 const scoreStore = storeToRefs(useQuizScore());
-const { totalQuestions } = scoreStore;
+const { totalQuestions, score, correctAnswers } = scoreStore;
+
+onBeforeUnmount(() => {
+  resetQuiz();
+});
 </script>
 
 <template>
@@ -72,9 +76,9 @@ const { totalQuestions } = scoreStore;
             <v-card-actions class="justify-center">
               <v-btn
                 color="primary"
-                @click="onTryAgain"
+                @click="onAnotherQuiz"
               >
-                Try again
+                Take another quiz
               </v-btn>
               <v-btn
                 color="primary"
