@@ -456,7 +456,7 @@ export const reactHooksQuestions = [
   },
   {
     id: 23,
-    question: `Will we see messege in the console after clicking on the button 'Click me' on the code below?
+    question: `Will we see 'message' in the console after clicking on the button 'Click me' on the code below?
 <pre ${style}><code>
      function ChatRoom({ roomId }) {
         const [serverUrl, setServerUrl] = useState('https://localhost:1234');
