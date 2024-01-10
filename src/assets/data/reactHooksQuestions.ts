@@ -42,7 +42,7 @@ export const reactHooksQuestions = [
       '1',
       '-1',
     ],
-    timeToAnswer: 60,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -73,7 +73,7 @@ export const reactHooksQuestions = [
       '1',
       '-1',
     ],
-    timeToAnswer: 80,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -101,7 +101,7 @@ export const reactHooksQuestions = [
       '5',
       '6',
     ],
-    timeToAnswer: 100,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -131,7 +131,7 @@ export const reactHooksQuestions = [
       '6',
       '42',
     ],
-    timeToAnswer: 100,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -164,7 +164,7 @@ export const reactHooksQuestions = [
       '3',
       '4',
     ],
-    timeToAnswer: 120,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -207,7 +207,7 @@ export const reactHooksQuestions = [
       'It declares a state variable that you can not update directly.',
       'It is only necessary when working with class components, not functional components.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -220,7 +220,7 @@ export const reactHooksQuestions = [
       'Context lets to create and manage state in class components. useContext reads and subscribes to a context.',
       'Context lets a component receive information from distant parents without passing it as props. useContext reads and subscribes to a context.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -234,7 +234,7 @@ export const reactHooksQuestions = [
       "React Hook that lets you manage routing and navigation in your React application.",
       'React Hook that lets you reference a value that’s not needed for rendering.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -283,7 +283,7 @@ export const reactHooksQuestions = [
       'It is a version of useEffect that fires before the browser repaints the screen with a delay and allows to manipulate the browser history.',
       "None of the above",
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -298,7 +298,7 @@ export const reactHooksQuestions = [
       'It is a version of useEffect that fires after the browser repaints the screen with a delay.',
       "None of the above",
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -333,7 +333,7 @@ export const reactHooksQuestions = [
       '4',
       'it will be an infinite loop',
     ],
-    timeToAnswer: 60,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -368,7 +368,7 @@ export const reactHooksQuestions = [
       '4',
       'it will be an infinite loop',
     ],
-    timeToAnswer: 60,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -412,7 +412,7 @@ export const reactHooksQuestions = [
       'When you need to perform DOM mutations before the browser paints with a delay.',
       'It is never recommended to use this hook.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -425,7 +425,7 @@ export const reactHooksQuestions = [
       'Because useLayoutEffect can hurt performance. Prefer useEffect when possible.',
       'It is always recommended to use this hook.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -438,7 +438,7 @@ export const reactHooksQuestions = [
       'useMemo is a React Hook that lets you leverage the browser’s cache.',
       'useMemo is a React Hook that lets you cache the result of a calculation between re-renders.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -451,12 +451,12 @@ export const reactHooksQuestions = [
       'useCallback is a React Hook that lets you leverage the browser’s cache.',
       'useCallback is a React Hook that lets you cache the result of a calculation between re-renders.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
     id: 23,
-    question: `Will we see messege in the console after clicking on the button 'Click me' on the code below?
+    question: `Will we see 'message' in the console after clicking on the button 'Click me' on the code below?
 <pre ${style}><code>
      function ChatRoom({ roomId }) {
         const [serverUrl, setServerUrl] = useState('https://localhost:1234');
@@ -483,7 +483,7 @@ export const reactHooksQuestions = [
       'Yes, 3 times',
       'No',
     ],
-    timeToAnswer: 60,
+    timeToAnswer: 140,
     points: 4,
   },
   {
@@ -497,7 +497,7 @@ export const reactHooksQuestions = [
       'useTransition is a React Hook that lets you update the state without blocking the UI.',
       'useTransition is a React Hook that lets you delay rendering of a component.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -512,7 +512,7 @@ export const reactHooksQuestions = [
       'useDeferredValue is a React Hook that lets you update the state without blocking the UI.',
       'useDeferredValue is a React Hook that lets you defer updating a part of the UI.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 4,
   },
   {
@@ -526,7 +526,7 @@ export const reactHooksQuestions = [
       'All of the above.',
       'None of the above.',
     ],
-    timeToAnswer: 30,
+    timeToAnswer: 40,
     points: 2,
   },
 ];
