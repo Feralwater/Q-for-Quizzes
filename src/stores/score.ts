@@ -11,22 +11,27 @@ export const useQuizScore = defineStore('score', () => {
      score.value += itemWeight;
   };
 
-  const resetScore = () => {
+  const resetQuiz = () => {
     score.value = 0;
+    correctAnswers.value = 0;
+    isQuizCompleted.value = false;
+    totalQuestions.value = 0;
   };
 
  const setQuizCompleted = () => {
     isQuizCompleted.value = true;
  };
  
- watch(score, () => {
-    correctAnswers.value += 1;
+ watch(score, (value, oldValue) => {
+    if (value > oldValue) {
+      correctAnswers.value++;
+    }
  });
 
   return {
     score,
     incrementScore,
-    resetScore,
+    resetQuiz,
     isQuizCompleted,
     setQuizCompleted,
     correctAnswers,
