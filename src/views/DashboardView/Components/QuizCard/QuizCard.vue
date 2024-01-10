@@ -116,7 +116,7 @@ const { xs } = useDisplay();
               size="small"
             />
             <span class="ms-1">
-              {{ quizQuestionsAmount }} questions
+              {{ quizQuestionsAmount }} {{ $t('questions') }}
             </span>
           </v-card-subtitle>
         </v-col>
@@ -132,7 +132,7 @@ const { xs } = useDisplay();
         @click="startQuiz"
       >
         <span class="card__text_light">
-          Start Quiz
+          {{ $t('startQuiz') }}
         </span>
       </v-btn>
     </v-card-actions>
