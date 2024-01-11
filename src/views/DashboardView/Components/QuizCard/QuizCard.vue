@@ -3,7 +3,7 @@ import router from '@/router';
 import icon from '@/assets/images/logos/vueLogo.svg';
 import { computed } from 'vue';
 import { useDisplay } from 'vuetify';
-import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
   quizIcon: {
@@ -117,7 +117,7 @@ const { xs } = useDisplay();
               size="small"
             />
             <span class="ms-1">
-              {{ i18n.t('questions', 21) }}
+              {{ i18n.t('questions', quizQuestionsAmount) }}
             </span>
           </v-card-subtitle>
         </v-col>

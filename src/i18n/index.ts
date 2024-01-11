@@ -9,7 +9,7 @@ const messages = {
         description: 'Test your knowledge of Vue.js fundamentals',
       },
     },
-    questions: '{n} Question | {n} Questions',
+    questions: '{n} Questions | {n} Question | {n} Questions',
     startQuiz: 'Start Quiz',
   },
   'pl-PL': {
