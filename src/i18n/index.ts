@@ -1,5 +1,5 @@
 import { createI18n } from 'vue-i18n';
-import pluralizationRules from '@/i18n/rules/pluralization';
+import { plPluralizationRules } from '@/i18n/rules/pluralization';
 
 const messages = {
   'en-US': {
@@ -9,7 +9,7 @@ const messages = {
         description: 'Test your knowledge of Vue.js fundamentals',
       },
     },
-    questions: 'Questions',
+    questions: '{n} Question | {n} Questions',
     startQuiz: 'Start Quiz',
   },
   'pl-PL': {
@@ -19,16 +19,18 @@ const messages = {
         description: 'Sprawdź swoją wiedzę na temat podstaw Vue.js',
       },
     },
-    questions: 'Pytania',
+    questions: '{n} pytanie | {n} pytania | {n} pytań',
     startQuiz: 'Rozpocznij Quiz',
   },
 };
 
 export default createI18n({
-  locale: 'en-US',
+  locale: 'pl-PL',
   fallbackLocale: 'en-US',
   legacy: false,
   globalInjection: true,
   messages,
-  pluralizationRules,
+  pluralRules: {
+    'pl-PL': plPluralizationRules,
+  },
 });
