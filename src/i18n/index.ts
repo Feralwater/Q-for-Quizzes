@@ -5,8 +5,8 @@ import en from '@/i18n/locales/en.json';
 import pl from '@/i18n/locales/pl.json';
 
 export default createI18n({
-  locale: 'pl-PL',
-  fallbackLocale: 'en-US',
+  locale: import.meta.env.VITE_DEFAULT_LOCALE,
+  fallbackLocale: import.meta.env.VITE_FALLBACK_LOCALE,
   legacy: false,
   globalInjection: true,
   messages: { en, pl },

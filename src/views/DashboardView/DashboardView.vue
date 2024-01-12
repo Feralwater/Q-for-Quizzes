@@ -6,6 +6,7 @@ import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue'
 import { quizzes } from '@/assets/data/quizzes';
 import { useDisplay } from 'vuetify';
 import { Routers } from '@/router/Routers';
+import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
 
 const { mdAndDown } = useDisplay();
 </script>
@@ -18,6 +19,7 @@ const { mdAndDown } = useDisplay();
         header__mobile: mdAndDown,
       }"
     >
+      <language-switcher />
       <v-btn
         color="primary"
         variant="outlined"
