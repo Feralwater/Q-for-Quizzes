@@ -65,5 +65,16 @@ export class Trans {
 
     return this.defaultLocale;
   }
+
+  async routeMiddleware(to, from, next) {
+    const paramLocale = to.params.locale;
+
+    if (!this.isLocaleSupported(paramLocale)) {
+      return next(this.guessDefaultLocale());
+    }
+
+    await this.switchLanguage(paramLocale);
+    return next();
+  }
 }
 
