@@ -4,7 +4,7 @@ import { useQuizScore } from '@/stores/score';
 import DashboardView from '@/views/DashboardView/DashboardView.vue';
 import { useAuthStore } from '@/stores/auth';
 import { storeToRefs } from 'pinia';
-import { Trans } from '@/i18n/translation'
+import { Trans } from '@/i18n/translation';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +15,7 @@ const router = createRouter({
       beforeEnter: (to, from, next) => {
         const trans = new Trans();
 
-        trans.routeMiddleware(to, from, next)
+        trans.routeMiddleware(to, from, next);
       },
       children: [
         {

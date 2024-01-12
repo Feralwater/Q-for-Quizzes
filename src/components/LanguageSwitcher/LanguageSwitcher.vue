@@ -3,6 +3,8 @@ import { Trans } from '@/i18n/translation';
 import { useI18n } from 'vue-i18n';
 import plFlag from '@/assets/images/flags/pl.svg';
 import enFlag from '@/assets/images/flags/en.svg';
+import { useRouter } from 'vue-router';
+import { Routers } from '@/router/Routers';
 
 const flags = {
   'pl-PL': plFlag,
@@ -14,9 +16,20 @@ const flags = {
 const { t, locale } = useI18n();
 const trans = new Trans();
 const supportedLocales = trans.supportedLocales;
+const router = useRouter();
 
 const switchLanguage = async (newLocale) => {
   await trans.switchLanguage(newLocale);
+
+  try {
+    await router.replace({
+      params: {
+        locale: newLocale,
+      },
+    });
+  } catch (error) {
+    router.push(Routers.Dashboard);
+  }
 };
 </script>
 
@@ -29,8 +42,8 @@ const switchLanguage = async (newLocale) => {
       'language-switcher__active': locale === sLocale,
     }"
     :title="t(`locale.${sLocale}`)"
-    @click="switchLanguage(sLocale)"
     height="12"
+    @click="switchLanguage(sLocale)"
   >
     <v-img
       width="20"
