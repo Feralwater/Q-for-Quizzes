@@ -1,4 +1,5 @@
 import i18n from '@/i18n';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 export const Trans = {
   get supportedLocales() {
@@ -10,7 +11,9 @@ export const Trans = {
   },
 
   async switchLanguage(newLocale) {
+    const { setLocalStorage }=useLocalStorage('user-locale', newLocale);
     Trans.currentLocale = newLocale;
     document.querySelector('html').setAttribute('lang', newLocale);
+    setLocalStorage(newLocale);
   },
 };
