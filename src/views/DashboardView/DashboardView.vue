@@ -19,7 +19,6 @@ const { mdAndDown } = useDisplay();
         header__mobile: mdAndDown,
       }"
     >
-      <language-switcher />
       <v-btn
         color="primary"
         variant="outlined"
@@ -40,6 +39,9 @@ const { mdAndDown } = useDisplay();
       <b>Q</b>
       <span>for</span>
       <span><b>Q</b>uizzes</span>
+      <div class="header__locales">
+        <LanguageSwitcher />
+      </div>
     </header>
 
     <div

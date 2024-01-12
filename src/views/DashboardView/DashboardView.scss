@@ -36,7 +36,7 @@
     left: 5%;
 
     &__mobile {
-      top: 1%;
+      top: 3%;
       left: 1%;
     }
   }
@@ -44,5 +44,13 @@
   &__mobile {
     font-size: 1.5rem;
     height: 50px;
+  }
+
+  &__locales {
+    font-size: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
   }
 }
