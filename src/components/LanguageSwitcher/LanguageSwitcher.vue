@@ -3,12 +3,13 @@ import { Trans } from "@/i18n/translation";
 import { useI18n } from 'vue-i18n';
 
 const { t, locale } = useI18n();
-const supportedLocales = Trans.supportedLocales;
+const trans = new Trans();
+const supportedLocales = trans.supportedLocales;
 
 const switchLanguage = async (event)=>{
   const newLocale = event.target.value;
   
-  await Trans.switchLanguage(newLocale);
+  await trans.switchLanguage(newLocale);
 };
 </script>
 
