@@ -3,5 +3,5 @@ export interface CompletedQuiz {
   score: number | string;
   quizTaker: string;
   certificateId: number;
-  date: string;
+  date: Date;
 }

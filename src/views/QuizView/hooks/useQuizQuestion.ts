@@ -40,11 +40,7 @@ export const useQuizQuestion = () => {
     score: score.value,
     certificateId: new Date().getTime(),
     quizTaker: `${user.firstName} ${user.secondName}`,
-    date: new Date().toLocaleDateString('en-Us', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    }),
+    date: new Date(),
   };
 
   const { setLocalStorage, getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);

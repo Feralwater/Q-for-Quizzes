@@ -1,5 +1,6 @@
 import { createI18n } from 'vue-i18n';
 import { plPluralizationRules } from '@/i18n/rules/pluralization';
+import { datetimeFormats  } from '@/i18n/rules/datetime';
 
 const messages = {
   'en-US': {
@@ -33,4 +34,5 @@ export default createI18n({
   pluralRules: {
     'pl-PL': plPluralizationRules,
   },
+  datetimeFormats,
 });
