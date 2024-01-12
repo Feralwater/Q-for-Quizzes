@@ -1,0 +1,10 @@
+{
+  "quizzes": {
+    "vueBasics": {
+      "title": "Podstawy Vue",
+      "description": "Sprawdź swoją wiedzę na temat podstaw Vue.js",
+    },
+  },
+  "questions": "{n} pytanie | {n} pytania | {n} pytań",
+  "startQuiz": "Rozpocznij Quiz",
+}
