@@ -10,6 +10,10 @@ export class Trans {
     return import.meta.env.VITE_SUPPORTED_LOCALES.split(',');
   }
 
+  get currentLocale() {
+    return i18n.global.locale.value;
+  }
+
   set currentLocale(newLocale) {
     i18n.global.locale.value = newLocale;
   }
@@ -75,6 +79,16 @@ export class Trans {
 
     await this.switchLanguage(paramLocale);
     return next();
+  }
+
+  i18nRoute(to) {
+    return {
+      ...to,
+      params: {
+        locale: this.currentLocale,
+        ...to.params,
+      },
+    };
   }
 }
 

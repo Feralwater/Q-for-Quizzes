@@ -7,8 +7,10 @@ import { quizzes } from '@/assets/data/quizzes';
 import { useDisplay } from 'vuetify';
 import { Routers } from '@/router/Routers';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
+import { Trans } from '@/i18n/translation'
 
 const { mdAndDown } = useDisplay();
+const trans = new Trans();
 </script>
 
 <template>
@@ -28,7 +30,7 @@ const { mdAndDown } = useDisplay();
         }"
         icon
         aria-label="Open profile"
-        @click="$router.push(Routers.Profile)"
+        @click="$router.push(trans.i18nRoute({name: 'profile'}))"
       >
         <v-icon
           color="lightTextColour"
