@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Trans } from '@/i18n/translation';
+import { trans } from '@/i18n/translation';
 import { useI18n } from 'vue-i18n';
 import plFlag from '@/assets/images/flags/pl.svg';
 import enFlag from '@/assets/images/flags/en.svg';
@@ -14,7 +14,6 @@ const flags = {
 };
 
 const { t, locale } = useI18n();
-const trans = new Trans();
 const supportedLocales = trans.supportedLocales;
 const router = useRouter();
 

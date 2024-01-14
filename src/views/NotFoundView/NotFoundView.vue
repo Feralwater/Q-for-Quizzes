@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import scarecrow from '@/assets/images/scarecrow.png';
 import { useDisplay } from 'vuetify';
-import { Trans } from '@/i18n/translation';
+import { trans } from '@/i18n/translation';
 
 const { mdAndDown } = useDisplay();
-const trans = new Trans();
 </script>
 
 <template>

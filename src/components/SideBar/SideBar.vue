@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useDisplay } from 'vuetify';
-import { Trans } from '@/i18n/translation';
+import { trans } from '@/i18n/translation';
 
 const props = defineProps({
   progress: {
@@ -28,7 +28,6 @@ const roundProgress = computed(() => {
 
 const { mdAndDown } = useDisplay();
 const drawer = ref(!mdAndDown.value);
-const trans = new Trans();
 
 watch(mdAndDown, (newVal) => {
   drawer.value = !newVal;

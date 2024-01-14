@@ -2,7 +2,7 @@ import i18n from '@/i18n';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { nextTick } from 'vue';
 
-export class Trans {
+class Trans {
   get defaultLocale() {
     return import.meta.env.VITE_DEFAULT_LOCALE;
   }
@@ -103,3 +103,4 @@ export class Trans {
   }
 }
 
+export const trans = new Trans();

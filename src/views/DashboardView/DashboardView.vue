@@ -5,12 +5,10 @@ import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
 import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
 import { quizzes } from '@/assets/data/quizzes';
 import { useDisplay } from 'vuetify';
-import { Routers } from '@/router/Routers';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
-import { Trans } from '@/i18n/translation'
+import { trans } from '@/i18n/translation';
 
 const { mdAndDown } = useDisplay();
-const trans = new Trans();
 </script>
 
 <template>
