@@ -72,6 +72,14 @@ const router = createRouter({
           name: 'certificate',
           component: () => import('@/views/CertificateView/CertificateView.vue'),
         },
+        {
+          path: Routers.PageNotFound,
+          name: 'NotFound',
+          component: () => import('@/views/NotFoundView/NotFoundView.vue'),
+          meta: {
+            requiresAuth: false,
+          },
+        },
       ],
     },
   ],

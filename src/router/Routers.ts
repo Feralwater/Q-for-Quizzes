@@ -6,5 +6,5 @@ export const Routers = {
   Profile: 'profile',
   Login: 'login',
   CertificateId: (certificateId: string) => `certificate/${certificateId}`,
-  PageNotFound: '/:pathMatch(.*)*',
+  PageNotFound: ':pathMatch(.*)*',
 } as const;
