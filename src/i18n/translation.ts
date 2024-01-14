@@ -1,5 +1,6 @@
 import i18n from '@/i18n';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { nextTick } from 'vue';
 
 export class Trans {
   get defaultLocale() {
@@ -19,10 +20,20 @@ export class Trans {
   }
 
   async switchLanguage(newLocale) {
+    await  this.loadLocaleMessages(newLocale);
     const { setLocalStorage } = useLocalStorage('user-locale', newLocale);
     this.currentLocale = newLocale;
     document.querySelector('html').setAttribute('lang', newLocale);
     setLocalStorage(newLocale);
+  }
+
+  async loadLocaleMessages(locale) {
+    if (!i18n.global.availableLocales.includes(locale)) {
+      const messages = await import(`@/i18n/locales/${locale}.json`);
+      i18n.global.setLocaleMessage(locale, messages.default);
+    }
+    
+    return nextTick();
   }
 
   isLocaleSupported(locale) {
