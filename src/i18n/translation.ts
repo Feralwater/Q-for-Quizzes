@@ -2,7 +2,7 @@ import i18n from '@/i18n';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { nextTick } from 'vue';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
-import type { Locale } from '@/i18n/types/locales';
+import type { Locale } from 'vue-i18n';
 
 class Trans {
   get defaultLocale() {

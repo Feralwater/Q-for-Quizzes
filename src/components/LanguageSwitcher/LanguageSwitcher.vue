@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { trans } from '@/i18n/translation';
-import { useI18n } from 'vue-i18n';
+import { type Locale, useI18n } from 'vue-i18n'
 import plFlag from '@/assets/images/flags/pl.svg';
 import enFlag from '@/assets/images/flags/en.svg';
 import { useRouter } from 'vue-router';
@@ -17,7 +17,7 @@ const { t, locale } = useI18n();
 const supportedLocales = trans.supportedLocales;
 const router = useRouter();
 
-const switchLanguage = async (newLocale) => {
+const switchLanguage = async (newLocale: Locale) => {
   await trans.switchLanguage(newLocale);
 
   try {
