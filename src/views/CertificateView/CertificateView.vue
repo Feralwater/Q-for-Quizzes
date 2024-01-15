@@ -28,7 +28,7 @@ const quizRef = ref<HTMLDivElement | null>(null);
 
 const onPrint = () => window.print();
 
-const downloadPDF = (quizName: string, date: string) => {
+const downloadPDF = (quizName: string, date: Date) => {
   const clone = quizRef.value?.cloneNode(true) as HTMLDivElement;
   clone.style.margin = '0';
 
