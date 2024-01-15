@@ -1,0 +1,14 @@
+{
+  "locale": {
+    "en-US": "English",
+    "pl-PL": "Polski"
+  },
+  "quizzes": {
+    "vueBasics": {
+      "title": "Vue Basics",
+      "description": "Test your knowledge of Vue.js fundamentals"
+    }
+  },
+  "questions": "{n} Questions | {n} Question | {n} Questions",
+  "startQuiz": "Start Quiz"
+}

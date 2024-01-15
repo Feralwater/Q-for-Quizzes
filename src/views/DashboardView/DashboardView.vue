@@ -5,7 +5,8 @@ import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
 import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
 import { quizzes } from '@/assets/data/quizzes';
 import { useDisplay } from 'vuetify';
-import { Routers } from '@/router/Routers';
+import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
+import { trans } from '@/i18n/translation';
 
 const { mdAndDown } = useDisplay();
 </script>
@@ -27,7 +28,7 @@ const { mdAndDown } = useDisplay();
         }"
         icon
         aria-label="Open profile"
-        @click="$router.push(Routers.Profile)"
+        @click="$router.push(trans.i18nRoute({name: 'profile'}))"
       >
         <v-icon
           color="lightTextColour"
@@ -38,6 +39,9 @@ const { mdAndDown } = useDisplay();
       <b>Q</b>
       <span>for</span>
       <span><b>Q</b>uizzes</span>
+      <div class="header__locales">
+        <LanguageSwitcher />
+      </div>
     </header>
 
     <div

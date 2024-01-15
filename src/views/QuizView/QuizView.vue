@@ -6,7 +6,6 @@ import { useQuizQuestion } from '@/views/QuizView/hooks/useQuizQuestion';
 import { useDisplay } from 'vuetify';
 import { useBlurOnMouseLeave } from '@/hooks/useBlurOnMouseLeave';
 import { type NavigationGuardNext, onBeforeRouteLeave, type RouteLocationNormalized } from 'vue-router';
-import { Routers } from '@/router/Routers';
 
 const {
   onNextQuestion,
@@ -27,7 +26,7 @@ const {
 useBlurOnMouseLeave();
 
 const leaveQuizConfirmation = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-  if (to.path === Routers.Result) {
+  if (to.name === 'result') {
     next();
     return;
   }

@@ -6,6 +6,7 @@ import router from '@/router';
 import { ref } from 'vue';
 import html2pdf from 'html2pdf.js';
 import { decryptScore } from '@/utils/crypt';
+import { useI18n } from 'vue-i18n';
 
 const { getLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
@@ -27,7 +28,7 @@ const quizRef = ref<HTMLDivElement | null>(null);
 
 const onPrint = () => window.print();
 
-const downloadPDF = (quizName: string, date: string) => {
+const downloadPDF = (quizName: string, date: Date) => {
   const clone = quizRef.value?.cloneNode(true) as HTMLDivElement;
   clone.style.margin = '0';
 
@@ -42,6 +43,7 @@ const downloadPDF = (quizName: string, date: string) => {
   html2pdf(clone, options);
 };
 
+const i18n = useI18n();
 </script>
 
 <template>
@@ -90,7 +92,7 @@ const downloadPDF = (quizName: string, date: string) => {
         </p>
         <div class="certificate__info">
           <span>Quiz: {{ quizName }}</span>
-          <span>Date: {{ date }}</span>
+          <span>Date: {{ i18n.d(date, "short") }}</span>
         </div>
         <p class="certificate__congratulations">
           Well done!
