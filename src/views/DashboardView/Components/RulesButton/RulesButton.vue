@@ -16,7 +16,7 @@ const i18n = useI18n();
     }"
     icon
     aria-label="Open book"
-    :title="i18n.t('quizRules')"
+    :title="i18n.t('quizRules.title')"
   >
     <v-icon
       color="lightTextColour"

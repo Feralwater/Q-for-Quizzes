@@ -48,7 +48,7 @@ const { xs } = useDisplay();
 
           <v-btn
             color="primary"
-            text="Close Dialog"
+            :text="$t('quizRules.closeDialog')"
             @click="isActive.value = false"
           />
         </v-card-actions>

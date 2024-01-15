@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify';
+import { useI18n } from 'vue-i18n';
 
+const i18n = useI18n();
 const rules = [
   {
-    title: 'Time Limit',
-    description: 'Each question has a designated time limit within which you must provide an answer. You can submit your answer before the time runs out to move on to the next question.',
+    title: i18n.t('quizRules.limitRule.title'),
+    description: i18n.t('quizRules.limitRule.description'),
   },
   {
-    title: 'No Backtracking',
-    description: 'Once you submit an answer, you cannot go back to change it. Be sure of your choice before moving forward.',
+    title: i18n.t('quizRules.backtrackingRule.title'),
+    description: i18n.t('quizRules.backtrackingRule.description'),
   },
   {
-    title: 'Automatic Progression',
-    description: 'If the time runs out or you leave the quiz page, you\'ll be automatically moved to the next question. Any selected choices will be saved, so make every second count!',
+    title: i18n.t('quizRules.automaticProgressionRule.title'),
+    description: i18n.t('quizRules.automaticProgressionRule.description'),
   },
 ];
 

@@ -29,7 +29,22 @@
   "startQuiz": "Rozpocznij Quiz",
   "hours": "g",
   "minutes": "m",
-  "quizRules": "Zasady Quizu",
+  "quizRules": {
+    "title": "Zasady Quizu",
+    "limitRule": {
+      "title": "Limit czasu",
+      "description": "Każde pytanie ma określony limit czasu, w którym należy udzielić odpowiedzi. Możesz przesłać odpowiedź przed upływem czasu, aby przejść do następnego pytania."
+    },
+    "backtrackingRule": {
+      "title": "Bez cofania się",
+        "description": "Po przesłaniu odpowiedzi nie można jej zmienić. Przed kontynuowaniem upewnij się, że dokonałeś właściwego wyboru."
+    },
+    "automaticProgressionRule": {
+      "title": "Automatyczna progresja",
+      "description": "Jeśli skończy się czas lub opuścisz stronę quizu, zostaniesz automatycznie przeniesiony do następnego pytania. Wszystkie wybrane opcje zostaną zapisane, więc liczy się każda sekunda!"
+    },
+    "closeDialog": "Zamknij"
+  },
   "profile": {
     "title": "Profil"
   }

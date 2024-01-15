@@ -74,7 +74,7 @@ const i18n = useI18n();
     </div>
   </div>
   <dialog-window
-    dialog-title="Quiz Rules"
+    :dialog-title="i18n.t('quizRules.title')"
     :activator="RulesButton"
     :dialog-content="QuizRules"
   />
