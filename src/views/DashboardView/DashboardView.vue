@@ -7,8 +7,10 @@ import { quizzes } from '@/assets/data/quizzes';
 import { useDisplay } from 'vuetify';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
 import { trans } from '@/i18n/translation';
+import { useI18n } from 'vue-i18n';
 
 const { mdAndDown } = useDisplay();
+const i18n = useI18n();
 </script>
 
 <template>
@@ -59,8 +61,8 @@ const { mdAndDown } = useDisplay();
           >
             <quiz-card
               :quiz-icon="quiz.image"
-              :quiz-title="quiz.name"
-              :quiz-description="quiz.description"
+              :quiz-title="i18n.t(`quizzes.${quiz.id}.title`)"
+              :quiz-description="i18n.t(`quizzes.${quiz.id}.description`)"
               :quiz-time="quiz.timeToComplete"
               :quiz-questions-amount="quiz.questionsAmount"
               :quiz-id="quiz.id"

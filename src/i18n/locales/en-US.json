@@ -4,11 +4,29 @@
     "pl-PL": "Polski"
   },
   "quizzes": {
-    "vueBasics": {
+    "vue-basics": {
       "title": "Vue Basics",
       "description": "Test your knowledge of Vue.js fundamentals"
+    },
+    "vue-intermediate": {
+      "title": "Vue Intermediate",
+      "description": "Test your knowledge of Vue.js intermediate concepts"
+    },
+    "vueAdvanced": {
+      "title": "Vue Advanced",
+      "description": "Test your knowledge of Vue.js advanced concepts"
+    },
+    "pinia": {
+      "title": "Pinia",
+      "description": "Test your knowledge of Pinia"
+    },
+    "reactHooks": {
+      "title": "React Hooks",
+      "description": "Test your knowledge of React Hooks"
     }
   },
   "questions": "{n} Questions | {n} Question | {n} Questions",
-  "startQuiz": "Start Quiz"
+  "startQuiz": "Start Quiz",
+  "hours": "h",
+  "minutes": "m"
 }
