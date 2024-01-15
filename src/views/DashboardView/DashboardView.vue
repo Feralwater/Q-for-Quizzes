@@ -30,6 +30,7 @@ const i18n = useI18n();
         }"
         icon
         aria-label="Open profile"
+        :title="i18n.t('profile.title')"
         @click="$router.push(trans.i18nRoute({name: 'profile'}))"
       >
         <v-icon
@@ -49,7 +50,7 @@ const i18n = useI18n();
     <div
       :class="{
         dashboard: true,
-        dashboard__mobile: mdAndDown,
+        dashboard__mobile: mdAndDown
       }"
     >
       <v-container>

@@ -28,5 +28,9 @@
   "questions": "{n} pytanie | {n} pytania | {n} pytań",
   "startQuiz": "Rozpocznij Quiz",
   "hours": "g",
-  "minutes": "m"
+  "minutes": "m",
+  "quizRules": "Zasady Quizu",
+  "profile": {
+    "title": "Profil"
+  }
 }

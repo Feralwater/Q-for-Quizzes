@@ -42,7 +42,7 @@ const timeInHours = computed(() => {
   const hours = Math.floor(props.quizTime / 3600);
   const minutes = Math.floor((props.quizTime % 3600) / 60);
 
-  return `${hours}h ${minutes}m`;
+  return `${hours}${i18n.t('hours')} ${minutes}${i18n.t('minutes')}`;
 });
 
 const startQuiz = () => {
