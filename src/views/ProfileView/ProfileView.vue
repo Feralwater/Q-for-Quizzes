@@ -13,12 +13,12 @@ const { mdAndDown } = useDisplay();
     aria-label="My Profile"
     :class="{
       profile: true,
-      profile__mobile: mdAndDown,
+      profile__mobile: mdAndDown
     }"
   >
     <side-bar
       :header-icon="owl"
-      header-name="My Profile"
+      :header-name="$t('profile.myProfile')"
     />
     <v-container>
       <quiz-table />

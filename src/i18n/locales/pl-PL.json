@@ -37,7 +37,7 @@
     },
     "backtrackingRule": {
       "title": "Bez cofania się",
-        "description": "Po przesłaniu odpowiedzi nie można jej zmienić. Przed kontynuowaniem upewnij się, że dokonałeś właściwego wyboru."
+      "description": "Po przesłaniu odpowiedzi nie można jej zmienić. Przed kontynuowaniem upewnij się, że dokonałeś właściwego wyboru."
     },
     "automaticProgressionRule": {
       "title": "Automatyczna progresja",
@@ -46,6 +46,11 @@
     "closeDialog": "Zamknij"
   },
   "profile": {
-    "title": "Profil"
+    "title": "Profil",
+    "myProfile": "Mój profil"
+  },
+  "sidebar": {
+    "goToDashboard": "Przejdź do Panelu",
+    "goToMyProfile": "Przejdź do Profilu"
   }
 }

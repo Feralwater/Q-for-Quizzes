@@ -46,6 +46,11 @@
     "closeDialog": "Close"
   },
   "profile": {
-    "title": "Profile"
+    "title": "Profile",
+    "myProfile": "My Profile"
+  },
+  "sidebar": {
+    "goToDashboard": "Go to Dashboard",
+    "goToMyProfile": "Go to My Profile"
   }
 }

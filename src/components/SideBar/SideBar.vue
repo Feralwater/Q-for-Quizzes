@@ -78,7 +78,7 @@ watch(mdAndDown, (newVal) => {
               :to="trans.i18nRoute({ name: 'dashboard' })"
               class="sidebar__Link"
             >
-              Go to Dashboard
+              {{ $t('sidebar.goToDashboard') }}
             </router-link>
           </v-list-item>
           <v-list-item
@@ -90,7 +90,7 @@ watch(mdAndDown, (newVal) => {
               :to="trans.i18nRoute({ name: 'profile' })"
               class="sidebar__Link"
             >
-              Go to My Profile
+              {{ $t('sidebar.goToMyProfile') }}
             </router-link>
           </v-list-item>
         </v-list>
