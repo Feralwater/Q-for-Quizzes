@@ -52,5 +52,15 @@
   "sidebar": {
     "goToDashboard": "Przejdź do Panelu",
     "goToMyProfile": "Przejdź do Profilu"
+  },
+  "profileQuizzes": {
+    "quizName": "Nazwa Quizu",
+    "score": "Wynik",
+    "date": "Data",
+    "quizTaker": "Uczestnik Quizu",
+    "certificateId": "Numer Certyfikatu",
+    "actions": "Akcje",
+    "viewCertificate": "Zobacz Certyfikat",
+    "deleteQuiz": "Usuń Quiz"
   }
 }

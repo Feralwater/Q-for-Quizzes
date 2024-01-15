@@ -52,5 +52,15 @@
   "sidebar": {
     "goToDashboard": "Go to Dashboard",
     "goToMyProfile": "Go to My Profile"
+  },
+  "profileQuizzes": {
+    "quizName": "Quiz Name",
+    "score": "Score",
+    "date": "Date",
+    "quizTaker": "Quiz Taker",
+    "certificateId": "Certificate Number",
+    "actions": "Actions",
+    "viewCertificate": "View Certificate",
+    "deleteQuiz": "Delete Quiz"
   }
 }
