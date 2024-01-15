@@ -3,6 +3,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { nextTick } from 'vue';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 import type { Locale } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
 class Trans {
   get defaultLocale() {
@@ -22,7 +23,7 @@ class Trans {
   }
 
   async switchLanguage(newLocale: Locale) {
-    await  this.loadLocaleMessages(newLocale);
+    await this.loadLocaleMessages(newLocale);
     const { setLocalStorage } = useLocalStorage('user-locale', newLocale);
     this.currentLocale = newLocale;
     document.querySelector('html')?.setAttribute('lang', newLocale);
@@ -34,11 +35,11 @@ class Trans {
       const messages = await import(`@/i18n/locales/${locale}.json`);
       i18n.global.setLocaleMessage(locale, messages.default);
     }
-    
+
     return nextTick();
   }
 
-  isLocaleSupported(locale:Locale) {
+  isLocaleSupported(locale: Locale) {
     return this.supportedLocales.includes(locale);
   }
 
@@ -46,7 +47,7 @@ class Trans {
     const locale = window.navigator.language
       || this.defaultLocale;
 
-    return{
+    return {
       locale,
       localeNoRegion: locale.split('-')[0],
     };
@@ -65,17 +66,17 @@ class Trans {
 
   guessDefaultLocale() {
     const userPersistedLocale = this.getPersistedLocale();
-    if(userPersistedLocale){
+    if (userPersistedLocale) {
       return userPersistedLocale;
     }
 
     const userPreferredLocale = this.getUserLocale();
 
-    if(this.isLocaleSupported(userPreferredLocale.locale)){
+    if (this.isLocaleSupported(userPreferredLocale.locale)) {
       return userPreferredLocale.locale;
     }
 
-    if(this.isLocaleSupported(userPreferredLocale.localeNoRegion)){
+    if (this.isLocaleSupported(userPreferredLocale.localeNoRegion)) {
       return userPreferredLocale.localeNoRegion;
     }
 
@@ -83,7 +84,7 @@ class Trans {
   }
 
   async routeMiddleware(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
-    const paramLocale = to.params.locale;
+    const paramLocale = to.params.locale as Locale;
 
     if (!this.isLocaleSupported(paramLocale)) {
       return next(this.guessDefaultLocale());
@@ -93,12 +94,14 @@ class Trans {
     return next();
   }
 
-  i18nRoute(to: RouteLocationNormalized) {
+  i18nRoute(to: {name: string}) {
+    const router = useRouter();
+    const normalizedTo = router.resolve(to);
     return {
-      ...to,
+      ...normalizedTo,
       params: {
         locale: this.currentLocale,
-        ...to.params,
+        ...normalizedTo.params,
       },
     };
   }
