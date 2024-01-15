@@ -1,0 +1,1 @@
+export type Locale = 'en-US' | 'pl-PL' | 'en' | 'pl';

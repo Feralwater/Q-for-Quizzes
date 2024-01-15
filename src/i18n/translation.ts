@@ -1,6 +1,8 @@
 import i18n from '@/i18n';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { nextTick } from 'vue';
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
+import type { Locale } from '@/i18n/types/locales';
 
 class Trans {
   get defaultLocale() {
@@ -19,15 +21,15 @@ class Trans {
     i18n.global.locale.value = newLocale;
   }
 
-  async switchLanguage(newLocale) {
+  async switchLanguage(newLocale: Locale) {
     await  this.loadLocaleMessages(newLocale);
     const { setLocalStorage } = useLocalStorage('user-locale', newLocale);
     this.currentLocale = newLocale;
-    document.querySelector('html').setAttribute('lang', newLocale);
+    document.querySelector('html')?.setAttribute('lang', newLocale);
     setLocalStorage(newLocale);
   }
 
-  async loadLocaleMessages(locale) {
+  async loadLocaleMessages(locale: Locale) {
     if (!i18n.global.availableLocales.includes(locale)) {
       const messages = await import(`@/i18n/locales/${locale}.json`);
       i18n.global.setLocaleMessage(locale, messages.default);
@@ -36,13 +38,12 @@ class Trans {
     return nextTick();
   }
 
-  isLocaleSupported(locale) {
+  isLocaleSupported(locale:Locale) {
     return this.supportedLocales.includes(locale);
   }
 
   getUserLocale() {
     const locale = window.navigator.language
-      || window.navigator.userLanguage
       || this.defaultLocale;
 
     return{
@@ -81,7 +82,7 @@ class Trans {
     return this.defaultLocale;
   }
 
-  async routeMiddleware(to, from, next) {
+  async routeMiddleware(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
     const paramLocale = to.params.locale;
 
     if (!this.isLocaleSupported(paramLocale)) {
@@ -92,7 +93,7 @@ class Trans {
     return next();
   }
 
-  i18nRoute(to) {
+  i18nRoute(to: RouteLocationNormalized) {
     return {
       ...to,
       params: {
