@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { trans } from '@/i18n/translation';
-import { type Locale, useI18n } from 'vue-i18n'
+import { type Locale, useI18n } from 'vue-i18n';
 import plFlag from '@/assets/images/flags/pl.svg';
 import enFlag from '@/assets/images/flags/en.svg';
 import { useRouter } from 'vue-router';
 import { Routers } from '@/router/Routers';
 
-const flags = {
+const flags: Record<Locale, string> = {
   'pl-PL': plFlag,
   'en-US': enFlag,
   pl: plFlag,
