@@ -7,6 +7,7 @@ import router from '@/router';
 import { useAuthStore } from '@/stores/auth';
 import { useDisplay } from 'vuetify';
 import { trans } from '@/i18n/translation';
+import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
 
 const { login } = useAuthStore();
 
@@ -27,6 +28,9 @@ const { xs } = useDisplay();
     fluid
     fill-height
   >
+    <div class="languageSwitcher">
+      <LanguageSwitcher />
+    </div>
     <v-row>
       <v-col
         cols="12"
