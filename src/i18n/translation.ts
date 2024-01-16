@@ -3,7 +3,6 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { nextTick } from 'vue';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 import type { Locale } from 'vue-i18n';
-import { useRouter } from 'vue-router';
 
 class Trans {
   get defaultLocale() {
@@ -86,6 +85,10 @@ class Trans {
   async routeMiddleware(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
     const paramLocale = to.params.locale as Locale;
 
+    if (!paramLocale) {
+      return next();
+    }
+
     if (!this.isLocaleSupported(paramLocale)) {
       return next(this.guessDefaultLocale());
     }
@@ -94,14 +97,12 @@ class Trans {
     return next();
   }
 
-  i18nRoute(to: {name: string}) {
-    const router = useRouter();
-    const normalizedTo = router.resolve(to);
+  i18nRoute(to: {name: string; params?: {locale: Locale}}) {
     return {
-      ...normalizedTo,
+      ...to,
       params: {
+        ...to.params,
         locale: this.currentLocale,
-        ...normalizedTo.params,
       },
     };
   }

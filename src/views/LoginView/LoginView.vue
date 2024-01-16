@@ -4,9 +4,9 @@ import wave from '@/assets/images/wave.png';
 import avatar from '@/assets/images/avatar.svg';
 import owl from '@/assets/images/owlNotebook.svg';
 import router from '@/router';
-import { Routers } from '@/router/Routers';
 import { useAuthStore } from '@/stores/auth';
 import { useDisplay } from 'vuetify';
+import { trans } from '@/i18n/translation';
 
 const { login } = useAuthStore();
 
@@ -16,7 +16,7 @@ const isFormValid = computed(() => !!firstName.value && !!secondName.value);
 
 const handleLogin = () => {
   login({ firstName: firstName.value, secondName: secondName.value });
-  router.push(Routers.Dashboard);
+  router.push(trans.i18nRoute({ name: 'dashboard' }));
 };
 
 const { xs } = useDisplay();
