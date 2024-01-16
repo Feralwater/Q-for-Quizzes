@@ -24,8 +24,6 @@ describe('DashboardView.vue', () => {
     quizCards.forEach((quizCard, index) => {
       expect(quizCard.props()).toEqual({
         quizIcon: quizzes[index].image,
-        quizTitle: quizzes[index].name,
-        quizDescription: quizzes[index].description,
         quizTime: quizzes[index].timeToComplete,
         quizQuestionsAmount: quizzes[index].questionsAmount,
         quizId: quizzes[index].id,

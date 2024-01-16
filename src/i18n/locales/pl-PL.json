@@ -4,11 +4,80 @@
     "pl-PL": "Polski"
   },
   "quizzes": {
-    "vueBasics": {
+    "vue-basics": {
       "title": "Podstawy Vue",
       "description": "Sprawdź swoją wiedzę na temat podstaw Vue.js"
+    },
+    "vue-intermediate": {
+      "title": "Średniozaawansowane Vue",
+      "description": "Sprawdź swoją wiedzę na temat średniozaawansowanych zagadnień Vue.js"
+    },
+    "vue-advanced": {
+      "title": "Zaawansowane Vue",
+      "description": "Sprawdź swoją wiedzę na temat zaawansowanych zagadnień Vue.js"
+    },
+    "pinia": {
+      "title": "Pinia",
+      "description": "Sprawdź swoją wiedzę na temat Pinia"
+    },
+    "react-hooks": {
+      "title": "React Hooks",
+      "description": "Sprawdź swoją wiedzę na temat React Hooks"
     }
   },
   "questions": "{n} pytanie | {n} pytania | {n} pytań",
-  "startQuiz": "Rozpocznij Quiz"
+  "startQuiz": "Rozpocznij Quiz",
+  "hours": "g",
+  "minutes": "m",
+  "quizRules": {
+    "title": "Zasady Quizu",
+    "limitRule": {
+      "title": "Limit czasu",
+      "description": "Każde pytanie ma określony limit czasu, w którym należy udzielić odpowiedzi. Możesz przesłać odpowiedź przed upływem czasu, aby przejść do następnego pytania."
+    },
+    "backtrackingRule": {
+      "title": "Bez cofania się",
+      "description": "Po przesłaniu odpowiedzi nie można jej zmienić. Przed kontynuowaniem upewnij się, że dokonałeś właściwego wyboru."
+    },
+    "automaticProgressionRule": {
+      "title": "Automatyczna progresja",
+      "description": "Jeśli skończy się czas lub opuścisz stronę quizu, zostaniesz automatycznie przeniesiony do następnego pytania. Wszystkie wybrane opcje zostaną zapisane, więc liczy się każda sekunda!"
+    },
+    "closeDialog": "Zamknij"
+  },
+  "profile": {
+    "title": "Profil",
+    "myProfile": "Mój profil"
+  },
+  "sidebar": {
+    "goToDashboard": "Przejdź do Panelu",
+    "goToMyProfile": "Przejdź do Profilu"
+  },
+  "profileQuizzes": {
+    "quizName": "Nazwa Quizu",
+    "score": "Wynik",
+    "date": "Data",
+    "quizTaker": "Uczestnik Quizu",
+    "certificateId": "Numer Certyfikatu",
+    "actions": "Akcje",
+    "viewCertificate": "Zobacz Certyfikat",
+    "deleteQuiz": "Usuń Quiz"
+  },
+  "resultView": {
+    "title": "Twój łączny wynik to",
+    "subtitle": "{correctAnswers} na {totalQuestions} punktów",
+    "description": "Certyfikat można pobrać w swoim profilu",
+    "takeAnotherQuiz": "Rozpocznij kolejny Quiz",
+    "myProfile": "Mój Profil"
+  },
+  "certificate": {
+    "isReady": "Twój certyfikat jest gotowy!",
+    "print": "Drukuj",
+    "download": "Pobierz",
+    "back": "Wróć",
+    "title": "Certyfikat ukończenia quizu",
+    "subtitle": "Nagrodę tę otrzymuje",
+    "inRecognition": "w uznaniu za osiągnięcie",
+    "congratulations": "Dobra robota!"
+  }
 }

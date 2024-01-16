@@ -42,6 +42,7 @@
     margin-bottom: 30px;
     color: var(--primary);
     letter-spacing: 2px;
+    text-transform: uppercase;
   }
 
   &__body {
@@ -51,6 +52,7 @@
   &__intro {
     font-size: 14px;
     font-weight: bold;
+    text-transform: uppercase;
   }
 
   &__recipientName {

@@ -4,11 +4,80 @@
     "pl-PL": "Polski"
   },
   "quizzes": {
-    "vueBasics": {
+    "vue-basics": {
       "title": "Vue Basics",
       "description": "Test your knowledge of Vue.js fundamentals"
+    },
+    "vue-intermediate": {
+      "title": "Vue Intermediate",
+      "description": "Test your knowledge of Vue.js intermediate concepts"
+    },
+    "vueAdvanced": {
+      "title": "Vue Advanced",
+      "description": "Test your knowledge of Vue.js advanced concepts"
+    },
+    "pinia": {
+      "title": "Pinia",
+      "description": "Test your knowledge of Pinia"
+    },
+    "reactHooks": {
+      "title": "React Hooks",
+      "description": "Test your knowledge of React Hooks"
     }
   },
   "questions": "{n} Questions | {n} Question | {n} Questions",
-  "startQuiz": "Start Quiz"
+  "startQuiz": "Start Quiz",
+  "hours": "h",
+  "minutes": "m",
+  "quizRules": {
+    "title": "Quiz Rules",
+    "limitRule": {
+      "title": "Time Limit",
+      "description": "Each question has a designated time limit within which you must provide an answer. You can submit your answer before the time runs out to move on to the next question."
+    },
+    "backtrackingRule": {
+      "title": "No Backtracking",
+      "description": "Once you submit an answer, you cannot go back to change it. Be sure of your choice before moving forward."
+    },
+    "automaticProgressionRule": {
+      "title": "Automatic Progression",
+      "description": "If the time runs out or you leave the quiz page, you'll be automatically moved to the next question. Any selected choices will be saved, so make every second count!"
+    },
+    "closeDialog": "Close"
+  },
+  "profile": {
+    "title": "Profile",
+    "myProfile": "My Profile"
+  },
+  "sidebar": {
+    "goToDashboard": "Go to Dashboard",
+    "goToMyProfile": "Go to My Profile"
+  },
+  "profileQuizzes": {
+    "quizName": "Quiz Name",
+    "score": "Score",
+    "date": "Date",
+    "quizTaker": "Quiz Taker",
+    "certificateId": "Certificate Number",
+    "actions": "Actions",
+    "viewCertificate": "View Certificate",
+    "deleteQuiz": "Delete Quiz"
+  },
+  "resultView": {
+    "title": "Your total score is",
+    "subtitle": "{correctAnswers} out of {totalQuestions} correct answers",
+    "description": "You can download your certificate in your profile page",
+    "takeAnotherQuiz": "Take Another Quiz",
+    "myProfile": "My Profile"
+  },
+  "certificate": {
+    "isReady": "Your certificate is ready!",
+    "print": "Print",
+    "back": "Back",
+    "download": "Download",
+    "title": "Certificate of Completion",
+    "subtitle": "This is awarded to",
+    "inRecognition": "in recognition of achieving a",
+    "congratulations": "Well done!"
+  }
 }

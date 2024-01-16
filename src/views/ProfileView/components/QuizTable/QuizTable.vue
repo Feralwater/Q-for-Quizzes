@@ -9,6 +9,7 @@ import { headers } from '@/views/ProfileView/components/QuizTable/headers';
 import ConformationDialog from '@/components/ConformationDialog/ConformationDialog.vue';
 import SnackBar from '@/components/SnackBar/SnackBar.vue';
 import { decryptScore } from '@/utils/crypt';
+import { useI18n } from 'vue-i18n';
 
 const { getLocalStorage:getCompletedQuiz, setLocalStorage } = useLocalStorage<CompletedQuiz[]>('completedQuiz', []);
 
@@ -43,6 +44,7 @@ const { mdAndDown } = useDisplay();
 const navigateToCertificate = (id: number) => {
   router.push(Routers.CertificateId(String(id)));
 };
+const i18n = useI18n();
 </script>
 
 <template>
@@ -66,7 +68,7 @@ const navigateToCertificate = (id: number) => {
               }"
               @click="column.sortable ? toggleSort(column) : null"
             >
-              {{ column.title }}
+              {{ i18n.t(`profileQuizzes.${column.key}`) }}
             </span>
             <template v-if="isSorted(column)">
               <v-icon :icon="getSortIcon(column)" />
@@ -79,12 +81,14 @@ const navigateToCertificate = (id: number) => {
       <v-icon
         class="mr-3"
         color="primary"
+        :title="i18n.t('profileQuizzes.viewCertificate')"
         @click="navigateToCertificate(item.certificateId)"
       >
         mdi-eye
       </v-icon>
       <v-icon
         color="danger"
+        :title="i18n.t('profileQuizzes.deleteQuiz')"
         @click="onDelete(item.certificateId)"
       >
         mdi-delete

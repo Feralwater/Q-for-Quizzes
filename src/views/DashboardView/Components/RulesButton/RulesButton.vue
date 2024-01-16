@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify';
+import { useI18n } from 'vue-i18n';
 
 const { mdAndDown } = useDisplay();
+const i18n = useI18n();
 </script>
 
 <template>
@@ -14,6 +16,7 @@ const { mdAndDown } = useDisplay();
     }"
     icon
     aria-label="Open book"
+    :title="i18n.t('quizRules.title')"
   >
     <v-icon
       color="lightTextColour"

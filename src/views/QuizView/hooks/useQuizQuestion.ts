@@ -1,6 +1,5 @@
 import { computed, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
-import { Routers } from '@/router/Routers';
 import { useVisibilityChange } from '@/hooks/useVisibilityChange';
 import { useRoute } from 'vue-router';
 import router from '@/router';
@@ -13,6 +12,7 @@ import type { CompletedQuiz } from '@/types/completedQuiz';
 import type { User } from '@/types/user';
 import { questions } from '@/views/QuizView/hooks/constant';
 import { trans } from '@/i18n/translation';
+import { useI18n } from 'vue-i18n';
 
 const TIME_UP_VALUE = 0;
 
@@ -35,9 +35,10 @@ export const useQuizQuestion = () => {
   const answersSelected = ref<number[]>([]);
   const { getLocalStorage: getUser } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
   const user = getUser();
+  const i18n = useI18n();
 
   const completedQuiz: CompletedQuiz = {
-    quizName: quizzes.find((quiz) => quiz.id === currentQuizId)?.name || '',
+    quizName: i18n.t(`quizzes.${currentQuizId}.title`),
     score: score.value,
     certificateId: new Date().getTime(),
     quizTaker: `${user.firstName} ${user.secondName}`,

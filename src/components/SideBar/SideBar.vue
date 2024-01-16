@@ -55,15 +55,21 @@ watch(mdAndDown, (newVal) => {
         class="sidebar"
         role="navigation"
       >
-        <h1 class="sidebar__header">
+        <div class="sidebar__header">
           <v-img
             :src="headerIcon"
             width="60"
             height="60"
             :alt="`${headerName} icon`"
           />
-          {{ headerName }}
-        </h1>
+          <h1
+            class="sidebar__title"
+            role="heading"
+            :title="headerName"
+          >
+            {{ headerName }}
+          </h1>
+        </div>
         <v-list
           nav
           aria-label="Main navigation"
@@ -78,7 +84,7 @@ watch(mdAndDown, (newVal) => {
               :to="trans.i18nRoute({ name: 'dashboard' })"
               class="sidebar__Link"
             >
-              Go to Dashboard
+              {{ $t('sidebar.goToDashboard') }}
             </router-link>
           </v-list-item>
           <v-list-item
@@ -90,7 +96,7 @@ watch(mdAndDown, (newVal) => {
               :to="trans.i18nRoute({ name: 'profile' })"
               class="sidebar__Link"
             >
-              Go to My Profile
+              {{ $t('sidebar.goToMyProfile') }}
             </router-link>
           </v-list-item>
         </v-list>
