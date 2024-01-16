@@ -69,5 +69,15 @@
     "description": "Certyfikat można pobrać w swoim profilu",
     "takeAnotherQuiz": "Rozpocznij kolejny Quiz",
     "myProfile": "Mój Profil"
+  },
+  "certificate": {
+    "isReady": "Twój certyfikat jest gotowy!",
+    "print": "Drukuj",
+    "download": "Pobierz",
+    "back": "Wróć",
+    "title": "Certyfikat ukończenia quizu",
+    "subtitle": "Nagrodę tę otrzymuje",
+    "inRecognition": "w uznaniu za osiągnięcie",
+    "congratulations": "Dobra robota!"
   }
 }

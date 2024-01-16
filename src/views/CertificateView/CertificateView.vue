@@ -50,20 +50,24 @@ const i18n = useI18n();
   <header class="header">
     <v-icon
       color="lightTextColor"
+      :title="$t('certificate.back')"
       @click="$router.back()"
     >
       mdi-arrow-left
     </v-icon>
     <span>
-      Your certificate is ready!</span>
+      {{ $t('certificate.isReady') }}
+    </span>
     <v-icon
       color="lightTextColor"
+      :title="$t('certificate.print')"
       @click="onPrint"
     >
       mdi-printer
     </v-icon>
     <v-icon
       color="lightTextColor"
+      :title="$t('certificate.download')"
       @click="downloadPDF(quizName, date)"
     >
       mdi-download
@@ -75,17 +79,17 @@ const i18n = useI18n();
   >
     <div class="certificate__content">
       <div class="certificate__header">
-        CERTIFICATE OF COMPLETION
+        {{ $t('certificate.title') }}
       </div>
       <div class="certificate__body">
         <p class="certificate__intro">
-          THIS IS AWARDED TO
+          {{ $t('certificate.subtitle') }}
         </p>
         <p class="certificate__recipientName">
           {{ quizTaker }}
         </p>
         <p class="certificate__achievingText">
-          in recognition of achieving a
+          {{ $t('certificate.inRecognition') }}
         </p>
         <p class="certificate__score">
           {{ decryptScore(score) }}%
@@ -95,7 +99,7 @@ const i18n = useI18n();
           <span>Date: {{ i18n.d(date, "short") }}</span>
         </div>
         <p class="certificate__congratulations">
-          Well done!
+          {{ $t('certificate.congratulations') }}
         </p>
       </div>
       <div class="certificate__footer">
