@@ -13,9 +13,18 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    width: 100%;
+  }
+
+  &__title {
     color: var(--light-text-color);
     font-size: 22px;
     font-weight: bold;
+    width: 100%;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   &__item {
