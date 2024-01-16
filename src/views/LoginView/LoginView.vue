@@ -72,13 +72,13 @@ const { xs } = useDisplay();
                 login__title__mobile: xs,
               }"
             >
-              Welcome
+              {{ $t('loginView.welcome') }}
             </h2>
 
             <v-text-field
               v-model="firstName"
               prepend-icon="mdi-account"
-              label="First Name"
+              :label="$t('loginView.firstName')"
               type="text"
               variant="underlined"
               color="primary"
@@ -88,7 +88,7 @@ const { xs } = useDisplay();
             <v-text-field
               v-model="secondName"
               prepend-icon="mdi-account"
-              label="Second Name"
+              :label="$t('loginView.lastName')"
               type="text"
               variant="underlined"
               color="primary"
@@ -96,7 +96,7 @@ const { xs } = useDisplay();
             />
 
             <p class="login__info">
-              Please make sure you have entered your name correctly. It will be used on your certificates.
+              {{ $t('loginView.note') }}
             </p>
           </div>
           <v-btn
@@ -106,7 +106,7 @@ const { xs } = useDisplay();
             type="submit"
           >
             <span class="login__button">
-              Login
+              {{ $t('loginView.login') }}
             </span>
           </v-btn>
         </v-form>

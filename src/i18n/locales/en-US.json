@@ -79,5 +79,12 @@
     "subtitle": "This is awarded to",
     "inRecognition": "in recognition of achieving a",
     "congratulations": "Well done!"
+  },
+  "loginView": {
+    "welcome": "Welcome to Q for Quizzes!",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "note": "Please make sure you have entered your name correctly. It will be used on your certificates.",
+    "login": "Login"
   }
 }

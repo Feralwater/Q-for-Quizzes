@@ -79,5 +79,12 @@
     "subtitle": "Nagrodę tę otrzymuje",
     "inRecognition": "w uznaniu za osiągnięcie",
     "congratulations": "Dobra robota!"
+  },
+  "loginView": {
+    "welcome": "Witamy w Q for Quizzes!",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "note": "Upewnij się, że poprawnie wpisałeś swoje imię i nazwisko. Zostanie ono użyte na certyfikatach.",
+    "login": "Zaloguj się"
   }
 }
