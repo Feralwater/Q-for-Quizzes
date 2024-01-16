@@ -57,7 +57,7 @@ const { mdAndDown } = useDisplay();
     <side-bar
       :progress="progress"
       :header-icon="selectedQuiz?.image"
-      :header-name="selectedQuiz?.name"
+      :header-name="$t(`quizzes.${selectedQuiz?.id}.title`)"
     />
     <div class="quiz__content">
       <div
