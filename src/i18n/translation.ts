@@ -85,6 +85,10 @@ class Trans {
   async routeMiddleware(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
     const paramLocale = to.params.locale as Locale;
 
+    if (!paramLocale) {
+      return next();
+    }
+
     if (!this.isLocaleSupported(paramLocale)) {
       return next(this.guessDefaultLocale());
     }
