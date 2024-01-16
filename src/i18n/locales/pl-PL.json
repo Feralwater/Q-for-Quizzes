@@ -62,5 +62,12 @@
     "actions": "Akcje",
     "viewCertificate": "Zobacz Certyfikat",
     "deleteQuiz": "Usuń Quiz"
+  },
+  "resultView": {
+    "title": "Twój łączny wynik to",
+    "subtitle": "{correctAnswers} na {totalQuestions} punktów",
+    "description": "Certyfikat można pobrać w swoim profilu",
+    "takeAnotherQuiz": "Rozpocznij kolejny Quiz",
+    "myProfile": "Mój Profil"
   }
 }

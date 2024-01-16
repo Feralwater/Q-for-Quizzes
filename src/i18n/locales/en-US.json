@@ -62,5 +62,12 @@
     "actions": "Actions",
     "viewCertificate": "View Certificate",
     "deleteQuiz": "Delete Quiz"
+  },
+  "resultView": {
+    "title": "Your total score is",
+    "subtitle": "{correctAnswers} out of {totalQuestions} correct answers",
+    "description": "You can download your certificate in your profile page",
+    "takeAnotherQuiz": "Take Another Quiz",
+    "myProfile": "My Profile"
   }
 }

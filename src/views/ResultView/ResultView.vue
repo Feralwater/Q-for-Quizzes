@@ -5,6 +5,7 @@ import confetti from '@/assets/images/confetti.svg';
 import router from '@/router';
 import { storeToRefs } from 'pinia';
 import { onBeforeUnmount } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const { xs } = useDisplay();
 
@@ -27,6 +28,7 @@ const { totalQuestions, score, correctAnswers } = scoreStore;
 onBeforeUnmount(() => {
   resetQuiz();
 });
+const i18n = useI18n();
 </script>
 
 <template>
@@ -54,7 +56,7 @@ onBeforeUnmount(() => {
                 }"
                 class="mb-4 mt-4"
               >
-                Your total score is
+                {{ i18n.t('resultView.title') }}
               </h1>
               <h1 class="result__title_primary mb-4">
                 {{ score }}%
@@ -67,24 +69,24 @@ onBeforeUnmount(() => {
                   result__description__mobile: xs
                 }"
               >
-                {{ correctAnswers }} correct answers out of {{ totalQuestions }}
+                {{ i18n.t('resultView.subtitle', { correctAnswers, totalQuestions }) }}
               </h2>
             </v-card-subtitle>
             <v-card-text class="text-center">
-              You can download your certificate in your profile
+              {{ i18n.t('resultView.description') }}
             </v-card-text>
             <v-card-actions class="justify-center">
               <v-btn
                 color="primary"
                 @click="onAnotherQuiz"
               >
-                Take another quiz
+                {{ i18n.t('resultView.takeAnotherQuiz') }}
               </v-btn>
               <v-btn
                 color="primary"
                 @click="onGoToProfile"
               >
-                My profile
+                {{ i18n.t('resultView.myProfile') }}
               </v-btn>
             </v-card-actions>
           </v-card>
