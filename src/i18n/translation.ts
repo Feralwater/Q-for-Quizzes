@@ -94,14 +94,12 @@ class Trans {
     return next();
   }
 
-  i18nRoute(to: {name: string}) {
-    const router = useRouter();
-    const normalizedTo = router.resolve(to);
+  i18nRoute(to: {name: string; params?: {locale: Locale}}) {
     return {
-      ...normalizedTo,
+      ...to,
       params: {
+        ...to.params,
         locale: this.currentLocale,
-        ...normalizedTo.params,
       },
     };
   }
