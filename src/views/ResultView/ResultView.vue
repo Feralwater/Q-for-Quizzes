@@ -6,12 +6,12 @@ import router from '@/router';
 import { storeToRefs } from 'pinia';
 import { onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { trans } from '@/i18n/translation';
+import { Routers } from '@/router/Routers';
 
 const { xs } = useDisplay();
 
-const onAnotherQuiz = () =>  router.push(trans.i18nRoute({ name: 'dashboard' }));
-const onGoToProfile = () =>   router.push(trans.i18nRoute({ name: 'profile' }));
+const onAnotherQuiz = () =>  router.push(Routers.Dashboard);
+const onGoToProfile = () =>   router.push(Routers.Profile);
 
 
 const { resetQuiz } = useQuizScore();

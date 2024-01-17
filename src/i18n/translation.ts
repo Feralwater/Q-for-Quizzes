@@ -96,16 +96,6 @@ class Trans {
     await this.switchLanguage(paramLocale);
     return next();
   }
-
-  i18nRoute(to: {name: string; params?: {locale: Locale}}) {
-    return {
-      ...to,
-      params: {
-        ...to.params,
-        locale: this.currentLocale,
-      },
-    };
-  }
 }
 
 export const trans = new Trans();
