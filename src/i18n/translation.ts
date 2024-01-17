@@ -1,23 +1,13 @@
 import i18n from '@/i18n';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { nextTick } from 'vue';
-import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 import type { Locale } from 'vue-i18n';
 
 class Trans {
-  get defaultLocale() {
-    return import.meta.env.VITE_DEFAULT_LOCALE;
-  }
-
   get supportedLocales() {
     return import.meta.env.VITE_SUPPORTED_LOCALES.split(',');
   }
-
-  get currentLocale() {
-    return i18n.global.locale.value;
-  }
-
-  set currentLocale(newLocale) {
+  set currentLocale(newLocale: Locale) {
     i18n.global.locale.value = newLocale;
   }
 
@@ -36,65 +26,6 @@ class Trans {
     }
 
     return nextTick();
-  }
-
-  isLocaleSupported(locale: Locale) {
-    return this.supportedLocales.includes(locale);
-  }
-
-  getUserLocale() {
-    const locale = window.navigator.language
-      || this.defaultLocale;
-
-    return {
-      locale,
-      localeNoRegion: locale.split('-')[0],
-    };
-  }
-
-  getPersistedLocale() {
-    const { getLocalStorage } = useLocalStorage('user-locale', this.defaultLocale);
-    const persistedLocale = getLocalStorage();
-
-    if (this.isLocaleSupported(persistedLocale)) {
-      return persistedLocale;
-    } else {
-      return this.defaultLocale;
-    }
-  }
-
-  guessDefaultLocale() {
-    const userPersistedLocale = this.getPersistedLocale();
-    if (userPersistedLocale) {
-      return userPersistedLocale;
-    }
-
-    const userPreferredLocale = this.getUserLocale();
-
-    if (this.isLocaleSupported(userPreferredLocale.locale)) {
-      return userPreferredLocale.locale;
-    }
-
-    if (this.isLocaleSupported(userPreferredLocale.localeNoRegion)) {
-      return userPreferredLocale.localeNoRegion;
-    }
-
-    return this.defaultLocale;
-  }
-
-  async routeMiddleware(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
-    const paramLocale = to.params.locale as Locale;
-
-    if (!paramLocale) {
-      return next();
-    }
-
-    if (!this.isLocaleSupported(paramLocale)) {
-      return next(this.guessDefaultLocale());
-    }
-
-    await this.switchLanguage(paramLocale);
-    return next();
   }
 }
 
