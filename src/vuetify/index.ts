@@ -2,8 +2,17 @@ import "vuetify/styles";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+import { pl, en } from 'vuetify/locale';
 
 const vuetify = createVuetify({
+  locale:{
+    locale: 'en',
+    fallback: 'en',
+    messages: {
+      pl,
+      en,
+    },
+  },
   components,
   directives,
   theme: {
