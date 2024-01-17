@@ -3,17 +3,19 @@ import { trans } from '@/i18n/translation';
 import { type Locale, useI18n } from 'vue-i18n';
 import plFlag from '@/assets/images/flags/pl.svg';
 import enFlag from '@/assets/images/flags/en.svg';
+import { useLocale } from 'vuetify';
 
 const flags: Record<Locale, string> = {
   'pl-PL': plFlag,
   'en-US': enFlag,
-  pl: plFlag,
-  en: enFlag,
 };
 
 const { t, locale } = useI18n();
 const supportedLocales = trans.supportedLocales;
+
+const { current } = useLocale();
 const switchLanguage = async (newLocale: Locale) => {
+  current.value = newLocale.split('-')[0];
   await trans.switchLanguage(newLocale);
 };
 </script>
