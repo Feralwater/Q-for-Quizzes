@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import scarecrow from '@/assets/images/scarecrow.png';
 import { useDisplay } from 'vuetify';
-import { trans } from '@/i18n/translation';
-import { Routers } from '@/router/Routers'
+import { Routers } from '@/router/Routers';
 
 const { mdAndDown } = useDisplay();
 </script>
