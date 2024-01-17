@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useDisplay } from 'vuetify';
-import { trans } from '@/i18n/translation';
+import { Routers } from '@/router/Routers';
 
 const props = defineProps({
   progress: {
@@ -81,7 +81,7 @@ watch(mdAndDown, (newVal) => {
             role="option"
           >
             <router-link
-              :to="trans.i18nRoute({ name: 'dashboard' })"
+              :to="Routers.Dashboard"
               class="sidebar__Link"
             >
               {{ $t('sidebar.goToDashboard') }}
@@ -93,7 +93,7 @@ watch(mdAndDown, (newVal) => {
             role="option"
           >
             <router-link
-              :to="trans.i18nRoute({ name: 'profile' })"
+              :to="Routers.Profile"
               class="sidebar__Link"
             >
               {{ $t('sidebar.goToMyProfile') }}

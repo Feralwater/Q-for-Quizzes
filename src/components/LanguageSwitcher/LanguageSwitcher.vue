@@ -3,8 +3,6 @@ import { trans } from '@/i18n/translation';
 import { type Locale, useI18n } from 'vue-i18n';
 import plFlag from '@/assets/images/flags/pl.svg';
 import enFlag from '@/assets/images/flags/en.svg';
-import { useRouter } from 'vue-router';
-import { Routers } from '@/router/Routers';
 
 const flags: Record<Locale, string> = {
   'pl-PL': plFlag,
@@ -15,20 +13,8 @@ const flags: Record<Locale, string> = {
 
 const { t, locale } = useI18n();
 const supportedLocales = trans.supportedLocales;
-const router = useRouter();
-
 const switchLanguage = async (newLocale: Locale) => {
   await trans.switchLanguage(newLocale);
-
-  try {
-    await router.replace({
-      params: {
-        locale: newLocale,
-      },
-    });
-  } catch (error) {
-    router.push(Routers.Dashboard);
-  }
 };
 </script>
 

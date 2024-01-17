@@ -6,8 +6,8 @@ import owl from '@/assets/images/owlNotebook.svg';
 import router from '@/router';
 import { useAuthStore } from '@/stores/auth';
 import { useDisplay } from 'vuetify';
-import { trans } from '@/i18n/translation';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
+import { Routers } from '@/router/Routers';
 
 const { login } = useAuthStore();
 
@@ -17,7 +17,7 @@ const isFormValid = computed(() => !!firstName.value && !!secondName.value);
 
 const handleLogin = () => {
   login({ firstName: firstName.value, secondName: secondName.value });
-  router.push(trans.i18nRoute({ name: 'dashboard' }));
+  router.push(Routers.Dashboard);
 };
 
 const { xs } = useDisplay();

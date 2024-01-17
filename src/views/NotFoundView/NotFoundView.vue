@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import scarecrow from '@/assets/images/scarecrow.png';
 import { useDisplay } from 'vuetify';
-import { trans } from '@/i18n/translation';
+import { Routers } from '@/router/Routers';
 
 const { mdAndDown } = useDisplay();
 </script>
@@ -41,7 +41,7 @@ const { mdAndDown } = useDisplay();
           The page you are looking for might be removed or is temporarily unavailable.
         </p>
         <router-link
-          :to="trans.i18nRoute({name: 'dashboard'})"
+          :to="Routers.Dashboard"
           :class="{
             error__link: true,
             error__link__mobile: mdAndDown,

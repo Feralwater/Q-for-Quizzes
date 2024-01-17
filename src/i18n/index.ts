@@ -8,7 +8,7 @@ export default createI18n({
   fallbackLocale: import.meta.env.VITE_FALLBACK_LOCALE,
   legacy: false,
   globalInjection: true,
-  messages: { en },
+  messages: { 'en-US': en },
   pluralRules: {
     'pl-PL': plPluralizationRules,
   },

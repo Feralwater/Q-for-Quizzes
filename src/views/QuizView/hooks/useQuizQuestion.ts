@@ -11,8 +11,8 @@ import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import type { User } from '@/types/user';
 import { questions } from '@/views/QuizView/hooks/constant';
-import { trans } from '@/i18n/translation';
 import { useI18n } from 'vue-i18n';
+import { Routers } from '@/router/Routers';
 
 const TIME_UP_VALUE = 0;
 
@@ -61,7 +61,7 @@ export const useQuizQuestion = () => {
     completedQuiz.score = encryptScore(score.value);
     const completedQuizList = getLocalStorage();
     setLocalStorage([...completedQuizList, completedQuiz]);
-    router.push(trans.i18nRoute({ name: 'result' }));
+    router.push(Routers.Result);
   };
 
   const handleCountdownFinished = (time: number) => {
