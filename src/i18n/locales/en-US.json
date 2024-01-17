@@ -12,7 +12,7 @@
       "title": "Vue Intermediate",
       "description": "Test your knowledge of Vue.js intermediate concepts"
     },
-    "vueAdvanced": {
+    "vue-advanced": {
       "title": "Vue Advanced",
       "description": "Test your knowledge of Vue.js advanced concepts"
     },
@@ -20,7 +20,7 @@
       "title": "Pinia",
       "description": "Test your knowledge of Pinia"
     },
-    "reactHooks": {
+    "react-hooks": {
       "title": "React Hooks",
       "description": "Test your knowledge of React Hooks"
     }
