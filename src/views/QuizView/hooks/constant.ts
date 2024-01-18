@@ -1,15 +1,19 @@
 import type { QuizKeys } from '@/types/quizKeys';
 import type { QuizQuestion } from '@/types/QuizQuestion';
-import { basicVueQuestions } from '@/assets/data/basicVueQuestions';
-import { piniaQuestions } from '@/assets/data/piniaQuestions';
-import { intermediateVueQuestions } from '@/assets/data/intermediateVueQuestions';
-import { advancedVueQuestions } from '@/assets/data/advancedVueQuestions';
-import { reactHooksQuestions } from '@/assets/data/reactHooksQuestions';
 
-export const questions: Record<QuizKeys, QuizQuestion[]> = {
-  'vue-basics': basicVueQuestions,
-  'pinia': piniaQuestions,
-  'vue-intermediate': intermediateVueQuestions,
-  'vue-advanced': advancedVueQuestions,
-  'react-hooks': reactHooksQuestions,
+export const loadQuestions = async (quizKey: QuizKeys): Promise<QuizQuestion[]> => {
+  switch (quizKey) {
+    case 'vue-basics':
+      return import('@/assets/data/basicVueQuestions').then(m => m.basicVueQuestions);
+    case 'pinia':
+      return import('@/assets/data/piniaQuestions').then(m => m.piniaQuestions);
+    case 'vue-intermediate':
+      return import('@/assets/data/intermediateVueQuestions').then(m => m.intermediateVueQuestions);
+    case 'vue-advanced':
+      return import('@/assets/data/advancedVueQuestions').then(m => m.advancedVueQuestions);
+    case 'react-hooks':
+      return import('@/assets/data/reactHooksQuestions').then(m => m.reactHooksQuestions);
+    default:
+      throw new Error(`Unknown quiz key: ${quizKey}`);
+  }
 };

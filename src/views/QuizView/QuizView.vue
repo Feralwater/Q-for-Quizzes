@@ -47,6 +47,7 @@ const { mdAndDown } = useDisplay();
 
 <template>
   <div
+    v-if="currentQuestion"
     role="region"
     aria-label="Quiz Section"
     :class="{
@@ -104,6 +105,16 @@ const { mdAndDown } = useDisplay();
         </span>
       </v-btn>
     </div>
+  </div>
+  <div
+    v-else
+    class="quiz__loading"
+  >
+    <v-progress-circular
+      color="primary"
+      indeterminate
+      :size="50"
+    />
   </div>
 </template>
 

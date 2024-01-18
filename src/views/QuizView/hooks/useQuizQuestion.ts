@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useQuizScore } from '@/stores/score';
 import { useVisibilityChange } from '@/hooks/useVisibilityChange';
 import { useRoute } from 'vue-router';
@@ -10,27 +10,32 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import type { User } from '@/types/user';
-import { questions } from '@/views/QuizView/hooks/constant';
+import { loadQuestions } from '@/views/QuizView/hooks/constant';
 import { useI18n } from 'vue-i18n';
 import { Routers } from '@/router/Routers';
+import type { QuizQuestion } from '@/types/QuizQuestion';
 
 const TIME_UP_VALUE = 0;
 
 export const useQuizQuestion = () => {
   const route = useRoute();
   const currentQuizId = route.params.quizId as QuizKeys;
-  const currentQuestions = questions[currentQuizId];
+  const currentQuestions = ref<QuizQuestion[]>([]);
+
+  const fetchQuestions = async () =>       currentQuestions.value = await loadQuestions(currentQuizId);
+
+  onMounted(fetchQuestions);
 
   const currentQuestionIndex = ref(0);
-  const currentQuestion = computed(() => currentQuestions[currentQuestionIndex.value]);
+  const currentQuestion = computed(() => currentQuestions.value[currentQuestionIndex.value]);
   const calculateProgress = (current: number, total: number) => (current / total) * 100;
-  const progress = computed(() => calculateProgress(currentQuestionIndex.value, currentQuestions.length));
+  const progress = computed(() => calculateProgress(currentQuestionIndex.value, currentQuestions.value.length));
   const currentQuestionNumber = computed(() => currentQuestionIndex.value + 1);
   const { incrementScore, setQuizCompleted } = useQuizScore();
   const scoreStore = storeToRefs(useQuizScore());
   const { score, totalQuestions } = scoreStore;
-  totalQuestions.value = currentQuestions.length;
-  const shouldShowNextButton = computed(() => currentQuestions.length - 1 !== currentQuestionIndex.value);
+  totalQuestions.value = currentQuestions.value.length;
+  const shouldShowNextButton = computed(() => currentQuestions.value.length - 1 !== currentQuestionIndex.value);
   const answerSelected = ref<number | null>(null);
   const answersSelected = ref<number[]>([]);
   const { getLocalStorage: getUser } = useLocalStorage<User>('user', { firstName: '', secondName: '' });
@@ -103,7 +108,7 @@ export const useQuizQuestion = () => {
     answersSelected.value = [...answersSelected.value, option];
   };
 
-  const questionsAmount = computed(() => currentQuestions.length);
+  const questionsAmount = computed(() => currentQuestions.value.length);
 
   const selectedQuiz = computed(() => quizzes.find((quiz) => quiz.id === currentQuizId));
 
