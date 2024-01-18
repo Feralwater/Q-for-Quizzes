@@ -1,4 +1,4 @@
-import { style } from '@/assets/data/codeStyle';
+import { style } from '@/assets/questions/codeStyle';
 
 export const reactHooksQuestions = [
   {
@@ -216,7 +216,7 @@ export const reactHooksQuestions = [
     answer: [9],
     options: [
       'Context lets to manipulate the browser history. useContext reads and subscribes to a context.',
-      'Context lets to fetch data from an external API. useContext reads and subscribes to a context.',
+      'Context lets to fetch questions from an external API. useContext reads and subscribes to a context.',
       'Context lets to create and manage state in class components. useContext reads and subscribes to a context.',
       'Context lets a component receive information from distant parents without passing it as props. useContext reads and subscribes to a context.',
     ],
@@ -229,7 +229,7 @@ export const reactHooksQuestions = [
     answer: [1],
     options: [
       'React Hook that lets you create global state across components.',
-      "React Hook that lets you perform HTTP requests and handle data fetching.",
+      "React Hook that lets you perform HTTP requests and handle questions fetching.",
       "React Hook that lets you define lifecycle methods in functional components.",
       "React Hook that lets you manage routing and navigation in your React application.",
       'React Hook that lets you reference a value that’s not needed for rendering.',
@@ -243,7 +243,7 @@ export const reactHooksQuestions = [
     answer: [0],
     options: [
       'React Hook that lets you customize the handle exposed as a ref and manage routing and navigation in your React application.',
-      "React Hook that lets you perform HTTP requests and handle data fetching.",
+      "React Hook that lets you perform HTTP requests and handle questions fetching.",
       "React Hook that lets you define lifecycle methods in functional components.",
       "React Hook that lets you manage routing and navigation in your React application.",
       'React Hook that lets you customize the component state and the component lifecycle.',
@@ -259,7 +259,7 @@ export const reactHooksQuestions = [
     answer: [1],
     options: [
       'React Hook that lets you create global state across components.',
-      "React Hook that lets you perform HTTP requests and handle data fetching.",
+      "React Hook that lets you perform HTTP requests and handle questions fetching.",
       "React Hook that lets you define lifecycle methods in functional components.",
       "React Hook that lets you manage routing and navigation in your React application.",
       "React Hook that lets you synchronize a component with an external system.",
