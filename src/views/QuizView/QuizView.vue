@@ -47,6 +47,7 @@ const { mdAndDown } = useDisplay();
 
 <template>
   <div
+    v-if="currentQuestion"
     role="region"
     aria-label="Quiz Section"
     :class="{
@@ -105,6 +106,7 @@ const { mdAndDown } = useDisplay();
       </v-btn>
     </div>
   </div>
+  <div v-else>Loading</div>
 </template>
 
 <style scoped>
