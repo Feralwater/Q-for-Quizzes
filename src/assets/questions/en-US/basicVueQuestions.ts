@@ -1,5 +1,5 @@
 import type { QuizQuestion } from '@/types/QuizQuestion';
-import { style } from '@/assets/questions/codeStyle';
+import { style } from '@/assets/questions/en-US/codeStyle';
 
 export const basicVueQuestions:QuizQuestion[] = [
   {
