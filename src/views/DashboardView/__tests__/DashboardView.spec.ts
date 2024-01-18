@@ -1,7 +1,7 @@
 import {  shallowMount } from '@vue/test-utils';
 import DashboardView from '@/views/DashboardView/DashboardView.vue';
 import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
-import { quizzes } from '../../../assets/questions/en-US/quizzes';
+import { quizzes } from '../../../assets/questions/quizzes';
 import { describe, it, expect } from 'vitest';
 import { createVuetify } from 'vuetify';
 import DialogWindow from '../../../components/DialogWindow/DialogWindow.vue';
