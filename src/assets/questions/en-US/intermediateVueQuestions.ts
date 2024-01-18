@@ -1,4 +1,4 @@
-import { style } from '@/assets/questions/en-US/codeStyle';
+import { style } from '@/assets/questions/codeStyle';
 
 export const intermediateVueQuestions = [
   {
