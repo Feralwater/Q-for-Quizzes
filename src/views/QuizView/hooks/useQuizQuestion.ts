@@ -10,7 +10,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { storeToRefs } from 'pinia';
 import type { CompletedQuiz } from '@/types/completedQuiz';
 import type { User } from '@/types/user';
-import { loadQuestions } from '@/views/QuizView/hooks/constant';
+import { loadQuestions } from '@/views/QuizView/helpers/loadQuestions';
 import { useI18n } from 'vue-i18n';
 import { Routers } from '@/router/Routers';
 import type { QuizQuestion } from '@/types/QuizQuestion';
