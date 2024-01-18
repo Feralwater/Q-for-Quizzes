@@ -22,14 +22,7 @@ export const useQuizQuestion = () => {
   const currentQuizId = route.params.quizId as QuizKeys;
   const currentQuestions = ref<QuizQuestion[]>([]);
 
-
-  const fetchQuestions = async () => {
-    try {
-      currentQuestions.value = await loadQuestions(currentQuizId);
-    } catch (error) {
-      console.error("Error loading questions:", error);
-    }
-  };
+  const fetchQuestions = async () =>       currentQuestions.value = await loadQuestions(currentQuizId);
 
   onMounted(fetchQuestions);
 

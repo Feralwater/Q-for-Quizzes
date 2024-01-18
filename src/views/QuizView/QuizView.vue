@@ -106,7 +106,16 @@ const { mdAndDown } = useDisplay();
       </v-btn>
     </div>
   </div>
-  <div v-else>Loading</div>
+  <div
+    v-else
+    class="quiz__loading"
+  >
+    <v-progress-circular
+      color="primary"
+      indeterminate
+      :size="50"
+    />
+  </div>
 </template>
 
 <style scoped>
