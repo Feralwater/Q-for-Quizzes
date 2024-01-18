@@ -3,7 +3,7 @@ import QuizCard from '@/views/DashboardView/Components/QuizCard/QuizCard.vue';
 import RulesButton from '@/views/DashboardView/Components/RulesButton/RulesButton.vue';
 import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
 import QuizRules from '@/views/DashboardView/Components/QuizRules/QuizRules.vue';
-import { quizzes } from '@/assets/data/quizzes';
+import { quizzes } from '@/assets/questions/quizzes';
 import { useDisplay } from 'vuetify';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.vue';
 import { useI18n } from 'vue-i18n';

@@ -1,5 +1,5 @@
 import type { QuizQuestion } from '@/types/QuizQuestion';
-import { style } from '@/assets/data/codeStyle';
+import { style } from '@/assets/questions/codeStyle';
 
 export const basicVueQuestions:QuizQuestion[] = [
   {
@@ -47,7 +47,7 @@ export const basicVueQuestions:QuizQuestion[] = [
     question: 'What are the essential features of the Composition API in Vue 3?',
     answer: [14, 16, 9],
     options: [
-      'data object',
+      'questions object',
       'setup function',
       'reactive references',
       'computed properties',
@@ -290,11 +290,11 @@ export const basicVueQuestions:QuizQuestion[] = [
     }</code></pre> assuming 'counter' is not defined in 'data'.`,
     answer: [9],
     options: [
-      'data() { counter: 0 }, methods: { increment() { this.counter += 1 } }',
-      'data: { counter: 0 }, methods: { increment() { this.counter += 1 } }',
-      'data: { counter: 0 }, increment() { this.counter += 1 }',
-      'data() { return { counter: 0 } }, methods: { increment() { this.counter += 1 } }',
-      'data: { increment() { this.counter += 1 } }',
+      'questions() { counter: 0 }, methods: { increment() { this.counter += 1 } }',
+      'questions: { counter: 0 }, methods: { increment() { this.counter += 1 } }',
+      'questions: { counter: 0 }, increment() { this.counter += 1 }',
+      'questions() { return { counter: 0 } }, methods: { increment() { this.counter += 1 } }',
+      'questions: { increment() { this.counter += 1 } }',
     ],
     timeToAnswer: 120,
     points: 4,
@@ -406,11 +406,11 @@ export const basicVueQuestions:QuizQuestion[] = [
   },
   {
     id: 30,
-    question: 'Is the `setup` function in Vue 3\'s Composition API called before or after the component\'s data properties are reactive?',
+    question: 'Is the `setup` function in Vue 3\'s Composition API called before or after the component\'s questions properties are reactive?',
     answer: [5],
     options: [
-      'Before, setup function is called before data properties become reactive',
-      'After, setup function is called after data properties become reactive',
+      'Before, setup function is called before questions properties become reactive',
+      'After, setup function is called after questions properties become reactive',
     ],
     timeToAnswer: 25,
     points: 1,
@@ -421,7 +421,7 @@ export const basicVueQuestions:QuizQuestion[] = [
     answer: [5],
     options: [
       'Yes\', \'Correct way to define a prop in script setup',
-      'No, props should be defined in the data option',
+      'No, props should be defined in the questions option',
       'No, props should be defined in the props option',
     ],
     timeToAnswer: 40,
@@ -468,12 +468,12 @@ export const basicVueQuestions:QuizQuestion[] = [
   },
   {
     id: 35,
-    question: 'Explain the data flow between Vue components.',
+    question: 'Explain the questions flow between Vue components.',
     answer: [14],
     options: [
-      'Bidirectional data flow solely from child to parent components.',
-      'Unidirectional data flow from parent to child through props and child to parent via events.',
-      'Limited data flow confined to components within the same hierarchy.',
+      'Bidirectional questions flow solely from child to parent components.',
+      'Unidirectional questions flow from parent to child through props and child to parent via events.',
+      'Limited questions flow confined to components within the same hierarchy.',
       'Data flow occurs arbitrarily based on component rendering order.',
     ],
     timeToAnswer: 60,
@@ -523,7 +523,7 @@ export const basicVueQuestions:QuizQuestion[] = [
     options: [
       "External scripts imported into Vue components.",
       "Special tags used for conditional rendering.",
-      "Custom methods for data manipulation in Vue instances.",
+      "Custom methods for questions manipulation in Vue instances.",
       "Special tokens in HTML attributes triggering reactive behavior.",
     ],
     timeToAnswer: 20,
@@ -561,7 +561,7 @@ export const basicVueQuestions:QuizQuestion[] = [
     answer: [14],
     options: [
       "Linking external CSS files to Vue components.",
-      "Dynamically updating HTML attributes based on Vue data.",
+      "Dynamically updating HTML attributes based on Vue questions.",
       "Assigning static values to HTML attributes.",
       "Creating custom attributes for Vue templates.",
     ],
@@ -639,7 +639,7 @@ export const basicVueQuestions:QuizQuestion[] = [
   },
   {
     id: 47,
-    question: 'Is the `v-model` directive in Vue 3 compatible with custom events for two-way data binding?',
+    question: 'Is the `v-model` directive in Vue 3 compatible with custom events for two-way questions binding?',
     answer: [5],
     options: [
       'Yes, v-model can work with custom events for two-way binding',
@@ -670,8 +670,8 @@ export const basicVueQuestions:QuizQuestion[] = [
     options: [
       'To render a component only once and unmount it',
       'To render a component only once and cache the result',
-      'To render a component only once and cache the result, then re-render if the data changes',
-      'To render a component only once and cache the result, then re-render if the data changes, but only once',
+      'To render a component only once and cache the result, then re-render if the questions changes',
+      'To render a component only once and cache the result, then re-render if the questions changes, but only once',
     ],
     timeToAnswer: 20,
     points: 1,

@@ -1,4 +1,4 @@
-import { style } from '@/assets/data/codeStyle';
+import { style } from '@/assets/questions/codeStyle';
 
 export const intermediateVueQuestions = [
   {
@@ -7,7 +7,7 @@ export const intermediateVueQuestions = [
     answer: [9],
     options: [
       'Vue components communicate through direct method calls, bypassing the need for events.',
-      'To share data between Vue components, use global variables instead of events.',
+      'To share questions between Vue components, use global variables instead of events.',
       'Events in Vue are only one-way communication and cannot be used for interaction between components.',
       'Vue components can interact and share information using events through the built-in $emit function.',
       'Vue components must always rely on parent-child relationships for information exchange; events are not necessary.',
@@ -22,12 +22,12 @@ export const intermediateVueQuestions = [
     answer: [16, 8],
     options: [
       'Slots and scoped slots are synonyms and can be used interchangeably in Vue.js.',
-      'Scoped slots are exclusively used for content distribution, while slots are solely for passing data.',
+      'Scoped slots are exclusively used for content distribution, while slots are solely for passing questions.',
       'A slot is a placeholder in a child component that is filled with content passed from the parent.', // correct
       'Slots are designed only for class components, while scoped slots are intended for functional components.',
       'Scoped slots are a deprecated feature, and slots are the recommended, modern approach.',
       'Using slots or scoped slots is optional in Vue.js; components can communicate effectively without them.',
-      'Scoped slot allows you to pass child component data to the parent scope and use the data in the slot content.', // correct
+      'Scoped slot allows you to pass child component questions to the parent scope and use the questions in the slot content.', // correct
     ],
     timeToAnswer: 120,
     points: 11,
@@ -99,9 +99,9 @@ export const intermediateVueQuestions = [
     question: 'What are the key benefits of Vue 3\'s Teleport feature?',
     answer: [9],
     options: [
-      'Teleport allows you to send data from a child component to a parent component.',
-      'Teleport allows you to send data from a parent component to a child component.',
-      'Teleport allows you to send data between sibling components.',
+      'Teleport allows you to send questions from a child component to a parent component.',
+      'Teleport allows you to send questions from a parent component to a child component.',
+      'Teleport allows you to send questions between sibling components.',
       'Teleport allows you to render a component in a different location in the DOM tree.',
     ],
     timeToAnswer: 60,
