@@ -5,12 +5,13 @@ import { quizzes } from '../../../assets/questions/quizzes';
 import { describe, it, expect } from 'vitest';
 import { createVuetify } from 'vuetify';
 import DialogWindow from '../../../components/DialogWindow/DialogWindow.vue';
+import i18n from '@/i18n';
 const vuetify = createVuetify();
 
 describe('DashboardView.vue', () => {
   const wrapper = shallowMount(DashboardView, {
     global: {
-      plugins: [vuetify],
+      plugins: [vuetify, i18n],
     },
   });
   
