@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 import DialogWindow from '@/components/DialogWindow/DialogWindow.vue';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createVuetify } from 'vuetify';
+import i18n from '@/i18n';
 
 const activatorComponent = {
   template: '<button name="activator">Click me</button>',
@@ -26,7 +27,7 @@ describe('DialogWindow', () => {
           template: '<div><slot /></div>',
         },
       },
-      plugins: [vuetify],
+      plugins: [vuetify, i18n],
     },
   });
 
