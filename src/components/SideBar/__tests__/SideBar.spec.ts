@@ -4,6 +4,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createVuetify } from 'vuetify';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
+import i18n from '@/i18n';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -38,7 +39,7 @@ describe('SideBar', () => {
     vi.clearAllMocks();
   });
 
-  const wrapper = mount(SideBar, { props, global: { plugins: [vuetify, router] } });
+  const wrapper = mount(SideBar, { props, global: { plugins: [vuetify, router, i18n] } });
 
   it('renders the sidebar when mdAndDown is false', () => {
     expect(wrapper.find('v-navigation-drawer').isVisible()).toBe(true);
