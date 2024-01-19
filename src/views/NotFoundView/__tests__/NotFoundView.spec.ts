@@ -28,7 +28,7 @@ describe('NotFoundView', () => {
   });
 
   it('displays error header and description', () => {
-    expect(wrapper.find('.error__header').text()).toBe('I have bad news for you');
+    expect(wrapper.find('.error__header').text()).toBe('Oops!');
     expect(wrapper.find('.error__description').text()).toContain('The page you are looking for might be removed or is temporarily unavailable.');
   });
 
