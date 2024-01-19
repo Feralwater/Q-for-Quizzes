@@ -108,8 +108,6 @@ export const useQuizQuestion = () => {
     answersSelected.value = [...answersSelected.value, option];
   };
 
-  const questionsAmount = computed(() => currentQuestions.value.length);
-
   const selectedQuiz = computed(() => quizzes.find((quiz) => quiz.id === currentQuizId));
 
   return {
@@ -124,7 +122,7 @@ export const useQuizQuestion = () => {
     updateSelectedAnswers,
     progress,
     handleCountdownFinished,
-    questionsAmount: questionsAmount.value,
+    questionsAmount: computed(() => currentQuestions.value.length),
     selectedQuiz: selectedQuiz.value,
   };
 };
