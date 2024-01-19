@@ -4,7 +4,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createVuetify } from 'vuetify';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
-import i18n from '../../../i18n';
+import i18n from '@/i18n';
 
 const routes: Array<RouteRecordRaw> = [
   {
