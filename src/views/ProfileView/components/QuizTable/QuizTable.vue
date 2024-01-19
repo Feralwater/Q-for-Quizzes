@@ -45,6 +45,11 @@ const navigateToCertificate = (id: number) => {
   router.push(Routers.CertificateId(String(id)));
 };
 const i18n = useI18n();
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat(i18n.locale.value).format(date);
+};
+
 </script>
 
 <template>
@@ -76,6 +81,9 @@ const i18n = useI18n();
           </td>
         </template>
       </tr>
+    </template>
+    <template #item.date="{ item }">
+      {{ formatDate(new Date(item.date)) }}
     </template>
     <template #item.actions="{ item }">
       <v-icon
