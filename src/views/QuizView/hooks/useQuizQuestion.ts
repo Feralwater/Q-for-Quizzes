@@ -22,7 +22,10 @@ export const useQuizQuestion = () => {
   const currentQuizId = route.params.quizId as QuizKeys;
   const currentQuestions = ref<QuizQuestion[]>([]);
 
-  const fetchQuestions = async () =>       currentQuestions.value = await loadQuestions(currentQuizId);
+  const fetchQuestions = async () => {
+     currentQuestions.value = await loadQuestions(currentQuizId);
+    totalQuestions.value = currentQuestions.value.length;
+  };
 
   onMounted(fetchQuestions);
 
@@ -34,7 +37,7 @@ export const useQuizQuestion = () => {
   const { incrementScore, setQuizCompleted } = useQuizScore();
   const scoreStore = storeToRefs(useQuizScore());
   const { score, totalQuestions } = scoreStore;
-  totalQuestions.value = currentQuestions.value.length;
+
   const shouldShowNextButton = computed(() => currentQuestions.value.length - 1 !== currentQuestionIndex.value);
   const answerSelected = ref<number | null>(null);
   const answersSelected = ref<number[]>([]);
