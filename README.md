@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-You can access the live demo of the application [here](https://vuejs-quiz-khaki.vercel.app/).
+You can access the live demo of the application [here](https://q-for-quizzes.vercel.app).
 
 ## Features
 
